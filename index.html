@@ -2256,7 +2256,9 @@
                 <div class="container">
                     <h2 class="center">Knihu objednávej zde:</h2>
 
-                    <div id="fapiFormContainer" style="min-height:1395px"></div>
+                    <div id="fapiFormWrap" style="min-height:1395px">
+                        <div id="fapiFormContainer"></div>
+                    </div>
                     <noscript><a href="https://form.fapi.cz/?id=8b8a0803-1c59-429d-966d-c0c21b3de0f3"
                             target="_blank">Objednávkový formulář</a></noscript>
 
@@ -2480,7 +2482,10 @@
                     loaded = true;
                     var s = document.createElement('script');
                     s.src = 'https://form.fapi.cz/script.php?id=8b8a0803-1c59-429d-966d-c0c21b3de0f3';
-                    s.onload = function () { container.style.minHeight = ''; };
+                    s.onload = function () {
+                        var wrap = document.getElementById('fapiFormWrap');
+                        if (wrap) wrap.style.minHeight = '';
+                    };
                     container.appendChild(s);
                     observer.disconnect();
                 }
