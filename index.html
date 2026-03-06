@@ -27,14 +27,51 @@
         content="Praktický průvodce osobním rozvojem pro muže. Autoři: Sláva Černý a Milan Studnička.">
     <meta name="twitter:image" content="https://restartmuze.cz/wp-content/uploads/2025/11/kniha-mockup-bestseller.jpg">
 
-    <!-- Preconnect pro rychlejší načtení Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style"
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600&display=swap">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600&display=swap"
-        rel="stylesheet" media="print" onload="this.media='all'">
+    <!-- Self-hosted fonts -->
+    <style>
+        @font-face {
+            font-display: swap;
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 400;
+            src: url('fonts/montserrat-v31-latin-regular.woff2') format('woff2');
+        }
+        @font-face {
+            font-display: swap;
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 600;
+            src: url('fonts/montserrat-v31-latin-600.woff2') format('woff2');
+        }
+        @font-face {
+            font-display: swap;
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 700;
+            src: url('fonts/montserrat-v31-latin-700.woff2') format('woff2');
+        }
+        @font-face {
+            font-display: swap;
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 800;
+            src: url('fonts/montserrat-v31-latin-800.woff2') format('woff2');
+        }
+        @font-face {
+            font-display: swap;
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 400;
+            src: url('fonts/open-sans-v44-latin-regular.woff2') format('woff2');
+        }
+        @font-face {
+            font-display: swap;
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 600;
+            src: url('fonts/open-sans-v44-latin-600.woff2') format('woff2');
+        }
+    </style>
     <!-- Font Awesome odstraněn – ikony řešeny přes SVG sprite -->
 
     <!-- Structured Data: Book + Product -->
@@ -1703,7 +1740,6 @@
                         <div class="authors-img">
                             <img src="img/kniha-restart-muze-slava-milan.webp"
                                 alt="Sláva Černý a Milan Studnička – autoři knihy Restart muže"
-                                width="1427" height="1148"
                                 loading="lazy">
                         </div>
                     </div>
@@ -1862,13 +1898,13 @@
                     <div class="book-previews">
                         <img src="img/ukazka-knihy1.jpg"
                             alt="Ukázka z knihy Restart muže – Úvod: Proč máme krizi mužství"
-                            width="934" height="1359" loading="lazy">
+                            loading="lazy">
                         <img src="img/ukazka-knihy2.jpg" alt="Ukázka z knihy Restart muže – ilustrace a text"
-                            width="934" height="1359" loading="lazy">
+                            loading="lazy">
                         <img src="img/ukazka-knihy3.jpg" alt="Ukázka z knihy Restart muže – kapitola o sebevědomí"
-                            width="934" height="1359" loading="lazy">
+                            loading="lazy">
                         <img src="img/ukazka-knihy4.jpg" alt="Ukázka z knihy Restart muže – praktické rady"
-                            width="934" height="1359" loading="lazy">
+                            loading="lazy">
                     </div>
                 </div>
             </section>
