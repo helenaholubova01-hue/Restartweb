@@ -1021,6 +1021,7 @@
             max-height: 90vh;
             border-radius: 8px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
         }
 
         .lightbox-arrow {
@@ -1193,6 +1194,30 @@
             #fapiFormWrap {
                 min-height: 2078px;
             }
+        }
+
+        .fapi-loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .fapi-spinner {
+            width: 36px;
+            height: 36px;
+            border: 3px solid var(--border-subtle);
+            border-top-color: var(--accent-orange);
+            border-radius: 50%;
+            animation: fapi-spin 0.8s linear infinite;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes fapi-spin {
+            to { transform: rotate(360deg); }
         }
 
         .checkout-placeholder {
@@ -2017,29 +2042,29 @@
                                     <use href="#icon-chevron-down" />
                                 </svg></summary>
                             <div class="faq-content">
-                                <p>V&nbsp;pořádku. Ale opět <strong>upozorňujeme</strong>, že je to kniha pro muže. Pro
+                                <p>V&nbsp;pořádku. Ale opět upozorňujeme, že je to kniha pro muže. Pro
                                     muže,
                                     kteří to se svým
                                     seberozvojem myslí vážně. Takový muž si tu knihu koupí aktivně sám a bude mu
                                     přínosem.
-                                    Pokud hodláte svému muži tuto knihu dát darem, <strong>nezřídka se stane, že ji
-                                        odmítne</strong>.
+                                    Pokud hodláte svému muži tuto knihu dát darem, nezřídka se stane, že ji
+                                        odmítne.
                                     Máme s&nbsp;tím bohaté zkušenosti. Chlap zkrátka musí být tomuto typu seberozvoje
-                                    přístupný. Ruku na srdce milé ženy – <strong>pokud je váš muž přesvědčen o&nbsp;tom,
+                                    přístupný. Ruku na srdce milé ženy – pokud je váš muž přesvědčen o&nbsp;tom,
                                         že vše
                                         dělá dobře a
                                         nikdo mu nemusí radit, tak mu tuhle knihu nekupujte. Nedá to. Není na to
-                                        připravený.</strong>
+                                        připravený.
                                     Ale čest výjimkám.</p>
 
                                 <p>Znovu opakujeme – máme s&nbsp;tím TAK bohaté zkušenosti, že by to vydalo na další
                                     knihu.
                                     Proto
-                                    ještě jednou upozorňujeme: <strong>NEkupujte tuhle knihu chlapovi, který nestojí o
-                                        jakýkoliv seberozvoj.</strong> Pokud i přes naše varování knihu koupíte, je to
+                                    ještě jednou upozorňujeme: NEkupujte tuhle knihu chlapovi, který nestojí o
+                                        jakýkoliv seberozvoj. Pokud i přes naše varování knihu koupíte, je to
                                     jen na vás. Na vaši
                                     zodpovědnost.
-                                    Na <strong>pozdější reklamace nebude brán zřetel</strong>. Díky za pochopení. </p>
+                                    Na pozdější reklamace nebude brán zřetel. Díky za pochopení. </p>
                             </div>
                         </details>
 
@@ -2049,18 +2074,18 @@
                                 </svg></summary>
                             <div class="faq-content">
                                 <p>Muž, pokud dostane tuto knihu darem, ji nemusí přijmout. Je to pro něj signál, že
-                                    „dělá něco blbě" a to nemusí jeho ego unést. Proto vždy radíme, abyste holky svého
+                                    „dělá něco blbě” a to nemusí jeho ego unést. Proto vždy radíme, abyste holky svého
                                     muže
-                                    vždy <strong>jen
-                                        upozornily, že je tu tahle kniha</strong>.
+                                    vždy jen
+                                        upozornily, že je tu tahle kniha.
                                 </p>
 
-                                <p>Například slovy: <strong class="t-orange">„Miláčku, mrkni se na tuhle knihu. Myslím,
+                                <p>Například slovy: <span class=”t-orange”>„Miláčku, mrkni se na tuhle knihu. Myslím,
                                         že by nám to
-                                        mohlo pomoct.“</strong>. A&nbsp;to je
+                                        mohlo pomoct.”</span>. A&nbsp;to je
                                     vše. Pokud ho to zaujme, sám si knihu koupí. Potom to pro něj i pro vás bude mít
-                                    smysl. <strong>Ale
-                                        opravdu až potom, co ON SÁM se rozhodne, že si tu knihu přečte.</strong> Pak je
+                                    smysl. Ale
+                                        opravdu až potom, co ON SÁM se rozhodne, že si tu knihu přečte. Pak je
                                     šance, že
                                     jeho rozum
                                     může přebít jeho ego.
@@ -2074,8 +2099,8 @@
                                 </svg>
                             </summary>
                             <div class="faq-content">
-                                <p><strong>Ne.</strong> Všechny naše kurzy a knihy jsou určeny <strong>pouze pro
-                                        muže</strong>.
+                                <p>Ne. Všechny naše kurzy a knihy jsou určeny pouze pro
+                                        muže.
                                     Milé ženy,
                                     prosím, nekupujte to jako dárek. Ten chlap opravdu musí chtít sám. Jinak to nemá
                                     smysl.
@@ -2147,7 +2172,7 @@
                                     <use href="#icon-chevron-down" />
                                 </svg></summary>
                             <div class="faq-content">
-                                <p>Na 1 objednávku lze zakoupit <strong>maximálně 1 ks knihy</strong>. Pokud si přeješ
+                                <p>Na 1 objednávku lze zakoupit maximálně 1 ks knihy. Pokud si přeješ
                                     objednat více kusů,
                                     napiš na
                                     <a href="mailto:podpora@restartmuze.cz" class="t-orange">podpora@restartmuze.cz</a>
@@ -2162,23 +2187,21 @@
                             <div class="faq-content">
                                 <p>Kupující má právo odstoupit od nákupu do 14 dnů od převzetí knihy bez udání důvodu.
                                 </p>
-                                <ul>
-                                    <li style="margin-bottom: 0.5rem"><strong>Postup:</strong> Pro vrácení musí být
-                                        kniha
+                                <p><strong>Postup:</strong> Pro vrácení musí být kniha
                                         nepoškozená
                                         a neopotřebovaná. Kontaktujte nás
-                                        e-mailem na podpora@restartmuze.cz s žádostí o vrácení, kde uvedete své údaje a
-                                        číslo objednávky.</li>
-                                    <li style="margin-bottom: 0.5rem"><strong>Náklady na vrácení:</strong> Kupující
+                                        e-mailem na <a href="mailto:podpora@restartmuze.cz"
+                                        class="t-orange">podpora@restartmuze.cz</a> s žádostí o vrácení, kde uvedete své údaje a
+                                        číslo objednávky.</p>
+                                <p><strong>Náklady na vrácení:</strong> Kupující
                                         hradí
                                         náklady na
-                                        zpětné doručení.</li>
-                                    <li style="margin-bottom: 0.5rem"><strong>Vrácení peněz:</strong> Peníze budou
+                                        zpětné doručení.</p>
+                                <p><strong>Vrácení peněz:</strong> Peníze budou
                                         vráceny do 14
                                         dnů
                                         od přijetí vráceného zboží.
-                                    </li>
-                                </ul>
+                                </p>
                             </div>
                         </details>
                     </div>
@@ -2431,6 +2454,11 @@
                 showImage(currentIndex + 1);
             });
 
+            lightboxImg.addEventListener('click', function (e) {
+                e.stopPropagation();
+                showImage(currentIndex + 1);
+            });
+
             overlay.addEventListener('click', function (e) {
                 if (e.target === overlay) overlay.classList.remove('active');
             });
@@ -2509,26 +2537,50 @@
             var container = document.getElementById('fapiFormContainer');
             if (!container) return;
             var loaded = false;
+            var formReady = false;
 
             function loadForm() {
                 if (loaded) return;
                 loaded = true;
                 var s = document.createElement('script');
                 s.src = 'https://form.fapi.cz/script.php?id=8b8a0803-1c59-429d-966d-c0c21b3de0f3';
+                s.onload = function () { formReady = true; hideSpinner(); };
                 container.appendChild(s);
             }
 
-            // Lazy-load: only when user scrolls near the section
+            function showSpinner() {
+                if (formReady || document.getElementById('fapiSpinner')) return;
+                var el = document.createElement('div');
+                el.id = 'fapiSpinner';
+                el.className = 'fapi-loading';
+                el.innerHTML = '<div class="fapi-spinner"></div>Načítám formulář…';
+                container.parentNode.insertBefore(el, container);
+            }
+
+            function hideSpinner() {
+                var el = document.getElementById('fapiSpinner');
+                if (el) el.remove();
+            }
+
+            // Lazy-load: when user scrolls near the section
             var observer = new IntersectionObserver(function (entries) {
                 if (entries[0].isIntersecting) { loadForm(); observer.disconnect(); }
             }, { rootMargin: '2000px' });
             observer.observe(container);
 
-            // CTA click: smooth scroll + ensure form loads
-            document.querySelectorAll('a[href="#objednavka"]').forEach(function (link) {
+            // Preload on hover / touchstart over CTA buttons
+            var ctaLinks = document.querySelectorAll('a[href="#objednavka"]');
+            ctaLinks.forEach(function (link) {
+                link.addEventListener('mouseenter', loadForm, { once: true });
+                link.addEventListener('touchstart', loadForm, { once: true, passive: true });
+            });
+
+            // CTA click: smooth scroll + spinner fallback
+            ctaLinks.forEach(function (link) {
                 link.addEventListener('click', function (e) {
                     e.preventDefault();
                     loadForm();
+                    if (!formReady) showSpinner();
                     var target = document.getElementById('objednavka');
                     if (target) smoothScrollTo(target, 800);
                 });
