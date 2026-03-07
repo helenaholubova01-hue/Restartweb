@@ -2507,7 +2507,7 @@
             // Lazy-load: only when user scrolls near the section
             var observer = new IntersectionObserver(function (entries) {
                 if (entries[0].isIntersecting) { loadForm(); observer.disconnect(); }
-            }, { rootMargin: '200px' });
+            }, { rootMargin: '2000px' });
             observer.observe(container);
 
             // CTA click: smooth scroll + ensure form loads
