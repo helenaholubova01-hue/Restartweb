@@ -742,7 +742,7 @@
             color: var(--text-white);
             margin-bottom: 2rem;
             line-height: 1.7;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
         }
 
         .hero-left .cta-wrap {
@@ -909,7 +909,7 @@
 
         .authors-text p {
             color: var(--text-white);
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             line-height: 1.8;
             margin: 0;
         }
@@ -1438,6 +1438,10 @@
             .authors-grid {
                 padding: 2rem 1.5rem;
                 gap: 2rem;
+            }
+
+            .authors-text .authors-names {
+                font-size: 1.4rem;
             }
 
             .desatero-grid {
@@ -2212,7 +2216,7 @@
             <section class="section">
                 <div class="container" style="max-width: 800px; text-align: center;">
                     <h2 class="center">Minikurz „<span class="underline-brush">Oporou sám sobě</span>"</h2>
-                    <p style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--text-white);">Přikup si minikurz
+                    <p style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-white);">Přikup si minikurz
                         přímo v
                         objednávce knihy a získej exkluzivní video obsah.</p>
                     <p
@@ -2544,7 +2548,22 @@
                 loaded = true;
                 var s = document.createElement('script');
                 s.src = 'https://form.fapi.cz/script.php?id=8b8a0803-1c59-429d-966d-c0c21b3de0f3';
-                s.onload = function () { formReady = true; hideSpinner(); };
+                s.onload = function () {
+                    formReady = true;
+                    hideSpinner();
+                    // Wait for FAPI to render, then remove placeholder min-height
+                    var wrap = document.getElementById('fapiFormWrap');
+                    if (!wrap) return;
+                    var attempts = 0;
+                    var check = setInterval(function () {
+                        attempts++;
+                        var form = wrap.querySelector('form, iframe, .fapi-form');
+                        if (form || attempts > 20) {
+                            wrap.style.minHeight = 'auto';
+                            clearInterval(check);
+                        }
+                    }, 250);
+                };
                 container.appendChild(s);
             }
 
