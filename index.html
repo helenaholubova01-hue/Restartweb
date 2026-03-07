@@ -296,6 +296,10 @@
             line-gap-override: 0%;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Open Sans', 'Open Sans Fallback', sans-serif;
             font-size: 1.1rem;
@@ -2248,12 +2252,13 @@
             </section>
 
             <!-- OBJEDNÁVKA -->
-            <div id="objednavka"></div>
-            <section id="objednavkaSection" class="section section-alt">
+            <section id="objednavka" class="section section-alt">
                 <div class="container">
                     <h2 class="center">Knihu objednávej zde:</h2>
 
-                    <div id="fapiFormContainer" style="min-height:1435px"></div>
+                    <div id="fapiFormWrap" style="min-height:1395px">
+                        <div id="fapiFormContainer"></div>
+                    </div>
                     <noscript><a href="https://form.fapi.cz/?id=8b8a0803-1c59-429d-966d-c0c21b3de0f3"
                             target="_blank">Objednávkový formulář</a></noscript>
 
@@ -2437,7 +2442,7 @@
         (function () {
             const hero = document.querySelector('.hero');
             const stickyBar = document.getElementById('stickyCta');
-            const orderSection = document.getElementById('objednavkaSection');
+            const orderSection = document.getElementById('objednavka');
             if (!hero || !stickyBar) return;
 
             let heroVisible = true;
@@ -2467,46 +2472,25 @@
             }
         })();
 
-        // Lazy-load FAPI form
+        // Lazy-load FAPI form when section scrolls into view
         (function () {
             var container = document.getElementById('fapiFormContainer');
             if (!container) return;
             var loaded = false;
-
-            function loadForm() {
-                if (loaded) return;
-                loaded = true;
-                var s = document.createElement('script');
-                s.src = 'https://form.fapi.cz/script.php?id=8b8a0803-1c59-429d-966d-c0c21b3de0f3';
-                container.appendChild(s);
-                // Remove placeholder height once form renders
-                var mo = new MutationObserver(function () {
-                    if (container.querySelector('form')) {
-                        container.style.minHeight = '';
-                        mo.disconnect();
-                    }
-                });
-                mo.observe(container, { childList: true, subtree: true });
-            }
-
-            // Preload early (2000px before viewport)
-            var io = new IntersectionObserver(function (entries) {
-                if (entries[0].isIntersecting) { loadForm(); io.disconnect(); }
-            }, { rootMargin: '2000px' });
-            io.observe(container);
-
-            // All anchor links: smooth scroll via JS
-            document.querySelectorAll('a[href^="#"]').forEach(function (link) {
-                link.addEventListener('click', function (e) {
-                    var id = this.getAttribute('href').slice(1);
-                    var target = document.getElementById(id);
-                    if (!target) return;
-                    e.preventDefault();
-                    if (id === 'objednavka') loadForm();
-                    var y = target.getBoundingClientRect().top + window.pageYOffset;
-                    window.scrollTo({ top: y, behavior: 'smooth' });
-                });
-            });
+            var observer = new IntersectionObserver(function (entries) {
+                if (entries[0].isIntersecting && !loaded) {
+                    loaded = true;
+                    var s = document.createElement('script');
+                    s.src = 'https://form.fapi.cz/script.php?id=8b8a0803-1c59-429d-966d-c0c21b3de0f3';
+                    s.onload = function () {
+                        var wrap = document.getElementById('fapiFormWrap');
+                        if (wrap) wrap.style.minHeight = '';
+                    };
+                    container.appendChild(s);
+                    observer.disconnect();
+                }
+            }, { rootMargin: '200px' });
+            observer.observe(container);
         })();
 
         // Social proof popup - rotating notifications
