@@ -121,7 +121,7 @@
             "Zvládání krizí"
         ],
         "bookEdition": "1. vydání",
-        "datePublished": "2023",
+        "datePublished": "2023-01-01",
         "offers": {
             "@type": "Offer",
             "url": "https://restartmuze.cz/knihy/restart-muze/",
@@ -1179,6 +1179,22 @@
         }
 
         /* ===== CHECKOUT ===== */
+        #fapiFormWrap {
+            min-height: 1435px;
+        }
+
+        @media (max-width: 1024px) {
+            #fapiFormWrap {
+                min-height: 1459px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #fapiFormWrap {
+                min-height: 2078px;
+            }
+        }
+
         .checkout-placeholder {
             max-width: 600px;
             margin: 2rem auto;
@@ -1807,7 +1823,7 @@
             </section>
 
             <!-- CO SE Z KNIHY NAUČÍŠ -->
-            <section class="section section-alt">
+            <section class="section">
                 <div class="container">
                     <h2 class="center">Co se z knihy <span class="underline-brush">naučíš?</span></h2>
 
@@ -1991,7 +2007,7 @@
             </section>
 
             <!-- FAQ -->
-            <div class="section pb-4">
+            <section class="section section-alt">
                 <div class="container">
                     <h2 class="center">Otázky a odpovědi</h2>
                     <div class="faq-list" style="max-width: 800px; margin: 3rem auto 0;">
@@ -2167,7 +2183,7 @@
                         </details>
                     </div>
                 </div>
-            </div>
+            </section>
 
             <!-- MINIKURZ -->
             <section class="section">
@@ -2252,11 +2268,11 @@
                 <div class="container">
                     <h2 class="center">Knihu objednávej zde:</h2>
 
-                    <div id="fapiFormWrap" style="min-height:1435px">
+                    <div id="fapiFormWrap">
                         <div id="fapiFormContainer"></div>
                     </div>
                     <noscript><a href="https://form.fapi.cz/?id=8b8a0803-1c59-429d-966d-c0c21b3de0f3"
-                            target="_blank">Objednávkový formulář</a></noscript>
+                            target="_blank" rel="noopener noreferrer">Objednávkový formulář</a></noscript>
 
                     <div class="trust-row" style="margin-top: 2rem;">
                         <span class="trust-item"><svg class="icon">
@@ -2350,11 +2366,9 @@
 
     <!-- LIGHTBOX -->
     <div class="lightbox-overlay" id="lightbox">
-        <button class="lightbox-arrow lightbox-arrow--prev" id="lightboxPrev"><i
-                class="fas fa-chevron-left"></i></button>
+        <button class="lightbox-arrow lightbox-arrow--prev" id="lightboxPrev" aria-label="Předchozí ukázka"><svg class="icon" style="width:1.5rem;height:1.5rem;"><use href="#icon-chevron-left"/></svg></button>
         <img src="" alt="Zvětšená ukázka z knihy" id="lightboxImg">
-        <button class="lightbox-arrow lightbox-arrow--next" id="lightboxNext"><i
-                class="fas fa-chevron-right"></i></button>
+        <button class="lightbox-arrow lightbox-arrow--next" id="lightboxNext" aria-label="Další ukázka"><svg class="icon" style="width:1.5rem;height:1.5rem;"><use href="#icon-chevron-right"/></svg></button>
     </div>
 
     <!-- SOCIAL PROOF POPUP -->
