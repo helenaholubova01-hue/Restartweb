@@ -2504,12 +2504,11 @@
                 container.appendChild(s);
             }
 
-            // Preload during browser idle time (no impact on performance metrics)
-            if (window.requestIdleCallback) {
-                requestIdleCallback(loadForm, { timeout: 4000 });
-            } else {
-                setTimeout(loadForm, 3000);
-            }
+            // Lazy-load: only when user scrolls near the section
+            var observer = new IntersectionObserver(function (entries) {
+                if (entries[0].isIntersecting) { loadForm(); observer.disconnect(); }
+            }, { rootMargin: '200px' });
+            observer.observe(container);
 
             // CTA click: smooth scroll + ensure form loads
             document.querySelectorAll('a[href="#objednavka"]').forEach(function (link) {
