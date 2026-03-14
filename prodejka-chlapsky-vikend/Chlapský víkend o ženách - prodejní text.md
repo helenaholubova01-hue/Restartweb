@@ -1,3 +1,4 @@
+na t
 ### **„Naučíš se mluvit tak, že tě žena skutečně uslyší.“**
 
 # **Chlapský víkend „O ženách“**
