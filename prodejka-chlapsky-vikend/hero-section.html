@@ -1,0 +1,1825 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chlapský víkend „O ženách" — Restart Muže</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-deep: #0f1114;
+            --bg-card: #1a1d23;
+            --bg-subtle: #23272f;
+            --text-primary: #f0ece7;
+            --text-secondary: #b8b2a8;
+            --text-muted: #8a847b;
+            --accent: #2ea043;
+            --accent-hover: #3ab853;
+            --accent-glow: rgba(46, 160, 67, 0.2);
+            --highlight: #d4873b;
+            --border: rgba(255, 255, 255, 0.06);
+        }
+
+        html {
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 6rem 1.5rem 3rem;
+            overflow: hidden;
+        }
+
+        /* Background atmosphere */
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 50% 0%, rgba(196, 135, 59, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 80% at 80% 50%, rgba(30, 35, 45, 0.8) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* Subtle noise texture overlay */
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            background-size: 256px 256px;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 720px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Top label */
+        .hero-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1.75rem;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards;
+            animation-delay: 0.2s;
+        }
+
+        .hero-label::before {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        /* Headline */
+        .hero-headline {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            line-height: 1.15;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards;
+            animation-delay: 0.4s;
+        }
+
+        .hero-headline em {
+            font-style: normal;
+            color: var(--highlight);
+        }
+
+        /* Subheadline */
+        .hero-sub {
+            font-size: 1.125rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            max-width: 560px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards;
+            animation-delay: 0.6s;
+        }
+
+        /* CTA button */
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.25rem;
+            background: var(--accent);
+            color: #ffffff;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards;
+            animation-delay: 0.8s;
+        }
+
+        .hero-cta:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 32px var(--accent-glow);
+        }
+
+        .hero-cta svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-cta:hover svg {
+            transform: translateX(3px);
+        }
+
+        /* Meta info strip */
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards;
+            animation-delay: 1s;
+        }
+
+        .hero-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .hero-meta-item svg {
+            width: 16px;
+            height: 16px;
+            color: var(--text-muted);
+            opacity: 0.7;
+            flex-shrink: 0;
+        }
+
+        .hero-meta-item strong {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Scroll indicator */
+        .hero-scroll {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards;
+            animation-delay: 1.4s;
+        }
+
+        .hero-scroll-line {
+            width: 1px;
+            height: 32px;
+            background: linear-gradient(to bottom, var(--text-muted), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        /* ============================================
+           ANIMATIONS
+           ============================================ */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; transform: scaleY(1); }
+            50% { opacity: 0.7; transform: scaleY(1.2); }
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (min-width: 768px) {
+            .hero {
+                padding: 8rem 3rem 4rem;
+            }
+
+            .hero-meta {
+                gap: 2rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero {
+                padding: 0 4rem;
+            }
+
+            .hero-content {
+                max-width: 800px;
+                margin: 0 auto;
+            }
+
+            .hero-meta {
+                gap: 2.5rem;
+            }
+        }
+
+        /* ============================================
+           CAPACITY WARNING (optional state)
+           ============================================ */
+        .hero-capacity {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--accent);
+            margin-top: 1rem;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards;
+            animation-delay: 1s;
+        }
+
+        .hero-capacity-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        /* ============================================
+           SHARED SECTION STYLES
+           ============================================ */
+        .section {
+            padding: 5rem 1.5rem;
+            position: relative;
+        }
+
+        .section-inner {
+            max-width: 760px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 20px;
+            height: 1px;
+            background: var(--text-muted);
+        }
+
+        .section-headline {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: clamp(1.5rem, 4vw, 2.25rem);
+            line-height: 1.25;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+        }
+
+        .section-headline em {
+            font-style: normal;
+            color: var(--highlight);
+        }
+
+        /* ============================================
+           PROBLEM & AGITATION SECTION
+           ============================================ */
+        .problem {
+            background: var(--bg-deep);
+            border-top: 1px solid var(--border);
+        }
+
+        .problem-lead {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 600px;
+        }
+
+        .problem-grid {
+            display: grid;
+            gap: 1px;
+            background: var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 3rem;
+        }
+
+        .problem-card {
+            background: var(--bg-card);
+            padding: 1.75rem;
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
+        }
+
+        .problem-card-icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .problem-card-text h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            margin-bottom: 0.4rem;
+        }
+
+        .problem-card-text p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+        }
+
+        /* Warning box */
+        .problem-warning {
+            background: var(--bg-card);
+            border-left: 3px solid #b54a32;
+            border-radius: 0 8px 8px 0;
+            padding: 1.75rem 2rem;
+        }
+
+        .problem-warning-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #d4735a;
+            margin-bottom: 0.75rem;
+        }
+
+        .problem-warning p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        /* ============================================
+           SOLUTION SECTION
+           ============================================ */
+        .solution {
+            background: var(--bg-subtle);
+            border-top: 1px solid var(--border);
+        }
+
+        .solution-lead {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 600px;
+        }
+
+        .solution-pillars {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .solution-pillar {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            transition: border-color 0.3s ease;
+        }
+
+        .solution-pillar:hover {
+            border-color: rgba(46, 160, 67, 0.2);
+        }
+
+        .solution-pillar-number {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(46, 160, 67, 0.1);
+            border: 1px solid rgba(46, 160, 67, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1rem;
+            color: var(--accent);
+        }
+
+        .solution-pillar-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .solution-pillar-content p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .solution-pillar-content .pillar-detail {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Solution CTA */
+        .solution-cta-block {
+            margin-top: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .solution-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.25rem;
+            background: var(--accent);
+            color: #ffffff;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .solution-cta:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 32px var(--accent-glow);
+        }
+
+        .solution-cta svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .solution-cta:hover svg {
+            transform: translateX(3px);
+        }
+
+        .solution-cta-note {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* ============================================
+           RESPONSIVE — SECTIONS
+           ============================================ */
+        @media (min-width: 768px) {
+            .section {
+                padding: 6rem 3rem;
+            }
+
+            .problem-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .section {
+                padding: 7rem 4rem;
+            }
+
+            .section-inner {
+                max-width: 800px;
+            }
+        }
+
+        /* ============================================
+           PROGRAM / PRODUCT BREAKDOWN SECTION
+           ============================================ */
+        .program {
+            background: var(--bg-deep);
+            border-top: 1px solid var(--border);
+        }
+
+        .program-lead {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 580px;
+        }
+
+        .program-timeline {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .program-day {
+            position: relative;
+            padding-left: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-left: 1px solid var(--border);
+        }
+
+        .program-day:last-child {
+            border-left-color: transparent;
+            padding-bottom: 0;
+        }
+
+        .program-day-marker {
+            position: absolute;
+            left: -7px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--bg-deep);
+            border: 2px solid var(--highlight);
+        }
+
+        .program-day-label {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--highlight);
+            margin-bottom: 0.75rem;
+        }
+
+        .program-day-items {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .program-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1rem 1.25rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .program-item svg {
+            flex-shrink: 0;
+            width: 16px;
+            height: 16px;
+            color: var(--text-muted);
+        }
+
+        .program-item strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .program-location {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.75rem 2rem;
+            margin-top: 3rem;
+        }
+
+        .program-location h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .program-location p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        /* ============================================
+           SOCIAL PROOF SECTION
+           ============================================ */
+        .proof {
+            background: var(--bg-subtle);
+            border-top: 1px solid var(--border);
+        }
+
+        .proof-video-placeholder {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .proof-video-placeholder::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, rgba(212, 135, 59, 0.04) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .proof-video-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: rgba(212, 135, 59, 0.15);
+            border: 1px solid rgba(212, 135, 59, 0.3);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: var(--highlight);
+        }
+
+        .proof-video-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .proof-video-placeholder p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .proof-quotes {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .proof-quote {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.75rem 2rem;
+        }
+
+        .proof-quote p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 0.75rem;
+        }
+
+        .proof-quote-author {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .proof-trust {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .proof-trust-item {
+            text-align: center;
+        }
+
+        .proof-trust-number {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--highlight);
+            display: block;
+        }
+
+        .proof-trust-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        /* ============================================
+           OBJECTION HANDLING SECTION
+           ============================================ */
+        .objections {
+            background: var(--bg-deep);
+            border-top: 1px solid var(--border);
+        }
+
+        .objections-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .objection {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .objection-question {
+            padding: 1.25rem 1.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+        }
+
+        .objection-question::before {
+            content: '';
+            flex-shrink: 0;
+            width: 8px;
+            height: 8px;
+            border-right: 2px solid var(--highlight);
+            border-bottom: 2px solid var(--highlight);
+            transform: rotate(-45deg);
+            transition: transform 0.3s ease;
+        }
+
+        .objection.open .objection-question::before {
+            transform: rotate(45deg);
+        }
+
+        .objection-answer {
+            padding: 0 1.5rem 1.25rem 2.75rem;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .objections-cta-block {
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .objections-cta-text {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+        }
+
+        .objections-cta-text strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        @media (min-width: 768px) {
+            .proof-quotes {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* ============================================
+           GUIDES / SPEAKERS SECTION
+           ============================================ */
+        .guides {
+            background: var(--bg-subtle);
+            border-top: 1px solid var(--border);
+        }
+
+        .guides-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .guide-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .guide-avatar {
+            flex-shrink: 0;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: var(--bg-subtle);
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+        }
+
+        .guide-avatar svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .guide-info h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .guide-info .guide-role {
+            font-size: 0.85rem;
+            color: var(--highlight);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .guide-info p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        @media (min-width: 768px) {
+            .guides-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* ============================================
+           PRICING SECTION
+           ============================================ */
+        .pricing {
+            background: var(--bg-deep);
+            border-top: 1px solid var(--border);
+        }
+
+        .pricing-card {
+            background: var(--bg-card);
+            border: 2px solid rgba(46, 160, 67, 0.25);
+            border-radius: 12px;
+            padding: 3rem 2.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at top, rgba(46, 160, 67, 0.04) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .pricing-card-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .pricing-amount {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            color: var(--text-primary);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-amount span {
+            font-size: 0.5em;
+            font-weight: 600;
+            color: var(--text-secondary);
+            vertical-align: baseline;
+        }
+
+        .pricing-includes {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .pricing-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            padding: 0.5rem 0;
+        }
+
+        .pricing-item svg {
+            flex-shrink: 0;
+            width: 18px;
+            height: 18px;
+            color: var(--accent);
+        }
+
+        .pricing-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 1.125rem 2.75rem;
+            background: var(--accent);
+            color: #ffffff;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        .pricing-cta:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 32px var(--accent-glow);
+        }
+
+        .pricing-cta svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .pricing-cta:hover svg {
+            transform: translateX(3px);
+        }
+
+        .pricing-note {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 1.25rem;
+        }
+
+        /* ============================================
+           FINAL CTA SECTION
+           ============================================ */
+        .final-cta {
+            background: var(--bg-subtle);
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .final-cta .section-headline {
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .final-cta-sub {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            max-width: 520px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .final-cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.125rem 3rem;
+            background: var(--accent);
+            color: #ffffff;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .final-cta-button:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px var(--accent-glow);
+        }
+
+        .final-cta-button svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .final-cta-button:hover svg {
+            transform: translateX(4px);
+        }
+
+        .final-cta-meta {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .final-cta-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .final-cta-meta svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            padding: 3rem 1.5rem;
+            background: var(--bg-deep);
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .footer-brand {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-sub {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-contact {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .footer-contact a {
+            color: var(--highlight);
+            text-decoration: none;
+        }
+
+        .footer-contact a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-copy {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 1.5rem;
+        }
+
+        /* ============================================
+           ACCORDION JS TOGGLE
+           ============================================ */
+        .objection:not(.open) .objection-answer {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="hero-content">
+
+            <div class="hero-label">Chlapský víkend „O ženách"</div>
+
+            <h1 class="hero-headline">
+                Přestaň hádat, co děláš&nbsp;špatně.<br>
+                <em>Konečně to uvidíš.</em>
+            </h1>
+
+            <p class="hero-sub">
+                Víkend pro muže, kteří už nechtějí hádat — chtějí pochopit. 
+                Za tři dny získáš jasný rámec, jak komunikovat tak, 
+                že tě žena skutečně uslyší.
+            </p>
+
+            <a href="#prihlaska" class="hero-cta">
+                Chci jet na víkend
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                </svg>
+            </a>
+
+            <div class="hero-capacity">
+                <span class="hero-capacity-dot"></span>
+                Max 20 mužů — omezená kapacita
+            </div>
+
+            <div class="hero-meta">
+                <div class="hero-meta-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 9v9" />
+                    </svg>
+                    <strong>24.–26. dubna 2026</strong>
+                </div>
+                <div class="hero-meta-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                    </svg>
+                    <strong>Tereziiny lázničky</strong>
+                </div>
+                <div class="hero-meta-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
+                    </svg>
+                    <strong>Max 20 mužů</strong>
+                </div>
+                <div class="hero-meta-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z" />
+                    </svg>
+                    <strong>19 970 Kč</strong> · ubytování, penze, program
+                </div>
+            </div>
+
+        </div>
+
+        <div class="hero-scroll">
+            <span>Co tě čeká</span>
+            <div class="hero-scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         PROBLEM & AGITATION SECTION
+         ============================================ -->
+    <section class="section problem" id="problem">
+        <div class="section-inner">
+
+            <div class="section-label">Možná to znáš</div>
+
+            <h2 class="section-headline">
+                Děláš, co můžeš.<br>
+                A stejně to <em>nefunguje.</em>
+            </h2>
+
+            <p class="problem-lead">
+                Mluvíš. Vysvětluješ. Snažíš se být klidný.
+                A stejně se nic nemění. Poznáš se?
+            </p>
+
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z"/></svg>
+                    </div>
+                    <div class="problem-card-text">
+                        <h3>Hádky končí tichem</h3>
+                        <p>Řekneš svůj názor, a místo dialogu přijde zeď mlčení. A ty nevíš, co s tím.</p>
+                    </div>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636"/></svg>
+                    </div>
+                    <div class="problem-card-text">
+                        <h3>Žena říká, že jí nerozumíš</h3>
+                        <p>Přitom máš pocit, že děláš maximum. Ale čím víc se snažíš, tím víc se odtahuje.</p>
+                    </div>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"/></svg>
+                    </div>
+                    <div class="problem-card-text">
+                        <h3>Roste mezi vámi vzdálenost</h3>
+                        <p>Žijete vedle sebe. Sdílíte byt, děti, účty — ale ne blízkost. Ne spojení.</p>
+                    </div>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg>
+                    </div>
+                    <div class="problem-card-text">
+                        <h3>Cítíš se neviditelný</h3>
+                        <p>Jako host ve vlastním baráku. Respekt slábne. Intimita se vytrácí. A ty nevíš proč.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="problem-warning">
+                <div class="problem-warning-title">Co se stane, když nic neuděláš?</div>
+                <p>
+                    Vztah neumírá výbuchem. Umírá pomalu. Každý měsíc bez změny znamená
+                    víc odtažení. Méně respektu. Méně intimity. Méně spojení.
+                    Jednou se probudíš a zjistíš, že žijete vedle sebe.
+                    Tohle není strašení — tohle je realita, kterou vídáme znovu a znovu.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================================
+         SOLUTION SECTION
+         ============================================ -->
+    <section class="section solution" id="reseni">
+        <div class="section-inner">
+
+            <div class="section-label">Co s tím uděláš</div>
+
+            <h2 class="section-headline">
+                Za jeden víkend dostaneš <em>nástroje,</em><br>
+                které doma změní všechno.
+            </h2>
+
+            <p class="solution-lead">
+                Tohle není motivační seminář. Odjedeš s konkrétním rámcem,
+                jak komunikovat, vést a získat respekt — bez hádek.
+            </p>
+
+            <div class="solution-pillars">
+
+                <div class="solution-pillar">
+                    <div class="solution-pillar-number">1</div>
+                    <div class="solution-pillar-content">
+                        <h3>Komunikace, která funguje</h3>
+                        <p>
+                            Nebudeš poslouchat teorii. Budeš mluvit, reagovat, zkoušet.
+                            A dostaneš okamžitou zpětnou vazbu — na místě.
+                        </p>
+                        <div class="pillar-detail">
+                            Většina chlapů si myslí, že komunikují dobře. Právě tady leží problém.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="solution-pillar">
+                    <div class="solution-pillar-number">2</div>
+                    <div class="solution-pillar-content">
+                        <h3>Uvidíš svá slepá místa</h3>
+                        <p>
+                            Tón. Napětí v hlase. Obrana. Ironie. Logické vysvětlování místo zájmu.
+                            Věci, které děláš automaticky — a vůbec si je neuvědomuješ.
+                        </p>
+                        <div class="pillar-detail">
+                            Když to najednou uvidíš, přijde průlom. Ne proto, že ti to někdo řekl.
+                            Ale protože to konečně uvidíš sám.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="solution-pillar">
+                    <div class="solution-pillar-number">3</div>
+                    <div class="solution-pillar-content">
+                        <h3>Jasný rámec, jak vést vztah</h3>
+                        <p>
+                            Odjedeš s pochopením, kde váš vztah je.
+                            S plánem dalších kroků. S konkrétním způsobem,
+                            jak komunikovat jinak. A s větší jistotou a klidem.
+                        </p>
+                        <div class="pillar-detail">
+                            Rozdíl mezi „snaha být lepší" a „mít rámec, který funguje."
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="solution-cta-block">
+                <a href="#prihlaska" class="solution-cta">
+                    Chci jet na víkend
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                    </svg>
+                </a>
+                <span class="solution-cta-note">24.–26. dubna · max 20 mužů</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================================
+         PROGRAM / PRODUCT BREAKDOWN SECTION
+         ============================================ -->
+    <section class="section program" id="program">
+        <div class="section-inner">
+
+            <div class="section-label">Co tě čeká</div>
+
+            <h2 class="section-headline">
+                Tři dny. Jasná struktura.<br>
+                Žádná <em>omáčka.</em>
+            </h2>
+
+            <p class="program-lead">
+                Každý blok má svůj účel. Odjedeš s konkrétními dovednostmi,
+                ne s prázdnou motivací.
+            </p>
+
+            <div class="program-timeline">
+
+                <div class="program-day">
+                    <div class="program-day-marker"></div>
+                    <div class="program-day-label">Pátek</div>
+                    <div class="program-day-items">
+                        <div class="program-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205 3 1m1.5.5-1.5-.5M6.75 7.364V3h-3v18m3-13.636 10.5-3.819"/></svg>
+                            <span><strong>Příjezd a ubytování</strong></span>
+                        </div>
+                        <div class="program-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+                            <span><strong>Večeře</strong></span>
+                        </div>
+                        <div class="program-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z"/></svg>
+                            <span><strong>Role muže ve vztahu</strong> — úvodní blok</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="program-day">
+                    <div class="program-day-marker"></div>
+                    <div class="program-day-label">Sobota — hlavní den</div>
+                    <div class="program-day-items">
+                        <div class="program-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5"/></svg>
+                            <span><strong>Úrovně partnerské zralosti</strong></span>
+                        </div>
+                        <div class="program-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/></svg>
+                            <span><strong>Proč si nerozumíme</strong> — klíčové pochopení</span>
+                        </div>
+                        <div class="program-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z"/></svg>
+                            <span><strong>Trénink komunikace naživo</strong> — praxe, ne teorie</span>
+                        </div>
+                        <div class="program-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg>
+                            <span><strong>Odhalování slepých míst</strong> + zpětná vazba</span>
+                        </div>
+                        <div class="program-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z"/></svg>
+                            <span><strong>Otázky a odpovědi</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="program-day">
+                    <div class="program-day-marker"></div>
+                    <div class="program-day-label">Neděle</div>
+                    <div class="program-day-items">
+                        <div class="program-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3v1.5M3 21v-6m0 0 2.77-.693a9 9 0 0 1 6.208.682l.108.054a9 9 0 0 0 6.086.71l3.114-.732a48.524 48.524 0 0 1-.005-10.499l-3.11.732a9 9 0 0 1-6.085-.711l-.108-.054a9 9 0 0 0-6.208-.682L3 4.5M3 15V4.5"/></svg>
+                            <span><strong>Partnerská vize</strong> — kam chceš směřovat</span>
+                        </div>
+                        <div class="program-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z"/></svg>
+                            <span><strong>Konkrétní plán</strong> — kroky, které uděláš hned po návratu</span>
+                        </div>
+                        <div class="program-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z"/></svg>
+                            <span><strong>Otázky a odpovědi</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="program-location">
+                <h3>Proč Tereziiny lázničky — i&nbsp;když je to dál</h3>
+                <p>
+                    Změna nezačíná doma mezi rušivými vlivy. Začíná ve chvíli, kdy vystoupíš
+                    ze svého běžného prostředí. Ticho. Klid. Příroda. Žádné vyrušování.
+                    Cesta tam je čas jen pro tebe. Cesta zpět je prostor, kde si vše sedne.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================================
+         SOCIAL PROOF SECTION
+         ============================================ -->
+    <section class="section proof" id="reference">
+        <div class="section-inner">
+
+            <div class="section-label">Co říkají chlapi, kteří jeli</div>
+
+            <h2 class="section-headline">
+                Neslyš to od nás.<br>
+                <em>Slyš to od nich.</em>
+            </h2>
+
+            <div class="proof-video-placeholder">
+                <div class="proof-video-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <p>Video reference z předchozích víkendů</p>
+            </div>
+
+            <div class="proof-quotes">
+                <div class="proof-quote">
+                    <p>„Jel jsem skeptickej. Říkal jsem si, co mi kdo řekne novýho.
+                    A pak jsem poprvé uslyšel, jak vlastně zním, když mluvím se ženou.
+                    To byl moment, kdy mi to došlo."</p>
+                    <div class="proof-quote-author">— Účastník předchozího víkendu</div>
+                </div>
+                <div class="proof-quote">
+                    <p>„Nejcennější bylo, že to nebyla teorie. Zkoušeli jsme to na sobě, naživo.
+                    Odtamtud jsem odjel s konkrétním plánem, ne s prázdnou hlavou plnou frází."</p>
+                    <div class="proof-quote-author">— Účastník předchozího víkendu</div>
+                </div>
+            </div>
+
+            <div class="proof-trust">
+                <div class="proof-trust-item">
+                    <span class="proof-trust-number">100+</span>
+                    <div class="proof-trust-label">mužů prošlo víkendy</div>
+                </div>
+                <div class="proof-trust-item">
+                    <span class="proof-trust-number">20</span>
+                    <div class="proof-trust-label">max kapacita pro osobní přístup</div>
+                </div>
+                <div class="proof-trust-item">
+                    <span class="proof-trust-number">2</span>
+                    <div class="proof-trust-label">průvodci s praxí</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================================
+         OBJECTION HANDLING SECTION
+         ============================================ -->
+    <section class="section objections" id="otazky">
+        <div class="section-inner">
+
+            <div class="section-label">Časté otázky</div>
+
+            <h2 class="section-headline">
+                Možná si říkáš…
+            </h2>
+
+            <div class="objections-list">
+
+                <div class="objection open">
+                    <button class="objection-question">Není to zase nějaký motivační seminář?</button>
+                    <div class="objection-answer">
+                        Ne. Nebudeme tě plácat po zádech a říkat, že jsi skvělý. Budeme trénovat komunikaci naživo.
+                        Dostaneš zpětnou vazbu na to, jak reálně mluvíš — ne na to, jak si myslíš, že mluvíš.
+                        Odjedeš s rámcem a plánem, ne s motivací, která vyprchá za týden.
+                    </div>
+                </div>
+
+                <div class="objection">
+                    <button class="objection-question">Moje situace je jiná, tohle na mě nebude fungovat.</button>
+                    <div class="objection-answer">
+                        Každý chlap si to myslí. A pak zjistí, že mechanismy jsou pořád stejné — tón, obrana, logické vysvětlování místo zájmu.
+                        Neřešíme konkrétní hádku. Řešíme to, jak komunikuješ. A to je univerzální.
+                    </div>
+                </div>
+
+                <div class="objection">
+                    <button class="objection-question">Co když to žena zjistí?</button>
+                    <div class="objection-answer">
+                        Většina žen to vítá. Když chlap udělá krok pro vztah, žena to pozná.
+                        Ne proto, že jí o tom řekneš. Ale proto, že se změní způsob, jakým s ní mluvíš.
+                        A to je přesně to, co chce slyšet.
+                    </div>
+                </div>
+
+                <div class="objection">
+                    <button class="objection-question">Nemám na to čas — pátek až neděle je hodně.</button>
+                    <div class="objection-answer">
+                        Tři dny za vztah, který trvá roky. Změna potřebuje prostor mimo běžný režim.
+                        Proto jedeme pryč. Proto je to víkend, ne webinář.
+                        Otázka není, jestli máš čas. Otázka je, jestli si ten vztah zaslouží tři dny.
+                    </div>
+                </div>
+
+                <div class="objection">
+                    <button class="objection-question">Cena 19 970 Kč je dost. Vyplatí se to?</button>
+                    <div class="objection-answer">
+                        V ceně je ubytování, plná penze a celý program. Ale hlavně: kolik tě stojí vztah,
+                        ve kterém se každý večer chodíš po špičkách?
+                        Chlapi, kteří projeli víkendem, říkají, že to byla nejlepší investice do vztahu,
+                        kterou kdy udělali.
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="objections-cta-block">
+                <p class="objections-cta-text">Máš další otázky? <strong>Zavolej Danovi: 777 909 456</strong></p>
+                <a href="#prihlaska" class="solution-cta">
+                    Chci jet na víkend
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                    </svg>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================================
+         GUIDES / SPEAKERS SECTION
+         ============================================ -->
+    <section class="section guides" id="pruvodci">
+        <div class="section-inner">
+
+            <div class="section-label">Kdo tě tím provede</div>
+
+            <h2 class="section-headline">
+                Dva muži. Žádní <em>teoretici.</em>
+            </h2>
+
+            <div class="guides-grid">
+
+                <div class="guide-card">
+                    <div class="guide-avatar">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg>
+                    </div>
+                    <div class="guide-info">
+                        <h3>Milan Studnička</h3>
+                        <div class="guide-role">Psycholog</div>
+                        <p>
+                            Dlouholetá praxe ve vztazích a rodinách.
+                            Rozumí dynamice mezi mužem a ženou
+                            z profesní i osobní zkušenosti.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="guide-card">
+                    <div class="guide-avatar">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg>
+                    </div>
+                    <div class="guide-info">
+                        <h3>Sláva Černý</h3>
+                        <div class="guide-role">Mentor odvážných chlapů</div>
+                        <p>
+                            Muž z praxe, který ví, co doma funguje.
+                            Nemluví z knih — mluví ze života.
+                            Přímý, rázný, bez omáčky.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================================
+         PRICING SECTION
+         ============================================ -->
+    <section class="section pricing" id="cena">
+        <div class="section-inner">
+
+            <div class="section-label">Investice do vztahu</div>
+
+            <h2 class="section-headline" style="text-align: center;">
+                Co stojí víkend, který změní<br>
+                způsob, jakým <em>vedeš vztah?</em>
+            </h2>
+
+            <div class="pricing-card">
+                <div class="pricing-card-label">Chlapský víkend „O ženách"</div>
+                <div class="pricing-amount">19 970 <span>Kč</span></div>
+
+                <div class="pricing-includes">
+                    <div class="pricing-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+                        <span>3 dny intenzivního programu</span>
+                    </div>
+                    <div class="pricing-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+                        <span>Ubytování v areálu Tereziiných lázniček</span>
+                    </div>
+                    <div class="pricing-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+                        <span>Plná penze — snídaně, oběd, večeře</span>
+                    </div>
+                    <div class="pricing-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+                        <span>Trénink komunikace naživo se zpětnou vazbou</span>
+                    </div>
+                    <div class="pricing-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+                        <span>Osobní plán kroků po návratu domů</span>
+                    </div>
+                    <div class="pricing-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+                        <span>Max 20 mužů — osobní přístup zaručen</span>
+                    </div>
+                </div>
+
+                <a href="#prihlaska" class="pricing-cta">
+                    Rezervovat místo
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                    </svg>
+                </a>
+                <p class="pricing-note">Dotazy: Dan — 777 909 456</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================================
+         FINAL CTA SECTION
+         ============================================ -->
+    <section class="section final-cta" id="prihlaska">
+        <div class="section-inner">
+
+            <h2 class="section-headline">
+                Chceš se dál hádat, co je špatně?<br>
+                Nebo chceš konečně <em>vidět pravdu</em><br>
+                a otočit to?
+            </h2>
+
+            <p class="final-cta-sub">
+                Každý den, kdy čekáš, je další den, kdy žiješ ve vztahu,
+                který mohl fungovat — ale nefunguje.
+                Tři dny. Jeden víkend. Jasný plán.
+            </p>
+
+            <a href="#prihlaska" class="final-cta-button">
+                Chci jet na víkend — rezervovat místo
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                </svg>
+            </a>
+
+            <div class="final-cta-meta">
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 9v9"/></svg>
+                    24.–26. dubna 2026
+                </span>
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+                    Tereziiny lázničky
+                </span>
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"/></svg>
+                    Max 20 mužů
+                </span>
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/></svg>
+                    Dan: 777 909 456
+                </span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer class="footer">
+        <div class="footer-brand">Restart Muže</div>
+        <div class="footer-sub">Vrať se do své síly.</div>
+        <div class="footer-contact">
+            Dotazy k víkendu: <a href="tel:+420777909456">777 909 456</a> (Dan)
+        </div>
+        <div class="footer-copy">&copy; 2026 Restart Muže. Všechna práva vyhrazena.</div>
+    </footer>
+
+    <!-- ============================================
+         ACCORDION TOGGLE
+         ============================================ -->
+    <script>
+        document.querySelectorAll('.objection-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.parentElement;
+                const wasOpen = item.classList.contains('open');
+                // Close all
+                document.querySelectorAll('.objection').forEach(o => o.classList.remove('open'));
+                // Toggle clicked
+                if (!wasOpen) item.classList.add('open');
+            });
+        });
+    </script>
+
+</body>
+</html>

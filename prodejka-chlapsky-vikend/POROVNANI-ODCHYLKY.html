@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Odchylky copy - Chlapský víkend</title>
+  <style>
+    :root {
+      --bg:#0b1220; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --line:#334155;
+      --warn:#f59e0b; --bad:#dc2626; --info:#2563eb;
+    }
+    body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text)}
+    .wrap{max-width:1400px;margin:0 auto;padding:24px}
+    h1{margin:0 0 8px;font-size:28px}
+    .sub{color:var(--muted);margin-bottom:16px}
+    .legend{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+    .tag{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:999px;padding:6px 10px}
+    .warn{background:rgba(245,158,11,.2);color:#fcd34d;border:1px solid rgba(245,158,11,.5)}
+    .bad{background:rgba(220,38,38,.2);color:#fca5a5;border:1px solid rgba(220,38,38,.5)}
+    .info{background:rgba(37,99,235,.2);color:#93c5fd;border:1px solid rgba(37,99,235,.5)}
+    table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line)}
+    th,td{border:1px solid var(--line);padding:14px;vertical-align:top}
+    th{background:#0f172a;text-align:left;font-size:13px;text-transform:uppercase;letter-spacing:.05em}
+    pre{white-space:pre-wrap;margin:8px 0 0;font-family:Consolas,monospace;font-size:13px;line-height:1.45}
+    small{color:var(--muted)}
+    .status{white-space:nowrap;width:150px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Pouze odchylky: originál vs. index.html</h1>
+    <div class="sub">Projekt: <strong>prodejka chlapsky vikend</strong> | Bez shodných položek</div>
+    <div class="legend">
+      <span class="tag warn">PŘEPSÁNO</span>
+      <span class="tag bad">CHYBÍ v HTML / TECH CHYBA</span>
+      <span class="tag info">NAVÍC v HTML</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Sekce</th>
+          <th>Status</th>
+          <th>Originál (MD)</th>
+          <th>Aktuální index.html</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Hero claim</td>
+          <td class="status"><span class="tag warn">Přepsáno</span></td>
+          <td><small>MD:1</small><pre>„Naučíš se mluvit tak, že tě žena skutečně uslyší.“</pre></td>
+          <td><small>HTML:1303-1304</small><pre>Přestaň hádat, co je špatně.
+Začni vést.</pre></td>
+        </tr>
+        <tr>
+          <td>Problémové body</td>
+          <td class="status"><span class="tag warn">Přepsáno</span></td>
+          <td><small>MD:15-23</small><pre>5 bodů včetně „respekt slábne“ a „blízkost se vytrácí“</pre></td>
+          <td><small>HTML:1381;1390;1399;1408</small><pre>4 karty, část formulací změněná (např. „Cítíš se neviditelný“)</pre></td>
+        </tr>
+        <tr>
+          <td>3 klíčové přínosy víkendu</td>
+          <td class="status"><span class="tag warn">Přepsáno</span></td>
+          <td><small>MD:41-73</small><pre>1️⃣ / 2️⃣ / 3️⃣ v původním wordingu</pre></td>
+          <td><small>HTML:1449-1486</small><pre>Stejný význam, ale výrazně přeformulované texty</pre></td>
+        </tr>
+        <tr>
+          <td>Program (Pá/Sob/Ne)</td>
+          <td class="status"><span class="tag warn">Přepsáno</span></td>
+          <td><small>MD:87-112</small><pre>Jednoduché bullet body</pre></td>
+          <td><small>HTML:1524-1583</small><pre>Body rozšířené o doplňující komentáře („úvodní blok“, „hlavní den“…)</pre></td>
+        </tr>
+        <tr>
+          <td>Finální closing odstavec</td>
+          <td class="status"><span class="tag warn">Přepsáno</span></td>
+          <td><small>MD:138</small><pre>Dlouhý silný závěr s formulací „chlap lže do kapsy…“</pre></td>
+          <td><small>HTML:1834-1838</small><pre>Zkrácená a mírnější verze</pre></td>
+        </tr>
+        <tr>
+          <td>FAQ / Objection handling</td>
+          <td class="status"><span class="tag info">Navíc v HTML</span></td>
+          <td><small>MD</small><pre>není</pre></td>
+          <td><small>HTML:1656-1708</small><pre>Celá sekce 5 otázek a odpovědí</pre></td>
+        </tr>
+        <tr>
+          <td>Textové reference účastníků</td>
+          <td class="status"><span class="tag info">Navíc v HTML</span></td>
+          <td><small>MD</small><pre>není</pre></td>
+          <td><small>HTML:1621-1633</small><pre>Dvě citace navíc</pre></td>
+        </tr>
+        <tr>
+          <td>Trust metriky (100+, 20, 2)</td>
+          <td class="status"><span class="tag info">Navíc v HTML</span></td>
+          <td><small>MD</small><pre>není</pre></td>
+          <td><small>HTML:1635-1647</small><pre>Číselné proof prvky navíc</pre></td>
+        </tr>
+        <tr>
+          <td>Objednávkový formulář</td>
+          <td class="status"><span class="tag bad">Chybí v HTML</span></td>
+          <td><small>MD kontext prodejky</small><pre>Má být funkční objednávka</pre></td>
+          <td><small>HTML:1865-1868</small><pre>Pouze FAPI placeholder bez ID/kódu</pre></td>
+        </tr>
+        <tr>
+          <td>JSON-LD Event name</td>
+          <td class="status"><span class="tag bad">Tech chyba</span></td>
+          <td><small>-</small><pre>-</pre></td>
+          <td><small>HTML:76</small><pre>"name": "Chlapský víkend „O ženách""  (přebývající uvozovka)</pre></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

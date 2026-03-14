@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Porovnání copy - Chlapský víkend</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --ok: #16a34a;
+      --warn: #f59e0b;
+      --bad: #dc2626;
+      --info: #2563eb;
+      --line: #334155;
+    }
+    body { margin:0; font-family: Segoe UI, Arial, sans-serif; background:var(--bg); color:var(--text); }
+    .wrap { max-width: 1400px; margin: 0 auto; padding: 24px; }
+    h1 { margin:0 0 8px; font-size: 28px; }
+    .sub { color: var(--muted); margin-bottom: 18px; }
+    .legend { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:18px; }
+    .tag { font-size:12px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; border-radius:999px; padding:6px 10px; }
+    .ok{background:rgba(22,163,74,.2); color:#86efac; border:1px solid rgba(22,163,74,.5)}
+    .warn{background:rgba(245,158,11,.2); color:#fcd34d; border:1px solid rgba(245,158,11,.5)}
+    .bad{background:rgba(220,38,38,.2); color:#fca5a5; border:1px solid rgba(220,38,38,.5)}
+    .info{background:rgba(37,99,235,.2); color:#93c5fd; border:1px solid rgba(37,99,235,.5)}
+    table { width:100%; border-collapse: collapse; background:var(--card); border:1px solid var(--line); }
+    th, td { vertical-align: top; border:1px solid var(--line); padding:14px; }
+    th { background:#0b1220; text-align:left; font-size:13px; text-transform:uppercase; letter-spacing:.05em; }
+    td small { color: var(--muted); }
+    pre { white-space: pre-wrap; margin:8px 0 0; font-family: Consolas, monospace; font-size: 13px; line-height:1.45; }
+    .status { white-space:nowrap; width:130px; }
+    .sticky { position: sticky; top: 0; z-index: 1; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Porovnání originálního textu vs. index.html</h1>
+    <div class="sub">Projekt: <strong>prodejka chlapsky vikend</strong> | Datum: 2026-03-08</div>
+    <div class="legend">
+      <span class="tag ok">Shoda</span>
+      <span class="tag warn">Přepsáno</span>
+      <span class="tag bad">Chybí v HTML</span>
+      <span class="tag info">Navíc v HTML</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th class="sticky">Sekce</th>
+          <th class="sticky">Status</th>
+          <th class="sticky">Originál (MD)</th>
+          <th class="sticky">Aktuální index.html</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Název nabídky</td>
+          <td class="status"><span class="tag ok">Shoda</span></td>
+          <td><small>MD ř. 3</small><pre>Chlapský víkend „O ženách“</pre></td>
+          <td><small>HTML ř. 1300, 1782</small><pre>Chlapský víkend „O ženách"</pre></td>
+        </tr>
+        <tr>
+          <td>Hero claim</td>
+          <td class="status"><span class="tag warn">Přepsáno</span></td>
+          <td><small>MD ř. 1</small><pre>„Naučíš se mluvit tak, že tě žena skutečně uslyší.“</pre></td>
+          <td><small>HTML ř. 1303-1304</small><pre>Přestaň hádat, co je špatně.
+Začni vést.</pre></td>
+        </tr>
+        <tr>
+          <td>Datum + místo</td>
+          <td class="status"><span class="tag ok">Shoda</span></td>
+          <td><small>MD ř. 5, 7, 122, 124</small><pre>24.–26. dubna 2026
+Areál Tereziinych lázniček</pre></td>
+          <td><small>HTML ř. 1325, 1342, 1848, 1852</small><pre>24.–26. dubna 2026
+Tereziiny lázničky</pre></td>
+        </tr>
+        <tr>
+          <td>Problémové body</td>
+          <td class="status"><span class="tag warn">Přepsáno</span></td>
+          <td><small>MD ř. 15-23</small><pre>- hádky končí tichem
+- žena říká, že jí nerozumíš
+- cítíš, že mezi vámi roste vzdálenost
+- respekt slábne
+- blízkost se vytrácí</pre></td>
+          <td><small>HTML ř. 1381, 1390, 1399, 1408</small><pre>Hádky končí tichem
+Žena říká, že jí nerozumíš
+Roste mezi vámi vzdálenost
+Cítíš se neviditelný</pre></td>
+        </tr>
+        <tr>
+          <td>„Co se stane, když nic neuděláš?“</td>
+          <td class="status"><span class="tag ok">Shoda</span></td>
+          <td><small>MD ř. 33-37</small><pre>Vztah neumírá výbuchem. Umírá pomalu...</pre></td>
+          <td><small>HTML ř. 1415-1421</small><pre>Vztah neumírá výbuchem. Umírá pomalu...</pre></td>
+        </tr>
+        <tr>
+          <td>3 pilíře přínosu</td>
+          <td class="status"><span class="tag warn">Přepsáno</span></td>
+          <td><small>MD ř. 41-73</small><pre>1️⃣ komunikace
+2️⃣ slepá místa
+3️⃣ konkrétní rámec</pre></td>
+          <td><small>HTML ř. 1449-1486</small><pre>1 Komunikace, která funguje
+2 Uvidíš svá slepá místa
+3 Jasný rámec, jak vést vztah</pre></td>
+        </tr>
+        <tr>
+          <td>Proč Tereziiny lázničky</td>
+          <td class="status"><span class="tag ok">Shoda</span></td>
+          <td><small>MD ř. 77-83</small><pre>Změna nezačíná doma mezi rušivými vlivy...</pre></td>
+          <td><small>HTML ř. 1590-1595</small><pre>Proč Tereziiny lázničky — i když je to dál...</pre></td>
+        </tr>
+        <tr>
+          <td>Program Pá/So/Ne</td>
+          <td class="status"><span class="tag warn">Přepsáno</span></td>
+          <td><small>MD ř. 87-112</small><pre>Pátek/Sobota/Neděle body</pre></td>
+          <td><small>HTML ř. 1524-1583</small><pre>Obsahově stejné body + rozšiřující formulace</pre></td>
+        </tr>
+        <tr>
+          <td>Průvodci</td>
+          <td class="status"><span class="tag ok">Shoda</span></td>
+          <td><small>MD ř. 114-118</small><pre>Milan Studnička / Sláva Černý</pre></td>
+          <td><small>HTML ř. 1739-1760</small><pre>Milan Studnička / Sláva Černý</pre></td>
+        </tr>
+        <tr>
+          <td>Praktické informace</td>
+          <td class="status"><span class="tag ok">Shoda</span></td>
+          <td><small>MD ř. 120-130</small><pre>24.–26. dubna 2026
+Max 20 mužů
+19 970 Kč
+Dan 777 909 456</pre></td>
+          <td><small>HTML ř. 1783, 1816, 1848, 1856, 1860</small><pre>24.–26. dubna 2026
+Max 20 mužů
+19 970 Kč
+Dan 777 909 456</pre></td>
+        </tr>
+        <tr>
+          <td>Reference (video)</td>
+          <td class="status"><span class="tag ok">Shoda</span></td>
+          <td><small>MD ř. 132-134</small><pre>zde video reference z předchozích víkendů</pre></td>
+          <td><small>HTML ř. 1614-1619</small><pre>Video placeholder reference</pre></td>
+        </tr>
+        <tr>
+          <td>Reference textové citace</td>
+          <td class="status"><span class="tag info">Navíc v HTML</span></td>
+          <td><small>MD</small><pre>není</pre></td>
+          <td><small>HTML ř. 1621-1633</small><pre>2 textové citace účastníků</pre></td>
+        </tr>
+        <tr>
+          <td>FAQ námitky</td>
+          <td class="status"><span class="tag info">Navíc v HTML</span></td>
+          <td><small>MD</small><pre>není</pre></td>
+          <td><small>HTML ř. 1656-1708</small><pre>5 otázek a odpovědí (objection handling)</pre></td>
+        </tr>
+        <tr>
+          <td>Finální dlouhý odstavec</td>
+          <td class="status"><span class="tag warn">Přepsáno</span></td>
+          <td><small>MD ř. 138</small><pre>Dlouhý odstavec o „lhaní do kapsy“ a výzvě k rozhodnutí.</pre></td>
+          <td><small>HTML ř. 1834-1838</small><pre>Výrazně kratší, mírnější varianta.</pre></td>
+        </tr>
+        <tr>
+          <td>Objednávka</td>
+          <td class="status"><span class="tag bad">Chybí v HTML</span></td>
+          <td><small>MD kontext</small><pre>má být připravená prodejka</pre></td>
+          <td><small>HTML ř. 1865-1868</small><pre>jen FAPI placeholder, bez vloženého reálného formuláře</pre></td>
+        </tr>
+        <tr>
+          <td>Technická chyba v JSON-LD</td>
+          <td class="status"><span class="tag bad">Chyba</span></td>
+          <td><small>MD</small><pre>-</pre></td>
+          <td><small>HTML ř. 76</small><pre>"name": "Chlapský víkend „O ženách""</pre></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

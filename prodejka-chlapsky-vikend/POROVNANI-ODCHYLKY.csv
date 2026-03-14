@@ -1,0 +1,11 @@
+﻿Sekce,Status,MD_odkaz,HTML_odkaz,Poznámka
+Hero claim,PŘEPSÁNO,"MD:1","HTML:1303-1304","Jiný headline"
+Problémové body,PŘEPSÁNO,"MD:15-23","HTML:1381;1390;1399;1408","Body přeformulované"
+3 klíčové přínosy,PŘEPSÁNO,"MD:41-73","HTML:1449-1486","Význam podobný, wording jiný"
+Program,PŘEPSÁNO,"MD:87-112","HTML:1524-1583","Rozšířené formulace"
+Finální closing odstavec,PŘEPSÁNO,"MD:138","HTML:1834-1838","Silně zkráceno"
+FAQ,NAVÍC V HTML,"-","HTML:1656-1708","Celá sekce navíc"
+Textové reference,NAVÍC V HTML,"-","HTML:1621-1633","2 citace navíc"
+Trust metriky,NAVÍC V HTML,"-","HTML:1635-1647","100+,20,2 navíc"
+Objednávka formulář,CHYBÍ V HTML,"MD kontext","HTML:1865-1868","Jen placeholder"
+JSON-LD event name,TECH CHYBA,"-","HTML:76","Nevalidní uvozovky"
