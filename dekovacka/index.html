@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jsi na palubě — Chlapský víkend O ženách | Restart Muže</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <style>
+        @font-face { font-display: swap; font-family: 'Montserrat'; font-style: normal; font-weight: 400; src: url('../fonts/montserrat-v31-latin_latin-ext-regular.woff2') format('woff2'); }
+        @font-face { font-display: swap; font-family: 'Montserrat'; font-style: normal; font-weight: 600; src: url('../fonts/montserrat-v31-latin_latin-ext-600.woff2') format('woff2'); }
+        @font-face { font-display: swap; font-family: 'Montserrat'; font-style: normal; font-weight: 700; src: url('../fonts/montserrat-v31-latin_latin-ext-700.woff2') format('woff2'); }
+        @font-face { font-display: swap; font-family: 'Montserrat'; font-style: normal; font-weight: 800; src: url('../fonts/montserrat-v31-latin_latin-ext-800.woff2') format('woff2'); }
+        @font-face { font-display: swap; font-family: 'Open Sans'; font-style: normal; font-weight: 400; src: url('../fonts/open-sans-v44-latin_latin-ext-regular.woff2') format('woff2'); }
+        @font-face { font-display: swap; font-family: 'Open Sans'; font-style: normal; font-weight: 600; src: url('../fonts/open-sans-v44-latin_latin-ext-600.woff2') format('woff2'); }
+    </style>
+
+    <style>
+        :root {
+            --bg-deep: #050d17;
+            --bg-primary: #0b1929;
+            --bg-alt: #0f2236;
+            --bg-card: #132d47;
+            --accent-orange: #e87722;
+            --accent-green: #3f9626;
+            --text-white: #ffffff;
+            --text-light: #c8d6e5;
+            --border-subtle: rgba(255, 255, 255, 0.06);
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @font-face { font-family: 'Montserrat Fallback'; src: local('Arial'); size-adjust: 113.5%; ascent-override: 85%; descent-override: 22%; line-gap-override: 0%; }
+        @font-face { font-family: 'Open Sans Fallback'; src: local('Arial'); size-adjust: 105%; ascent-override: 101%; descent-override: 28%; line-gap-override: 0%; }
+
+        body {
+            font-family: 'Open Sans', 'Open Sans Fallback', sans-serif;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            background: var(--bg-deep);
+            line-height: 1.8;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 30%, #0f2a42 0%, #0b1929 45%, #050d17 100%);
+            z-index: -1;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', 'Montserrat Fallback', sans-serif;
+            font-weight: 800;
+            line-height: 1.3;
+            color: var(--text-white);
+        }
+
+        /* ===== LAYOUT ===== */
+        .page {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 3rem 2.5rem;
+        }
+
+        /* ===== TOP: hero vlevo + info vpravo ===== */
+        .top {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 2.5rem;
+            align-items: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            width: fit-content;
+            padding: 0.5rem 1rem;
+            background: rgba(63, 150, 38, 0.15);
+            border: 1px solid rgba(63, 150, 38, 0.3);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #6fcf54;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .hero-badge svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .hero-left h1 {
+            font-size: clamp(2.4rem, 5vw, 3.6rem);
+            line-height: 1.15;
+        }
+
+        .hero-lead {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            max-width: 480px;
+        }
+
+        /* ===== SIDEBAR: praktické info ===== */
+        .sidebar-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.4rem;
+        }
+
+        .sidebar-card h2 {
+            font-size: 1.2rem;
+            margin-bottom: 0;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .info-icon {
+            flex-shrink: 0;
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: rgba(232, 119, 34, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .info-icon svg {
+            width: 18px;
+            height: 18px;
+            color: var(--accent-orange);
+        }
+
+        .info-text strong {
+            display: block;
+            color: var(--text-white);
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .info-text span {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* ===== MIDDLE: 3 kroky + email box ===== */
+        .middle {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .step {
+            padding: 1.4rem;
+            background: var(--bg-card);
+            border-radius: 16px;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .step-head {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .step-num {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--accent-orange);
+            color: #fff;
+            font-family: 'Montserrat', 'Montserrat Fallback', sans-serif;
+            font-weight: 800;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .step-head strong {
+            color: var(--text-white);
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+
+        .step p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Email box jako 4. karta */
+        .email-card {
+            padding: 1.4rem;
+            background: linear-gradient(135deg, rgba(232, 119, 34, 0.1) 0%, rgba(232, 119, 34, 0.03) 100%);
+            border: 1px solid rgba(232, 119, 34, 0.2);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .email-card strong {
+            display: block;
+            color: var(--text-white);
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+
+        .email-card p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 0 0 0.8rem;
+        }
+
+        .email-addr {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            background: rgba(232, 119, 34, 0.12);
+            border-radius: 6px;
+            font-weight: 700;
+            color: var(--accent-orange);
+            font-size: 0.9rem;
+        }
+
+        /* ===== BOTTOM: citát + footer ===== */
+        .bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .quote {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .quote-mark {
+            flex-shrink: 0;
+            font-family: 'Montserrat', 'Montserrat Fallback', sans-serif;
+            font-weight: 800;
+            font-size: 2.5rem;
+            line-height: 1;
+            color: var(--accent-orange);
+            opacity: 0.4;
+        }
+
+        .quote-body p {
+            font-family: 'Montserrat', 'Montserrat Fallback', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-white);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .quote-body span {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            opacity: 0.6;
+        }
+
+        .footer-text {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            opacity: 0.4;
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .footer-text a {
+            color: var(--accent-orange);
+            text-decoration: none;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 960px) {
+            .top {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .middle {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .page {
+                padding: 2rem 1.2rem;
+            }
+
+            .middle {
+                grid-template-columns: 1fr;
+            }
+
+            .bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .quote {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-text {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+
+        <!-- TOP: hero + info -->
+        <div class="top">
+            <div class="hero-left">
+                <div class="hero-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+                    Platba potvrzena
+                </div>
+                <h1>Jsi na palubě.</h1>
+                <p class="hero-lead">Tvoje místo na Chlapském víkendu O ženách je zarezervované. Tady máš vše, co potřebuješ vědět.</p>
+            </div>
+
+            <div class="sidebar-card">
+                <h2>Tvůj víkend</h2>
+                <div class="info-row">
+                    <div class="info-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 9v9"/></svg></div>
+                    <div class="info-text"><strong>Termín</strong><span>24.–26. dubna 2026 (pá–ne)</span></div>
+                </div>
+                <div class="info-row">
+                    <div class="info-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" /></svg></div>
+                    <div class="info-text"><strong>Místo</strong><span>Tereziiny lázničky</span></div>
+                </div>
+                <div class="info-row">
+                    <div class="info-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg></div>
+                    <div class="info-text"><strong>Kapacita</strong><span>Max 20 mužů</span></div>
+                </div>
+                <div class="info-row">
+                    <div class="info-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8.25v-1.5m0 1.5c-1.355 0-2.697.056-4.024.166C6.845 8.51 6 9.473 6 10.608v2.513m6-4.871c1.355 0 2.697.056 4.024.166C17.155 8.51 18 9.473 18 10.608v2.513M15 8.25v-1.5m-6 1.5v-1.5m12 9.75-1.5.75a3.354 3.354 0 0 1-3 0 3.354 3.354 0 0 0-3 0 3.354 3.354 0 0 1-3 0 3.354 3.354 0 0 0-3 0 3.354 3.354 0 0 1-3 0L3 16.5m15-3.379a48.474 48.474 0 0 0-6-.371c-2.032 0-4.034.126-6 .371m12 0c.39.049.777.102 1.163.16 1.07.16 1.837 1.094 1.837 2.175v5.169c0 .621-.504 1.125-1.125 1.125H4.125A1.125 1.125 0 0 1 3 20.625v-5.17c0-1.08.768-2.014 1.837-2.174A47.78 47.78 0 0 1 6 13.12M12.265 3.11a.375.375 0 1 1-.53 0L12 2.845l.265.265Z"/></svg></div>
+                    <div class="info-text"><strong>V ceně</strong><span>Ubytování, penze, program</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MIDDLE: 3 kroky + email -->
+        <div class="middle">
+            <div class="step">
+                <div class="step-head">
+                    <div class="step-num">1</div>
+                    <strong>Potvrzovací email</strong>
+                </div>
+                <p>Dorazí ti během pár minut. Obsahuje shrnutí platby a tvoje údaje.</p>
+            </div>
+            <div class="step">
+                <div class="step-head">
+                    <div class="step-num">2</div>
+                    <strong>Organizační pokyny</strong>
+                </div>
+                <p>Před víkendem ti pošleme co s sebou, jak se dostat na místo a harmonogram.</p>
+            </div>
+            <div class="step">
+                <div class="step-head">
+                    <div class="step-num">3</div>
+                    <strong>Víkend</strong>
+                </div>
+                <p>Pátek odpoledne — neděle. Tři dny, které ti dají jasno v tom, co ve vztahu změnit.</p>
+            </div>
+            <div class="email-card">
+                <strong>Aby ti nic neuteklo</strong>
+                <p>Přesuň si naši adresu ze složky promo do primární:</p>
+                <div class="email-addr">slava@restartmuze.cz</div>
+            </div>
+        </div>
+
+        <!-- BOTTOM: citát + footer -->
+        <div class="bottom">
+            <div class="quote">
+                <div class="quote-mark">"</div>
+                <div class="quote-body">
+                    <p>Udělal jsi krok, který většina chlapů odkládá roky. Uvidíme se v dubnu.</p>
+                    <span>— Sláva Černý</span>
+                </div>
+            </div>
+            <div class="footer-text">
+                Restart muže s.r.o. · <a href="https://restartmuze.cz">restartmuze.cz</a>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

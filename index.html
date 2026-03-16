@@ -185,76 +185,78 @@
         }
 
         .page-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-columns: 1fr;
             margin-bottom: 28px;
         }
 
         .page-card {
             display: flex;
             flex-direction: column;
-            gap: 14px;
-            min-height: 100%;
+            gap: 0;
+        }
+
+        .page-card-row {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .page-card h3 {
+            margin-bottom: 0;
+            flex: 1;
+            min-width: 180px;
         }
 
         .page-card p {
             color: var(--muted);
+            flex: 2;
+            min-width: 200px;
         }
 
-        .page-preview {
-            overflow: hidden;
-            border-radius: 16px;
-            border: 1px solid var(--line);
-            background: #f5eee3;
-            aspect-ratio: 16 / 10;
+        .page-card .actions {
+            margin-top: 0;
+            padding-top: 0;
         }
 
-        .page-preview img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
+        .page-card-tasks {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid var(--line);
         }
 
-        .page-preview--vikend {
-            padding: 20px;
+        .page-card-tasks summary {
+            cursor: pointer;
+            list-style: none;
             display: flex;
-            flex-direction: column;
+            align-items: center;
             justify-content: space-between;
-            background:
-                radial-gradient(circle at top left, rgba(184, 95, 40, 0.18), transparent 28%),
-                linear-gradient(135deg, #1b1b1d 0%, #2c2c31 100%);
-            color: #fff;
-        }
-
-        .preview-tag {
-            width: fit-content;
-            padding: 6px 10px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.12);
-            font-size: 0.78rem;
+            gap: 12px;
+            font-size: 0.88rem;
             font-weight: 700;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
+            color: var(--muted);
         }
 
-        .preview-title {
-            font-size: 1.45rem;
-            font-weight: 800;
-            line-height: 1.12;
-            max-width: 13ch;
+        .page-card-tasks summary::-webkit-details-marker {
+            display: none;
         }
 
-        .preview-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
+        .page-card-tasks summary::after {
+            content: "+";
+            flex-shrink: 0;
+            font-size: 1.2rem;
+            line-height: 1;
+            color: var(--accent-dark);
         }
 
-        .preview-pill {
-            padding: 7px 10px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.12);
-            font-size: 0.85rem;
+        .page-card-tasks[open] summary::after {
+            content: "−";
+        }
+
+        .page-card-tasks .mini-list {
+            margin-top: 10px;
+            color: var(--muted);
+            font-size: 0.92rem;
         }
 
         .status {
@@ -278,31 +280,7 @@
             background: rgba(184, 111, 16, 0.14);
         }
 
-        .quick-points {
-            display: grid;
-            gap: 10px;
-        }
-
-        .quick-point {
-            padding: 12px 14px;
-            border-radius: 14px;
-            background: #fcf7f1;
-            border: 1px solid var(--line);
-            color: var(--muted);
-        }
-
-        .quick-point strong {
-            color: var(--text);
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        .quick-point--alert {
-            background: #fff3e8;
-            border-color: rgba(184, 95, 40, 0.28);
-        }
-
-        .actions {
+.actions {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
@@ -387,6 +365,51 @@
             color: var(--muted);
         }
 
+        .status.upcoming {
+            color: var(--muted);
+            background: rgba(111, 98, 89, 0.12);
+        }
+
+        .tech-collapsible {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            box-shadow: var(--shadow);
+            margin-bottom: 28px;
+        }
+
+        .tech-collapsible > summary {
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 24px;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .tech-collapsible > summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .tech-collapsible > summary::after {
+            content: "+";
+            flex-shrink: 0;
+            font-size: 1.6rem;
+            line-height: 1;
+            color: var(--accent-dark);
+        }
+
+        .tech-collapsible[open] > summary::after {
+            content: "−";
+        }
+
+        .tech-collapsible-body {
+            padding: 0 24px 24px;
+        }
+
         .site-footer {
             margin-top: 32px;
             padding: 28px 24px 12px;
@@ -431,7 +454,7 @@
         </section>
 
         <section class="summary">
-            <h2>Společný základ obou prodejek</h2>
+            <h2>Společný základ prodejek</h2>
             <div class="summary-grid">
                 <div class="summary-item">
                     <strong>Jak stránka vede návštěvníka</strong>
@@ -455,106 +478,106 @@
 
         <section class="page-grid">
             <article class="page-card">
-                <span class="status draft">Rozpracováno</span>
-                <h3>Kniha Restart muže</h3>
-                <div class="page-preview">
-                    <img src="img/kniha-mockup-bestseller.jpg" alt="Náhled stránky knihy Restart muže">
-                </div>
-                <p>Jasná struktura a dobře vyřešená objednávka.</p>
-
-                <div class="quick-points">
-                    <div class="quick-point">
-                        <strong>UX</strong>
-                        Scroll a načítání objednávky jsou řešené tak, aby dojezd byl přesný.
-                    </div>
-                    <div class="quick-point quick-point--alert">
-                        <strong>Co ještě chybí</strong>
-                        <ul class="mini-list">
-                            <li>Nová fotka knihy s razítkem 15 000.</li>
-                            <li>Počítadlo prodaných kusů.</li>
-                        </ul>
+                <div class="page-card-row">
+                    <span class="status draft">Rozpracováno</span>
+                    <h3>Kniha Restart muže</h3>
+                    <div class="actions">
+                        <a class="btn btn-primary" href="prodejka-kniha/" target="_blank" rel="noopener noreferrer">Otevřít stránku <span class="btn-arrow">→</span></a>
                     </div>
                 </div>
+                <details class="page-card-tasks" open>
+                    <summary>Otevřené body</summary>
+                    <ul class="mini-list">
+                        <li>Nová fotka knihy s razítkem 15 000.</li>
+                        <li>Počítadlo prodaných kusů.</li>
+                    </ul>
+                </details>
+            </article>
 
-                <div class="actions">
-                    <a class="btn btn-primary" href="prodejka-kniha/" target="_blank" rel="noopener noreferrer">Otevřít stránku <span class="btn-arrow">→</span></a>
+            <article class="page-card">
+                <div class="page-card-row">
+                    <span class="status draft">Rozpracováno pro feedback</span>
+                    <h3>Chlapský víkend O ženách</h3>
+                    <div class="actions">
+                        <a class="btn btn-primary" href="prodejka-chlapsky-vikend/" target="_blank" rel="noopener noreferrer">Zvýraznění změn <span class="btn-arrow">→</span></a>
+                        <a class="btn btn-primary" href="prodejka-chlapsky-vikend/index-production.html" target="_blank" rel="noopener noreferrer">Otevřít stránku <span class="btn-arrow">→</span></a>
+                    </div>
+                </div>
+                <details class="page-card-tasks" open>
+                    <summary>Otevřené body</summary>
+                    <ul class="mini-list">
+                        <li>Zpětná vazba, nové prvky jsou označené vlaječkou.</li>
+                        <li>Prvky pro různé fáze kampaně jsou označené campaign tagem.</li>
+                        <li>Rozšíření sekce průvodců o sdělení Slávy a Milana.</li>
+                        <li>Fotky.</li>
+                        <li>Sekce Co potom?</li>
+                    </ul>
+                </details>
+            </article>
+
+            <article class="page-card">
+                <div class="page-card-row">
+                    <span class="status draft">Rozpracováno</span>
+                    <h3>Děkovačka — Chlapský víkend O ženách</h3>
+                    <div class="actions">
+                        <a class="btn btn-primary" href="dekovacka/" target="_blank" rel="noopener noreferrer">Děkovačka 1 <span class="btn-arrow">→</span></a>
+                        <a class="btn btn-primary" href="dekovacka/varianta2.html" target="_blank" rel="noopener noreferrer">Děkovačka 2 <span class="btn-arrow">→</span></a>
+                    </div>
                 </div>
             </article>
 
             <article class="page-card">
-                <span class="status draft">Rozpracováno pro feedback</span>
-                <h3>Chlapský víkend O ženách</h3>
-                <div class="page-preview page-preview--vikend">
-                    <div class="preview-tag">Koncept</div>
-                    <div class="preview-title">Přestaň hádat, co je špatně. Začni vést.</div>
-                    <div class="preview-meta">
-                        <span class="preview-pill">24.–26. dubna</span>
-                        <span class="preview-pill">Max 20 mužů</span>
-                    </div>
+                <div class="page-card-row">
+                    <span class="status upcoming">Připravuje se</span>
+                    <h3>Chlapský víkend O výchově</h3>
                 </div>
-                <p>Pracovní verze pro připomínky.</p>
-
-                <div class="quick-points">
-                    <div class="quick-point">
-                        <strong>UX / UI</strong>
-                        Použití nadnadpisů a více čísel jako sociálního důkazu. Dobře vrací pozornost ke kapacitě, termínu a rezervaci.
-                    </div>
-                    <div class="quick-point quick-point--alert">
-                        <strong>K řešení</strong>
-                        <ul class="mini-list">
-                            <li>Zpětná vazba, nové prvky jsou označené vlaječkou.</li>
-                            <li>Prvky pro phase 2 jsou označené campaign tagem.</li>
-                            <li>Rozšíření sekce průvodců o sdělení Slávy a Milana.</li>
-                            <li>Fotky.</li>
-                            <li>Sekce Co potom?</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="actions">
-                    <a class="btn btn-secondary" href="prodejka-chlapsky-vikend/" target="_blank" rel="noopener noreferrer">Otevřít koncept <span class="btn-arrow">→</span></a>
-                </div>
+                <details class="page-card-tasks" open>
+                    <summary>Otevřené body</summary>
+                    <ul class="mini-list">
+                        <li>Zatím bez podkladů, stránka bude založena.</li>
+                    </ul>
+                </details>
             </article>
         </section>
 
-        <div class="section-title">
-            <h2>Technické a UX poznámky</h2>
-            <p>Kdo bude chtít detail, rozbalí si ho níže.</p>
-        </div>
+        <details class="tech-collapsible">
+            <summary>Technické a UX poznámky</summary>
+            <div class="tech-collapsible-body">
+                <div class="faq-list">
+                    <details class="tech-card faq-item" open>
+                        <summary>Kniha: jak je řešený scroll a načítání objednávky</summary>
+                        <div class="faq-content">
+                            <p>CTA odkazy na `#objednavka` nepoužívají jen defaultní anchor scroll. Kliknutí se zachytí přes JavaScript, spustí se `smoothScrollTo(target, 800)` a cílová pozice se během animace v každém snímku znovu přepočítává přes `element.getBoundingClientRect().top + window.pageYOffset`, takže scroll drží přesné místo i při změně layoutu.</p>
+                            <p>Současně je pro formulář připravený wrapper `#fapiFormWrap` s pevnou `min-height`, takže je pro objednávku rezervované místo ještě před vykreslením FAPI.</p>
+                            <p>Formulář se nespouští až po dojetí na sekci. Načítá se dopředu přes `IntersectionObserver` s `rootMargin: 2000px` a také při hoveru nebo touch na CTA. Při kliku se případně zobrazí spinner, ale cílem je, aby při dojezdu už byl formulář načtený nebo minimálně připravený v layoutu.</p>
+                        </div>
+                    </details>
 
-        <section class="faq-list">
-            <details class="tech-card faq-item">
-                <summary>Kniha: jak je řešený scroll a načítání objednávky</summary>
-                <div class="faq-content">
-                    <p>CTA odkazy na `#objednavka` nepoužívají jen defaultní anchor scroll. Kliknutí se zachytí přes JavaScript, spustí se `smoothScrollTo(target, 800)` a cílová pozice se během animace v každém snímku znovu přepočítává přes `element.getBoundingClientRect().top + window.pageYOffset`, takže scroll drží přesné místo i při změně layoutu.</p>
-                    <p>Současně je pro formulář připravený wrapper `#fapiFormWrap` s pevnou `min-height`, takže je pro objednávku rezervované místo ještě před vykreslením FAPI.</p>
-                    <p>Formulář se nespouští až po dojetí na sekci. Načítá se dopředu přes `IntersectionObserver` s `rootMargin: 2000px` a také při hoveru nebo touch na CTA. Při kliku se případně zobrazí spinner, ale cílem je, aby při dojezdu už byl formulář načtený nebo minimálně připravený v layoutu.</p>
-                </div>
-            </details>
+                    <details class="tech-card faq-item" open>
+                        <summary>Kniha: výkon stránky</summary>
+                        <div class="faq-content">
+                            <p>Lokalní fonty přes `@font-face`, preload kritických řezů a `font-display: swap`. Hero obrázek má pevné rozměry a `fetchpriority`, takže se zlepšuje první vykreslení a snižuje riziko layout shiftu.</p>
+                        </div>
+                    </details>
 
-            <details class="tech-card faq-item">
-                <summary>Kniha: výkon stránky</summary>
-                <div class="faq-content">
-                    <p>Lokalní fonty přes `@font-face`, preload kritických řezů a `font-display: swap`. Hero obrázek má pevné rozměry a `fetchpriority`, takže se zlepšuje první vykreslení a snižuje riziko layout shiftu.</p>
-                </div>
-            </details>
+                    <details class="tech-card faq-item" open>
+                        <summary>Obě stránky: mikroprvky důvěry a konverzní logika</summary>
+                        <div class="faq-content">
+                            <p>Obě stránky pracují se social proofem, konkrétními čísly, FAQ, kontakty a opakovanými CTA. Všechno vede k jedné hlavní akci.</p>
+                        </div>
+                    </details>
 
-            <details class="tech-card faq-item">
-                <summary>Obě stránky: mikroprvky důvěry a konverzní logika</summary>
-                <div class="faq-content">
-                    <p>Obě stránky pracují se social proofem, konkrétními čísly, FAQ, kontakty a opakovanými CTA. Všechno vede k jedné hlavní akci.</p>
+                    <details class="tech-card faq-item" open>
+                        <summary>Víkend: campaign tagy a nové prvky</summary>
+                        <div class="faq-content">
+                            <p>Ve stránce je rozdělení na phase 1, phase 2 a phase 3.</p>
+                            <p>Phase 1 je základní verze stránky. Phase 2 přidává urgency prvky (odpočet, zbývající místa, campaign CTA). Phase 3 přidává horní bar s naplněnou kapacitou a posledními místy.</p>
+                            <p>V pracovní verzi jsou prvky phase 2 a phase 3 viditelně označené campaign vlaječkami. Nové obsahové prvky jsou označené zvlášť přes `data-new`.</p>
+                        </div>
+                    </details>
                 </div>
-            </details>
-
-            <details class="tech-card faq-item">
-                <summary>Víkend: campaign tagy a nové prvky</summary>
-                <div class="faq-content">
-                    <p>Ve stránce je rozdělení na phase 1, phase 2 a phase 3.</p>
-                    <p>Phase 1 je základní verze stránky. Phase 2 přidává urgency prvky (odpočet, zbývající místa, campaign CTA). Phase 3 přidává horní bar s naplněnou kapacitou a posledními místy.</p>
-                    <p>V pracovní verzi jsou prvky phase 2 a phase 3 viditelně označené campaign vlaječkami. Nové obsahové prvky jsou označené zvlášť přes `data-new`.</p>
-                </div>
-            </details>
-        </section>
+            </div>
+        </details>
 
         <footer class="site-footer">
             <p><strong>Restartweb</strong> slouží jako jedno místo pro sdílení prodejek a jejich průběžné připomínkování.</p>

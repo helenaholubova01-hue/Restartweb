@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jsi na palubě — Chlapský víkend O ženách | Restart Muže</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <style>
+        @font-face { font-display: swap; font-family: 'Montserrat'; font-style: normal; font-weight: 400; src: url('../fonts/montserrat-v31-latin_latin-ext-regular.woff2') format('woff2'); }
+        @font-face { font-display: swap; font-family: 'Montserrat'; font-style: normal; font-weight: 600; src: url('../fonts/montserrat-v31-latin_latin-ext-600.woff2') format('woff2'); }
+        @font-face { font-display: swap; font-family: 'Montserrat'; font-style: normal; font-weight: 700; src: url('../fonts/montserrat-v31-latin_latin-ext-700.woff2') format('woff2'); }
+        @font-face { font-display: swap; font-family: 'Montserrat'; font-style: normal; font-weight: 800; src: url('../fonts/montserrat-v31-latin_latin-ext-800.woff2') format('woff2'); }
+        @font-face { font-display: swap; font-family: 'Open Sans'; font-style: normal; font-weight: 400; src: url('../fonts/open-sans-v44-latin_latin-ext-regular.woff2') format('woff2'); }
+        @font-face { font-display: swap; font-family: 'Open Sans'; font-style: normal; font-weight: 600; src: url('../fonts/open-sans-v44-latin_latin-ext-600.woff2') format('woff2'); }
+    </style>
+
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @font-face { font-family: 'Montserrat Fallback'; src: local('Arial'); size-adjust: 113.5%; ascent-override: 85%; descent-override: 22%; line-gap-override: 0%; }
+        @font-face { font-family: 'Open Sans Fallback'; src: local('Arial'); size-adjust: 105%; ascent-override: 101%; descent-override: 28%; line-gap-override: 0%; }
+
+        body {
+            font-family: 'Open Sans', 'Open Sans Fallback', sans-serif;
+            color: #c8d6e5;
+            background: #060e18;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* ===== BENTO WRAPPER ===== */
+        .bento {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem;
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: auto auto auto;
+            grid-template-areas:
+                "hero   hero   details"
+                "s1     s2     s3"
+                "quote  quote  mail";
+            gap: 1rem;
+            align-content: center;
+        }
+
+        /* ===== CELLS ===== */
+        .cell {
+            border-radius: 12px;
+            padding: 2.2rem;
+        }
+
+        /* --- HERO: velký nadpis, přes 2 sloupce --- */
+        .cell--hero {
+            grid-area: hero;
+            background: linear-gradient(160deg, #0d2240 0%, #091828 100%);
+            border: 1px solid rgba(255,255,255,0.04);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 1.2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cell--hero::after {
+            content: '';
+            position: absolute;
+            top: -40%;
+            left: -20%;
+            width: 60%;
+            height: 140%;
+            background: radial-gradient(ellipse, rgba(232,119,34,0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            width: fit-content;
+            padding: 0.35rem 0.9rem;
+            border: 1px solid rgba(63,150,38,0.35);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #6fcf54;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .tag svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .cell--hero h1 {
+            font-family: 'Montserrat', 'Montserrat Fallback', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2.8rem, 5.5vw, 4.2rem);
+            line-height: 1.05;
+            color: #fff;
+            position: relative;
+        }
+
+        .cell--hero h1 span {
+            color: #e87722;
+        }
+
+        .cell--hero p {
+            font-size: 1.05rem;
+            max-width: 440px;
+            line-height: 1.7;
+        }
+
+        /* --- DETAILS: sidebar info --- */
+        .cell--details {
+            grid-area: details;
+            background: #0a1a2e;
+            border: 1px solid rgba(255,255,255,0.04);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0;
+        }
+
+        .detail {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .detail:last-child {
+            border-bottom: none;
+        }
+
+        .detail-dot {
+            flex-shrink: 0;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #e87722;
+        }
+
+        .detail strong {
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-right: 0.5rem;
+        }
+
+        .detail span {
+            font-size: 0.95rem;
+        }
+
+        /* --- STEPS: 3 buňky --- */
+        .cell--step {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .cell--step:nth-child(3) { grid-area: s1; }
+        .cell--step:nth-child(4) { grid-area: s2; }
+        .cell--step:nth-child(5) { grid-area: s3; }
+
+        .step-label {
+            font-family: 'Montserrat', 'Montserrat Fallback', sans-serif;
+            font-weight: 800;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #e87722;
+        }
+
+        .cell--step h3 {
+            font-family: 'Montserrat', 'Montserrat Fallback', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #fff;
+            line-height: 1.45;
+            letter-spacing: -0.01em;
+        }
+
+        .cell--step p {
+            font-size: 0.92rem;
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        /* --- QUOTE: přes 2 sloupce --- */
+        .cell--quote {
+            grid-area: quote;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 2rem 2.5rem;
+        }
+
+        .q-line {
+            flex-shrink: 0;
+            width: 3px;
+            align-self: stretch;
+            background: linear-gradient(180deg, #e87722, rgba(232,119,34,0.2));
+            border-radius: 3px;
+        }
+
+        .q-text {
+            font-family: 'Montserrat', 'Montserrat Fallback', sans-serif;
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: #fff;
+            line-height: 1.55;
+        }
+
+        .q-author {
+            margin-top: 0.5rem;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
+            font-size: 0.85rem;
+            color: #c8d6e5;
+            opacity: 0.5;
+        }
+
+        /* --- MAIL: email box --- */
+        .cell--mail {
+            grid-area: mail;
+            background: #0e2035;
+            border: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+
+        .cell--mail h3 {
+            font-family: 'Montserrat', 'Montserrat Fallback', sans-serif;
+            font-weight: 800;
+            font-size: 0.75rem;
+            color: #fff;
+            line-height: 1.3;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cell--mail h3 svg {
+            width: 15px;
+            height: 15px;
+            color: #e87722;
+            opacity: 0.7;
+        }
+
+        .cell--mail p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .mail-addr {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.3rem;
+            padding: 0.5rem 1rem;
+            background: rgba(232,119,34,0.08);
+            border: 1px solid rgba(232,119,34,0.18);
+            border-radius: 6px;
+            font-weight: 700;
+            color: #e87722;
+            font-size: 0.92rem;
+            width: fit-content;
+        }
+
+        .mail-addr svg {
+            width: 16px;
+            height: 16px;
+            opacity: 0.6;
+        }
+
+        /* --- footer --- */
+        .site-footer {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem 1.5rem;
+            text-align: right;
+            font-size: 0.75rem;
+            color: #c8d6e5;
+            opacity: 0.3;
+        }
+
+        .site-footer a {
+            color: #e87722;
+            text-decoration: none;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 960px) {
+            .bento {
+                grid-template-columns: 1fr 1fr;
+                grid-template-areas:
+                    "hero    hero"
+                    "details details"
+                    "s1      s2"
+                    "s3      mail"
+                    "quote   quote";
+            }
+        }
+
+        @media (max-width: 580px) {
+            .bento {
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "hero"
+                    "details"
+                    "s1"
+                    "s2"
+                    "s3"
+                    "mail"
+                    "quote";
+                padding: 1.2rem;
+                align-content: start;
+            }
+
+            .cell--hero h1 {
+                font-size: 2.4rem;
+            }
+
+            .cell {
+                padding: 1.6rem;
+            }
+
+            .site-footer {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bento">
+
+        <!-- HERO -->
+        <div class="cell cell--hero">
+            <div class="tag">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+                Zaplaceno
+            </div>
+            <h1>Jsi na<br><span>palubě.</span></h1>
+            <p>Tvoje místo na Chlapském víkendu O ženách je potvrzené. Tady máš vše potřebné.</p>
+        </div>
+
+        <!-- DETAILS -->
+        <div class="cell cell--details">
+            <div class="detail">
+                <div class="detail-dot"></div>
+                <div><strong>Termín</strong> <span>24.–26. dubna 2026</span></div>
+            </div>
+            <div class="detail">
+                <div class="detail-dot"></div>
+                <div><strong>Místo</strong> <span>Tereziiny lázničky</span></div>
+            </div>
+            <div class="detail">
+                <div class="detail-dot"></div>
+                <div><strong>Kapacita</strong> <span>Max 20 mužů</span></div>
+            </div>
+            <div class="detail">
+                <div class="detail-dot"></div>
+                <div><strong>V ceně</strong> <span>Ubytování, penze, program</span></div>
+            </div>
+        </div>
+
+        <!-- STEPS -->
+        <div class="cell cell--step">
+            <div class="step-label">Krok 1</div>
+            <h3>Potvrzovací email</h3>
+            <p>Dorazí během pár minut. Shrnutí platby a tvoje údaje.</p>
+        </div>
+
+        <div class="cell cell--step">
+            <div class="step-label">Krok 2</div>
+            <h3>Organizační pokyny</h3>
+            <p>Co s sebou, jak na místo, harmonogram. Pošleme před víkendem.</p>
+        </div>
+
+        <div class="cell cell--step">
+            <div class="step-label">Krok 3</div>
+            <h3>Víkend</h3>
+            <p>Pátek odpoledne — neděle. Tři dny, které ti dají jasno.</p>
+        </div>
+
+        <!-- QUOTE -->
+        <div class="cell cell--quote">
+            <div class="q-line"></div>
+            <div>
+                <p class="q-text">Udělal jsi krok, který většina chlapů odkládá roky. Uvidíme se v dubnu.</p>
+                <p class="q-author">— Sláva Černý</p>
+            </div>
+        </div>
+
+        <!-- MAIL -->
+        <div class="cell cell--mail">
+            <h3><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" /></svg> Aby ti nic neuteklo</h3>
+            <p>Přesuň si naši adresu ze složky promo do primární.</p>
+            <div class="mail-addr">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" /></svg>
+                slava@restartmuze.cz
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="site-footer">
+        Restart muže s.r.o. · <a href="https://restartmuze.cz">restartmuze.cz</a>
+    </footer>
+
+</body>
+
+</html>

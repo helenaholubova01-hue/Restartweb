@@ -1,0 +1,147 @@
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">Restart Muže</div>
+            <div class="footer-sub">Vrať se do své síly.</div>
+            <div class="footer-contact">
+                Dotazy k víkendu: <a href="tel:+420777909456">777 909 456</a> (Dan)
+            </div>
+            <div class="footer-copy">&copy; 2026 Restart Muže. Všechna práva vyhrazena.</div>
+        </div>
+    </footer>
+
+    <!-- ============================================
+         STICKY CTA
+         ============================================ -->
+    <div class="sticky-cta" id="stickyCta">
+        <a href="#objednavka" class="sticky-cta__tab">Rezervovat místo</a>
+        <div class="sticky-cta__mobile">
+            <a href="#objednavka" class="cta-btn">Rezervovat místo</a>
+            <div class="trust-row">
+                <span class="trust-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/></svg>
+                    Max 20 mužů
+                </span>
+                <span class="trust-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 9v9"/></svg>
+                    24.–26. dubna
+                </span>
+            </div>
+        </div>
+    </div>
+
+</div><!-- /prodejka-vikend -->
+
+</div><!-- /prodejka-vikend -->
+    <!-- ============================================
+         SCRIPTS
+         ============================================ -->
+    <script>
+        // ===== CAMPAIGN PHASE SYSTEM =====
+        // Změň tuto hodnotu pro aktivaci dalších fází:
+        //   1 = základní stránka (bez urgency)
+        //   2 = urgency aktivní (odpočet, zbývající místa)
+        //   3 = poslední místa (intenzivnější urgency)
+        var CAMPAIGN_PHASE = 1;
+
+        // Počet zbývajících míst (aktualizuj ručně)
+        var SPOTS_REMAINING = 14;
+
+        // Datum víkendu
+        var EVENT_DATE = new Date('2026-04-24T14:00:00');
+        // Uzávěrka rezervací (po tomto čase už nepůjde koupit)
+        var REGISTRATION_DEADLINE = new Date('2026-04-23T20:00:00');
+
+        // Aktivuj prvky příslušné fáze
+        (function() {
+            var phaseElements = document.querySelectorAll('[data-campaign-phase]');
+            phaseElements.forEach(function(el) {
+                var requiredPhase = parseInt(el.getAttribute('data-campaign-phase'));
+                var phaseDisplay = el.getAttribute('data-phase-display');
+                if (!phaseDisplay) {
+                    if (el.classList.contains('urgency-bar')) phaseDisplay = 'flex';
+                    else if (el.tagName === 'SPAN') phaseDisplay = 'inline-flex';
+                    else phaseDisplay = 'block';
+                }
+                if (requiredPhase <= CAMPAIGN_PHASE) {
+                    el.style.display = phaseDisplay;
+                } else {
+                    el.style.display = 'none';
+                }
+            });
+
+            // Aktualizuj zbývající místa
+            if (CAMPAIGN_PHASE >= 2) {
+                var spotsEl = document.getElementById('spots-remaining');
+                if (spotsEl) spotsEl.textContent = SPOTS_REMAINING;
+                document.querySelectorAll('.spots-remaining-sync').forEach(function(el) {
+                    el.textContent = SPOTS_REMAINING;
+                });
+                var filled = Math.max(0, 20 - SPOTS_REMAINING);
+                // Urgency visual progress bars
+                var urgencyPercent = Math.max(0, Math.min(100, (filled / 20) * 100));
+                var pricingFill = document.getElementById('urgency-fill-pricing');
+                if (pricingFill) pricingFill.style.width = urgencyPercent + '%';
+                document.querySelectorAll('.urgency-fill-sync').forEach(function(el) {
+                    el.style.width = urgencyPercent + '%';
+                });
+            }
+
+            // Odpočet
+            function updateCountdown() {
+                var now = new Date();
+                var diff = REGISTRATION_DEADLINE - now;
+                if (diff <= 0) diff = 0;
+                var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                document.querySelectorAll('.countdown-days-sync').forEach(function(el) {
+                    el.textContent = days;
+                });
+                document.querySelectorAll('.countdown-hours-sync').forEach(function(el) {
+                    el.textContent = hours;
+                });
+                document.querySelectorAll('.countdown-mins-sync').forEach(function(el) {
+                    el.textContent = mins;
+                });
+            }
+            if (CAMPAIGN_PHASE >= 2) {
+                updateCountdown();
+                setInterval(updateCountdown, 60000);
+            }
+        })();
+
+        // FAQ accordion
+        document.querySelectorAll('.objection-question').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var item = btn.parentElement;
+                var wasOpen = item.classList.contains('open');
+                document.querySelectorAll('.objection').forEach(function(o) {
+                    o.classList.remove('open');
+                });
+                if (!wasOpen) item.classList.add('open');
+            });
+        });
+
+        // Sticky CTA – show after scrolling past hero
+        (function() {
+            var hero = document.getElementById('top');
+            var stickyBar = document.getElementById('stickyCta');
+            if (!hero || !stickyBar) return;
+
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        stickyBar.classList.remove('active');
+                    } else {
+                        stickyBar.classList.add('active');
+                    }
+                });
+            }, { threshold: 0 });
+
+            observer.observe(hero);
+        })();
+    </script>
+

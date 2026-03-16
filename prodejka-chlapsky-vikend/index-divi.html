@@ -1,164 +1,60 @@
-﻿<!DOCTYPE html>
-<html lang="cs">
+﻿<!-- ============================================
+     PRODEJKA: Chlapský víkend o ženách
+     Verze pro Divi Code Module
+     ============================================ -->
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chlapský víkend „O ženách" — Restart Muže</title>
-    <meta name="description"
-        content="Chlapský víkend O ženách — 3 dny intenzivního tréninku komunikace a vedení vztahu. Max 20 mužů. 24.–26. dubna 2026, Tereziiny lázničky. Průvodci: Milan Studnička a Sláva Černý.">
-    <meta name="robots" content="noindex, nofollow">
+<!-- POZNÁMKA: Fonty (Montserrat, Open Sans) — nahraj .woff2 soubory
+     do Media Library nebo na server a uprav URL v @font-face níže.
+     Structured data (Event, FAQ) vlož do Divi → Theme Options → Integration → Head
+     nebo přes Yoast SEO. -->
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Chlapský víkend „O ženách" — Restart Muže">
-    <meta property="og:description"
-        content="3 dny intenzivního tréninku komunikace a vedení vztahu. Max 20 mužů. 24.–26. dubna 2026.">
-    <meta property="og:locale" content="cs_CZ">
-    <meta property="og:site_name" content="Restart muže">
-
-    <!-- Self-hosted fonts -->
-    <style>
+<style>
+        /* ===== FONTY — uprav URL na cestu k souborům na serveru ===== */
         @font-face {
             font-display: swap;
             font-family: 'Montserrat';
             font-style: normal;
             font-weight: 400;
-            src: url('fonts/montserrat-v31-latin_latin-ext-regular.woff2') format('woff2');
+            src: url('/wp-content/uploads/fonts/montserrat-v31-latin_latin-ext-regular.woff2') format('woff2');
         }
-
         @font-face {
             font-display: swap;
             font-family: 'Montserrat';
             font-style: normal;
             font-weight: 600;
-            src: url('fonts/montserrat-v31-latin_latin-ext-600.woff2') format('woff2');
+            src: url('/wp-content/uploads/fonts/montserrat-v31-latin_latin-ext-600.woff2') format('woff2');
         }
-
         @font-face {
             font-display: swap;
             font-family: 'Montserrat';
             font-style: normal;
             font-weight: 700;
-            src: url('fonts/montserrat-v31-latin_latin-ext-700.woff2') format('woff2');
+            src: url('/wp-content/uploads/fonts/montserrat-v31-latin_latin-ext-700.woff2') format('woff2');
         }
-
         @font-face {
             font-display: swap;
             font-family: 'Montserrat';
             font-style: normal;
             font-weight: 800;
-            src: url('fonts/montserrat-v31-latin_latin-ext-800.woff2') format('woff2');
+            src: url('/wp-content/uploads/fonts/montserrat-v31-latin_latin-ext-800.woff2') format('woff2');
         }
-
         @font-face {
             font-display: swap;
             font-family: 'Open Sans';
             font-style: normal;
             font-weight: 400;
-            src: url('fonts/open-sans-v44-latin_latin-ext-regular.woff2') format('woff2');
+            src: url('/wp-content/uploads/fonts/open-sans-v44-latin_latin-ext-regular.woff2') format('woff2');
         }
-
         @font-face {
             font-display: swap;
             font-family: 'Open Sans';
             font-style: normal;
             font-weight: 600;
-            src: url('fonts/open-sans-v44-latin_latin-ext-600.woff2') format('woff2');
+            src: url('/wp-content/uploads/fonts/open-sans-v44-latin_latin-ext-600.woff2') format('woff2');
         }
-    </style>
 
-    <!-- Structured Data: Event -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Event",
-        "name": "Chlapský víkend „O ženách"",
-        "description": "3 dny intenzivního tréninku komunikace a vedení vztahu pro muže. Trénink naživo se zpětnou vazbou, osobní plán kroků.",
-        "startDate": "2026-04-24",
-        "endDate": "2026-04-26",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-            "@type": "Place",
-            "name": "Tereziiny lázničky",
-            "address": {
-                "@type": "PostalAddress",
-                "addressCountry": "CZ"
-            }
-        },
-        "organizer": {
-            "@type": "Organization",
-            "name": "Restart muže s.r.o.",
-            "url": "https://restartmuze.cz"
-        },
-        "performer": [
-            { "@type": "Person", "name": "Milan Studnička" },
-            { "@type": "Person", "name": "Sláva Černý" }
-        ],
-        "offers": {
-            "@type": "Offer",
-            "price": "19970",
-            "priceCurrency": "CZK",
-            "availability": "https://schema.org/LimitedAvailability",
-            "validFrom": "2026-01-01"
-        },
-        "maximumAttendeeCapacity": 20
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "Není to zase nějaký motivační seminář?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Ne. Nebudeme tě plácat po zádech a říkat, že jsi skvělý. Budeme trénovat komunikaci naživo. Dostaneš zpětnou vazbu na to, jak reálně mluvíš — ne na to, jak si myslíš, že mluvíš."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Moje situace je jiná, tohle na mě nebude fungovat.",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Každý chlap si to myslí. A pak zjistí, že mechanismy jsou pořád stejné — tón, obrana, logické vysvětlování místo zájmu. Neřešíme konkrétní hádku. Řešíme to, jak komunikuješ. A to je univerzální."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Co když to žena zjistí?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Většina žen to vítá. Když chlap udělá krok pro vztah, žena to pozná. Ne proto, že jí o tom řekneš. Ale proto, že se změní způsob, jakým s ní mluvíš."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Nemám na to čas — pátek až neděle je hodně.",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Tři dny za vztah, který trvá roky. Změna potřebuje prostor mimo běžný režim. Proto jedeme pryč. Proto je to víkend, ne webinář."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Cena 19 970 Kč je dost. Vyplatí se to?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "V ceně je ubytování, plná penze a celý program. Chlapi, kteří projeli víkendem, říkají, že to byla nejlepší investice do vztahu, kterou kdy udělali."
-                }
-            }
-        ]
-    }
-    </script>
-
-    <style>
         /* ===== BRAND COLORS ===== */
-        :root {
+        #prodejka-vikend {
             --bg-deep: #050d17;
             --bg-primary: #0b1929;
             --bg-alt: #0f2236;
@@ -174,9 +70,9 @@
         }
 
         /* ===== RESET & BASE ===== */
-        *,
-        *::before,
-        *::after {
+        #prodejka-vikend *,
+        #prodejka-vikend *::before,
+        #prodejka-vikend *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -200,16 +96,17 @@
             line-gap-override: 0%;
         }
 
-        body {
+        #prodejka-vikend {
             font-family: 'Open Sans', 'Open Sans Fallback', sans-serif;
             font-size: 1.1rem;
             color: var(--text-light);
             background: var(--bg-deep);
             line-height: 1.8;
             overflow-x: hidden;
+            position: relative;
         }
 
-        body::before {
+        #prodejka-vikend::before {
             content: '';
             position: fixed;
             top: 0;
@@ -266,7 +163,7 @@
         .underline-brush-wide::after {
             content: '';
             position: absolute;
-            background-image: url('img/podtrzeni_stetec.webp');
+            background-image: url('/wp-content/uploads/img/podtrzeni_stetec.webp');
             background-size: 100% 100%;
             background-repeat: no-repeat;
             z-index: -1;
@@ -1238,67 +1135,9 @@
             display: none;
         }
 
-        /* ===== NOVÝ OBSAH — ZVÝRAZNĚNÍ ===== */
-        [data-new] {
-            border-left: 3px solid var(--accent-orange);
-            padding-left: 1.5rem;
-            position: relative;
-        }
-        [data-new]::before {
-            content: 'NOVÉ';
-            position: absolute;
-            top: 0;
-            left: -3px;
-            background: var(--accent-orange);
-            color: #fff;
-            font-size: 0.6rem;
-            font-weight: 700;
-            font-family: 'Montserrat', 'Montserrat Fallback', sans-serif;
-            letter-spacing: 0.05em;
-            padding: 0.15rem 0.5rem;
-            border-radius: 0 0 4px 0;
-            line-height: 1;
-        }
-
         /* ===== CAMPAIGN PHASE SYSTEM ===== */
         [data-campaign-phase] {
             display: none;
-        }
-        .phase-flag {
-            position: relative;
-            border-left: 3px solid #8f5bff;
-            padding-left: 1.25rem;
-        }
-        .phase-flag::before {
-            content: attr(data-phase-label);
-            position: absolute;
-            top: 0;
-            left: -3px;
-            background: #8f5bff;
-            color: #fff;
-            font-size: 0.6rem;
-            font-weight: 700;
-            font-family: 'Montserrat', 'Montserrat Fallback', sans-serif;
-            letter-spacing: 0.05em;
-            padding: 0.15rem 0.45rem;
-            border-radius: 0 0 4px 0;
-            line-height: 1;
-            text-transform: uppercase;
-        }
-        .phase-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            margin-left: 0.5rem;
-            padding: 0.2rem 0.5rem;
-            border-radius: 999px;
-            background: rgba(143, 91, 255, 0.16);
-            color: #8f5bff;
-            font-size: 0.68rem;
-            font-weight: 700;
-            letter-spacing: 0.03em;
-            text-transform: uppercase;
-            vertical-align: middle;
         }
 
         /* ===== GUIDE QUOTE (Slávovo oslovení) ===== */
@@ -1722,9 +1561,8 @@
             }
         }
     </style>
-</head>
 
-<body>
+<div id="prodejka-vikend">
 
     <!-- ============================================
          HERO SECTION
@@ -1733,7 +1571,6 @@
         <div class="container">
 
             <div class="section-label hero-label">Chlapský víkend o ženách</div>
-            <span class="phase-badge">phase 1</span>
 
             <h1>
                 Naučís se mluvit tak, že tě žena skutečně <span class="underline-brush">uslyší</span>
@@ -1798,7 +1635,7 @@
 
 
             <div class="hero-meta">
-                <div class="hero-meta-item" data-new>
+                <div class="hero-meta-item">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182"/></svg>
                     <strong>13. běh</strong>
                 </div>
@@ -2011,7 +1848,7 @@
                         </div>
                         <div class="program-item">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z"/></svg>
-                            <span><strong>Role muže ve vztahu</strong> — úvodní blok<em class="program-item-promise" data-new>Pochopíš, proč „být hodný" nefunguje a co žena od muže opravdu potřebuje.</em></span>
+                            <span><strong>Role muže ve vztahu</strong> — úvodní blok<em class="program-item-promise">Pochopíš, proč „být hodný" nefunguje a co žena od muže opravdu potřebuje.</em></span>
                         </div>
                     </div>
                 </div>
@@ -2022,19 +1859,19 @@
                     <div class="program-day-items">
                         <div class="program-item">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5"/></svg>
-                            <span><strong>Úrovně partnerské zralosti</strong><em class="program-item-promise" data-new>Pochopíš, kde přesně váš vztah je a proč se zasekl.</em></span>
+                            <span><strong>Úrovně partnerské zralosti</strong><em class="program-item-promise">Pochopíš, kde přesně váš vztah je a proč se zasekl.</em></span>
                         </div>
                         <div class="program-item">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/></svg>
-                            <span><strong>Proč si nerozumíme</strong> — klíčové pochopení<em class="program-item-promise" data-new>Uvidíš, proč to, co říkáš, žena slyší úplně jinak.</em></span>
+                            <span><strong>Proč si nerozumíme</strong> — klíčové pochopení<em class="program-item-promise">Uvidíš, proč to, co říkáš, žena slyší úplně jinak.</em></span>
                         </div>
                         <div class="program-item">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z"/></svg>
-                            <span><strong>Trénink komunikace naživo</strong> — praxe, ne teorie<em class="program-item-promise" data-new>Vyzkoušíš si, jak mluvit jinak — a hned uvidíš rozdíl v reakci.</em></span>
+                            <span><strong>Trénink komunikace naživo</strong> — praxe, ne teorie<em class="program-item-promise">Vyzkoušíš si, jak mluvit jinak — a hned uvidíš rozdíl v reakci.</em></span>
                         </div>
                         <div class="program-item">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg>
-                            <span><strong>Odhalování slepých míst</strong> + zpětná vazba<em class="program-item-promise" data-new>Zjistíš, co děláš automaticky a co tvou ženu odrazuje — aniž bys to tušil.</em></span>
+                            <span><strong>Odhalování slepých míst</strong> + zpětná vazba<em class="program-item-promise">Zjistíš, co děláš automaticky a co tvou ženu odrazuje — aniž bys to tušil.</em></span>
                         </div>
                         <div class="program-item">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z"/></svg>
@@ -2049,11 +1886,11 @@
                     <div class="program-day-items">
                         <div class="program-item">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3v1.5M3 21v-6m0 0 2.77-.693a9 9 0 0 1 6.208.682l.108.054a9 9 0 0 0 6.086.71l3.114-.732a48.524 48.524 0 0 1-.005-10.499l-3.11.732a9 9 0 0 1-6.085-.711l-.108-.054a9 9 0 0 0-6.208-.682L3 4.5M3 15V4.5"/></svg>
-                            <span><strong>Partnerská vize</strong> — kam chceš směřovat<em class="program-item-promise" data-new>Definuješ si, jaký vztah chceš mít — a co pro to musíš udělat.</em></span>
+                            <span><strong>Partnerská vize</strong> — kam chceš směřovat<em class="program-item-promise">Definuješ si, jaký vztah chceš mít — a co pro to musíš udělat.</em></span>
                         </div>
                         <div class="program-item">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z"/></svg>
-                            <span><strong>Konkrétní plán</strong> — kroky, které uděláš hned po návratu<em class="program-item-promise" data-new>Odjedeš s jasným plánem prvních kroků, ne s prázdnýma rukama.</em></span>
+                            <span><strong>Konkrétní plán</strong> — kroky, které uděláš hned po návratu<em class="program-item-promise">Odjedeš s jasným plánem prvních kroků, ne s prázdnýma rukama.</em></span>
                         </div>
                         <div class="program-item">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z"/></svg>
@@ -2079,7 +1916,7 @@
     <!-- ============================================
          ATMOSPHERE / EXPERIENCE SECTION (NOVÉ)
          ============================================ -->
-    <section class="section" id="atmosfera" data-new>
+    <section class="section" id="atmosfera">
         <div class="container">
 
             <div class="section-label">Víc než program</div>
@@ -2147,7 +1984,7 @@
                 <p>Video reference z předchozích víkendů</p>
             </div>
 
-            <div class="proof-quotes" data-new>
+            <div class="proof-quotes">
                 <div class="proof-quote">
                     <p>„Jel jsem skeptickej. Říkal jsem si, co mi kdo řekne novýho.
                     A pak jsem poprvé uslyšel, jak vlastně zním, když mluvím se ženou.
@@ -2168,7 +2005,7 @@
             </div>
 
             <div class="proof-trust">
-                <div class="proof-trust-item" data-new>
+                <div class="proof-trust-item">
                     <span class="proof-trust-number">350+</span>
                     <div class="proof-trust-label">mužů prošlo 13 běhy víkendů</div>
                 </div>
@@ -2307,7 +2144,7 @@
                 </div>
             </div>
 
-            <div class="guide-personal-quote" data-new>
+            <div class="guide-personal-quote">
                 <p>
                     „Tohle není přednáška. Přijdeš, budeš mluvit, budeš slyšet věci,
                     které ti nikdo doma neřekne. A odjedeš jinej.
@@ -2333,7 +2170,7 @@
             </h2>
 
             <!-- URGENCY: odpočet + zbývající místa (campaign phase 2+) -->
-            <div class="urgency-bar" data-campaign-phase="2" data-new>
+            <div class="urgency-bar" data-campaign-phase="2">
                 <div class="urgency-item">
                     <span class="urgency-number countdown-days-sync" id="countdown-days">--</span>
                     <span class="urgency-label">dní do uzávěrky</span>
@@ -2348,7 +2185,7 @@
                 </div>
             </div>
 
-            <div class="urgency-visual" data-campaign-phase="2" data-new>
+            <div class="urgency-visual" data-campaign-phase="2">
                 <div class="urgency-visual-label">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"/></svg>
                     Obsazenost víkendu
@@ -2409,7 +2246,7 @@
                 <p class="pricing-note">Dotazy: Dan — 777 909 456</p>
             </div>
 
-            <div class="risk-reversal" data-new>
+            <div class="risk-reversal">
                 <div class="risk-reversal-title"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:1.4em;height:1.4em;vertical-align:-0.25em;margin-right:0.4em;color:var(--accent-orange);"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/></svg>Žádné riziko</div>
                 <p>
                     Pokud po pátečním večeru zjistíš, že tohle není pro tebe, promluvíme si.
@@ -2423,7 +2260,7 @@
     <!-- ============================================
          FOLLOW-UP / CO BUDE PO VÍKENDU (NOVÉ)
          ============================================ -->
-    <section class="section" id="po-vikendu" data-new>
+    <section class="section" id="po-vikendu">
         <div class="container">
 
             <div class="section-label">A co potom?</div>
@@ -2483,7 +2320,7 @@
             </div>
 
             <!-- URGENCY ve finálním CTA (campaign phase 2+) -->
-            <div class="urgency-visual" data-campaign-phase="2" data-new>
+            <div class="urgency-visual" data-campaign-phase="2">
                 <div class="urgency-visual-label">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"/></svg>
                     Obsazenost víkendu
@@ -2575,6 +2412,8 @@
         </div>
     </div>
 
+</div><!-- /prodejka-vikend -->
+
     <!-- ============================================
          SCRIPTS
          ============================================ -->
@@ -2585,8 +2424,6 @@
         //   2 = urgency aktivní (odpočet, zbývající místa)
         //   3 = poslední místa (intenzivnější urgency)
         var CAMPAIGN_PHASE = 1;
-        // Pracovní režim: zobrazí phase 2/3 prvky i při nižší fázi + přidá vlaječky.
-        var SHOW_ALL_PHASE_ELEMENTS = true;
 
         // Počet zbývajících míst (aktualizuj ručně)
         var SPOTS_REMAINING = 14;
@@ -2607,27 +2444,15 @@
                     else if (el.tagName === 'SPAN') phaseDisplay = 'inline-flex';
                     else phaseDisplay = 'block';
                 }
-                if (SHOW_ALL_PHASE_ELEMENTS || requiredPhase <= CAMPAIGN_PHASE) {
+                if (requiredPhase <= CAMPAIGN_PHASE) {
                     el.style.display = phaseDisplay;
                 } else {
                     el.style.display = 'none';
                 }
-                if (SHOW_ALL_PHASE_ELEMENTS) {
-                    var parent = el.parentElement;
-                    if (parent && (parent.tagName === 'A' || parent.tagName === 'BUTTON')) {
-                        if (!parent.classList.contains('phase-flag')) {
-                            parent.classList.add('phase-flag');
-                            parent.setAttribute('data-phase-label', 'phase ' + requiredPhase);
-                        }
-                    } else {
-                        el.classList.add('phase-flag');
-                        el.setAttribute('data-phase-label', 'phase ' + requiredPhase);
-                    }
-                }
             });
 
             // Aktualizuj zbývající místa
-            if (CAMPAIGN_PHASE >= 2 || SHOW_ALL_PHASE_ELEMENTS) {
+            if (CAMPAIGN_PHASE >= 2) {
                 var spotsEl = document.getElementById('spots-remaining');
                 if (spotsEl) spotsEl.textContent = SPOTS_REMAINING;
                 document.querySelectorAll('.spots-remaining-sync').forEach(function(el) {
@@ -2661,7 +2486,7 @@
                     el.textContent = mins;
                 });
             }
-            if (CAMPAIGN_PHASE >= 2 || SHOW_ALL_PHASE_ELEMENTS) {
+            if (CAMPAIGN_PHASE >= 2) {
                 updateCountdown();
                 setInterval(updateCountdown, 60000);
             }
@@ -2698,7 +2523,4 @@
             observer.observe(hero);
         })();
     </script>
-
-</body>
-</html>
 
