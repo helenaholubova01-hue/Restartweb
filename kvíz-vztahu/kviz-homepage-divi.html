@@ -28,17 +28,16 @@
 
 /* ── NOVINKA BADGE ── */
 .rm-hero-new {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
     margin-bottom: 1.75rem;
-    padding: 0.55rem 1.1rem 0.55rem 0.65rem;
-    background: rgba(192,32,42,0.15);
-    border: 1px solid rgba(192,32,42,0.55);
-    border-radius: 100px;
-    cursor: default;
 }
 .rm-hero-new-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
     background: #c0202a;
     color: #fff;
     font-family: 'Montserrat', sans-serif;
@@ -46,30 +45,36 @@
     font-weight: 800;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    padding: 0.25rem 0.65rem;
+    padding: 0.3rem 0.75rem;
     border-radius: 100px;
+    animation: rm-pill-pop 1.4s ease-in-out infinite;
+}
+.rm-hero-new-pill::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.85);
     flex-shrink: 0;
-    animation: rm-pill-pop 2s ease-in-out infinite;
+    animation: rm-dot-blink 1.4s ease-in-out infinite;
+}
+@keyframes rm-dot-blink {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.3; transform: scale(0.7); }
 }
 @keyframes rm-pill-pop {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(192,32,42,0.5); }
-    50%       { box-shadow: 0 0 0 6px rgba(192,32,42,0); }
+    0%, 100% { box-shadow: 0 0 0 0 rgba(192,32,42,0.6); }
+    50%       { box-shadow: 0 0 0 8px rgba(192,32,42,0); }
 }
 .rm-hero-new-text {
     font-family: 'Montserrat', sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 700;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #fff;
+    color: rgba(255,255,255,0.6);
 }
-.rm-hero-new-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.3);
-    flex-shrink: 0;
-}
+.rm-hero-new-dot { display: none; }
 
 /* Rohový badge — schovaný */
 .rm-hero-badge { display: none; }
@@ -174,25 +179,7 @@
         padding: 3rem 1.5rem 2.5rem;
     }
     .rm-hero-new {
-        gap: 0.5rem;
-        padding: 0.45rem 0.85rem 0.45rem 0.5rem;
         margin-bottom: 1.25rem;
-    }
-    .rm-hero-new-pill {
-        font-size: 0.62rem;
-        padding: 0.2rem 0.5rem;
-        letter-spacing: 0.1em;
-    }
-    .rm-hero-new-dot {
-        display: none;
-    }
-    .rm-hero-new-text {
-        font-size: 0.75rem;
-        letter-spacing: 0.05em;
-    }
-    .rm-hero-new {
-        flex-wrap: wrap;
-        border-radius: 12px;
     }
 }
 </style>
