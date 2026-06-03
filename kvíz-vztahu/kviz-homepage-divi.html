@@ -6,17 +6,28 @@
     align-items: center;
 }
 
-/* Overlay — absolute přes celou sekci, margin negative aby přesáhl Divi row */
-.rm-hero-overlay {
+/* Overlay — cílí na Divi sekci, přidej třídu "rm-hero-section" na sekci v Divi */
+.rm-hero-section {
+    position: relative;
+}
+.rm-hero-section::before {
+    content: '';
     position: absolute;
-    top: 0; bottom: 0;
-    left: -9999px; right: -9999px;
+    inset: 0;
     background:
         linear-gradient(to right, rgba(5,13,23,0.92) 35%, rgba(5,13,23,0.55) 60%, rgba(5,13,23,0.2) 100%),
         linear-gradient(to top, rgba(5,13,23,0.7) 0%, transparent 40%);
     pointer-events: none;
-    z-index: 0;
+    z-index: 1;
 }
+
+/* Obsah musí být nad overlayem */
+.rm-hero-section .rm-hero-left {
+    z-index: 2;
+}
+
+/* Starý overlay div — schovaný */
+.rm-hero-overlay { display: none; }
 
 /* Levá část — text */
 .rm-hero-left {
