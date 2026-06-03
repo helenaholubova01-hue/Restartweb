@@ -6,16 +6,16 @@
     align-items: center;
 }
 
-/* Overlay — tmavý pruh zleva, Divi řídí fotku v pozadí */
-.rm-hero::before {
-    content: '';
+/* Overlay — absolute přes celou sekci, margin negative aby přesáhl Divi row */
+.rm-hero-overlay {
     position: absolute;
-    inset: 0;
+    top: 0; bottom: 0;
+    left: -9999px; right: -9999px;
     background:
         linear-gradient(to right, rgba(5,13,23,0.92) 35%, rgba(5,13,23,0.55) 60%, rgba(5,13,23,0.2) 100%),
         linear-gradient(to top, rgba(5,13,23,0.7) 0%, transparent 40%);
-    z-index: 1;
     pointer-events: none;
+    z-index: 0;
 }
 
 /* Levá část — text */
@@ -188,6 +188,7 @@
 
 <section class="rm-hero">
 
+    <div class="rm-hero-overlay" aria-hidden="true"></div>
     <div class="rm-hero-badge" aria-hidden="true"></div>
 
     <!-- LEVÁ ČÁST — text -->
