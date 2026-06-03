@@ -15,7 +15,7 @@
 .rm-hero-left {
     position: relative;
     z-index: 2;
-    padding: 5rem 4rem 5rem 2rem;
+    padding: 5rem 4rem 5rem 0;
 }
 
 /* Pravá část — fotka */
@@ -109,11 +109,11 @@
 }
 
 .rm-hero-lead {
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
     line-height: 1.75;
     color: rgba(255,255,255,0.82);
     margin-bottom: 2.5rem;
-    max-width: 480px;
+    max-width: 520px;
 }
 
 .rm-hero-cta {
@@ -163,6 +163,13 @@
     width: 0.9rem;
     height: 0.9rem;
     color: #3f9626;
+    flex-shrink: 0;
+}
+.rm-hero-meta-item::before {
+    content: '✓';
+    color: #3f9626;
+    font-weight: 700;
+    font-size: 0.85rem;
     flex-shrink: 0;
 }
 
@@ -229,18 +236,9 @@
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" style="width:1rem;height:1rem;flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
         </a>
         <div class="rm-hero-meta">
-            <span class="rm-hero-meta-item">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                2 minuty
-            </span>
-            <span class="rm-hero-meta-item">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                100% anonymní
-            </span>
-            <span class="rm-hero-meta-item">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
-                Hned výsledek
-            </span>
+            <span class="rm-hero-meta-item">2 minuty</span>
+            <span class="rm-hero-meta-item">100% anonymní</span>
+            <span class="rm-hero-meta-item">Hned výsledek</span>
         </div>
     </div>
 
