@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://restartmuze.cz/wp-content/uploads/2025/04/cropped-favicon-restart-muze-32x32.png" sizes="32x32">
+  <link rel="icon" href="https://restartmuze.cz/wp-content/uploads/2025/04/cropped-favicon-restart-muze-192x192.png" sizes="192x192">
+
+  <!-- Consent Mode v2 — MUSÍ BÝT PŘED GTM -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied',
+        'functionality_storage': 'granted',
+        'security_storage': 'granted',
+        'wait_for_update': 500
+    });
+  </script>
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MZ6KX3VV');</script>
+  <!-- End Google Tag Manager -->
+
+  <title>Kvíz pro chlapy | Restart muže – Sláva Černý</title>
+  <meta name="description" content="Odpověz na 5 otázek a zjisti, co Ti dnes nejvíc brání mít doma klid, respekt a vztah, který se nerozpadá před očima.">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Kvíz pro chlapy | Restart muže">
+  <meta property="og:description" content="Odpověz na 5 otázek a zjisti, co Ti dnes nejvíc brání mít doma klid, respekt a vztah, který se nerozpadá před očima.">
+  <meta property="og:url" content="https://restartmuze.cz/kviz-vztahu/">
+  <meta property="og:locale" content="cs_CZ">
+  <meta property="og:site_name" content="Restart muže">
+  <meta property="og:image" content="https://restartmuze.cz/kviz-vztahu/img/kviz_pro_muze_nahled.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Cookie consent CSS (CDN + SRI) -->
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.9.2/dist/cookieconsent.css"
+        integrity="sha384-HQHMzoWP+kltAJMEUJFZfYQfSPkWSgSMmlXrRJa/Qw5uy+4tRsNV8etmYHEtqDdK"
+        crossorigin="anonymous">
+
+  <!-- Cookie banner styly -->
+  <style>
+    #cc--main {
+        --cc-btn-primary-bg: #3f9626;
+        --cc-btn-primary-hover-bg: #4db82e;
+        --cc-btn-primary-border-color: #3f9626;
+        --cc-btn-primary-hover-border-color: #4db82e;
+    }
+    #cm {
+        max-width: 36.2em !important;
+    }
+  </style>
+
+  <!-- Self-hosted fonts -->
+  <style>
+    @font-face {
+        font-display: swap;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 700;
+        src: url('fonts/montserrat-v31-latin_latin-ext-700.woff2') format('woff2');
+    }
+    @font-face {
+        font-display: swap;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 800;
+        src: url('fonts/montserrat-v31-latin_latin-ext-800.woff2') format('woff2');
+    }
+    @font-face {
+        font-display: swap;
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 400;
+        src: url('fonts/open-sans-v44-latin_latin-ext-regular.woff2') format('woff2');
+    }
+    @font-face {
+        font-display: swap;
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 600;
+        src: url('fonts/open-sans-v44-latin_latin-ext-600.woff2') format('woff2');
+    }
+  </style>
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-deep:    #050d17;
+      --bg-primary: #0b1929;
+      --bg-alt:     #0f2236;
+      --accent-orange: #e87722;
+      --accent-green:  #3f9626;
+      --text-white:  #ffffff;
+      --text-light:  #e2eaf2;
+      --text-muted:  #c8d6e5;
+    }
+
+    html { font-size: 19px; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Open Sans', Arial, sans-serif;
+      font-size: 1rem;
+      background: radial-gradient(ellipse at 50% 20%, #0f2a42 0%, #0b1929 40%, #050d17 100%) fixed;
+      color: var(--text-light);
+      min-height: 100vh;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+      background: var(--bg-deep);
+    }
+
+    /* Levá polovina — text */
+    .hero-left {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 3rem 6rem 16vw;
+      background: linear-gradient(105deg, rgba(5,13,23,1) 0%, rgba(5,13,23,0.97) 70%, rgba(5,13,23,0.7) 100%);
+    }
+
+    .hero-content {
+      max-width: 560px;
+    }
+
+    /* Pravá polovina — fotka */
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      background: url('img/kviz_pro_muze_hero.webp') 75% top/cover no-repeat;
+    }
+
+    .hero-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(270deg, transparent 40%, rgba(5,13,23,0.7) 100%);
+    }
+
+    /* Horní a dolní gradient pro plynulý přechod */
+    .hero-right::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 200px;
+      background: linear-gradient(to top, var(--bg-deep), transparent);
+      z-index: 1;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.4); }
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-orange);
+      margin-bottom: 1.25rem;
+      width: fit-content;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--accent-orange);
+      flex-shrink: 0;
+    }
+
+    .hero-eyebrow-dot { display: none; }
+
+    .hero-h1-small {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-weight: 700;
+      line-height: 1.4;
+      color: var(--accent-orange);
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-h1-big {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2.2rem, 4.2vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--text-white);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-h1-big em {
+      font-style: normal;
+      color: var(--accent-orange);
+    }
+
+    .hero-lead {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--text-light);
+      margin-bottom: 1.75rem;
+      max-width: 480px;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .btn-start {
+      display: inline-block;
+      background: var(--accent-green);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      padding: 17px 40px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 6px 24px rgba(63,150,38,0.35);
+      white-space: nowrap;
+    }
+
+    .btn-start:hover {
+      transform: scale(1.04);
+      box-shadow: 0 10px 32px rgba(63,150,38,0.45);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .hero-meta span {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .hero-meta svg {
+      width: 15px; height: 15px;
+      color: var(--accent-green);
+      flex-shrink: 0;
+    }
+
+    /* ── INTRO SEKCE ── */
+    .intro-section {
+      background: linear-gradient(to bottom, transparent 0%, rgba(15, 34, 54, 0.4) 10%);
+      padding: 80px 24px;
+    }
+
+    .intro-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .intro-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-orange);
+      margin-bottom: 1.5rem;
+    }
+    .intro-label::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--accent-orange);
+      flex-shrink: 0;
+    }
+
+    .intro-lead {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+    }
+
+    .intro-callout {
+      background: rgba(5,13,23,0.5);
+      border-left: 3px solid var(--accent-orange);
+      border-radius: 0 12px 12px 0;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.5rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-white);
+      line-height: 1.5;
+    }
+
+    .intro-nope-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 2rem;
+      list-style: none;
+    }
+
+    .intro-nope-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 50px;
+      padding: 0.4rem 1rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+      text-decoration-color: rgba(232,119,34,0.6);
+    }
+
+    .intro-close {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-light);
+    }
+
+    .intro-close strong {
+      color: var(--text-white);
+    }
+
+    /* ── KVÍZ SEKCE ── */
+    .quiz-section {
+      background: linear-gradient(to bottom, rgba(15,34,54,0.4) 0%, transparent 100%);
+      padding: 64px 24px 80px;
+    }
+
+    .quiz-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .quiz-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-orange);
+      margin-bottom: 1.5rem;
+    }
+    .quiz-label::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--accent-orange);
+      flex-shrink: 0;
+    }
+
+    .iframe-wrap {
+      background: #002338;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      padding: 16px;
+    }
+
+    .iframe-wrap iframe {
+      display: block;
+      width: 100%;
+      min-height: 150px;
+      border: none;
+    }
+
+    .gdpr-note {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 20px;
+      line-height: 1.7;
+    }
+
+    .gdpr-note a {
+      color: var(--accent-green);
+      text-decoration: underline;
+    }
+
+    /* ── RESPONSIVE MOBILE ── */
+    @media (max-width: 860px) {
+      .hero {
+        display: block;
+        min-height: 100vh;
+        min-height: 100svh;
+      }
+      .hero-right {
+        position: absolute;
+        inset: 0;
+        height: 100%;
+      }
+      .hero-img {
+        background-position: 88% top;
+        background-size: 100% auto;
+      }
+      .hero-img::after {
+        background: linear-gradient(to bottom,
+          rgba(5,13,23,0.06) 0%,
+          rgba(5,13,23,0.08) 35%,
+          rgba(5,13,23,0.55) 46%,
+          rgba(5,13,23,0.82) 54%,
+          rgba(5,13,23,0.95) 62%,
+          rgba(5,13,23,1)    72%);
+      }
+      .hero-left {
+        position: relative;
+        z-index: 3;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        min-height: 100vh;
+        min-height: 100svh;
+        padding: 0 1.5rem 3rem;
+        background: transparent;
+      }
+      .hero-content { max-width: 100%; }
+      .hero-h1-small { font-size: 1rem; }
+      .hero-h1-big { font-size: 1.85rem; }
+      .hero-lead { font-size: 0.95rem; margin-bottom: 1.25rem; }
+      .btn-start { font-size: 0.95rem; padding: 15px 32px; }
+      .hero-meta { gap: 12px; }
+      .intro-wrap p { font-size: 0.97rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZ6KX3VV" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <!-- Levá strana — text -->
+    <div class="hero-left">
+      <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="hero-eyebrow-dot"></span>
+        Kvíz pro chlapy
+      </div>
+      <p class="hero-h1-small">Neztrácíš doma respekt kvůli ženě.</p>
+      <h1 class="hero-h1-big">Ztrácíš ho kvůli <em>vzorci,</em><br>který zatím sám nevidíš.</h1>
+      <p class="hero-lead">Odpověz na 5 otázek a zjisti, co Ti dnes nejvíc brání mít doma klid, respekt a vztah, který se nerozpadá před očima.</p>
+      <div class="hero-cta-row">
+        <a href="#kviz" class="btn-start">Spustit kvíz →</a>
+      </div>
+      <div class="hero-meta">
+        <span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+          2 minuty
+        </span>
+        <span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          100% anonymní
+        </span>
+      </div>
+      </div><!-- /.hero-content -->
+    </div>
+
+    <!-- Pravá strana — fotka -->
+    <div class="hero-right">
+      <div class="hero-img"></div>
+    </div>
+
+  </section>
+
+  <!-- INTRO -->
+  <section class="intro-section">
+    <div class="intro-wrap">
+      <div class="intro-label">Proč to zatím nejde</div>
+      <p class="intro-lead">Tady je něco, co nás ve škole nenaučili. A nejhorší je, že čím déle to nevidíš, tím víc se snažíš špatným směrem.</p>
+      <div class="intro-callout">Dělání více věcí ve vztahu ten vztah nespraví.</div>
+      <ul class="intro-nope-list">
+        <li>Sekání zahrady</li>
+        <li>Vydělávání více peněz</li>
+        <li>Kupování kytek</li>
+        <li>Více snažení</li>
+      </ul>
+      <p class="intro-close">Skutečný problém leží v 5 věcech, které Ti zatím unikají. Dokud je neuvidíš, frustrace se jen prohlubuje a vztah se vzdaluje.<br><br><strong>Pokud jsi upřímný, tento kvíz odhalí skutečný problém ve vztahu.</strong></p>
+    </div>
+  </section>
+
+  <!-- KVÍZ IFRAME -->
+  <section class="quiz-section" id="kviz">
+    <div class="quiz-wrap">
+      <div class="quiz-label">Zjisti svůj vzorec</div>
+      <div class="iframe-wrap">
+        <iframe src="https://api.cliqsales.cz/widget/quiz/fXK3SkHgwbONVP4NBHU5" style="border:none;width:100%;" scrolling="no" id="fXK3SkHgwbONVP4NBHU5" title="quiz"></iframe>
+      </div>
+      <p class="gdpr-note">
+        Žádný spam. Odhlásíš se jedním klikem.<br>
+        Odesláním souhlasíš se <a href="https://restartmuze.cz/ochrana-osobnich-udaju/" target="_blank">zpracováním osobních údajů</a> dle GDPR a se zasíláním e-mailů k tomuto kvízu.
+      </p>
+    </div>
+  </section>
+
+  <script src="https://api.cliqsales.cz/js/form_embed.js"></script>
+
+  <!-- Cookie consent JS (CDN + SRI) -->
+  <script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.9.2/dist/cookieconsent.js"
+          integrity="sha384-cGQtK+3XfWd72gOmFhEwkKb/u1Z0m9OumW0IZ3wZMK76CFFrnXjDf+fB+jIVmmv8"
+          crossorigin="anonymous" defer></script>
+
+  <script>
+    window.addEventListener('load', function () {
+        var cookieconsent = initCookieConsent();
+
+        function applyConsent(cookie) {
+            var levels = (cookie && cookie.level) || [];
+            var analytics = levels.indexOf('analytics') !== -1 ? 'granted' : 'denied';
+            var ads = levels.indexOf('ads') !== -1 ? 'granted' : 'denied';
+            gtag('consent', 'update', {
+                'ad_storage': ads,
+                'ad_user_data': ads,
+                'ad_personalization': ads,
+                'analytics_storage': analytics
+            });
+            dataLayer.push({ 'event': 'cc_update', 'cookie': JSON.stringify(cookie) });
+        }
+
+        cookieconsent.run({
+            autorun: true,
+            revision: 2,
+            current_lang: 'cs',
+            autoclear_cookies: true,
+            page_scripts: true,
+
+
+            onAccept: function (cookie) {
+                applyConsent(cookie);
+                cookieconsent.hide();
+            },
+            onChange: function (cookie) {
+                applyConsent(cookie);
+            },
+
+            languages: {
+                cs: {
+                    consent_modal: {
+                        title: 'Vaše soukromí je pro nás důležité',
+                        description: 'Soubory cookies jsou velmi malé textové soubory, které se ukládají do vašeho zařízení při navštěvování webových stránek. Soubory Cookies používáme pro různé účely a pro vylepšení vašeho online zážitku na webové stránce (například pro zapamatování přihlašovacích údajů k vašemu účtu).<br><br>Při procházení našich webových stránek můžete změnit své předvolby a odmítnout určité typy cookies, které se mají ukládat do vašeho počítače.<br><br>Svůj souhlas můžete kdykoliv odvolat, příp. nastavit souhlas jen s některými z nich, či <a id="nastavitnutne" type="button" class="cc-link">přijmout jen nezbytné</a>.',
+                        primary_btn: { text: 'Přijmout všechny', role: 'accept_all' },
+                        secondary_btn: { text: 'Upravit nastavení', role: 'settings' }
+                    },
+                    settings_modal: {
+                        title: 'Nastavení cookies',
+                        save_settings_btn: 'Uložit nastavení',
+                        accept_all_btn: 'Přijmout vše',
+                        blocks: [
+                            { title: 'Použité cookie', description: 'Na webu používám cookies. Můžete si vybrat, které cookies povolíte.' },
+                            {
+                                title: 'Nutné cookies',
+                                description: 'Tyto soubory cookies jsou nezbytné k tomu, abychom vám mohli poskytovat služby dostupné prostřednictvím našeho webu a abychom vám umožnili používat určité funkce našeho webu.<br><br>Bez těchto cookies vám nemůžeme na naší webové stránce poskytovat určité služby.',
+                                toggle: { value: 'necessary', enabled: true, readonly: true }
+                            },
+                            {
+                                title: 'Analytické cookies',
+                                description: 'Tyto soubory cookies se používají ke shromažďování informací pro analýzu provozu na našich webových stránkách a sledování používání našich webových stránek uživateli.<br><br>Informace shromážděné prostřednictvím těchto sledovacích a výkonnostních cookies neidentifikují žádné osoby.',
+                                toggle: { value: 'analytics', enabled: false, readonly: false }
+                            },
+                            {
+                                title: 'Marketingové cookies',
+                                description: 'Tyto soubory cookie se používají k zobrazování reklamy, která vás pravděpodobně bude zajímat na základě vašich zvyků při procházení.',
+                                toggle: { value: 'ads', enabled: false, readonly: false }
+                            },
+                            { title: 'Více informací', description: 'V případě jakýchkoliv dotazů ohledně našich zásad týkajících se souborů cookie a vašich možností nás prosím kontaktujte.' }
+                        ]
+                    }
+                }
+            }
+        });
+
+        var nastavitNutne = document.getElementById('nastavitnutne');
+        if (nastavitNutne) {
+            nastavitNutne.addEventListener('click', function () {
+                cookieconsent.hide();
+                cookieconsent.accept([]);
+            });
+        }
+    });
+  </script>
+
+</body>
+</html>

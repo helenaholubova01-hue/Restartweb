@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Návrh sekce — Kvíz na homepage</title>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Open Sans', Arial, sans-serif;
+            background: #0b1929;
+            color: #e2eaf2;
+        }
+
+        /* ===== SEKCE KVÍZ ===== */
+        .kviz-sekce {
+            padding: 6rem 1.5rem;
+            background: radial-gradient(ellipse at 60% 50%, rgba(15,42,66,0.6) 0%, transparent 70%);
+            border-top: 1px solid rgba(255,255,255,0.06);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .kviz-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        /* Levá strana — text */
+        .kviz-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #e87722;
+            margin-bottom: 1.25rem;
+        }
+        .kviz-label::before {
+            content: '';
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: #e87722;
+            flex-shrink: 0;
+        }
+
+        .kviz-h2 {
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-weight: 800;
+            font-size: clamp(1.8rem, 3vw, 2.6rem);
+            line-height: 1.2;
+            color: #ffffff;
+            margin-bottom: 1.25rem;
+        }
+
+        .kviz-h2 em {
+            font-style: normal;
+            color: #e87722;
+        }
+
+        .kviz-lead {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #c8d6e5;
+            margin-bottom: 2rem;
+            max-width: 480px;
+        }
+
+        .kviz-cta {
+            display: inline-block;
+            background: #3f9626;
+            color: #fff;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            padding: 1rem 2.5rem;
+            border-radius: 100px;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 6px 24px rgba(63,150,38,0.35);
+            margin-bottom: 1.25rem;
+            display: block;
+            width: fit-content;
+        }
+        .kviz-cta:hover {
+            transform: scale(1.04);
+            box-shadow: 0 10px 32px rgba(63,150,38,0.45);
+        }
+
+        .kviz-meta {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .kviz-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #c8d6e5;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .kviz-meta-item svg {
+            width: 14px;
+            height: 14px;
+            color: #3f9626;
+            flex-shrink: 0;
+        }
+
+        /* Pravá strana — karta s otázkami */
+        .kviz-card {
+            background: #132d47;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .kviz-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #e87722, #3f9626);
+        }
+
+        .kviz-card-title {
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #c8d6e5;
+            margin-bottom: 1.5rem;
+        }
+
+        .kviz-otazky {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+            margin-bottom: 2rem;
+        }
+
+        .kviz-otazky li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+            line-height: 1.55;
+            color: #e2eaf2;
+        }
+
+        .kviz-otazky li::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #e87722;
+            flex-shrink: 0;
+            margin-top: 0.4em;
+        }
+
+        .kviz-card-cta {
+            display: block;
+            background: #3f9626;
+            color: #fff;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 0.9rem 1.5rem;
+            border-radius: 100px;
+            text-decoration: none;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 20px rgba(63,150,38,0.3);
+        }
+        .kviz-card-cta:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 28px rgba(63,150,38,0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 860px) {
+            .kviz-inner {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .kviz-card { order: -1; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NÁVRH SEKCE — vložit jako Divi Code modul nebo ET_Pb_Code -->
+<section class="kviz-sekce">
+    <div class="kviz-inner">
+
+        <!-- LEVÁ — text -->
+        <div class="kviz-text">
+            <div class="kviz-label">Zdarma · 2 minuty</div>
+            <h2 class="kviz-h2">Víš, co Ti doma <em>skutečně</em> brání?</h2>
+            <p class="kviz-lead">Odpověz na 5 otázek a zjistíš, co konkrétně ničí klid, respekt a vedení ve Tvém vztahu. Bez registrace, hned výsledek.</p>
+            <a href="https://restartmuze.cz/kviz-vztahu/" class="kviz-cta">Spustit kvíz →</a>
+            <div class="kviz-meta">
+                <span class="kviz-meta-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    2 minuty
+                </span>
+                <span class="kviz-meta-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    100% anonymní
+                </span>
+                <span class="kviz-meta-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+                    Hned výsledek
+                </span>
+            </div>
+        </div>
+
+        <!-- PRAVÁ — karta -->
+        <div class="kviz-card">
+            <div class="kviz-card-title">Co kvíz odhalí</div>
+            <ul class="kviz-otazky">
+                <li>Jak reaguješ, když žena přijde s emocemi nebo kritikou</li>
+                <li>Jestli máš jasný směr — nebo jen plníš povinnosti</li>
+                <li>Jak moc vnímáš prožívání své ženy</li>
+                <li>Říkáš hranice včas, nebo až po přetlaku</li>
+                <li>Držíš slovo sám sobě, nebo si děláš výjimky</li>
+            </ul>
+            <a href="https://restartmuze.cz/kviz-vztahu/" class="kviz-card-cta">Zjistit svůj výsledek →</a>
+        </div>
+
+    </div>
+</section>
+
+</body>
+</html>
