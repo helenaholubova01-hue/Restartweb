@@ -2,13 +2,8 @@
 .rm-hero {
     position: relative;
     min-height: 100vh;
-    display: grid;
-    grid-template-columns: 55% 45%;
+    display: flex;
     align-items: center;
-    overflow: hidden;
-    background: #050d17;
-    max-width: 1440px;
-    margin: 0 auto;
 }
 
 /* Levá část — text */
@@ -18,32 +13,6 @@
     padding: 5rem 4rem 5rem 5rem;
 }
 
-/* Pravá část — fotka */
-.rm-hero-right {
-    position: relative;
-    height: 100vh;
-    min-height: 600px;
-    overflow: hidden;
-}
-
-.rm-hero-right::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: url('https://restartmuze.cz/wp-content/uploads/2026/06/kviz_pro_muze_hero.webp') 72% top / cover no-repeat;
-    z-index: 0;
-}
-
-/* Overlay na fotce — přechod doleva do tmavého pozadí */
-.rm-hero-right::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-        linear-gradient(to right, rgba(5,13,23,0.85) 0%, rgba(5,13,23,0.2) 50%, rgba(5,13,23,0.1) 100%),
-        linear-gradient(to top, rgba(5,13,23,0.7) 0%, transparent 40%);
-    z-index: 1;
-}
 
 /* ── NOVINKA BADGE ── */
 .rm-hero-new {
@@ -183,19 +152,6 @@
     pointer-events: none;
 }
 
-/* Světelný efekt vpravo */
-.rm-hero::after {
-    content: '';
-    position: absolute;
-    right: -5%;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 60%;
-    height: 80%;
-    background: radial-gradient(ellipse at center, rgba(232,119,34,0.08) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 1;
-}
 
 /* Responsive */
 @media (max-width: 900px) {
@@ -241,9 +197,6 @@
             <span class="rm-hero-meta-item">Hned výsledek</span>
         </div>
     </div>
-
-    <!-- PRAVÁ ČÁST — fotka -->
-    <div class="rm-hero-right"></div>
 
     <div class="rm-hero-fade"></div>
 
