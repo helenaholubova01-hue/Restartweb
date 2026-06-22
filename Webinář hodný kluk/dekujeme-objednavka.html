@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Díky za objednávku – Restart muže</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="icon" href="https://restartmuze.cz/wp-content/uploads/2025/04/cropped-favicon-restart-muze-32x32.png" sizes="32x32">
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MZ6KX3VV');</script>
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #050d17;
+            --bg-card: #0b1929;
+            --accent-orange: #e87722;
+            --accent-green: #3f9626;
+            --accent-green-hover: #4db82e;
+            --text-white: #ffffff;
+            --text-light: rgba(255,255,255,0.82);
+            --text-muted: rgba(255,255,255,0.5);
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+        }
+
+        @font-face {
+            font-family: 'Montserrat';
+            src: url('https://restartmuze.cz/webinare-skoncuj-s-hodnym-klukem/fonts/montserrat-v31-latin_latin-ext-regular.woff2') format('woff2');
+            font-weight: 400; font-style: normal; font-display: swap;
+        }
+        @font-face {
+            font-family: 'Montserrat';
+            src: url('https://restartmuze.cz/webinare-skoncuj-s-hodnym-klukem/fonts/montserrat-v31-latin_latin-ext-700.woff2') format('woff2');
+            font-weight: 700; font-style: normal; font-display: swap;
+        }
+        @font-face {
+            font-family: 'Montserrat';
+            src: url('https://restartmuze.cz/webinare-skoncuj-s-hodnym-klukem/fonts/montserrat-v31-latin_latin-ext-800.woff2') format('woff2');
+            font-weight: 800; font-style: normal; font-display: swap;
+        }
+        @font-face {
+            font-family: 'Open Sans';
+            src: url('https://restartmuze.cz/webinare-skoncuj-s-hodnym-klukem/fonts/open-sans-v44-latin_latin-ext-regular.woff2') format('woff2');
+            font-weight: 400; font-style: normal; font-display: swap;
+        }
+
+        body {
+            background: radial-gradient(ellipse at 50% 0%, #0f2236 0%, #050d17 60%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-body);
+            color: var(--text-white);
+            padding: 2rem 1.5rem;
+        }
+
+        .wrap {
+            max-width: 760px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .check-icon {
+            width: 72px;
+            height: 72px;
+            background: rgba(63,150,38,0.12);
+            border: 2px solid rgba(63,150,38,0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+        }
+        .check-icon svg {
+            width: 36px;
+            height: 36px;
+            color: var(--accent-green);
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: clamp(2.2rem, 5vw, 3.4rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--text-white);
+        }
+
+        .sub {
+            font-size: 1.15rem;
+            line-height: 1.75;
+            color: var(--text-light);
+            margin-bottom: 0.75rem;
+        }
+
+        .sub-main {
+            font-size: 1.15rem;
+            line-height: 1.75;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+        }
+
+        /* Progress bar */
+        .progress-wrap {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2.5rem;
+            text-align: left;
+        }
+        .progress-label {
+            font-family: var(--font-heading);
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--text-white);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .progress-label::before {
+            content: '⚠';
+            font-size: 0.9rem;
+        }
+        .progress-bar-bg {
+            background: rgba(255,255,255,0.1);
+            border-radius: 100px;
+            height: 28px;
+            overflow: hidden;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: var(--accent-green);
+            border-radius: 100px;
+            transition: width 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 0.75rem;
+        }
+        .progress-bar-fill span {
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #fff;
+            white-space: nowrap;
+        }
+
+        /* Info box */
+        .info-box {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 2rem 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .info-box h2 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--text-white);
+            margin-bottom: 1rem;
+        }
+        .info-box p {
+            font-size: 1rem;
+            line-height: 1.75;
+            color: var(--text-light);
+        }
+        .info-box p strong { color: var(--text-white); }
+        .email-highlight { color: var(--accent-orange); font-weight: 700; }
+
+        footer {
+            margin-top: auto;
+            padding-top: 2rem;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+        footer a { color: var(--text-muted); text-decoration: underline; }
+    </style>
+</head>
+<body>
+<!-- GTM noscript -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZ6KX3VV" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div class="wrap">
+
+    <div class="check-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/>
+        </svg>
+    </div>
+
+    <h1>Díky za objednávku!</h1>
+
+    <p class="sub">Těšíme se na Tebe v&nbsp;komunitě!</p>
+
+    <p class="sub-main">
+        Ihned po tom, co se zpracuje Tvoje platba, získáš přístup do aplikace Restart muže. Přijde Ti mail, kde jsou všechny potřebné informace.
+    </p>
+
+    <div class="progress-wrap">
+        <div class="progress-label">Pozor, nepřeskoč to!</div>
+        <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="progress-fill">
+                <span>90&nbsp;%</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="info-box">
+        <h2>Poslední důležitý bod</h2>
+        <p>
+            Pokud jsi to ještě neudělal, <strong>přetáhni e-mail <span class="email-highlight">slava@mail.restartmuze.cz</span> ze složky hromadné/promo či spam do své primární složky.</strong>
+        </p>
+        <br>
+        <p>
+            Takto od nás dostaneš všechny důležité zprávy. Nesnáším spam a&nbsp;posílám jen hodnotné informace vedoucí k&nbsp;podpoře mužů.
+        </p>
+    </div>
+
+</div>
+
+<footer>
+    &copy; 2026 Restart muže s.r.o.
+    &nbsp;·&nbsp; <a href="https://restartmuze.cz/gdpr/" target="_blank" rel="noopener">Ochrana osobních údajů</a>
+    &nbsp;·&nbsp; <a href="https://restartmuze.cz/obchodni-podminky/" target="_blank" rel="noopener">Obchodní podmínky</a>
+</footer>
+
+<script>
+    setTimeout(function() {
+        document.getElementById('progress-fill').style.width = '90%';
+    }, 300);
+</script>
+
+</body>
+</html>

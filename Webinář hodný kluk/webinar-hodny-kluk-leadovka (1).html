@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skoncuj s hodným klukem | Bezplatný webinář – Restart muže</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-deep: #050d17;
+    --bg-primary: #0b1929;
+    --bg-alt: #0f2236;
+    --bg-card: #132d47;
+    --accent-orange: #e87722;
+    --accent-green: #3f9626;
+    --accent-green-hover: #4db82e;
+    --text-white: #ffffff;
+    --text-light: #e2eaf2;
+    --text-muted: #c8d6e5;
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --glow-orange: rgba(232, 119, 34, 0.15);
+    --maxw: 1180px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg-primary);
+    color: var(--text-light);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+
+  h1, h2, h3 { font-family: 'Montserrat', sans-serif; letter-spacing: -0.01em; }
+  h1 { font-weight: 800; font-size: clamp(2.2rem, 5.5vw, 3.4rem); line-height: 1.08; }
+  h2 { font-weight: 800; font-size: clamp(1.7rem, 3.4vw, 2.5rem); line-height: 1.15; margin-bottom: 20px; }
+  h3 { font-weight: 700; font-size: 1.25rem; line-height: 1.3; }
+  .accent-o { color: var(--accent-orange); }
+  .accent-g { color: var(--accent-green-hover); }
+
+  .eyebrow {
+    font-family: 'Montserrat', sans-serif; font-weight: 700;
+    font-size: 0.85rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent-orange); margin-bottom: 18px;
+  }
+
+  .btn {
+    font-family: 'Montserrat', sans-serif; font-weight: 700;
+    font-size: 1rem; letter-spacing: 0.03em;
+    display: inline-block; text-decoration: none; text-align: center;
+    padding: 18px 40px; border-radius: 6px; transition: all 0.2s; cursor: pointer; border: none;
+  }
+  .btn-primary { background: var(--accent-green); color: #fff; }
+  .btn-primary:hover { background: var(--accent-green-hover); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(63,150,38,0.3); }
+  .btn-lg { font-size: 1.1rem; padding: 20px 48px; }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 18px 32px; background: rgba(11,25,41,0.92);
+    backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-subtle);
+  }
+  .nav-inner { max-width: var(--maxw); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+  .nav-logo { font-family: 'Montserrat'; font-weight: 800; font-size: 1.05rem; text-transform: uppercase; color: #fff; text-decoration: none; }
+  .nav-logo span { color: var(--accent-orange); }
+  .nav-cta { font-family: 'Montserrat'; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; background: var(--accent-green); color: #fff; padding: 11px 22px; border-radius: 6px; text-decoration: none; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--accent-green-hover); }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center;
+    padding: 130px 32px 70px;
+    background: radial-gradient(at 50% 18%, #0f2a42 0%, var(--bg-primary) 42%, var(--bg-deep) 100%);
+    position: relative;
+  }
+  .hero-inner { max-width: var(--maxw); margin: 0 auto; width: 100%; text-align: center; }
+  .hero h1 { max-width: 880px; margin: 0 auto 24px; }
+  .hero-sub { font-size: 1.25rem; color: var(--text-muted); max-width: 620px; margin: 0 auto 20px; }
+  .hero-by { font-family: 'Montserrat'; font-weight: 600; font-size: 0.95rem; color: var(--text-light); margin-bottom: 36px; }
+  .hero-by .dot { color: var(--accent-orange); }
+  .hero-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 28px; margin-top: 40px; }
+  .badge { display: flex; align-items: center; gap: 8px; font-family: 'Montserrat'; font-weight: 600; font-size: 0.85rem; color: var(--text-muted); }
+  .badge::before { content: '✓'; color: var(--accent-green-hover); font-weight: 800; }
+  .hero-trust { margin-top: 48px; padding-top: 36px; border-top: 1px solid var(--border-subtle); display: flex; flex-wrap: wrap; justify-content: center; gap: 48px; }
+  .trust-item { text-align: center; }
+  .trust-num { font-family: 'Montserrat'; font-weight: 800; font-size: 2rem; color: var(--accent-orange); line-height: 1; }
+  .trust-label { font-size: 0.85rem; color: var(--text-muted); margin-top: 6px; }
+
+  /* ---------- LEADOVKA TEXT (pain) ---------- */
+  .section { padding: 100px 32px; }
+  /* Plynulé přechody mezi pozadími — měkké švy místo ostrých hran */
+  .pain {
+    background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-alt) 12%, var(--bg-alt) 88%, var(--bg-primary) 100%);
+  }
+  .takeaways {
+    background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-alt) 12%, var(--bg-alt) 88%, var(--bg-primary) 100%);
+  }
+  .pain-inner { max-width: 760px; margin: 0 auto; }
+  .pain-list { font-size: 1.2rem; line-height: 2; margin: 28px 0; }
+  .pain-punch { font-family: 'Montserrat'; font-weight: 800; font-size: 1.5rem; color: var(--text-white); margin-top: 32px; line-height: 1.4; }
+  .pain-punch .accent-o { display: block; }
+
+  /* ---------- 4 VZORCE ---------- */
+  .patterns-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 56px; }
+  .pattern {
+    background: var(--bg-card); border: 1px solid var(--border-subtle);
+    border-radius: 12px; padding: 36px 32px; position: relative;
+  }
+  .pattern-num {
+    font-family: 'Montserrat'; font-weight: 800; font-size: 1rem;
+    color: var(--accent-orange); margin-bottom: 14px;
+    display: inline-block; padding: 4px 12px; border: 1px solid var(--accent-orange); border-radius: 100px;
+  }
+  .pattern h3 { margin-bottom: 12px; color: var(--text-white); }
+  .pattern p { font-size: 1rem; color: var(--text-muted); }
+  .pattern.secret { background: linear-gradient(160deg, rgba(232,119,34,0.12), var(--bg-card) 60%); border-color: var(--accent-orange); }
+
+  /* ---------- NENÍ / JE ---------- */
+  .notabout { max-width: 720px; margin: 56px auto 0; text-align: center; }
+  .notabout p { font-size: 1.15rem; margin-bottom: 8px; }
+  .notabout .goal { font-family: 'Montserrat'; font-weight: 700; font-size: 1.35rem; color: var(--text-white); margin-top: 24px; line-height: 1.5; }
+
+  /* ---------- CO SI ODNESEŠ ---------- */
+  .takeaways { background: var(--bg-alt); }
+  .take-list { max-width: 720px; margin: 40px auto 0; display: flex; flex-direction: column; gap: 16px; }
+  .take-item { display: flex; gap: 16px; align-items: flex-start; font-size: 1.1rem; }
+  .take-item::before { content: '→'; color: var(--accent-green-hover); font-weight: 800; font-family: 'Montserrat'; flex-shrink: 0; }
+
+  /* ---------- AUTOR ---------- */
+  .author-grid { max-width: 920px; margin: 0 auto; display: grid; grid-template-columns: 280px 1fr; gap: 56px; align-items: center; }
+  .author-photo {
+    width: 100%; aspect-ratio: 4/5; border-radius: 14px; background: var(--bg-card);
+    border: 2px solid var(--accent-orange); display: flex; align-items: center; justify-content: center;
+    font-family: 'Montserrat'; font-weight: 700; font-size: 0.9rem; color: var(--accent-orange); text-align: center; padding: 20px;
+  }
+  .author-text p { margin-bottom: 16px; }
+  .author-quote { font-family: 'Montserrat'; font-weight: 700; font-size: 1.2rem; color: var(--text-white); line-height: 1.5; border-left: 3px solid var(--accent-orange); padding-left: 20px; margin-top: 20px; }
+
+  /* ---------- FORM / CTA ---------- */
+  .signup { background: radial-gradient(at 50% 60%, #0f2a42 0%, var(--bg-deep) 70%), linear-gradient(180deg, var(--bg-primary) 0%, transparent 15%); text-align: center; }
+  .signup-inner { max-width: 600px; margin: 0 auto; }
+  .form-box { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 44px 40px; margin-top: 36px; }
+  .form-box input {
+    width: 100%; background: var(--bg-primary); border: 1px solid var(--border-subtle);
+    border-radius: 8px; padding: 16px 18px; color: #fff; font-family: 'Open Sans'; font-size: 1.05rem; margin-bottom: 16px;
+  }
+  .form-box input:focus { outline: none; border-color: var(--accent-green); }
+  .form-box .btn { width: 100%; }
+  .form-note { font-size: 0.85rem; color: var(--text-muted); margin-top: 16px; }
+  .form-tag { font-family:'Montserrat'; font-weight:600; font-size: 0.95rem; color: var(--accent-orange); margin-top: 24px; }
+
+  /* ---------- FINAL ---------- */
+  .final { background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-alt) 30%); text-align: center; }
+  .final-inner { max-width: 680px; margin: 0 auto; }
+  .final-list { font-size: 1.15rem; line-height: 1.9; color: var(--text-muted); margin: 24px 0; }
+  .final-punch { font-family: 'Montserrat'; font-weight: 800; font-size: 1.4rem; color: var(--text-white); margin: 28px 0; line-height: 1.5; }
+
+  footer { padding: 40px 32px; border-top: 1px solid var(--border-subtle); text-align: center; font-size: 0.85rem; color: var(--text-muted); }
+
+  .ph { color: inherit; font-style: italic; opacity: 0.85; }
+  .ph::before { content: 'DOPLNIT'; display: inline-block; background: #FFD60A; color: #1a1f24; font-family: 'Montserrat'; font-style: normal; font-weight: 700; font-size: 0.7em; letter-spacing: 0.08em; padding: 1px 7px; border-radius: 3px; margin-right: 8px; vertical-align: middle; }
+
+  @media (max-width: 860px) {
+    .patterns-grid { grid-template-columns: 1fr; }
+    .author-grid { grid-template-columns: 1fr; gap: 32px; text-align: center; }
+    .author-photo { max-width: 220px; margin: 0 auto; }
+    .author-quote { text-align: left; }
+    .section { padding: 70px 24px; }
+    .hero { padding: 110px 24px 60px; }
+    .hero-trust { gap: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Restart <span>Muže</span></a>
+    <a href="#prihlaska" class="nav-cta">Přihlásit zdarma</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Bezplatný webinář</div>
+    <h1>Skoncuj s <span class="accent-o">hodným klukem</span></h1>
+    <p class="hero-sub">Webinář pro chlapy, kteří už nechtějí doma fungovat jako samozřejmost.</p>
+    <p class="hero-by">Webinář vede Sláva Černý</p>
+    <a href="#prihlaska" class="btn btn-primary btn-lg">Zaregistrovat se zdarma</a>
+    <div class="hero-badges">
+      <span class="badge">100% zdarma</span>
+      <span class="badge">Bez závazků</span>
+      <span class="badge">~60 minut</span>
+      <span class="badge">Online — spustí se po registraci</span>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item"><div class="trust-num">6+ let</div><div class="trust-label">praxe s chlapy</div></div>
+      <div class="trust-item"><div class="trust-num">60 000+</div><div class="trust-label">mužů v trénincích</div></div>
+      <div class="trust-item"><div class="trust-num">15 000+</div><div class="trust-label">prodaných knih</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="section pain">
+  <div class="pain-inner">
+    <div class="eyebrow">Řekni upřímně</div>
+    <h2>Říkáš si, že jsi hodný chlap</h2>
+    <p>Nechceš se hádat. Nechceš dělat dusno. Nechceš být sobec. Tak radši ustoupíš. Řekneš „jasně". Zatneš zuby. Uděláš, co se po tobě chce. A svoje potřeby odložíš (zase).</p>
+    <p class="pain-list">Jenže pak přijde realita.<br>
+    Žena je stejně nespokojená.<br>
+    Doma chybí respekt.<br>
+    Intimita mizí.<br>
+    V práci ti nakládají víc, než musíš nést.</p>
+    <p>A ty máš pocit, že děláš všechno správně — ale stejně prohráváš.</p>
+    <p class="pain-punch">Tohle není dobrota.<span class="accent-o">Tohle je past hodného kluka.</span></p>
+    <p style="margin-top: 20px;">Hodný kluk často není silný muž. Je to muž, který se bojí být odmítnutý. Na webináři ti ukážu, proč role hodného kluka ničí mužské sebevědomí, respekt doma i vztahovou polaritu. A hlavně ti ukážu, kde přesně tuhle hru hraješ ty — ve vztahu, v práci, s rodiči, s dětmi, sám se sebou.</p>
+  </div>
+</section>
+
+<!-- 4 VZORCE -->
+<section class="section">
+  <div class="wrap">
+    <div style="text-align:center; max-width: 680px; margin: 0 auto;">
+      <div class="eyebrow">Obsah webináře</div>
+      <h2>Na webináři pochopíš <span class="accent-o">4 vzorce hodného kluka</span></h2>
+    </div>
+    <div class="patterns-grid">
+      <div class="pattern">
+        <span class="pattern-num">01</span>
+        <h3>Často nevíš, co opravdu chceš</h3>
+        <p>Ptáš se, co chce žena, děti, šéf, rodiče a okolí. Ale málokdy se zeptáš: Co chci já (skutečně)? A muž, který neví, co chce, bude vždycky žít podle toho, co chtějí druzí.</p>
+      </div>
+      <div class="pattern">
+        <span class="pattern-num">02</span>
+        <h3>Bereš potřeby druhých jako svoje vlastní</h3>
+        <p>Pomáháš, i když už nemůžeš. Souhlasíš, i když uvnitř cítíš ne. Děláš věci navíc, jen aby nebyl konflikt. A pak jsi unavený, naštvaný a bez energie.</p>
+      </div>
+      <div class="pattern">
+        <span class="pattern-num">03</span>
+        <h3>Bojíš se jít do konfliktu</h3>
+        <p>Konflikt neznamená řvát nebo být tvrdý blbec. Konflikt znamená mít stanovisko. Říct, co se ti nelíbí. Ustát napětí. Bez konfliktu mizí polarita — a s ní respekt, blízkost i intimita.</p>
+      </div>
+      <div class="pattern secret">
+        <span class="pattern-num">04</span>
+        <h3>Tajný bod</h3>
+        <p>Čtvrtý vzorec je klíčový z hlediska tvého okolí — a dozvíš se ho na webináři.</p>
+      </div>
+    </div>
+    <div class="notabout">
+      <p>Tenhle webinář <strong>není</strong> o tom, aby ses stal hovadem. Neučím chlapy křičet na ženy. Neučím chlapy ponižovat druhé. Neučím chlapy dokazovat si mužství silou. To je jen druhá strana slabosti.</p>
+      <p class="goal">Cílem je stát se mužem, který je pevný, pravdivý a zároveň laskavý. Mužem, který ví, co chce. Umí říct ne. Umí komunikovat hranice. A dokáže být oporou nejdřív sám sobě — potom ženě, dětem i rodině.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CO SI ODNESEŠ -->
+<section class="section takeaways">
+  <div class="wrap">
+    <div style="text-align:center;">
+      <div class="eyebrow">Co si odneseš</div>
+      <h2>Na webináři zjistíš</h2>
+    </div>
+    <div class="take-list">
+      <div class="take-item">proč mantra „jsem hodný kluk" často skrývá strach,</div>
+      <div class="take-item">kde potlačuješ svoje potřeby,</div>
+      <div class="take-item">proč tě snaha všem vyhovět stojí sebeúctu,</div>
+      <div class="take-item">proč se bojíš konfliktu,</div>
+      <div class="take-item">jak souvisí konflikt, polarita a intimita,</div>
+      <div class="take-item">jak začít vystupovat z role hodného kluka,</div>
+      <div class="take-item">a jaký první krok udělat, aby ses přestal schovávat.</div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTOR -->
+<section class="section">
+  <div class="wrap">
+    <div class="author-grid">
+      <div class="author-photo"><span class="ph">foto Slávy</span></div>
+      <div class="author-text">
+        <div class="eyebrow">Kdo tě webinářem provede</div>
+        <p>Jmenuju se <strong style="color:var(--text-white)">Sláva Černý</strong>. Jsem mentor odvážných chlapů a přes 6 let provázím muže osobní transformací. Jsem spoluautorem knihy Restart muže, které se prodalo přes 15 000 kusů.</p>
+        <p>Mými online tréninky prošlo přes 60 000 mužů a společně s týmem pořádáme jedny z největších chlapských akcí osobního rozvoje v Česku a na Slovensku — KOCHferenci.</p>
+        <p class="author-quote">Muži často nejsou slabí proto, že by byli špatní. Jsou slabí proto, že je nikdo nenaučil být pevný sám v sobě.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PŘIHLÁŠKA -->
+<section class="section signup" id="prihlaska">
+  <div class="signup-inner">
+    <div class="eyebrow" style="color:var(--accent-orange)">Přihlas se zdarma</div>
+    <h2>Přijď na webinář <span class="accent-o">Skoncuj s hodným klukem</span></h2>
+    <p style="color:var(--text-muted)">Ne další teorie. Ne další motivační řeči. Ale zrcadlo, které už dlouho potřebuješ.</p>
+    <div class="form-box">
+      <input type="text" placeholder="Jméno">
+      <input type="email" placeholder="Tvůj platný e-mail">
+      <button class="btn btn-primary">Chci skoncovat s hodným klukem</button>
+      <p class="form-note">Udělej ten krok kvůli sobě. Na tobě záleží.</p>
+      <p class="form-tag"><span class="ph">napojení formuláře (GHL / SmartEmailing)</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="section final">
+  <div class="final-inner">
+    <p class="final-list">Za tři měsíce může být všechno stejné.<br>
+    Stejné ustupování. Stejné ticho. Stejné dusno.<br>
+    Stejná kyselá žena.<br>
+    Stejný pocit, že se snažíš, ale nikdo to nevidí.</p>
+    <p class="final-punch">Nebo dnes uděláš první krok.<br>
+    Ne kvůli ženě. Ne kvůli rodičům. Ne kvůli okolí. <span class="accent-o">Kvůli sobě.</span></p>
+    <p style="color:var(--text-muted); margin-bottom: 32px;">Protože muž, který zachrání sám sebe, přestane čekat, až ho zachrání někdo jiný.</p>
+    <a href="#prihlaska" class="btn btn-primary btn-lg">Chci se přihlásit zdarma</a>
+  </div>
+</section>
+
+<footer>
+  © Restart Muže s.r.o. <span class="ph">ověřit právní subjekt</span> · Webinář vede Sláva Černý
+</footer>
+
+</body>
+</html>
