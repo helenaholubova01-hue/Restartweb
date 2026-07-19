@@ -1,0 +1,131 @@
+# ÚKOL
+
+Na základě odpovědí z kvízu máš JEDINÝ úkol:
+určit, který z TEXTŮ 1–6 je pro respondenta hlavní výsledek,
+a k němu přiřadit kategorii a obchodní větev.
+
+NEPIŠ žádný email, žádné vysvětlení, žádný komentář.
+Vrať POUZE 3 řádky ve formátu popsaném na konci.
+
+# DATA RESPONDENTA
+
+Q1 Konflikt — odpověď: {{contact.3dv_otazka_1_konflikt}}
+Q1 Konflikt — intenzita: {{contact.3dv_otazka_1a_konflikt}}
+
+Q2 Směr — odpověď: {{contact.3dv_otazka_2_smer}}
+Q2 Směr — intenzita: {{contact.3dv_otazka_2a_smer}}
+
+Q3 Vnímání — odpověď: {{contact.3dv_otazka_3_pocity}}
+Q3 Vnímání — intenzita: {{contact.3dv_otazka_3a_pocity}}
+
+Q4 Hranice — odpověď: {{contact.3dv_otazka_4_vadi}}
+Q4 Hranice — intenzita: {{contact.3dv_otazka_4a_vadi}}
+
+Q5 Autorita — odpověď: {{contact.3dv_otazka_5_pravda}}
+Q5 Autorita — intenzita: {{contact.3dv_otazka_5a_pravda}}
+
+# LEGENDY ODPOVĚDÍ
+
+Q1 — Konflikt:
+A = "Beru to osobně, chci se obhájit nebo jí vysvětlit, jak to je."
+B = "Spíš čekám, až ji to přejde, nebo se stáhnu, protože nevím, co s tím."
+C = "Zajímá mě, co se v ní děje, a umím se ptát bez potřeby ji opravovat nebo zachraňovat."
+
+Q2 — Směr:
+A = "Mám to někde v hlavě, ale neumím to jasně říct ani za tím jít."
+B = "Řeším hlavně provoz, povinnosti a aktuální tlak. Na vizi teď moc prostor nemám."
+C = "Vím, kam směřuju, umím to komunikovat a dělám konkrétní kroky, aby se to dělo"
+
+Q3 — Vnímání:
+A = "Hledám řešení nebo vysvětluju."
+B = "Poslouchám jen napůl, protože nevím, co s tím"
+C = "Vnímám ji a zajímá mě její prožívání bez opravování"
+
+Q4 — Hranice:
+A = "Dlouho to držím v sobě a řeknu to až ve chvíli, kdy už jsem přetlakovaný."
+B = "Radši to přejdu, přizpůsobím se nebo si řeknu, že to nemá cenu otevírat."
+C = "Umím to včas a klidně pojmenovat bez výbuchu i bez uhýbání."
+
+Q5 — Autorita:
+A = "Často to myslím dobře, ale nevydržím u toho a sám sebe podkopám."
+B = "V některých věcech držím, v jiných si dělám výjimky a omlouvám si je."
+C = "Co si řeknu, za tím jdu. Moje slovo má váhu i pro mě samotného."
+
+INTENZITA (text v intenzitních polích):
+"Občas" → 1
+"Často" → 2
+"Skoro vždycky" → 3
+(prázdné) → 0
+
+# PRAVIDLA PRO VÝBĚR TEXTU 1–6
+
+1) Zkontroluj 5 HLAVNÍCH odpovědí (A/B/C) podle textu odpovědi.
+
+Pokud jsou VŠECHNY hlavní odpovědi prázdné:
+
+TEXT=TEXT_0
+KATEGORIE=nezname
+VETEV=nezname
+
+a skonči.
+
+2) Spočítej, kolik z 5 HLAVNÍCH odpovědí je varianta C.
+
+Pokud je VŠECH 5 = C:
+
+TEXT=TEXT_6
+KATEGORIE=zraly_muz
+VETEV=koch_zraly
+
+a skonči.
+
+U odpovědi C ignoruj intenzitní pole.
+
+3) Pokud je prázdná jen některá hlavní odpověď, ber její intenzitu jako 0.
+
+4) Intenzitu určuj takto:
+
+- odpověď C → 0
+- Skoro vždycky → 3
+- Často → 2
+- Občas → 1
+- jinak → 0
+
+5) Hlavní otázka = nejvyšší intenzita.
+Při shodě vyhrává nižší číslo otázky:
+Q1 > Q2 > Q3 > Q4 > Q5
+
+6) Vyber výsledek:
+
+Q1
+TEXT=TEXT_1
+KATEGORIE=konflikt
+VETEV=restart
+
+Q2
+TEXT=TEXT_2
+KATEGORIE=smer
+VETEV=hodny_kluk
+
+Q3
+TEXT=TEXT_3
+KATEGORIE=vnimani
+VETEV=restart
+
+Q4
+TEXT=TEXT_4
+KATEGORIE=hranice
+VETEV=hodny_kluk
+
+Q5
+TEXT=TEXT_5
+KATEGORIE=autorita
+VETEV=koch
+
+# FORMÁT VÝSTUPU
+
+Vrať POUZE tyto tři řádky:
+
+TEXT=TEXT_X
+KATEGORIE=<konflikt|smer|vnimani|hranice|autorita|zraly_muz|nezname>
+VETEV=<restart|hodny_kluk|koch|koch_zraly|nezname>
