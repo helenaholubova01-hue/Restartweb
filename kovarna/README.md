@@ -7,7 +7,9 @@ assets** (ne Pages — ty jsou od roku 2026 v režimu údržby).
 ## Struktura webu
 
 ```
-/                        Prodejka Kovárny — zároveň de facto homepage
+/                        Krátká homepage — dvoje dveře
+│
+├── /kovarna/            Prodejka ročního programu
 │
 ├── /vyzva/              Landing 3denní výzvy — sem míří reklama a maily
 │   ├── /vyzva/dekujeme/ Potvrzení registrace              [noindex]
@@ -21,13 +23,22 @@ assets** (ne Pages — ty jsou od roku 2026 v režimu údržby).
 └── 404.html
 ```
 
+Slug `/vyzva/` je zástupný — nahradí ho jméno, které ta akce dostane.
+Vybrat ho je potřeba před spuštěním: pozdější změna znamená přesměrování
+a přepisování odkazů v reklamách a mailech.
+
 Samostatné `/rozhovor/` s rezervačním embedem má smysl přidat, až bude jasné,
 přes co se rezervuje — odkazuje se na něj prodejka i pozvánka.
 
-### Proč root = prodejka, a ne rozcestník
-Kovárna je jediný produkt a doména nese jeho jméno. Prodejka je hotová a už
-teď se chová jako homepage — má vlastní navigaci po sekcích. Úvodní stránka
-nad ní by přidala klik a rozmělnila sdělení.
+### Proč root = homepage, a ne rovnou prodejka
+Na root se lidé dostanou dvěma cestami, které nikdo neřídí: ustřihnou URL
+výzvy, nebo doménu prostě napíšou, protože ji někde slyšeli. Kdyby tam byla
+prodejka, spadne účastník bezplatné výzvy rovnou na nabídku za 50 000 Kč
+a člověk, který slyšel o výzvě, ji na webu vůbec nenajde.
+
+Homepage je proto jedna obrazovka, ne další velká stránka: co je Kovárna,
+pro koho je, kdo ji vede. Hlavní tlačítko vede na výzvu (nízký práh, tam má
+jít většina lidí), vedlejší odkaz na roční program. Nic víc.
 
 ### Proč je výzva sourozenec, a ne podstránka prodejky
 Reklama a maily míří přímo na `/vyzva/`, přes root tam nikdo nechodí. Landing
@@ -51,6 +62,7 @@ ať to nestojí na tom, jestli si na něj někdo vzpomene.
 | Cesta | Indexovat |
 |---|---|
 | `/` | ano |
+| `/kovarna/` | ano |
 | `/vyzva/` | ano |
 | zbytek funnelu | ne |
 
@@ -103,7 +115,9 @@ Metodika v `../instrukce-web.md` počítá s `.htaccess`. Na Workers neexistuje:
 ## Co ještě chybí
 
 - [ ] doména — doplnit do kanonických URL, `robots.txt` a `sitemap.xml`
-- [ ] prodejka: přenést z hostingu (`vibe-pages/kovarnafable/`), přepsat
+- [ ] jméno akce → finální slug místo `/vyzva/`
+- [ ] homepage — zatím neexistuje
+- [ ] prodejka: přenést z hostingu (`vibe-pages/kovarnafable/`) na `/kovarna/`, přepsat
       placeholder `ZMEN-DOMENU.cz` a vyměnit GTM kontejner za vlastní
 - [ ] landing výzvy a zbytek funnelu
 - [ ] rezervační systém na 15minutový vstupní rozhovor
