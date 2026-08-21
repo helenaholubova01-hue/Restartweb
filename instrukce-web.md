@@ -60,8 +60,28 @@ Vytvoř funkční web, který bude obsahovat:
 - Výrazné nadpisy s klíčovými informacemi a CTA tlačítka
 - Vizuální prvky podporující obsah (ikony, obrázky, grafika)
 - Logické uspořádání informací (nejdůležitější nahoře)
-- Chybová stránka 404 – místo „404" použij ikonu `<i class="bi bi-emoji-frown"></i>` a přidej do `.htaccess`: `ErrorDocument 404 /404.html`
+- Chybová stránka 404 – místo „404" použij ikonu emoji-frown (`<i class="bi bi-emoji-frown"></i>`, při přísné CSP inline SVG). Nastavení se liší podle hostingu, viz Hosting a nasazení.
 - Kontrola povinných údajů na webu: jméno, sídlo, IČ, zápis v rejstříku
+
+## Hosting a nasazení
+Podle cílového hostingu se liší tři věci. Zjisti si na začátku, kam web pojede.
+
+### Apache webhosting (klasický hosting, WordPress)
+- 404: přidej do `.htaccess` `ErrorDocument 404 /404.html`
+- bezpečnostní hlavičky a CSP: `.htaccess`
+- přesměrování: řeší se na úrovni hostingu, do `.htaccess` je nedávej
+
+### Cloudflare Workers (statický web)
+Pro nové statické weby preferuj Workers se static assets, ne Pages — Pages
+jsou v režimu údržby a nové funkce už do nich nepřibývají. `.htaccess` tu
+neexistuje, takže:
+- 404: `not_found_handling: "404-page"` ve `wrangler.jsonc`, stránka `404.html` v assets
+- bezpečnostní hlavičky a CSP: soubor `_headers` v adresáři s assets
+- přesměrování: soubor `_redirects` v adresáři s assets
+- ikonové fonty z CDN si nerozumí s přísnou CSP — ikony dávej inline jako SVG
+- doména musí být na Cloudflare nameserverech, pak Worker → Settings → Custom Domains
+
+Funkční kostru najdeš v `kovarna/`.
 
 ## Konzistence
 - Jednotný styl tlačítek, karet a komponent

@@ -1,0 +1,18 @@
+{
+  // Assets-only Worker: nemá "main", takže neběží žádný kód —
+  // Cloudflare jen servíruje soubory z ./public.
+  // Až by přibyl backend (např. vlastní endpoint), doplní se "main": "src/index.js".
+  "name": "kovarna",
+  "compatibility_date": "2026-08-21",
+
+  "assets": {
+    "directory": "./public",
+
+    // /sluzby  ->  /sluzby/  ->  public/sluzby/index.html
+    "html_handling": "auto-trailing-slash",
+
+    // Náhrada za ErrorDocument 404 z .htaccess (na Workers .htaccess neexistuje).
+    // Servíruje public/404.html se správným stavovým kódem 404.
+    "not_found_handling": "404-page"
+  }
+}
