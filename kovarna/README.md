@@ -66,6 +66,31 @@ ať to nestojí na tom, jestli si na něj někdo vzpomene.
 | `/vyzva/` | ano |
 | zbytek funnelu | ne |
 
+## Vlastnictví a účty
+
+Kovárnu provozuje **Mentoring SČ s.r.o.** — jiná firma než Restart muže s.r.o.
+(IČO 10947116), pod kterou běží restartmuze.cz. Všechno kolem tohohle webu
+proto patří pod Mentoring SČ, ne pod Restart muže.
+
+| Vrstva | Komu patří |
+|---|---|
+| Doména — držitel u CZ.NIC | Mentoring SČ s.r.o. |
+| Účet u registrátora (Wedos) | vlastní, vedený na Mentoring SČ s.r.o. |
+| Účet na Cloudflare | vlastní, vedený na Mentoring SČ s.r.o. |
+| GTM kontejner a GA4 | vlastní, ne sdílený s Restart mužem |
+| Fakturace programu | Mentoring SČ s.r.o. |
+
+Držitel domény a majitel účtu u registrátora jsou dvě různé věci — jeden účet
+umí držet domény pro různé držitele. Faktury za registraci ale chodí na
+fakturační údaje **účtu**, ne podle držitele jednotlivé domény. Proto vlastní
+účet: jinak by za doménu Kovárny platil Restart muže a muselo by se to mezi
+firmami přefakturovávat.
+
+Analytika se ze stejného důvodu nesdílí. Správcem osobních údajů na tomhle
+webu je Mentoring SČ s.r.o., takže potřebuje vlastní kontejner i vlastní
+zásady zpracování — ne kontejner Restart muže, který je na stránce zděděný
+z předlohy.
+
 ## Adresáře
 
 ```
@@ -114,11 +139,14 @@ Metodika v `../instrukce-web.md` počítá s `.htaccess`. Na Workers neexistuje:
 
 ## Co ještě chybí
 
-- [ ] doména — doplnit do kanonických URL, `robots.txt` a `sitemap.xml`
+- [ ] doména — registrovat na Mentoring SČ s.r.o., pak doplnit do kanonických
+      URL, `robots.txt` a `sitemap.xml`
 - [ ] jméno akce → finální slug místo `/vyzva/`
 - [ ] homepage — zatím neexistuje
 - [ ] prodejka: přenést z hostingu (`vibe-pages/kovarnafable/`) na `/kovarna/`, přepsat
-      placeholder `ZMEN-DOMENU.cz` a vyměnit GTM kontejner za vlastní
+      placeholder `ZMEN-DOMENU.cz` a vyměnit zděděný GTM kontejner
+      Restart muže (`GTM-MZ6KX3VV`) za vlastní
 - [ ] landing výzvy a zbytek funnelu
 - [ ] rezervační systém na 15minutový vstupní rozhovor
+- [ ] právní stránky — IČ, sídlo a zápis v rejstříku Mentoring SČ s.r.o.
 - [ ] po ustálení analytiky zúžit seznam zdrojů v CSP
