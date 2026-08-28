@@ -3,11 +3,41 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Oznámení o dovolené skrýt od 4. 8. 2026 07:00 (SELČ = 05:00 UTC). Běží před vykreslením, aby banner neproblikl. -->
+    <script>
+        (function () {
+            var hideFrom = Date.UTC(2026, 7, 4, 5, 0, 0); // 4. 8. 2026 07:00 SELČ
+            if (Date.now() >= hideFrom) {
+                document.documentElement.className += ' holiday-over';
+            }
+        })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta http-equiv="Cache-Control" content="max-age=3600, must-revalidate">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://restartmuze.cz/wp-content/uploads/2025/04/cropped-favicon-restart-muze-32x32.png"
+        sizes="32x32">
+    <link rel="icon" href="https://restartmuze.cz/wp-content/uploads/2025/04/cropped-favicon-restart-muze-192x192.png"
+        sizes="192x192">
+    <link rel="apple-touch-icon"
+        href="https://restartmuze.cz/wp-content/uploads/2025/04/cropped-favicon-restart-muze-180x180.png">
+
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MZ6KX3VV');</script>
+    <!-- End Google Tag Manager -->
+    <script>window.dataLayer = window.dataLayer || []; window.dataLayer.push({ 'event': 'ab_test_kniha', 'ab_variant': 'b' });</script>
     <title>Kniha Restart muže | 10 kroků, jak znovu najít sílu, vztah a sebevědomí</title>
     <meta name="description"
-        content="Kniha Restart muže pomáhá chlapům znovu najít sílu, vztah a směr. Sláva Černý a Milan Studnička ti ukážou, jak přestat přežívat a začít žít naplno. 170 stran, pevná vazba.">
-    <meta name="robots" content="noindex, nofollow">
+        content="Kniha Restart muže pomáhá chlapům znovu najít sílu, vztah a směr. Sláva Černý a Milan Studnička Ti ukážou, jak přestat přežívat a začít žít naplno. 170 stran, pevná vazba.">
+    <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://restartmuze.cz/knihy/restart-muze/">
 
     <!-- Open Graph -->
@@ -27,10 +57,18 @@
         content="Praktický průvodce osobním rozvojem pro muže. Autoři: Sláva Černý a Milan Studnička.">
     <meta name="twitter:image" content="https://restartmuze.cz/wp-content/uploads/2025/11/kniha-mockup-bestseller.jpg">
 
+    <!-- Provely Bubbles CSS — lazy (not render-critical) -->
+    <link rel="stylesheet" href="https://restartmuze.cz/wp-content/plugins/mp-provely/assets/style.css?ver=1.0"
+        media="print" onload="this.media='all'">
+
+    <!-- Cookie Consent CSS — lazy (not render-critical) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.9.2/dist/cookieconsent.css"
+        media="print" onload="this.media='all'">
+
     <!-- Preload critical fonts -->
-    <link rel="preload" href="fonts/montserrat-v31-latin_latin-ext-700.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="fonts/open-sans-v44-latin_latin-ext-regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="fonts/open-sans-v44-latin_latin-ext-600.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="fonts/montserrat-v31-latin_latin-ext-800.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="fonts/open-sans-v44-latin_latin-ext-regular.woff2"
+        crossorigin>
 
     <!-- Self-hosted fonts -->
     <style>
@@ -277,6 +315,69 @@
             color: var(--accent-orange);
         }
 
+        /* ===== OZNÁMENÍ O ZASÍLÁNÍ (dovolená) ===== */
+        .ship-notice {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            max-width: 760px;
+            margin-top: 1.5rem;
+            padding: 0.95rem 1.4rem;
+            background: linear-gradient(135deg, rgba(232, 119, 34, 0.22), rgba(232, 119, 34, 0.12));
+            border: 1px solid rgba(232, 119, 34, 0.55);
+            border-radius: 14px;
+            box-shadow: 0 0 24px var(--glow-orange);
+            color: var(--text-white);
+            font-family: 'Open Sans', 'Open Sans Fallback', sans-serif;
+            font-size: 1.05rem;
+            line-height: 1.5;
+            text-align: left;
+            animation: ship-notice-pulse 2.6s ease-in-out infinite;
+        }
+
+        .ship-notice svg.icon {
+            width: 1.9rem;
+            height: 1.9rem;
+            color: var(--accent-orange);
+            flex-shrink: 0;
+        }
+
+        .ship-notice strong {
+            color: var(--accent-orange);
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        @keyframes ship-notice-pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(232, 119, 34, 0.18); }
+            50% { box-shadow: 0 0 34px rgba(232, 119, 34, 0.42); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .ship-notice { animation: none; }
+        }
+
+        /* Po 4. 8. 2026 07:00 oznámení o dovolené skrýt (třídu nastavuje skript v <head>) */
+        html.holiday-over .js-holiday-notice {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .ship-notice {
+                gap: 0.6rem;
+                margin-left: auto;
+                margin-right: auto;
+                padding: 1rem 1.15rem;
+                font-size: 1rem;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .ship-notice strong {
+                white-space: normal;
+            }
+        }
+
         /* Fallback font metrics to reduce CLS during font swap */
         @font-face {
             font-family: 'Montserrat Fallback';
@@ -362,70 +463,20 @@
         }
 
         /* ===== SOCIAL PROOF POPUP ===== */
-        .proof-popup {
-            position: fixed;
-            bottom: 1.5rem;
-            left: 1.5rem;
-            background: var(--bg-alt);
-            border: 1px solid var(--border-subtle);
-            border-radius: 12px;
-            padding: 1rem 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            z-index: 999;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            transform: translateX(-120%);
-            transition: transform 0.4s ease;
-            max-width: 340px;
+        /* Provely: skrýt v hero, odemknout až po scrollu za hero */
+        #mioprovely-root {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
         }
 
-        .proof-popup.visible {
-            transform: translateX(0);
+        body.show-provely #mioprovely-root {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: none;
         }
 
-        .proof-popup-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--accent-green);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .proof-popup-icon svg {
-            color: #fff;
-            width: 1rem;
-            height: 1rem;
-        }
-
-        .proof-popup-text {
-            font-size: 0.85rem;
-            line-height: 1.4;
-        }
-
-        .proof-popup-text strong {
-            color: var(--text-white);
-            display: block;
-        }
-
-        .proof-popup-text span {
-            color: var(--text-muted);
-            font-size: 0.75rem;
-        }
-
-        @media (max-width: 768px) {
-            .proof-popup {
-                bottom: 5.5rem;
-                left: 0.75rem;
-                right: 0.75rem;
-                max-width: none;
-            }
-        }
-
-        /* ===== BUTTONS ===== */
+/* ===== BUTTONS ===== */
         .cta-btn {
             display: inline-block;
             padding: 1rem 3rem;
@@ -613,6 +664,34 @@
             color: var(--text-muted);
         }
 
+        /* ===== SCROLL TO TOP ===== */
+        .scroll-to-top {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--accent-orange);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease, background 0.2s ease, transform 0.2s ease;
+            z-index: 9998;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        .scroll-to-top.visible { opacity: 1; visibility: visible; }
+        @media (hover: hover) { .scroll-to-top:hover { background: #c9641a; transform: scale(1.1); } }
+        .scroll-to-top svg {
+            width: 22px; height: 22px;
+            fill: none; stroke: #0b1929;
+            stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+        }
+
         /* ===== STICKY CTA ===== */
         /* Desktop/Tablet: vertikální ouško vpravo */
         .sticky-cta {
@@ -658,13 +737,13 @@
             .sticky-cta {
                 right: auto;
                 top: auto;
-                bottom: 0;
+                bottom: max(0.5rem, env(safe-area-inset-bottom));
                 left: 0;
                 width: 100%;
-                background: rgba(5, 13, 23, 0.95);
-                backdrop-filter: blur(10px);
+                background: rgba(5, 13, 23, 0.97);
                 border-top: 1px solid var(--border-subtle);
-                padding: 0.5rem 1rem;
+                padding: 0.5rem 1rem 0.4rem;
+                padding-bottom: calc(0.4rem + env(safe-area-inset-bottom));
                 text-align: center;
             }
 
@@ -705,9 +784,23 @@
                 height: 0.8rem;
             }
 
+            #mioprovely-root {
+                right: 16px !important;
+                z-index: 9997 !important;
+                max-width: calc(100vw - 32px) !important;
+            }
+
+            body.sticky-cta-active #mioprovely-root {
+                bottom: calc(80px + env(safe-area-inset-bottom)) !important;
+            }
+
             /* extra padding at bottom so footer isn't hidden behind sticky bar */
             .site-footer {
-                padding-bottom: 5rem;
+                padding-bottom: calc(5rem + env(safe-area-inset-bottom));
+            }
+
+            .scroll-to-top.above-sticky {
+                bottom: 75px;
             }
 
             .for-whom-grid {
@@ -717,6 +810,215 @@
             .minikurz-features {
                 grid-template-columns: 1fr;
                 gap: 0.5rem;
+            }
+        }
+
+        /* ===== SITE NAV ===== */
+        .site-nav {
+            position: sticky;
+            top: 0;
+            z-index: 9999;
+            background: #000;
+        }
+
+        .nav-inner {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .nav-logo img {
+            height: 36px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-family: var(--font-heading);
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            padding: 0.5rem 0.7rem;
+            border-radius: 6px;
+            transition: color 0.2s, background 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .nav-links .nav-active a {
+            color: var(--accent-orange);
+        }
+
+        .nav-links .nav-cta a {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 0.45rem 1rem;
+            border-radius: 6px;
+            margin-left: 0.5rem;
+        }
+
+        .nav-links .nav-cta a:hover {
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        /* Dropdown */
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown>a::after {
+            content: '';
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-left: 3.5px solid transparent;
+            border-right: 3.5px solid transparent;
+            border-top: 4px solid currentColor;
+            margin-left: 5px;
+            vertical-align: middle;
+            opacity: 0.6;
+        }
+
+        .nav-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #000;
+            border-radius: 0;
+            padding: 0.4rem 0;
+            min-width: 200px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            list-style: none;
+            margin: 0;
+        }
+
+        .nav-dropdown:hover .nav-dropdown-menu {
+            display: block;
+        }
+
+        .nav-dropdown-menu a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.55rem 1.1rem;
+            font-size: 0.68rem;
+            font-weight: 400;
+            text-transform: none;
+            letter-spacing: 0.02em;
+            border-radius: 0;
+        }
+
+        .nav-dropdown-menu a::before {
+            content: '';
+            flex-shrink: 0;
+            width: 0;
+            height: 0;
+            border-top: 3px solid transparent;
+            border-bottom: 3px solid transparent;
+            border-left: 4px solid currentColor;
+            opacity: 0.55;
+        }
+
+        /* Mobile hamburger */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            color: #c5d3e0;
+        }
+
+        .nav-toggle svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        @media (max-width: 900px) {
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: #000;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1rem 0;
+                gap: 0;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+            }
+
+            .nav-links li { width: 100%; }
+
+            .nav-links a {
+                display: block;
+                padding: 0.75rem 1.5rem;
+                font-size: 0.8rem;
+                text-align: left;
+            }
+
+            .nav-dropdown > a {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .nav-dropdown-menu {
+                position: static;
+                box-shadow: none;
+                border: none;
+                background: #000;
+                border-radius: 0;
+            }
+
+            .nav-dropdown-menu a { padding-left: 2.5rem; font-size: 0.8rem; }
+
+            .nav-dropdown:hover .nav-dropdown-menu {
+                display: none;
+            }
+
+            .nav-dropdown.open .nav-dropdown-menu {
+                display: block;
+            }
+
+            .nav-links .nav-cta a {
+                margin-left: 0;
+                margin-top: 0.5rem;
+                text-align: center;
             }
         }
 
@@ -758,8 +1060,6 @@
             width: 100%;
             max-width: 400px;
             height: auto;
-            border-radius: 8px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
             display: block;
             margin: 0 auto;
         }
@@ -1223,6 +1523,29 @@
             color: var(--text-white);
         }
 
+        .faq-content p {
+            margin: 0 0 1rem 0 !important;
+            line-height: 1.7;
+        }
+
+        .faq-content p:last-child {
+            margin-bottom: 0 !important;
+        }
+
+        .faq-content ul {
+            padding-left: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .faq-content ul li {
+            margin-bottom: 0.5rem;
+            line-height: 1.7;
+        }
+
+        .hero .container {
+            max-width: 1440px;
+        }
+
         /* ===== CHECKOUT ===== */
         #fapiFormWrap {
             min-height: 1435px;
@@ -1261,7 +1584,9 @@
         }
 
         @keyframes fapi-spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .checkout-placeholder {
@@ -1293,6 +1618,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
+            padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
         }
 
         .footer-disclaimer {
@@ -1590,6 +1916,65 @@
 </head>
 
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZ6KX3VV" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+
+    <!-- SITE NAV -->
+    <nav class="site-nav">
+        <div class="nav-inner">
+            <a href="https://restartmuze.cz/" class="nav-logo">
+                <img src="https://restartmuze.cz/wp-content/uploads/2024/11/restartmuze-logo-cmyknew-461x128-1.png"
+                    alt="Restart muže" loading="eager">
+            </a>
+            <button class="nav-toggle" aria-label="Menu" onclick="this.nextElementSibling.classList.toggle('open')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 6h18M3 12h18M3 18h18" />
+                </svg>
+            </button>
+            <ul class="nav-links">
+                <li class="nav-dropdown">
+                    <a href="https://restartmuze.cz/webinare/">Obsah zdarma</a>
+                    <ul class="nav-dropdown-menu">
+                        <li><a href="https://restartmuze.cz/webinare/">Webináře</a></li>
+                        <li><a href="https://restartmuze.cz/blog/">Blog</a></li>
+                        <li><a href="https://restartmuze.cz/podcasty/">Podcasty</a></li>
+                        <li><a href="https://restartmuze.cz/videa/">Videa</a></li>
+                    </ul>
+                </li>
+                <li class="nav-dropdown">
+                    <a href="https://restartmuze.cz/clenstvi/">Klub KOCH</a>
+                    <ul class="nav-dropdown-menu">
+                        <li><a href="https://restartmuze.cz/clenstvi/">Členství</a></li>
+                        <li><a href="https://restartmuze.cz/clenstvi/koch-zaklad/">Záchrana vztahu</a></li>
+                        <li><a href="https://restartmuze.cz/kurzy/">Kurzy</a></li>
+                    </ul>
+                </li>
+                <li class="nav-active"><a href="https://restartmuze.cz/knihy/restart-muze/">Kniha</a></li>
+                <li class="nav-dropdown">
+                    <a href="https://restartmuze.cz/akce/">Akce</a>
+                    <ul class="nav-dropdown-menu">
+                        <li><a href="https://restartmuze.cz/akce/">Přehled akcí</a></li>
+                        <li><a href="https://restartmuze.cz/kochference/">KOCHference</a></li>
+                        <li><a href="https://restartmuze.cz/akce/chlapske-vikendy/">Chlapské víkendy</a></li>
+                    </ul>
+                </li>
+                <li class="nav-dropdown">
+                    <a href="https://restartmuze.cz/nase-vize/">O nás</a>
+                    <ul class="nav-dropdown-menu">
+                        <li><a href="https://restartmuze.cz/nase-vize/">Naše vize</a></li>
+                        <li><a href="https://restartmuze.cz/reference/">Reference</a></li>
+                        <li><a href="https://restartmuze.cz/nas-tym/">Náš tým</a></li>
+                        <li><a href="https://restartmuze.cz/kontakt/">Kontakt</a></li>
+                    </ul>
+                </li>
+                <li class="nav-cta"><a href="https://komunita.restartmuze.cz/login/" target="_blank" rel="noopener">Přihlášení</a></li>
+                <li><a href="#objednavka" class="cta-btn" style="padding: 0.5rem 1.25rem; font-size: 0.8rem;">Koupit knihu</a></li>
+                <li><a href="https://www.facebook.com/restartmuze" target="_blank" rel="noopener" aria-label="Facebook" style="padding: 0.5rem 0.5rem; display:flex; align-items:center;"><svg viewBox="0 0 320 512" width="18" height="18" fill="currentColor"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg></a></li>
+            </ul>
+        </div>
+    </nav>
+
     <!-- SVG Icon Sprite -->
     <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
         <symbol id="icon-trophy" viewBox="0 0 576 512">
@@ -1719,13 +2104,13 @@
                         <div class="hero-left">
                             <h1>Kniha <span class="underline-brush">Restart muže</span></h1>
                             <p
-                                style="font-family: 'Montserrat', 'Montserrat Fallback', sans-serif; font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 2rem;">
+                                style="font-family: 'Montserrat', 'Montserrat Fallback', sans-serif; font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #ffffff; margin-bottom: 2rem;">
                                 Mužem se rodíš, chlapem se stáváš.
                             </p>
                             <p class="subtitle">Kniha <strong>Restart muže</strong> je silný
                                 průvodce pro chlapy, kteří už nechtějí jen přežívat. Je to kniha pro muže o&nbsp;osobním
                                 rozvoji,
-                                vztazích a&nbsp;síle.<br><br>Sláva Černý a&nbsp;Milan Studnička ti ukážou, jak po krizi
+                                vztazích a&nbsp;síle.<br><br>Sláva Černý a&nbsp;Milan Studnička Ti ukážou, jak po krizi
                                 vztahu
                                 znovu najít
                                 směr, klid a&nbsp;odvahu stát pevně.</p>
@@ -1740,10 +2125,16 @@
                                             <use href="#icon-truck" />
                                         </svg> Rychlé doručení</span>
                                 </div>
+                                <div class="ship-notice js-holiday-notice" role="status">
+                                    <svg class="icon">
+                                        <use href="#icon-calendar" />
+                                    </svg>
+                                    <span>Objednávky přijímáme běžně dál. Kvůli čerpání dovolených knihu&nbsp;<strong>zasíláme opět od 4.&nbsp;8.</strong> Děkujeme za&nbsp;pochopení.</span>
+                                </div>
                             </div>
                         </div>
                         <div class="hero-right">
-                            <img src="img/kniha-mockup-bestseller.jpg"
+                            <img src="img/Kniha_Restart_muze_15000_ks.webp"
                                 alt="Kniha Restart muže – obálka bestselleru s více než 18 000 prodanými výtisky"
                                 width="464" height="640" fetchpriority="high">
                         </div>
@@ -1760,7 +2151,7 @@
                             <svg class="icon">
                                 <use href="#icon-users" />
                             </svg>
-                            <span>500+ chlapů měsíčně si knihu koupí</span>
+                            <span>prodáno více než 18&nbsp;000 ks</span>
                         </div>
                         <div class="proof-item">
                             <svg class="icon">
@@ -1772,7 +2163,7 @@
                             <svg class="icon">
                                 <use href="#icon-list-ol" />
                             </svg>
-                            <span>10 kapitol pro tvůj restart</span>
+                            <span>10 kapitol pro Tvůj restart</span>
                         </div>
                     </div>
                 </div>
@@ -1859,7 +2250,7 @@
                         <div class="for-whom-col positive">
                             <h3><svg class="icon">
                                     <use href="#icon-check-circle" />
-                                </svg> Kniha je pro tebe, pokud:</h3>
+                                </svg> Kniha je pro Tebe, pokud:</h3>
                             <ul>
                                 <li><svg class="icon">
                                         <use href="#icon-check" />
@@ -1884,7 +2275,7 @@
                         <div class="for-whom-col negative">
                             <h3><svg class="icon">
                                     <use href="#icon-times-circle" />
-                                </svg> Kniha NENÍ pro tebe, pokud:</h3>
+                                </svg> Kniha NENÍ pro Tebe, pokud:</h3>
                             <ul>
                                 <li><svg class="icon">
                                         <use href="#icon-times" />
@@ -1895,10 +2286,10 @@
                                     </svg> Nechceš na sobě pracovat a&nbsp;měnit své vzorce</li>
                                 <li><svg class="icon">
                                         <use href="#icon-times" />
-                                    </svg> Čekáš, že se vše vyřeší samo bez tvého přičinění</li>
+                                    </svg> Čekáš, že se vše vyřeší samo bez Tvého přičinění</li>
                                 <li><svg class="icon">
                                         <use href="#icon-times" />
-                                    </svg> Jsi přesvědčený, že děláš vše správně a&nbsp;nikdo ti
+                                    </svg> Jsi přesvědčený, že děláš vše správně a&nbsp;nikdo Ti
                                     nemusí
                                     radit
                                 </li>
@@ -1941,7 +2332,7 @@
                         <div class="learn-item">
                             <div class="learn-title">Co má muž v životě dodržovat, aby mu to fungovalo?</div>
                             <div class="learn-content">
-                                <p>Objev, na co se zaměřit, abys byl v&nbsp;pohodě nejen ty, ale i&nbsp;celá rodina. Zde
+                                <p>Objev, na co se zaměřit, abys byl v&nbsp;pohodě nejen Ty, ale i&nbsp;celá rodina. Zde
                                     je velmi
                                     jasně a
                                     stručně popsáno, na co se konkrétně ve svém životě zaměřit. <span
@@ -1951,7 +2342,7 @@
                         <div class="learn-item">
                             <div class="learn-title">Jak vybudovat zdravé mužské sebevědomí?</div>
                             <div class="learn-content">
-                                <p>Není to zas taková věda, jak se zdá. Pochopení této strategie navždy změní tvoje
+                                <p>Není to zas taková věda, jak se zdá. Pochopení této strategie navždy změní Tvoje
                                     vnímání sebe
                                     sama. Jakmile muž nevybuduje svoje sebevědomí, prakticky nic se mu v&nbsp;životě
                                     nebude
@@ -1966,7 +2357,7 @@
                             <div class="learn-content">
                                 <p>Zjisti, čemu většina mužů odmítá čelit a&nbsp;stále tak opakuje nefunknční vzorce.
                                     Tento
-                                    mechanismus tě osvobodní od okovů nefunkčních vzorců a&nbsp;postupně tak získáš
+                                    mechanismus Tě osvobodí od okovů nefunkčních vzorců a&nbsp;postupně tak získáš
                                     životní
                                     nadhled a
                                     radost. <span style="color: var(--text-muted);">(Strana 57)</span></p>
@@ -1981,7 +2372,7 @@
                         </h3>
                         <p
                             style="font-size: 1.1rem; margin-bottom: 2rem; color: var(--text-light); max-width: 600px; margin-left: auto; margin-right: auto;">
-                            Uvnitř knihy Restart muže poodhalujeme jednoduchý recept, který ti to umožní pochopit
+                            Uvnitř knihy Restart muže poodhalujeme jednoduchý recept, který Ti to umožní pochopit
                             a začít žít naplno.</p>
                         <a href="#objednavka" class="cta-btn">Chci si knihu přečíst</a>
                         <div class="trust-row">
@@ -2111,54 +2502,29 @@
                                     <use href="#icon-chevron-down" />
                                 </svg></summary>
                             <div class="faq-content">
-                                <p>V&nbsp;pořádku. Ale opět upozorňujeme, že je to kniha pro muže. Pro
-                                    muže,
-                                    kteří to se svým
-                                    seberozvojem myslí vážně. Takový muž si tu knihu koupí aktivně sám a bude mu
-                                    přínosem.
-                                    Pokud hodláte svému muži tuto knihu dát darem, nezřídka se stane, že ji
-                                        odmítne.
-                                    Máme s&nbsp;tím bohaté zkušenosti. Chlap zkrátka musí být tomuto typu seberozvoje
-                                    přístupný. Ruku na srdce milé ženy – pokud je váš muž přesvědčen o&nbsp;tom,
-                                        že vše
-                                        dělá dobře a
-                                        nikdo mu nemusí radit, tak mu tuhle knihu nekupujte. Nedá to. Není na to
-                                        připravený.
-                                    Ale čest výjimkám.</p>
-
-                                <p>Znovu opakujeme – máme s&nbsp;tím TAK bohaté zkušenosti, že by to vydalo na další
-                                    knihu.
-                                    Proto
-                                    ještě jednou upozorňujeme: NEkupujte tuhle knihu chlapovi, který nestojí o
-                                        jakýkoliv seberozvoj. Pokud i přes naše varování knihu koupíte, je to
-                                    jen na vás. Na vaši
-                                    zodpovědnost.
-                                    Na pozdější reklamace nebude brán zřetel. Díky za pochopení. </p>
+                                <p>To je naprosto v&nbsp;pořádku. Jen Vás chceme upozornit na jednu důležitou věc. Tato kniha byla napsána pro muže, kteří sami cítí potřebu na sobě pracovat a&nbsp;aktivně hledají cestu k&nbsp;osobnímu růstu. Právě takovým mužům dokáže přinést největší hodnotu.</p>
+                                <p>Z&nbsp;našich dlouholetých zkušeností víme, že pokud žena koupí podobnou knihu partnerovi s&nbsp;nadějí, že ho inspiruje ke změně, nemusí být výsledek takový, jaký očekává. Muž často vnímá takový dárek jako kritiku nebo signál, že není dost dobrý. A&nbsp;pak se může stát, že knihu ani neotevře.</p>
+                                <p>Proto si před nákupem zkuste odpovědět na jednoduchou otázku: <span class="t-orange">Je Váš muž otevřený seberozvoji?</span></p>
+                                <ul>
+                                    <li>Zajímá se o&nbsp;sebevzdělávání, vztahy, osobní růst nebo práci na sobě? Pokud ano, může pro něj být tato kniha skvělým dárkem.</li>
+                                    <li>Pokud je naopak přesvědčený, že žádné rady nepotřebuje a&nbsp;podobným tématům se vyhýbá, je pravděpodobné, že pro něj tato kniha v&nbsp;tuto chvíli nebude přínosem.</li>
+                                </ul>
+                                <p>Samozřejmě existují i&nbsp;příjemná překvapení a&nbsp;výjimky. Jen chceme, abyste nakupovala s&nbsp;realistickým očekáváním. Kniha dokáže změnit mnoho, ale pouze tehdy, když je člověk připravený její obsah přijmout.</p>
+                                <p>Děkujeme za pochopení a&nbsp;za to, že chcete svému muži dopřát něco, co mu může pomoci na jeho cestě.</p>
                             </div>
                         </details>
 
                         <details class="faq-item">
-                            <summary class="faq-title">Jak partnera upozornit na tuto knihu? <svg class="icon">
+                            <summary class="faq-title">Jak partnera na knihu upozornit? <svg class="icon">
                                     <use href="#icon-chevron-down" />
                                 </svg></summary>
                             <div class="faq-content">
-                                <p>Muž, pokud dostane tuto knihu darem, ji nemusí přijmout. Je to pro něj signál, že
-                                    „dělá něco blbě” a to nemusí jeho ego unést. Proto vždy radíme, abyste holky svého
-                                    muže
-                                    vždy jen
-                                        upozornily, že je tu tahle kniha.
-                                </p>
-
-                                <p>Například slovy: <span class=”t-orange”>„Miláčku, mrkni se na tuhle knihu. Myslím,
-                                        že by nám to
-                                        mohlo pomoct.”</span>. A&nbsp;to je
-                                    vše. Pokud ho to zaujme, sám si knihu koupí. Potom to pro něj i pro vás bude mít
-                                    smysl. Ale
-                                        opravdu až potom, co ON SÁM se rozhodne, že si tu knihu přečte. Pak je
-                                    šance, že
-                                    jeho rozum
-                                    může přebít jeho ego.
-                                </p>
+                                <p>Pokud chcete, aby Váš partner knihu skutečně přijal, nesnažte se ho přesvědčovat. Ani zachraňovat. Ani měnit. Lidé se totiž nemění proto, že jim někdo řekne, že by měli. Mění se tehdy, když sami ucítí, že jsou na změnu připraveni.</p>
+                                <p>Proto doporučujeme jednoduchý a&nbsp;respektující přístup. Můžete mu například říct:</p>
+                                <p><span class="t-orange">„Narazila jsem na tuhle knihu a&nbsp;některé myšlenky mi přišly zajímavé. Možná by tě mohla oslovit. Mrkni na ni a&nbsp;uvidíš sám."</span></p>
+                                <p>A&nbsp;tím to končí. Bez vysvětlování. Bez přesvědčování. Bez tlaku.</p>
+                                <p>Ve zdravém vztahu totiž není úkolem jednoho partnera druhého napravovat. Můžeme se vzájemně inspirovat, podporovat a&nbsp;ukazovat si nové možnosti. Rozhodnutí, zda po nich vykročíme, však musí udělat každý sám za sebe.</p>
+                                <p>Právě proto bývá mnohem účinnější, když si muž ke knize najde cestu z&nbsp;vlastního rozhodnutí. V&nbsp;takovou chvíli ji nečte proto, že „musí”, ale proto, že sám chce něco pochopit, změnit nebo posunout. A&nbsp;to je okamžik, kdy může kniha skutečně otevřít dveře k&nbsp;novým pohledům, hlubšímu porozumění a&nbsp;lepšímu vztahu – nejen k&nbsp;partnerce, ale i&nbsp;k&nbsp;sobě samému.</p>
                             </div>
                         </details>
 
@@ -2168,17 +2534,7 @@
                                 </svg>
                             </summary>
                             <div class="faq-content">
-                                <p>Ne. Všechny naše kurzy a knihy jsou určeny pouze pro
-                                        muže.
-                                    Milé ženy,
-                                    prosím, nekupujte to jako dárek. Ten chlap opravdu musí chtít sám. Jinak to nemá
-                                    smysl.
-                                </p>
-
-                                <p>Na pozdější
-                                    reklamace opravdu nebude brán zřetel a
-                                    peníze v takovýchto případech nevracíme.
-                                </p>
+                                <p>Ne. Minikurz je určený pouze pro muže, kteří se sami chtějí rozvíjet. Nedoporučujeme ho kupovat jako dárek.</p>
                             </div>
                         </details>
 
@@ -2230,8 +2586,7 @@
                             <div class="faq-content">
                                 <p>Odesíláme primárně do Česka a na Slovensko. Pokud chceš odeslat knihu jinam, napiš
                                     prosím
-                                    na <a href="mailto:podpora@restartmuze.cz"
-                                        class="t-orange">podpora@restartmuze.cz</a>
+                                    na <a href="/cdn-cgi/l/email-protection#1b6b747f6b74697a5b697e686f7a696f766e617e357861" class="t-orange"><span class="__cf_email__" data-cfemail="53233c37233c213213213620273221273e2629367d3029">[email&#160;protected]</span></a>
                                 </p>
                             </div>
                         </details>
@@ -2244,7 +2599,7 @@
                                 <p>Na 1 objednávku lze zakoupit maximálně 1 ks knihy. Pokud si přeješ
                                     objednat více kusů,
                                     napiš na
-                                    <a href="mailto:podpora@restartmuze.cz" class="t-orange">podpora@restartmuze.cz</a>
+                                    <a href="/cdn-cgi/l/email-protection#40302f24302f322100322533342132342d353a256e233a" class="t-orange"><span class="__cf_email__" data-cfemail="71011e15011e031031031402051003051c040b145f120b">[email&#160;protected]</span></a>
                                 </p>
                             </div>
                         </details>
@@ -2257,19 +2612,19 @@
                                 <p>Kupující má právo odstoupit od nákupu do 14 dnů od převzetí knihy bez udání důvodu.
                                 </p>
                                 <p><strong>Postup:</strong> Pro vrácení musí být kniha
-                                        nepoškozená
-                                        a neopotřebovaná. Kontaktujte nás
-                                        e-mailem na <a href="mailto:podpora@restartmuze.cz"
-                                        class="t-orange">podpora@restartmuze.cz</a> s žádostí o vrácení, kde uvedete své údaje a
-                                        číslo objednávky.</p>
+                                    nepoškozená
+                                    a neopotřebovaná. Kontaktujte nás
+                                    e-mailem na <a href="/cdn-cgi/l/email-protection#4c3c23283c233e2d0c3e293f382d3e3821393629622f36" class="t-orange"><span class="__cf_email__" data-cfemail="e1918e85918e9380a1938492958093958c949b84cf829b">[email&#160;protected]</span></a> s žádostí o vrácení, kde uvedete své
+                                    údaje a
+                                    číslo objednávky.</p>
                                 <p><strong>Náklady na vrácení:</strong> Kupující
-                                        hradí
-                                        náklady na
-                                        zpětné doručení.</p>
+                                    hradí
+                                    náklady na
+                                    zpětné doručení.</p>
                                 <p><strong>Vrácení peněz:</strong> Peníze budou
-                                        vráceny do 14
-                                        dnů
-                                        od přijetí vráceného zboží.
+                                    vráceny do 14
+                                    dnů
+                                    od přijetí vráceného zboží.
                                 </p>
                             </div>
                         </details>
@@ -2312,7 +2667,7 @@
                                 <use href="#icon-envelope-open-text" />
                             </svg>
                             <strong>Okamžitý přístup</strong>
-                            <span>Přijde ti do mailu</span>
+                            <span>Přijde Ti do mailu</span>
                         </div>
                     </div>
 
@@ -2360,11 +2715,18 @@
                 <div class="container">
                     <h2 class="center">Knihu objednávej zde:</h2>
 
+                    <div class="ship-notice js-holiday-notice" role="status" style="margin: 0 auto 2rem;">
+                        <svg class="icon">
+                            <use href="#icon-calendar" />
+                        </svg>
+                        <span>Objednávky přijímáme běžně dál. Kvůli čerpání dovolených knihu&nbsp;<strong>zasíláme opět od 4.&nbsp;8.</strong> Děkujeme za&nbsp;pochopení.</span>
+                    </div>
+
                     <div id="fapiFormWrap">
                         <div id="fapiFormContainer"></div>
                     </div>
-                    <noscript><a href="https://form.fapi.cz/?id=8b8a0803-1c59-429d-966d-c0c21b3de0f3"
-                            target="_blank" rel="noopener noreferrer">Objednávkový formulář</a></noscript>
+                    <noscript><a href="https://form.fapi.cz/?id=04dc7063-1ec2-47d7-973d-7f3c731f91f8" target="_blank"
+                            rel="noopener noreferrer">Objednávkový formulář</a></noscript>
 
                     <div class="trust-row" style="margin-top: 2rem;">
                         <span class="trust-item"><svg class="icon">
@@ -2401,13 +2763,15 @@
                             legislativy.</p>
 
                         <ul class="footer-legal-links">
-                            <li><a href="#"><svg class="icon">
+                            <li><a href="https://restartmuze.cz/obchodni-podminky/" target="_blank" rel="noopener"><svg
+                                        class="icon">
                                         <use href="#icon-file-alt" />
                                     </svg> Obchodní podmínky</a></li>
-                            <li><a href="#"><svg class="icon">
+                            <li><a href="https://restartmuze.cz/cookies/" target="_blank" rel="noopener"><svg
+                                        class="icon">
                                         <use href="#icon-cookie-bite" />
                                     </svg> Cookies</a></li>
-                            <li><a href="#"><svg class="icon">
+                            <li><a href="https://restartmuze.cz/gdpr/" target="_blank" rel="noopener"><svg class="icon">
                                         <use href="#icon-user-shield" />
                                     </svg> GDPR</a></li>
                         </ul>
@@ -2431,9 +2795,9 @@
                     <!-- Sloupec 3: Kontaktní údaje -->
                     <div class="footer-col">
                         <span class="footer-heading">Kontaktní údaje</span>
-                        <a href="mailto:podpora@restartmuze.cz" class="footer-contact-email"><svg class="icon">
+                        <a href="/cdn-cgi/l/email-protection#04746b60746b7665447661777065767069717e612a677e" class="footer-contact-email"><svg class="icon">
                                 <use href="#icon-envelope" />
-                            </svg> podpora@restartmuze.cz</a>
+                            </svg> <span class="__cf_email__" data-cfemail="97e7f8f3e7f8e5f6d7e5f2e4e3f6e5e3fae2edf2b9f4ed">[email&#160;protected]</span></a>
                         <div class="footer-company-details">
                             <strong style="color: var(--text-light);">Restart muže s.r.o.</strong><br>
                             Společnost zapsaná v&nbsp;obchodním rejstříku vedeném u&nbsp;Krajského soudu v&nbsp;Plzni,
@@ -2441,6 +2805,10 @@
                             IČO: 10947116<br>
                             DIČ: CZ10947116<br><br>
                             Sídlo: Kyjevská 1937/64, Východní Předměstí, 326&nbsp;00 Plzeň
+                        </div>
+                        <div class="footer-logo" style="margin-top: 1.5rem;">
+                            <img src="https://restartmuze.cz/wp-content/uploads/2024/11/restartmuze-logo-cmyknew-461x128-1.png"
+                                alt="Restart Muže" loading="lazy" style="max-width: 160px; height: auto;">
                         </div>
                     </div>
 
@@ -2451,27 +2819,22 @@
         <!-- Copyright -->
         <div class="footer-bottom">
             <div class="footer-container">
-                <p>&copy; 2025 Restart muže s.r.o.</p>
+                <p>&copy; 2026 Restart muže s.r.o. Všechna práva vyhrazena.</p>
             </div>
         </div>
     </footer>
 
     <!-- LIGHTBOX -->
     <div class="lightbox-overlay" id="lightbox">
-        <button class="lightbox-arrow lightbox-arrow--prev" id="lightboxPrev" aria-label="Předchozí ukázka"><svg class="icon" style="width:1.5rem;height:1.5rem;"><use href="#icon-chevron-left"/></svg></button>
+        <button class="lightbox-arrow lightbox-arrow--prev" id="lightboxPrev" aria-label="Předchozí ukázka"><svg
+                class="icon" style="width:1.5rem;height:1.5rem;">
+                <use href="#icon-chevron-left" />
+            </svg></button>
         <img src="" alt="Zvětšená ukázka z knihy" id="lightboxImg">
-        <button class="lightbox-arrow lightbox-arrow--next" id="lightboxNext" aria-label="Další ukázka"><svg class="icon" style="width:1.5rem;height:1.5rem;"><use href="#icon-chevron-right"/></svg></button>
-    </div>
-
-    <!-- SOCIAL PROOF POPUP -->
-    <div class="proof-popup" id="proofPopup">
-        <div class="proof-popup-icon"><svg class="icon">
-                <use href="#icon-check" />
-            </svg></div>
-        <div class="proof-popup-text">
-            <strong id="proofText">Právě koupil: Kniha Restart muže</strong>
-            <span id="proofTime">před 1 hodinou</span>
-        </div>
+        <button class="lightbox-arrow lightbox-arrow--next" id="lightboxNext" aria-label="Další ukázka"><svg
+                class="icon" style="width:1.5rem;height:1.5rem;">
+                <use href="#icon-chevron-right" />
+            </svg></button>
     </div>
 
     <!-- STICKY CTA -->
@@ -2492,7 +2855,7 @@
         </div>
     </div>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Lightbox for book previews
         (function () {
             const overlay = document.getElementById('lightbox');
@@ -2545,37 +2908,67 @@
 
 
 
-        // Sticky CTA Bar - show after scrolling past hero (using IntersectionObserver to avoid forced reflows)
+        // Sticky CTA – production logic (iOS-safe)
         (function () {
-            const hero = document.querySelector('.hero');
-            const stickyBar = document.getElementById('stickyCta');
-            const orderSection = document.getElementById('objednavka');
-            if (!hero || !stickyBar) return;
+            var stickyCta = document.getElementById('stickyCta');
+            var heroSection = document.querySelector('.hero');
+            var pricingSection = document.getElementById('objednavka');
+            var scrollTopBtn = document.getElementById('scroll-to-top');
+            var provelyActivated = false;
 
-            let heroVisible = true;
-            let orderVisible = false;
+            if (!stickyCta || !heroSection || !pricingSection) return;
 
-            const heroObserver = new IntersectionObserver(function (entries) {
-                heroVisible = entries[0].isIntersecting;
-                updateSticky();
-            }, { threshold: 0, rootMargin: '-100px 0px 0px 0px' });
-
-            heroObserver.observe(hero);
-
-            if (orderSection) {
-                const orderObserver = new IntersectionObserver(function (entries) {
-                    orderVisible = entries[0].isIntersecting;
-                    updateSticky();
-                }, { threshold: 0 });
-                orderObserver.observe(orderSection);
+            function activateProvely() {
+                if (provelyActivated) return;
+                provelyActivated = true;
+                document.body.classList.add('show-provely');
             }
 
             function updateSticky() {
-                if (!heroVisible && !orderVisible) {
-                    stickyBar.classList.add('active');
+                var scrollY = window.pageYOffset || window.scrollY || 0;
+                var heroEnd = heroSection.offsetTop + heroSection.offsetHeight;
+                var pricingTop = pricingSection.getBoundingClientRect().top;
+                var viewportHeight = window.innerHeight;
+
+                var activationOffset = Math.max(24, Math.round(viewportHeight * 0.05));
+                var pastHero = (scrollY + activationOffset) >= heroEnd;
+                var pricingVisible = pricingTop < viewportHeight;
+                var showFloatingCta = pastHero && !pricingVisible;
+
+                if (showFloatingCta) {
+                    stickyCta.classList.add('active');
+                    document.body.classList.add('sticky-cta-active');
                 } else {
-                    stickyBar.classList.remove('active');
+                    stickyCta.classList.remove('active');
+                    document.body.classList.remove('sticky-cta-active');
                 }
+
+                if (pastHero) {
+                    activateProvely();
+                }
+
+                if (scrollTopBtn) {
+                    if (scrollY > 400) scrollTopBtn.classList.add('visible');
+                    else scrollTopBtn.classList.remove('visible');
+
+                    if (stickyCta.classList.contains('active') && window.innerWidth <= 768) {
+                        scrollTopBtn.classList.add('above-sticky');
+                    } else {
+                        scrollTopBtn.classList.remove('above-sticky');
+                    }
+                }
+            }
+
+            window.addEventListener('scroll', updateSticky, { passive: true });
+            window.addEventListener('resize', updateSticky, { passive: true });
+            window.addEventListener('orientationchange', updateSticky, { passive: true });
+            window.addEventListener('load', updateSticky);
+            updateSticky();
+
+            if (scrollTopBtn) {
+                scrollTopBtn.addEventListener('click', function () {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
             }
         })();
 
@@ -2601,6 +2994,15 @@
             requestAnimationFrame(step);
         }
 
+        // ── KONEC LETNÍ AKCE ──
+        // Do 25. 8. 23:59 se mountuje letní formulář (kniha + one-click upsell na
+        // 14 dní v klubu za 97 Kč). Po tomhle čase se sám přepne zpátky na původní
+        // knižní formulář z indexakt.html, takže letní balíček už koupit nejde.
+        var SALES_END = new Date('2026-08-25T23:59:59+02:00');
+        var FAPI_FORM_LETNI = 'a7354745-46e8-4ec1-9724-8c1c07a103e1';
+        var FAPI_FORM_PUVODNI = '04dc7063-1ec2-47d7-973d-7f3c731f91f8';
+        var FAPI_FORM_ID = (new Date() > SALES_END) ? FAPI_FORM_PUVODNI : FAPI_FORM_LETNI;
+
         // Lazy-load FAPI form
         (function () {
             var container = document.getElementById('fapiFormContainer');
@@ -2612,7 +3014,7 @@
                 if (loaded) return;
                 loaded = true;
                 var s = document.createElement('script');
-                s.src = 'https://form.fapi.cz/script.php?id=8b8a0803-1c59-429d-966d-c0c21b3de0f3';
+                s.src = 'https://form.fapi.cz/script.php?id=' + FAPI_FORM_ID;
                 s.onload = function () {
                     formReady = true;
                     hideSpinner();
@@ -2651,6 +3053,7 @@
                 if (entries[0].isIntersecting) { loadForm(); observer.disconnect(); }
             }, { rootMargin: '2000px' });
             observer.observe(container);
+            window.addEventListener('load', loadForm, { once: true });
 
             // Preload on hover / touchstart over CTA buttons
             var ctaLinks = document.querySelectorAll('a[href="#objednavka"]');
@@ -2671,42 +3074,1539 @@
             });
         })();
 
-        // Social proof popup - rotating notifications
+        // Czech typography NBSP
+        (function () { var N = '\u00A0'; var ex = 'script,style,textarea,code,pre,noscript'; var w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, { acceptNode: function (n) { if (!n.nodeValue || !n.nodeValue.trim()) return NodeFilter.FILTER_REJECT; var p = n.parentElement; if (!p) return NodeFilter.FILTER_REJECT; if (p.closest(ex)) return NodeFilter.FILTER_REJECT; return NodeFilter.FILTER_ACCEPT; } }); var nodes = []; var c; while ((c = w.nextNode())) nodes.push(c); nodes.forEach(function (n) { var t = n.nodeValue; t = t.replace(/(^|[\s(\[\u00A0\u201E\u201C\u201D\u2018\u2019])([AaIiOoUuVvSsZzKk])\s+/g, '$1$2' + N); t = t.replace(/(\d)\s+(?=\d)/g, '$1' + N); n.nodeValue = t; }); })();
+
+        // Mobile nav dropdown toggles
+        document.querySelectorAll('.nav-dropdown > a').forEach(function (link) {
+            link.addEventListener('click', function (e) {
+                if (window.innerWidth <= 900) {
+                    e.preventDefault();
+                    link.parentElement.classList.toggle('open');
+                }
+            });
+        });
+
+        // Zavřít menu na mobilu po kliknutí na skutečný odkaz (ne na rozbalovací položku)
+        document.querySelectorAll('.nav-links a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                if (window.innerWidth <= 900) {
+                    // Klik na hlavní položku dropdownu jen rozbaluje — menu nezavírat
+                    if (link.parentElement.classList.contains('nav-dropdown')) return;
+                    var navLinks = document.querySelector('.nav-links');
+                    if (navLinks) navLinks.classList.remove('open');
+                }
+            });
+        });
+
+        // FAQ accordion
+        document.querySelectorAll('.objection-question').forEach(function (btn) { btn.addEventListener('click', function () { var item = btn.parentElement; var wasOpen = item.classList.contains('open'); document.querySelectorAll('.objection').forEach(function (o) { o.classList.remove('open'); }); if (!wasOpen) item.classList.add('open'); }); });
+    </script>
+
+    <!-- PROVELY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js" defer></script>
+    <script>
         (function () {
-            const popup = document.getElementById('proofPopup');
-            const textEl = document.getElementById('proofText');
-            const timeEl = document.getElementById('proofTime');
-            if (!popup) return;
-
-            const notifications = [
-                { text: 'Právě koupil: Kniha Restart muže', time: 'před 1 hodinou' },
-                { text: 'Právě koupil: Kniha Restart muže + minikurz', time: 'před 2 hodinami' },
-                { text: 'Právě koupil: Kniha Restart muže', time: 'před 34 minutami' },
-                { text: 'Právě koupil: Kniha Restart muže', time: 'před 3 hodinami' },
-                { text: 'Právě koupil: Kniha Restart muže + minikurz', time: 'před 47 minutami' }
-            ];
-
-            let index = 0;
-
-            function showPopup() {
-                const n = notifications[index];
-                textEl.textContent = n.text;
-                timeEl.textContent = n.time;
-                popup.classList.add('visible');
-
-                setTimeout(function () {
-                    popup.classList.remove('visible');
-                    index = (index + 1) % notifications.length;
-                }, 5000);
-            }
-
-            // First show after 8 seconds, then every 30 seconds
-            setTimeout(function () {
-                showPopup();
-                setInterval(showPopup, 30000);
-            }, 8000);
+            var M = window.MioPlugin = window.MioPlugin || {};
+            var B = M.Bubbles = M.Bubbles || {};
+            B.opts = { "ep": "https://restartmuze.cz/wp-json/mioprovely/v1", "d": 4000, "s": 7000, "k": "cde57dd5d19033149656abe1634b6880" };
         })();
     </script>
+    <script src="https://restartmuze.cz/wp-content/plugins/mp-provely/assets/script.js?ver=1.4" defer></script>
+
+    <!-- ============================================
+         COOKIE CONSENT
+         ============================================ -->
+    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}</script>
+    <script>
+        function applyConsent() {
+            gtag('consent', 'update', {
+                ad_storage: 'granted',
+                analytics_storage: 'granted',
+                ad_user_data: 'granted',
+                ad_personalization: 'granted'
+            });
+        }
+
+        window.addEventListener('load', function () {
+            var cookieconsent = initCookieConsent();
+            var domain = "restartmuze.cz";
+
+            cookieconsent.run({
+                autorun: true,
+                revision: 2,
+                current_lang: document.documentElement.getAttribute('lang'),
+                autoclear_cookies: true,
+                page_scripts: true,
+
+                onAccept: function (cookie) {
+                    applyConsent();
+                    dataLayer.push({ 'event': 'cc_update', 'cookie': JSON.stringify(cookie) });
+                    cookieconsent.hide();
+                },
+
+                onChange: function (cookie, changed_preferences) {
+                    applyConsent();
+                    dataLayer.push({ 'event': 'cc_update', 'cookie': JSON.stringify(cookie) });
+                },
+
+                languages: {
+                    cs: {
+                        consent_modal: {
+                            title: 'Vaše soukromí je pro nás důležité',
+                            description: 'Soubory cookies jsou velmi malé textové soubory, které se ukládají do vašeho zařízení při navštěvování webových stránek. Soubory Cookies používáme pro různé účely a pro vylepšení vašeho online zážitku na webové stránce (například pro zapamatování přihlašovacích údajů k vašemu účtu.<br><br>Při procházení našich webových stránek můžete změnit své předvolby a odmítnout určité typy cookies, které se mají ukládat do vašeho počítače. <br><br>Svůj souhlas můžete kdykoliv odvolat, příp. nastavit souhlas jen s některými z nich, či <a id="nastavitnutne" type="button" class="cc-link">přijmout jen nezbytné</a>.',
+                            primary_btn: {
+                                text: 'Přijmout všechny',
+                                role: 'accept_all'
+                            },
+                            secondary_btn: {
+                                text: 'Upravit nastavení',
+                                role: 'settings'
+                            }
+                        },
+                        settings_modal: {
+                            title: 'Nastavení cookies',
+                            save_settings_btn: 'Uložit nastavení',
+                            accept_all_btn: 'Přijmout vše',
+                            blocks: [
+                                {
+                                    title: 'Použité cookie',
+                                    description: 'Na webu používám cookies. Můžete si vybrat, které cookies povolíte.'
+                                }, {
+                                    title: 'Nutné cookies',
+                                    description: 'Tyto soubory cookies jsou nezbytné k tomu, abychom vám mohli poskytovat služby dostupné prostřednictvím našeho webu a abychom vám umožnili používat určité funkce našeho webu.<br><br>Bez těchto cookies vám nemůžeme na naší webové stránce poskytovat určité služby.',
+                                    toggle: {
+                                        value: 'necessary',
+                                        enabled: true,
+                                        readonly: true
+                                    },
+                                }, {
+                                    title: 'Analytické cookies',
+                                    description: 'Tyto soubory cookies se používají ke shromažďování informací pro analýzu provozu na našich webových stránkách a sledování používání našich webových stránek uživateli.<br><br>Tyto soubory cookies mohou například sledovat věci jako je doba kterou na webu trávíte, nebo stránky, které navštěvujete, což nám pomáhá pochopit, jak pro vás můžeme vylepšit náš web.<br><br>Informace shromážděné prostřednictvím těchto sledovacích a výkonnostních cookies neidentifikují žádné osoby.',
+                                    toggle: {
+                                        value: 'analytics',
+                                        enabled: false,
+                                        readonly: false
+                                    },
+                                }, {
+                                    title: 'Marketingové cookies',
+                                    description: 'Tyto soubory cookie se používají k zobrazování reklamy, která vás pravděpodobně bude zajímat na základě vašich zvyků při procházení.<br><br>Tyto soubory cookie, jsou požadovány námi/nebo poskytovateli reklam, mohou kombinovat informace shromážděné z našich webových stránek s dalšími informacemi, které nezávisle shromáždily z jiných webových stránek, týkající se činností vašeho internetového prohlížeče v rámci jejich reklamní sítě webových stránek.<br><br>Pokud se rozhodnete tyto soubory cookies pro cílení nebo reklamu odstranit nebo deaktivovat, budou se vám reklamy stále zobrazovat, ale nemusí pro vás být nadále personalizované a relevantní.',
+                                    toggle: {
+                                        value: 'ads',
+                                        enabled: false,
+                                        readonly: false
+                                    },
+                                },
+                                {
+                                    title: 'Více informací',
+                                    description: 'V případě jakýchkoliv dotazů ohledně našich zásad týkajících se souborů cookie a vašich možností nás prosím kontaktujte.',
+                                }
+                            ]
+                        }
+                    }
+                }
+            });
+
+            var nastavitNutne = document.getElementById("nastavitnutne");
+            if (nastavitNutne) {
+                nastavitNutne.addEventListener('click', function () {
+                    cookieconsent.hide();
+                    cookieconsent.accept([]);
+                });
+            }
+        });
+    </script>
+    <style>
+        .c_darkmode,
+        :root {
+            --cc-btn-secondary-text: var(--cc-text);
+            --cc-toggle-bg-on: var(--cc-btn-primary-bg);
+            --cc-webkit-scrollbar-bg-hover: #9199a0
+        }
+
+        #cm,
+        #s-cnt {
+            width: 100%;
+            position: fixed;
+            visibility: hidden
+        }
+
+        #s-bl .c-bl,
+        #s-bl .c-bl.b-ex:first-child,
+        #s-bl .c-bl:last-child {
+            margin-bottom: .5em
+        }
+
+        #cm,
+        #cs,
+        #s-cnt {
+            position: fixed
+        }
+
+        #c-vln,
+        #s-bl .b-bn,
+        #s-inr,
+        .cc_div.ie .bar #s-bl thead tr {
+            position: relative
+        }
+
+        #cm,
+        #s-cnt,
+        #s-inr {
+            visibility: hidden
+        }
+
+        #cs,
+        #s-bns {
+            bottom: 0;
+            left: 0;
+            right: 0
+        }
+
+        #s-cnt,
+        #s-hdr {
+            display: table;
+            top: 0
+        }
+
+        #s-bns,
+        #s-hdr {
+            height: 4.75em
+        }
+
+        #c-vln,
+        #s-c-bnc,
+        #s-ttl {
+            display: table-cell;
+            vertical-align: middle
+        }
+
+        #c-s-in,
+        #cs,
+        #s-bl,
+        #s-cnt,
+        #s-inr {
+            height: 100%
+        }
+
+        #c-vln,
+        #s-c-bnc,
+        #s-hdr,
+        #s-ttl,
+        .cc_div .b-tg {
+            vertical-align: middle
+        }
+
+        #cm,
+        #s-bl th,
+        #s-cnt .b-bn .b-tl {
+            font-family: inherit
+        }
+
+        #cs-ov,
+        #s-hdr {
+            z-index: 2
+        }
+
+        :root {
+            --cc-bg: #fff;
+            --cc-text: #2d4156;
+            --cc-btn-primary-bg: green;
+            --cc-btn-primary-text: var(--cc-bg);
+            --cc-btn-primary-hover-bg: #1d2e38;
+            --cc-btn-secondary-bg: #eaeff2;
+            --cc-btn-secondary-hover-bg: #f9fff9;
+            --cc-toggle-bg-off: #919ea6;
+            --cc-toggle-bg-readonly: #d5dee2;
+            --cc-toggle-knob-bg: #fff;
+            --cc-toggle-knob-icon-color: #ecf2fa;
+            --cc-block-text: var(--cc-text);
+            --cc-cookie-category-block-bg: #f0f4f7;
+            --cc-cookie-category-block-bg-hover: #e9eff4;
+            --cc-section-border: #f1f3f5;
+            --cc-cookie-table-border: #e9edf2;
+            --cc-overlay-bg: rgba(4, 6, 8, .85);
+            --cc-webkit-scrollbar-bg: #cfd5db
+        }
+
+        .c_darkmode {
+            --cc-bg: #181b1d;
+            --cc-text: #d8e5ea;
+            --cc-btn-primary-bg: #a6c4dd;
+            --cc-btn-primary-text: #000;
+            --cc-btn-primary-hover-bg: #c2dff7;
+            --cc-btn-secondary-bg: #33383c;
+            --cc-btn-secondary-hover-bg: #3e454a;
+            --cc-toggle-bg-off: #667481;
+            --cc-toggle-bg-readonly: #454c54;
+            --cc-toggle-knob-bg: var(--cc-cookie-category-block-bg);
+            --cc-toggle-knob-icon-color: var(--cc-bg);
+            --cc-block-text: #b3bfc5;
+            --cc-cookie-category-block-bg: #23272a;
+            --cc-cookie-category-block-bg-hover: #2b3035;
+            --cc-section-border: #292d31;
+            --cc-cookie-table-border: #2b3035;
+            --cc-webkit-scrollbar-bg: #667481
+        }
+
+        .cc_div *,
+        .cc_div :after,
+        .cc_div :before {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            float: none;
+            font-style: inherit;
+            font-variant: normal;
+            font-weight: inherit;
+            font-family: inherit;
+            line-height: 1.2;
+            font-size: 1em;
+            transition: none;
+            animation: none;
+            margin: 0;
+            padding: 0;
+            text-transform: none;
+            letter-spacing: unset;
+            color: inherit;
+            background: 0 0;
+            border: none;
+            box-shadow: none;
+            text-decoration: none;
+            text-align: left;
+            visibility: unset
+        }
+
+        .cc_div {
+            font-size: 16px;
+            font-weight: 400;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            color: #2d4156;
+            color: var(--cc-text)
+        }
+
+        #c-ttl,
+        #s-bl td:before,
+        #s-ttl,
+        .cc_div .b-tl,
+        .cc_div .c-bn {
+            font-weight: 600
+        }
+
+        #cm,
+        #s-bl .act .b-acc,
+        #s-inr,
+        .cc_div .b-tl,
+        .cc_div .c-bl {
+            border-radius: .35em
+        }
+
+        .cc_div a,
+        .cc_div button,
+        .cc_div input {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none
+        }
+
+        .cc_div a {
+            border-bottom: 1px solid
+        }
+
+        .cc_div a:hover {
+            text-decoration: none;
+            border-color: transparent
+        }
+
+        #cm-ov,
+        #cs-ov,
+        .c--anim #cm,
+        .c--anim #s-cnt,
+        .c--anim #s-inr {
+            transition: visibility .25s linear, opacity .25s, transform .25s !important
+        }
+
+        #s-bl .c-bl,
+        #s-bl tbody tr,
+        #s-cnt .b-bn .b-tl {
+            transition: background-color .25s
+        }
+
+        .c--anim .c-bn {
+            transition: background-color .25s !important
+        }
+
+        .c--anim #cm.bar.slide,
+        .c--anim #cm.bar.slide+#cm-ov,
+        .c--anim .bar.slide #s-inr,
+        .c--anim .bar.slide+#cs-ov {
+            transition: visibility .4s, opacity .4s, transform .4s !important
+        }
+
+        #cm.bar.slide,
+        .cc_div .bar.slide #s-inr {
+            transform: translateX(100%);
+            opacity: 1
+        }
+
+        #cm.bar.top.slide,
+        .cc_div .bar.left.slide #s-inr {
+            transform: translateX(-100%);
+            opacity: 1
+        }
+
+        #cm.slide,
+        .cc_div .slide #s-inr {
+            transform: translateY(1.6em)
+        }
+
+        #cm.top.slide {
+            transform: translateY(-1.6em)
+        }
+
+        #cm.bar.slide {
+            transform: translateY(100%)
+        }
+
+        #cm.bar.top.slide {
+            transform: translateY(-100%)
+        }
+
+        .show--consent .c--anim #cm,
+        .show--consent .c--anim #cm.bar,
+        .show--settings .c--anim #s-inr,
+        .show--settings .c--anim .bar.slide #s-inr {
+            opacity: 1;
+            transform: scale(1);
+            visibility: visible !important
+        }
+
+        .force--consent.show--consent .c--anim #cm.box.middle,
+        .force--consent.show--consent .c--anim #cm.cloud.middle {
+            transform: scale(1) translateY(-50%)
+        }
+
+        .show--settings .c--anim #s-cnt {
+            visibility: visible !important
+        }
+
+        .force--consent.show--consent .c--anim #cm-ov,
+        .show--settings .c--anim #cs-ov {
+            visibility: visible !important;
+            opacity: 1 !important
+        }
+
+        #cm {
+            padding: 2.1em 2.8em 2.4em;
+            z-index: 1;
+            background: #fff;
+            background: var(--cc-bg);
+            max-width: 36.2em;
+            bottom: 1.25em;
+            right: 1.25em;
+            box-shadow: 5px 5px 100vh 100vw rgb(0 0 0 / 72%);
+            opacity: 0;
+            transform: scale(.95);
+            line-height: initial
+        }
+
+        #c-ttl {
+            margin-bottom: .7em;
+            font-size: 1.05em
+        }
+
+        #c-txt,
+        #s-cnt .p {
+            font-size: .9em;
+            line-height: 1.5em
+        }
+
+        .cloud #c-ttl {
+            margin-top: -.15em
+        }
+
+        #c-txt {
+            margin-bottom: 1.4em
+        }
+
+        .cc_div .c-bn {
+            color: #40505a;
+            color: var(--cc-btn-secondary-text);
+            padding: 1em 1.7em;
+            display: inline-block;
+            cursor: pointer;
+            font-size: .82em;
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+            text-align: center;
+            border-radius: 4px
+        }
+
+        .c-bn.c_link {
+            border: 1px dotted #e7e7e7a6
+        }
+
+        #cm .c-bn {
+            width: 48.5%
+        }
+
+        #c-bns {
+            display: flex;
+            justify-content: space-between
+        }
+
+        #c-bns button+button,
+        #s-c-bn,
+        #s-cnt button+button {
+            float: right
+        }
+
+        #s-cnt #s-rall-bn {
+            float: none;
+            margin-left: 1em
+        }
+
+        #cm .c_link {
+            border: 1px solid #d9e5d9
+        }
+
+        #cm .c_link:active,
+        #cm .c_link:hover,
+        #s-c-bn:active,
+        #s-c-bn:hover,
+        #s-cnt button+button:active,
+        #s-cnt button+button:hover {
+            background: #d8e0e6;
+            background: var(--cc-btn-secondary-hover-bg)
+        }
+
+        #s-cnt {
+            left: 0;
+            z-index: 101
+        }
+
+        #s-bl,
+        #s-cnt .b-bn .b-tl {
+            display: block;
+            width: 100%
+        }
+
+        #s-bl {
+            outline: 0;
+            overflow-y: auto;
+            overflow-y: overlay;
+            overflow-x: hidden;
+            padding: 1.3em 2.1em
+        }
+
+        #cm.cloud,
+        #s-bl .act .b-acc,
+        #s-bl .b-acc,
+        #s-bl table,
+        #s-inr,
+        .cc_div span.t-lb {
+            overflow: hidden
+        }
+
+        #s-bl .title {
+            margin-top: 1.4em
+        }
+
+        #s-bl .b-bn,
+        #s-bl .c-bl.b-ex+.c-bl.b-ex,
+        #s-bl .title:first-child {
+            margin-top: 0
+        }
+
+        #s-bl .b-acc .p {
+            margin-top: 0;
+            padding: 1em
+        }
+
+        #s-cnt .b-bn .b-tl {
+            font-size: .95em;
+            cursor: pointer;
+            position: relative;
+            padding: 1.3em 6.4em 1.3em 2.7em;
+            background: 0 0
+        }
+
+        #s-cnt .act .b-bn .b-tl {
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0
+        }
+
+        #s-bl tbody tr:hover,
+        #s-cnt .b-bn .b-tl:active,
+        #s-cnt .b-bn .b-tl:hover {
+            background: #e9eff4;
+            background: var(--cc-cookie-category-block-bg-hover)
+        }
+
+        #s-bl .c-bl {
+            padding: 1em;
+            border: 1px solid #f1f3f5;
+            border-color: var(--cc-section-border)
+        }
+
+        #s-bl .b-acc,
+        .cc_div.ie .bar #c-vln {
+            padding-top: 0
+        }
+
+        #s-bl .c-bl:hover {
+            background: #f0f4f7;
+            background: var(--cc-cookie-category-block-bg)
+        }
+
+        #s-bl .c-bl:first-child {
+            transition: none;
+            padding: 0;
+            margin-top: 0;
+            border: none;
+            margin-bottom: 2em
+        }
+
+        #s-bl .c-bl:not(.b-ex):first-child:hover {
+            background: unset
+        }
+
+        #s-bl .c-bl.b-ex {
+            padding: 0;
+            border: none;
+            background: #f0f4f7;
+            background: var(--cc-cookie-category-block-bg);
+            transition: none
+        }
+
+        #s-bl .c-bl.b-ex+.c-bl {
+            margin-top: 2em
+        }
+
+        #s-bl .b-acc {
+            max-height: 0;
+            margin-bottom: 0;
+            display: none
+        }
+
+        #s-bl .act .b-acc {
+            max-height: 100%;
+            display: block
+        }
+
+        #s-cnt .p {
+            margin-top: .85em;
+            color: #2d4156;
+            color: var(--cc-block-text)
+        }
+
+        .cc_div .b-tg .c-tg.c-ro,
+        .cc_div .b-tg .c-tgl:disabled {
+            cursor: not-allowed
+        }
+
+        #cs {
+            padding: 0 1.7em;
+            width: 100%;
+            top: 0
+        }
+
+        #s-inr {
+            max-width: 45em;
+            margin: 0 auto;
+            transform: scale(.96);
+            opacity: 0;
+            padding-top: 4.75em;
+            padding-bottom: 4.75em;
+            box-shadow: rgba(3, 6, 9, .26) 0 13px 27px -5px
+        }
+
+        #s-bns,
+        #s-hdr,
+        .cc_div .b-tg,
+        .cc_div .b-tg .c-tg,
+        .cc_div span.t-lb {
+            position: absolute
+        }
+
+        #s-bns,
+        #s-hdr,
+        #s-inr {
+            background: #fff;
+            background: var(--cc-bg)
+        }
+
+        #s-bns {
+            padding: 1em 2.1em;
+            border-top: 1px solid #f1f3f5;
+            border-color: var(--cc-section-border)
+        }
+
+        .cc_div .cc-link {
+            color: #253b48 !important;
+            border-bottom: 1px solid #253b48;
+            display: inline;
+            padding-bottom: 0;
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: 600
+        }
+
+        .cc_div .cc-link:active,
+        .cc_div .cc-link:hover {
+            border-color: transparent
+        }
+
+        #c-bns button:first-child,
+        #s-bns button:first-child {
+            color: #fff;
+            color: var(--cc-btn-primary-text);
+            background: #253b48;
+            background: var(--cc-btn-primary-bg);
+            transition-duration: .3s !important;
+            transition-timing-function: linear !important;
+            order: 1
+        }
+
+        #c-bns button:last-child {
+            order: 0
+        }
+
+        .cc_div .b-tg .c-tgl:checked~.c-tg {
+            background: #253b48;
+            background: var(--cc-toggle-bg-on)
+        }
+
+        #c-bns button:first-child:active,
+        #c-bns button:first-child:hover,
+        #s-bns button:first-child:active,
+        #s-bns button:first-child:hover {
+            background: #1d2e38;
+            background: var(--cc-btn-primary-hover-bg)
+        }
+
+        #s-hdr {
+            width: 100%;
+            padding: 0 2.1em;
+            border-bottom: 1px solid #f1f3f5;
+            border-color: var(--cc-section-border)
+        }
+
+        #c-s-in,
+        #s-c-bn {
+            position: relative
+        }
+
+        #s-ttl {
+            font-size: 1em
+        }
+
+        #s-c-bn {
+            padding: 0;
+            width: 1.7em;
+            height: 1.7em;
+            font-size: 1.45em;
+            margin: 0;
+            font-weight: initial
+        }
+
+        .cc_div span.t-lb {
+            top: 0;
+            z-index: -1;
+            opacity: 0;
+            pointer-events: none
+        }
+
+        #c_policy__text {
+            height: 31.25em;
+            overflow-y: auto;
+            margin-top: 1.25em
+        }
+
+        #c-s-in {
+            transform: translateY(-50%);
+            top: 50%;
+            height: calc(100% - 2.5em);
+            max-height: 37.5em
+        }
+
+        @media screen and (min-width:688px) {
+            #s-bl::-webkit-scrollbar {
+                width: .9em;
+                height: 100%;
+                background: 0 0;
+                border-radius: 0 .25em .25em 0
+            }
+
+            #s-bl::-webkit-scrollbar-thumb {
+                border: .25em solid var(--cc-bg);
+                background: #cfd5db;
+                background: var(--cc-webkit-scrollbar-bg);
+                border-radius: 100em
+            }
+
+            #s-bl::-webkit-scrollbar-thumb:hover {
+                background: #9199a0;
+                background: var(--cc-webkit-scrollbar-bg-hover)
+            }
+
+            #s-bl::-webkit-scrollbar-button {
+                width: 10px;
+                height: 5px
+            }
+        }
+
+        .cc_div .b-tg {
+            top: 0;
+            bottom: 0;
+            display: inline-block;
+            margin: auto;
+            right: 1.2em;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+
+        #cm-ov,
+        #cs-ov,
+        .force--consent .cc_div {
+            position: fixed;
+            top: 0;
+            visibility: hidden;
+            left: 0;
+            bottom: 0
+        }
+
+        .cc_div .b-tg .c-tgl {
+            position: absolute;
+            cursor: pointer;
+            display: block;
+            top: 0;
+            left: 0;
+            margin: 0;
+            border: 0
+        }
+
+        .cc_div .b-tg .c-tg {
+            background: #919ea6;
+            background: var(--cc-toggle-bg-off);
+            transition: background-color .25s, box-shadow .25s;
+            pointer-events: none
+        }
+
+        .cc_div .b-tg,
+        .cc_div .b-tg .c-tg,
+        .cc_div .b-tg .c-tgl,
+        .cc_div span.t-lb {
+            width: 3.4em;
+            height: 1.5em;
+            border-radius: 4em
+        }
+
+        .cc_div .b-tg .c-tgl~.c-tg.c-ro {
+            background: #d5dee2;
+            background: var(--cc-toggle-bg-readonly)
+        }
+
+        .cc_div .b-tg .c-tgl~.c-tg.c-ro:after {
+            box-shadow: none
+        }
+
+        .cc_div .b-tg .c-tg:after {
+            content: "";
+            position: relative;
+            display: block;
+            left: .125em;
+            top: .125em;
+            width: 1.25em;
+            height: 1.25em;
+            border: none;
+            box-sizing: content-box;
+            background: #fff;
+            background: var(--cc-toggle-knob-bg);
+            box-shadow: 0 1px 2px rgb(24 32 35 / 36%);
+            transition: transform .25s;
+            border-radius: 100%
+        }
+
+        .cc_div .b-tg .c-tgl:checked~.c-tg:after {
+            transform: translateX(1.9em)
+        }
+
+        #s-bl table,
+        #s-bl td,
+        #s-bl th {
+            border: none
+        }
+
+        #s-bl table {
+            text-align: left;
+            border-collapse: collapse;
+            width: 100%;
+            padding: 0;
+            margin: 0
+        }
+
+        #s-bl td,
+        #s-bl th {
+            padding: .8em .625em .8em 1.2em;
+            text-align: left;
+            vertical-align: top;
+            font-size: .9em !important
+        }
+
+        #s-bl th {
+            padding: 1.2em
+        }
+
+        #s-bl thead tr:first-child {
+            border-bottom: 1px solid #e9edf2;
+            border-color: var(--cc-cookie-table-border)
+        }
+
+        .force--consent #cs,
+        .force--consent #s-cnt {
+            width: 100vw
+        }
+
+        #cm-ov,
+        #cs-ov {
+            right: 0;
+            opacity: 0;
+            background: rgba(4, 6, 8, .85);
+            background: var(--cc-overlay-bg);
+            display: none;
+            transition: none
+        }
+
+        .c--anim #cs-ov,
+        .cc_div .bar #s-bl table,
+        .cc_div .bar #s-bl tbody,
+        .cc_div .bar #s-bl td,
+        .cc_div .bar #s-bl th,
+        .cc_div .bar #s-bl thead,
+        .cc_div .bar #s-bl tr,
+        .cc_div .bar #s-cnt,
+        .force--consent .c--anim #cm-ov,
+        .force--consent.show--consent #cm-ov,
+        .show--settings #cs-ov {
+            display: block
+        }
+
+        .force--consent .cc_div {
+            width: 100vw;
+            transition: visibility .25s linear
+        }
+
+        .force--consent.show--consent .c--anim .cc_div,
+        .force--consent.show--settings .c--anim .cc_div {
+            visibility: visible
+        }
+
+        .force--consent #cm {
+            position: absolute
+        }
+
+        .force--consent #cm.bar {
+            width: 100vw;
+            max-width: 100vw
+        }
+
+        html.force--consent.show--consent {
+            overflow-y: hidden !important
+        }
+
+        html.force--consent.show--consent,
+        html.force--consent.show--consent body {
+            height: auto !important;
+            overflow-x: hidden !important
+        }
+
+        .cc_div .act .b-bn .b-tl::before,
+        .cc_div .b-bn .b-tl::before {
+            border: solid #2d4156;
+            border-color: var(--cc-btn-secondary-text);
+            border-width: 0 2px 2px 0;
+            padding: .2em;
+            display: inline-block;
+            content: '';
+            margin-right: 15px;
+            position: absolute;
+            transform: translateY(-50%) rotate(45deg);
+            left: 1.2em;
+            top: 50%
+        }
+
+        .cc_div .act .b-bn .b-tl::before {
+            transform: translateY(-20%) rotate(225deg)
+        }
+
+        .cc_div .on-i::before {
+            border: solid #fff;
+            border-color: var(--cc-toggle-knob-icon-color);
+            border-width: 0 2px 2px 0;
+            padding: .1em .1em .45em;
+            display: inline-block;
+            content: '';
+            margin: 0 auto;
+            transform: rotate(45deg);
+            top: .37em;
+            left: .75em;
+            position: absolute
+        }
+
+        #s-c-bn::after,
+        #s-c-bn::before {
+            content: '';
+            position: absolute;
+            left: .82em;
+            top: .58em;
+            height: .6em;
+            width: 1.5px;
+            background: #444d53;
+            background: var(--cc-btn-secondary-text);
+            transform: rotate(45deg);
+            border-radius: 1em;
+            margin: 0 auto
+        }
+
+        #s-c-bn::after,
+        .cc_div .off-i::after {
+            transform: rotate(-45deg)
+        }
+
+        .cc_div .off-i,
+        .cc_div .on-i {
+            height: 100%;
+            width: 50%;
+            position: absolute;
+            right: 0;
+            display: block;
+            text-align: center;
+            transition: opacity .15s
+        }
+
+        .cc_div .on-i {
+            left: 0;
+            opacity: 0
+        }
+
+        .cc_div .off-i::after,
+        .cc_div .off-i::before {
+            right: .8em;
+            top: .42em;
+            content: ' ';
+            height: .7em;
+            width: .09375em;
+            display: block;
+            background: #cdd6dc;
+            background: var(--cc-toggle-knob-icon-color);
+            margin: 0 auto;
+            position: absolute;
+            transform-origin: center
+        }
+
+        .cc_div .off-i::before {
+            transform: rotate(45deg)
+        }
+
+        .cc_div .b-tg .c-tgl:checked~.c-tg .on-i {
+            opacity: 1
+        }
+
+        .cc_div .b-tg .c-tgl:checked~.c-tg .off-i {
+            opacity: 0
+        }
+
+        .force--consent #cm.box.middle,
+        .force--consent #cm.cloud.middle {
+            top: 50%;
+            transform: translateY(-37%);
+            bottom: auto
+        }
+
+        .force--consent #cm.box.middle.zoom,
+        .force--consent #cm.cloud.middle.zoom {
+            transform: scale(.95) translateY(-50%)
+        }
+
+        #cm.box.center {
+            left: 1em;
+            right: 1em;
+            margin: 0 auto
+        }
+
+        #cm.box.middle,
+        #cm.cloud.middle {
+            top: calc(50% - 250px);
+            bottom: auto
+        }
+
+        #cm.cloud {
+            max-width: 50em;
+            margin: 0 auto;
+            text-align: center;
+            left: 1em;
+            right: 1em;
+            padding: 1.3em 2em;
+            width: unset
+        }
+
+        #cm.bar,
+        #cm.bar.left,
+        #cm.bar.right {
+            left: 0;
+            right: 0
+        }
+
+        .cc_div .cloud #c-inr {
+            display: table;
+            width: 100%
+        }
+
+        .cc_div .cloud #c-inr-i {
+            width: 70%;
+            display: table-cell;
+            vertical-align: top;
+            padding-right: 2.4em
+        }
+
+        .cc_div .cloud #c-txt {
+            margin-bottom: 0;
+            font-size: .85em
+        }
+
+        .cc_div .cloud #c-bns {
+            min-width: 170px;
+            display: table-cell;
+            vertical-align: middle
+        }
+
+        #cm.cloud .c-bn {
+            margin: .625em 0 0;
+            width: 100%
+        }
+
+        #cm.cloud .c-bn:first-child {
+            margin: 0
+        }
+
+        #cm.cloud.left {
+            margin-right: 1.25em
+        }
+
+        #cm.cloud.right {
+            margin-left: 1.25em
+        }
+
+        #cm.bar {
+            width: 100%;
+            max-width: 100%;
+            bottom: 0;
+            border-radius: 0;
+            position: fixed;
+            padding: 2em
+        }
+
+        #cm.bar #c-inr {
+            max-width: 32em;
+            margin: 0 auto
+        }
+
+        #cm.bar #c-bns {
+            max-width: 33.75em
+        }
+
+        #cm.bar #cs,
+        .cc_div .bar #cs {
+            padding: 0
+        }
+
+        .cc_div .bar #c-s-in {
+            top: 0;
+            transform: none;
+            height: 100%;
+            max-height: 100%
+        }
+
+        .cc_div .bar #s-bl,
+        .cc_div .bar #s-bns,
+        .cc_div .bar #s-hdr {
+            padding-left: 1.6em;
+            padding-right: 1.6em
+        }
+
+        .cc_div .bar #s-inr {
+            margin: 0 0 0 auto;
+            border-radius: 0;
+            max-width: 32em
+        }
+
+        .cc_div .bar.left #s-inr {
+            margin-left: 0;
+            margin-right: auto
+        }
+
+        .cc_div .bar #s-bl thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px
+        }
+
+        .cc_div .bar #s-bl tr {
+            border-top: 1px solid #e3e7ed;
+            border-color: var(--cc-cookie-table-border)
+        }
+
+        .cc_div .bar #s-bl td {
+            border: none;
+            position: relative;
+            padding-left: 35%
+        }
+
+        .cc_div .bar #s-bl td:before {
+            position: absolute;
+            left: 1em;
+            padding-right: .625em;
+            white-space: nowrap;
+            content: attr(data-column);
+            color: #000;
+            color: var(--cc-text);
+            overflow: hidden;
+            text-overflow: ellipsis
+        }
+
+        #cm.top {
+            bottom: auto;
+            top: 1.25em
+        }
+
+        #cm.left {
+            right: auto;
+            left: 1.25em
+        }
+
+        #cm.right {
+            left: auto;
+            right: 1.25em
+        }
+
+        #cm.bar.top,
+        .cc_div.ie #c-s-in {
+            top: 0
+        }
+
+        @media screen and (max-width:688px) {
+
+            #cm,
+            #cs,
+            #s-inr {
+                border-radius: 0
+            }
+
+            #cm.cloud.left,
+            #cm.cloud.right,
+            #s-inr {
+                margin: 0
+            }
+
+            #cm,
+            #cm.cloud,
+            #cm.left,
+            #cm.right {
+                width: 100%;
+                max-width: 100%;
+                margin: 0;
+                padding: 1.4em !important;
+                right: 1em;
+                left: 1em;
+                bottom: 1em;
+                display: block
+            }
+
+            #c-bns,
+            #s-bl table,
+            #s-bl tbody,
+            #s-bl td,
+            #s-bl th,
+            #s-bl thead,
+            #s-bl tr,
+            #s-cnt {
+                display: block
+            }
+
+            .force--consent #cm,
+            .force--consent #cm.cloud {
+                width: auto;
+                max-width: 100vw
+            }
+
+            #cm.top {
+                top: 1em;
+                bottom: auto
+            }
+
+            #cm.bottom,
+            #cm.box.middle,
+            #cm.cloud.middle {
+                top: auto;
+                bottom: 0
+            }
+
+            #cm.bar.bottom {
+                bottom: 0
+            }
+
+            .cc_div .cloud #c-txt {
+                font-size: .9em
+            }
+
+            #cm.cloud .c-bn {
+                font-size: .85em
+            }
+
+            #s-bns,
+            .cc_div .bar #s-bns {
+                padding: 1em 1.3em
+            }
+
+            .cc_div .bar #s-inr {
+                max-width: 100%;
+                width: 100%
+            }
+
+            .cc_div .cloud #c-inr-i {
+                padding-right: 0
+            }
+
+            #cs {
+                padding: 0
+            }
+
+            #c-s-in {
+                max-height: 100%;
+                height: 100%;
+                top: 0;
+                transform: none
+            }
+
+            .cc_div .b-tg {
+                transform: scale(1.1);
+                right: 1.1em
+            }
+
+            #s-inr {
+                padding-bottom: 7.9em
+            }
+
+            #s-bns {
+                height: 7.9em
+            }
+
+            #s-bl,
+            .cc_div .bar #s-bl {
+                padding: 1.3em
+            }
+
+            #s-hdr,
+            .cc_div .bar #s-hdr {
+                padding: 0 1.3em
+            }
+
+            #s-bl table {
+                width: 100%
+            }
+
+            #s-inr.bns-t {
+                padding-bottom: 10.5em
+            }
+
+            .bns-t #s-bns {
+                height: 10.5em
+            }
+
+            .cc_div .bns-t .c-bn {
+                font-size: .83em;
+                padding: .9em 1.6em
+            }
+
+            #s-cnt .b-bn .b-tl {
+                padding-top: 1.2em;
+                padding-bottom: 1.2em
+            }
+
+            #s-bl thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px
+            }
+
+            #s-bl tr {
+                border-top: 1px solid #e3e7ed;
+                border-color: var(--cc-cookie-table-border)
+            }
+
+            #s-bl td {
+                border: none;
+                position: relative;
+                padding-left: 35%
+            }
+
+            #s-bl td:before {
+                position: absolute;
+                left: 1em;
+                padding-right: .625em;
+                white-space: nowrap;
+                content: attr(data-column);
+                color: #000;
+                color: var(--cc-text);
+                overflow: hidden;
+                text-overflow: ellipsis
+            }
+
+            #cm .c-bn,
+            .cc_div .c-bn {
+                width: 100%;
+                margin-right: 0
+            }
+
+            #s-cnt #s-rall-bn {
+                margin-left: 0
+            }
+
+            #c-bns button+button,
+            #s-cnt button+button {
+                margin-top: .625em;
+                float: unset
+            }
+
+            #cm.box,
+            #cm.cloud {
+                left: 0;
+                right: 0;
+                width: auto
+            }
+
+            .cc_div .cloud #c-bns,
+            .cc_div .cloud #c-inr,
+            .cc_div .cloud #c-inr-i {
+                display: block;
+                width: auto;
+                min-width: unset
+            }
+
+            .cc_div .cloud #c-txt {
+                margin-bottom: 1.625em
+            }
+
+            #cm.box.center {
+                left: 0;
+                right: 0
+            }
+        }
+
+        .cc_div.ie #c-vln {
+            height: 100%;
+            padding-top: 5.62em
+        }
+
+        .cc_div.ie #cs {
+            max-height: 37.5em;
+            position: relative;
+            top: 0;
+            margin-top: -5.625em
+        }
+
+        .cc_div.ie .bar #cs {
+            margin-top: 0;
+            max-height: 100%
+        }
+
+        .cc_div.ie #cm {
+            border: 1px solid #dee6e9
+        }
+
+        .cc_div.ie .b-tg {
+            padding-left: 1em;
+            margin-bottom: .7em
+        }
+
+        .cc_div.ie .b-tg .c-tgl:checked~.c-tg:after {
+            left: 1.95em
+        }
+
+        .cc_div.ie #s-bl table {
+            overflow: auto
+        }
+
+        .cc_div.ie .b-tg .c-tg,
+        .cc_div.ie .bar #s-bl td:before {
+            display: none
+        }
+
+        .cc_div.ie .b-tg .c-tgl {
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+            margin-bottom: .2em;
+            height: auto
+        }
+
+        .cc_div.ie #s-cnt .b-bn .b-tl {
+            padding: 1.3em 6.4em 1.3em 1.4em
+        }
+
+        .cc_div.ie .bar #s-bl td {
+            padding: .8em .625em .8em 1.2em
+        }
+
+        @media screen and (max-height:400px) {
+            #c-inr-i {
+                overflow-y: scroll;
+                max-height: 200px
+            }
+
+            #c-bns {
+                padding-top: 22px
+            }
+        }
+    </style>
+    <script>!function () { "use strict"; var e = "initCookieConsent"; "undefined" != typeof window && "function" != typeof window[e] && (window[e] = function (c) { function r(t) { for (var e = "accept-", n = r("c-settings"), o = r(e + "all"), i = r(e + "necessary"), a = r(e + "custom"), c = 0; c < n.length; c++)n[c].setAttribute("aria-haspopup", "dialog"), be(n[c], "click", function (e) { e.preventDefault(), $.showSettings(0) }); for (c = 0; c < o.length; c++)be(o[c], "click", function (e) { s(e, "all") }); for (c = 0; c < a.length; c++)be(a[c], "click", function (e) { s(e) }); for (c = 0; c < i.length; c++)be(i[c], "click", function (e) { s(e, []) }); function r(e) { return (t || document).querySelectorAll('a[data-cc="' + e + '"], button[data-cc="' + e + '"]') } function s(e, t) { e.preventDefault(), $.accept(t), $.hideSettings(), $.hide() } } function n(e, t) { return Object.prototype.hasOwnProperty.call(t, e) ? e : 0 < ye(t).length ? Object.prototype.hasOwnProperty.call(t, S.current_lang) ? S.current_lang : ye(t)[0] : void 0 } function l(e) { var t; !0 === U.force_consent && ke(J, "force--consent"), y || (y = le("div"), t = le("div"), n = le("div"), y.id = "cm", t.id = "c-inr-i", n.id = "cm-ov", y.setAttribute("role", "dialog"), y.setAttribute("aria-modal", "true"), y.setAttribute("aria-hidden", "false"), y.setAttribute("aria-labelledby", "c-ttl"), y.setAttribute("aria-describedby", "c-txt"), F.appendChild(y), F.appendChild(n), y.style.visibility = n.style.visibility = "hidden", n.style.opacity = 0), (i = U.languages[e].consent_modal.title) && (a || ((a = le("div")).id = "c-ttl", a.setAttribute("role", "heading"), a.setAttribute("aria-level", "2"), t.appendChild(a)), a.innerHTML = i); var n = U.languages[e].consent_modal.description; E && (n = j ? n.replace("{{revision_message}}", "") : n.replace("{{revision_message}}", U.languages[e].consent_modal.revision_message || "")), s || ((s = le("div")).id = "c-txt", t.appendChild(s)), s.innerHTML = n; var o, i = U.languages[e].consent_modal.primary_btn, n = U.languages[e].consent_modal.secondary_btn; i && (k || ((k = le("button")).id = "c-p-bn", k.className = "c-bn", "accept_all" === i.role && (o = "all"), be(k, "click", function () { $.hide(), se("CookieConsent [ACCEPT]: cookie_consent was accepted!"), $.accept(o) })), k.innerHTML = U.languages[e].consent_modal.primary_btn.text), n && (C || ((C = le("button")).id = "c-s-bn", C.className = "c-bn c_link", "accept_necessary" === n.role ? be(C, "click", function () { $.hide(), $.accept([]) }) : be(C, "click", function () { $.showSettings(0) })), C.innerHTML = U.languages[e].consent_modal.secondary_btn.text), e = U.gui_options, w || ((w = le("div")).id = "c-inr", w.appendChild(t)), A || ((A = le("div")).id = "c-bns", e && e.consent_modal && !0 === e.consent_modal.swap_buttons ? (n && A.appendChild(C), i && A.appendChild(k), A.className = "swap") : (i && A.appendChild(k), n && A.appendChild(C)), (i || n) && w.appendChild(A), y.appendChild(w)), T = !0, r(w) } function d(e) { var t, n, o, i, a, c; R ? (Q = le("div")).id = "s-bl" : (R = le("div"), t = le("div"), n = le("div"), o = le("div"), z = le("div"), K = le("div"), i = le("div"), B = le("button"), a = le("div"), V = le("div"), c = le("div"), R.id = "s-cnt", t.id = "c-vln", o.id = "c-s-in", n.id = "cs", K.id = "s-ttl", z.id = "s-inr", i.id = "s-hdr", V.id = "s-bl", B.id = "s-c-bn", c.id = "cs-ov", B.className = "c-bn", R.setAttribute("role", "dialog"), R.setAttribute("aria-modal", "true"), R.setAttribute("aria-hidden", "true"), R.setAttribute("aria-labelledby", "s-ttl"), K.setAttribute("role", "heading"), R.style.visibility = c.style.visibility = "hidden", c.style.opacity = 0, a.appendChild(B), be(t, "keydown", function (e) { 27 === (e = e || window.event).keyCode && $.hideSettings(0) }, !0), be(B, "click", function () { $.hideSettings(0) })), B.setAttribute("aria-label", U.languages[e].settings_modal.close_btn_label || "Close"), q = U.languages[e].settings_modal.blocks, P = U.languages[e].settings_modal.cookie_table_headers; var r = q.length; K.innerHTML = U.languages[e].settings_modal.title; for (var s = 0; s < r; ++s) { var l, d = q[s].title, u = q[s].description, p = q[s].toggle, f = q[s].cookie_table, g = !0 === U.remove_cookie_tables, h = (u || !g && f) && "truthy", _ = le("div"), m = le("div"); u && ((l = le("div")).className = "p", l.insertAdjacentHTML("beforeend", u)); var v, b, y, k, C, A, w, S, N, T = le("div"); if (T.className = "title", _.className = "c-bl", m.className = "desc", void 0 !== p ? (v = "c-ac-" + s, b = le(h ? "button" : "div"), y = le("label"), k = le("input"), C = le("span"), A = le("span"), w = le("span"), S = le("span"), b.className = h ? "b-tl exp" : "b-tl", y.className = "b-tg", k.className = "c-tgl", w.className = "on-i", S.className = "off-i", C.className = "c-tg", A.className = "t-lb", h && (b.setAttribute("aria-expanded", "false"), b.setAttribute("aria-controls", v)), k.type = "checkbox", C.setAttribute("aria-hidden", "true"), N = p.value, k.value = N, A.textContent = d, b.insertAdjacentHTML("beforeend", d), T.appendChild(b), C.appendChild(w), C.appendChild(S), te ? p.enabled ? (k.checked = !0, Q || oe.push(!0), p.enabled && (Q || ne.push(N))) : Q || oe.push(!1) : -1 < re(ee.categories, N) ? (k.checked = !0, Q || oe.push(!0)) : Q || oe.push(!1), Q || ie.push(N), p.readonly ? (k.disabled = !0, ke(C, "c-ro"), Q || ae.push(!0)) : Q || ae.push(!1), ke(m, "b-acc"), ke(T, "b-bn"), ke(_, "b-ex"), m.id = v, m.setAttribute("aria-hidden", "true"), y.appendChild(k), y.appendChild(C), y.appendChild(A), T.appendChild(y), h && function (e, t, n) { be(b, "click", function () { Ae(t, "act") ? (Ce(t, "act"), n.setAttribute("aria-expanded", "false"), e.setAttribute("aria-hidden", "true")) : (ke(t, "act"), n.setAttribute("aria-expanded", "true"), e.setAttribute("aria-hidden", "false")) }, !1) }(m, _, b)) : d && ((h = le("div")).className = "b-tl", h.setAttribute("role", "heading"), h.setAttribute("aria-level", "3"), h.insertAdjacentHTML("beforeend", d), T.appendChild(h)), d && _.appendChild(T), u && m.appendChild(l), !g && void 0 !== f) { for (var x = document.createDocumentFragment(), O = 0; O < P.length; ++O) { var L, E = le("th"), j = P[O]; E.setAttribute("scope", "col"), j && (L = j && ye(j)[0], E.textContent = P[O][L], x.appendChild(E)) } T = le("tr"); T.appendChild(x); g = le("thead"); g.appendChild(T); T = le("table"); T.appendChild(g); for (var M = document.createDocumentFragment(), D = 0; D < f.length; D++) { for (var H, I = le("tr"), G = 0; G < P.length; ++G)(j = P[G]) && (L = ye(j)[0], (H = le("td")).insertAdjacentHTML("beforeend", f[D][L]), H.setAttribute("data-column", j[L]), I.appendChild(H)); M.appendChild(I) } g = le("tbody"); g.appendChild(M), T.appendChild(g), m.appendChild(T) } (p && d || !p && (d || u)) && (_.appendChild(m), (Q || V).appendChild(_)) } W || ((W = le("div")).id = "s-bns"), Y || ((Y = le("button")).id = "s-all-bn", Y.className = "c-bn", W.appendChild(Y), be(Y, "click", function () { $.hideSettings(), $.hide(), $.accept("all") })), Y.innerHTML = U.languages[e].settings_modal.accept_all_btn; var J = U.languages[e].settings_modal.reject_all_btn; if (J && (Z || ((Z = le("button")).id = "s-rall-bn", Z.className = "c-bn", be(Z, "click", function () { $.hideSettings(), $.hide(), $.accept([]) }), z.className = "bns-t", W.appendChild(Z)), Z.innerHTML = J), X || ((X = le("button")).id = "s-sv-bn", X.className = "c-bn", W.appendChild(X), be(X, "click", function () { $.hideSettings(), $.hide(), $.accept() })), X.innerHTML = U.languages[e].settings_modal.save_settings_btn, Q) return z.replaceChild(Q, V), V = Q, 0; i.appendChild(K), i.appendChild(a), z.appendChild(i), z.appendChild(V), z.appendChild(W), o.appendChild(z), n.appendChild(o), t.appendChild(n), R.appendChild(t), F.appendChild(R), F.appendChild(c) } var U, u, p, f, g, P, q, h, _, m, v, t, e, o, i, b, F, y, a, s, k, C, A, w, R, z, K, B, V, Q, W, X, Y, Z, S = { mode: "opt-in", current_lang: document.documentElement.getAttribute("lang") || "cz", auto_language: null, autorun: !0, page_scripts: !0, hide_from_bots: !0, cookie_name: "cc_cookie", cookie_expiration: 182, cookie_domain: window.location.hostname, cookie_path: "/", cookie_same_site: "Lax", use_rfc_cookie: !1, autoclear_cookies: !0, revision: 0, script_selector: "data-cookiecategory" }, $ = {}, ee = {}, N = null, te = !0, T = !1, x = !1, O = !1, L = !1, E = !1, j = !0, M = [], D = !1, ne = [], H = !1, I = [], G = [], oe = [], ie = [], ae = [], J = document.documentElement; $.updateLanguage = function (e, t) { if ("string" == typeof e) { e = n(e, U.languages); return (e !== S.current_lang || !0 === t) && (S.current_lang = e, T && l(e), d(e), se("CookieConsent [LANGUAGE]: curr_lang: '" + e + "'"), !0) } }; function ce(e) { var t = q.length, n = -1; D = !1; var o, i = me("", "all"), a = [S.cookie_domain, "." + S.cookie_domain]; "www." === S.cookie_domain.slice(0, 4) && (o = S.cookie_domain.substr(4), a.push(o), a.push("." + o)); for (var c = 0; c < t; c++) { var r = q[c]; if (Object.prototype.hasOwnProperty.call(r, "toggle")) { var s = -1 < re(M, r.toggle.value); if (!oe[++n] && Object.prototype.hasOwnProperty.call(r, "cookie_table") && (e || s)) { var l = r.cookie_table, d = ye(P[0])[0], u = l.length; "on_disable" === r.toggle.reload && s && (D = !0); for (var p = 0; p < u; p++) { var f = a, g = l[p], h = [], _ = g[d], m = g.is_regex || !1, v = g.domain || null, g = g.path || !1; if (v && (f = [v, "." + v]), m) for (var b = 0; b < i.length; b++)i[b].match(_) && h.push(i[b]); else { m = re(i, _); -1 < m && h.push(i[m]) } se("CookieConsent [AUTOCLEAR]: search cookie: '" + _ + "', found:", h), 0 < h.length && (ve(h, g, f), "on_clear" === r.toggle.reload && (D = !0)) } } } } } var re = function (e, t) { return e.indexOf(t) }, se = function (e, t, n) { n ? console.error(e, t || "") : console.log(e, void 0 !== t ? t : " ") }, le = function (e) { var t = document.createElement(e); return "button" === e && t.setAttribute("type", e), t }, de = function () { return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, function (e) { try { return (e ^ (window.crypto || window.msCrypto).getRandomValues(new Uint8Array(1))[0] & 15 >> e / 4).toString(16) } catch (e) { return "" } }) }, ue = function (e, t) { return "browser" === S.auto_language ? n(pe(), e) : "document" === S.auto_language ? n(document.documentElement.lang, e) : "string" == typeof t ? S.current_lang = n(t, e) : (se("CookieConsent [LANG]: setting current_lang = '" + S.current_lang + "'"), S.current_lang) }, pe = function () { var e = navigator.language || navigator.browserLanguage; return 2 < e.length && (e = e[0] + e[1]), se("CookieConsent [LANG]: detected_browser_lang = '" + e + "'"), e.toLowerCase() }; $.allowedCategory = function (e) { var t; return t = te && "opt-in" !== S.mode ? ne : JSON.parse(me(S.cookie_name, "one", !0) || "{}").categories || [], -1 < re(t, e) }, $.run = function (e) { var t, n, o, s; function i(e, t, n, o, i, a, c) { if (a = a && a.split(" ") || [], -1 < re(t, i) && (ke(e, i), ("bar" !== i || "middle" !== a[0]) && -1 < re(n, a[0]))) for (var r = 0; r < a.length; r++)ke(e, a[r]); -1 < re(o, c) && ke(e, c) } function a(t, e) { var n = !1, o = !1; try { for (var i, a = t.querySelectorAll(s.join(':not([tabindex="-1"]), ')), c = a.length, r = 0; r < c;)i = a[r].getAttribute("data-focus"), o || "1" !== i ? "0" === i && (n = a[r], o || "0" === a[r + 1].getAttribute("data-focus") || (o = a[r + 1])) : o = a[r], r++ } catch (e) { return t.querySelectorAll(s.join(", ")) } e[0] = a[0], e[1] = a[a.length - 1], e[2] = n, e[3] = o } document.getElementById("cc_div") ? se("CookieConsent [NOTICE]: cookie consent already attached to body!") : (se("CookieConsent [CONFIG]: received_config_settings ", U = e), "number" == typeof U.cookie_expiration && (S.cookie_expiration = U.cookie_expiration), "number" == typeof U.cookie_necessary_only_expiration && (S.cookie_necessary_only_expiration = U.cookie_necessary_only_expiration), "boolean" == typeof U.autorun && (S.autorun = U.autorun), "string" == typeof U.cookie_domain && (S.cookie_domain = U.cookie_domain), "string" == typeof U.cookie_same_site && (S.cookie_same_site = U.cookie_same_site), "string" == typeof U.cookie_path && (S.cookie_path = U.cookie_path), "string" == typeof U.cookie_name && (S.cookie_name = U.cookie_name), "function" == typeof U.onAccept && (h = U.onAccept), "function" == typeof U.onFirstAction && (m = U.onFirstAction), "function" == typeof U.onChange && (_ = U.onChange), "opt-out" === U.mode && (S.mode = "opt-out"), "number" == typeof U.revision && (-1 < U.revision && (S.revision = U.revision), E = !0), "boolean" == typeof U.autoclear_cookies && (S.autoclear_cookies = U.autoclear_cookies), !0 === U.use_rfc_cookie && (S.use_rfc_cookie = !0), "boolean" == typeof U.hide_from_bots && (S.hide_from_bots = U.hide_from_bots), S.hide_from_bots && (H = navigator && (navigator.userAgent && /bot|crawl|spider|slurp|teoma/i.test(navigator.userAgent) || navigator.webdriver)), S.page_scripts = !0 === U.page_scripts, "browser" === U.auto_language || !0 === U.auto_language ? S.auto_language = "browser" : "document" === U.auto_language && (S.auto_language = "document"), se("CookieConsent [LANG]: auto_language strategy is '" + S.auto_language + "'"), S.current_lang = ue(U.languages, U.current_lang), H || (ee = JSON.parse(me(S.cookie_name, "one", !0) || "{}"), o = void 0 !== (f = ee.consent_uuid), u = (u = ee.consent_date) && new Date(u), p = (p = ee.last_consent_update) && new Date(p), N = void 0 !== ee.data ? ee.data : null, E && ee.revision !== S.revision && (j = !1), T = te = !(o && j && u && p && f), function () { (b = le("div")).id = "cc--main", b.style.position = "fixed", b.style.zIndex = "2147483647", b.innerHTML = '<div id="cc_div" class="cc_div"></div>', F = b.children[0]; var e = S.current_lang; T && l(e), d(e), (e = c || document.body).insertBefore(b, e.firstChild) }(), s = ["[href]", "button", "input", "details", '[tabindex="0"]'], a(z, G), T && a(y, I), "object" == typeof (t = e.gui_options) && (o = t.consent_modal, t = t.settings_modal, T && o && i(y, ["box", "bar", "cloud"], ["top", "middle", "bottom"], ["zoom", "slide"], o.layout, o.position, o.transition), !n && t && i(R, ["bar"], ["left", "right"], ["zoom", "slide"], t.layout, t.position, t.transition)), r(), S.autorun && T && $.show(e.delay || 0), setTimeout(function () { ke(b, "c--anim") }, 30), setTimeout(function () { var t, n; n = t = !1, be(document, "keydown", function (e) { "Tab" === (e = e || window.event).key && (g && (e.shiftKey ? document.activeElement === g[0] && (g[1].focus(), e.preventDefault()) : document.activeElement === g[1] && (g[0].focus(), e.preventDefault()), n || L || (n = !0, t || e.preventDefault(), (e.shiftKey ? g[3] ? g[2] || g[0] : g[1] : g[3] || g[0]).focus())), n || (t = !0)) }), document.contains && be(b, "click", function (e) { e = e || window.event, O ? L = !!z.contains(e.target) || ($.hideSettings(0), !1) : x && y.contains(e.target) && (L = !0) }, !0) }, 100), te ? ("opt-out" === S.mode && (se("CookieConsent [CONFIG] mode='" + S.mode + "', default enabled categories:", ne), fe(ne)), se("CookieConsent [NOTICE]: ask for consent!")) : ((!(e = "boolean" == typeof ee.rfc_cookie) || e && ee.rfc_cookie !== S.use_rfc_cookie) && (ee.rfc_cookie = S.use_rfc_cookie, _e(S.cookie_name, JSON.stringify(ee))), v = he(ge()), fe(), "function" == typeof h && h(ee), se("CookieConsent [NOTICE]: consent already given!", ee)))) }, $.showSettings = function (e) { setTimeout(function () { ke(J, "show--settings"), R.setAttribute("aria-hidden", "false"), O = !0, setTimeout(function () { x ? i = document.activeElement : o = document.activeElement, 0 !== G.length && ((G[3] || G[0]).focus(), g = G) }, 200), se("CookieConsent [SETTINGS]: show settings_modal") }, 0 < e ? e : 0) }; var fe = function (e) { var t, a, c; S.page_scripts && (t = document.querySelectorAll("script[" + S.script_selector + "]"), a = e || ee.categories || [], (c = function (e, t) { if (t < e.length) { var n = e[t], o = n.getAttribute(S.script_selector); if (-1 < re(a, o)) { n.type = "text/javascript", n.removeAttribute(S.script_selector); o = n.getAttribute("data-src"); o && n.removeAttribute("data-src"); var i = le("script"); if (i.textContent = n.innerHTML, function (e, t) { for (var n = t.attributes, o = n.length, i = 0; i < o; i++) { var a = n[i].nodeName; e.setAttribute(a, t[a] || t.getAttribute(a)) } }(i, n), o ? i.src = o : o = n.src, o && (i.readyState ? i.onreadystatechange = function () { "loaded" !== i.readyState && "complete" !== i.readyState || (i.onreadystatechange = null, c(e, ++t)) } : i.onload = function () { i.onload = null, c(e, ++t) }), n.parentNode.replaceChild(i, n), o) return } c(e, ++t) } })(t, 0)) }; $.set = function (e, t) { return "data" === e && function (e, t) { var n = !1; if ("update" === t) { t = typeof (N = $.get("data")) == typeof e; if (t && "object" == typeof N) for (var o in N = N || {}, e) N[o] !== e[o] && (N[o] = e[o], n = !0); else !t && N || N === e || (N = e, n = !0) } else N = e, n = !0; return n && (ee.data = N, _e(S.cookie_name, JSON.stringify(ee))), n }(t.value, t.mode) }, $.get = function (e, t) { return JSON.parse(me(t || S.cookie_name, "one", !0) || "{}")[e] }, $.getConfig = function (e) { return S[e] || U[e] }; var ge = function () { return t = ee.categories || [], e = ie.filter(function (e) { return -1 === re(t, e) }), { accepted: t, rejected: e } }, he = function (e) { var t = "custom", n = ae.filter(function (e) { return !0 === e }).length; return e.accepted.length === ie.length ? t = "all" : e.accepted.length === n && (t = "necessary"), t }; $.getUserPreferences = function () { var e = ge(); return { accept_type: he(e), accepted_categories: e.accepted, rejected_categories: e.rejected } }, $.loadScript = function (e, t, n) { var o = "function" == typeof t; if (document.querySelector('script[src="' + e + '"]')) o && t(); else { var i = le("script"); if (n && 0 < n.length) for (var a = 0; a < n.length; ++a)n[a] && i.setAttribute(n[a].name, n[a].value); o && (i.onload = t), i.src = e, document.head.appendChild(i) } }, $.updateScripts = function () { fe() }, $.show = function (e, t) { !0 === t && l(S.current_lang), T && setTimeout(function () { ke(J, "show--consent"), y.setAttribute("aria-hidden", "false"), x = !0, setTimeout(function () { o = document.activeElement, g = I }, 200), se("CookieConsent [MODAL]: show consent_modal") }, 0 < e ? e : t ? 30 : 0) }, $.hide = function () { T && (Ce(J, "show--consent"), y.setAttribute("aria-hidden", "true"), x = !1, setTimeout(function () { o.focus(), g = null }, 200), se("CookieConsent [MODAL]: hide")) }, $.hideSettings = function () { Ce(J, "show--settings"), O = !1, R.setAttribute("aria-hidden", "true"), setTimeout(function () { g = x ? (i && i.focus(), I) : (o && o.focus(), null), L = !1 }, 200), se("CookieConsent [SETTINGS]: hide settings_modal") }, $.accept = function (e, t) { var n = e || void 0, o = t || [], i = []; if (n) if ("object" == typeof n && "number" == typeof n.length) for (var a = 0; a < n.length; a++)-1 !== re(ie, n[a]) && i.push(n[a]); else "string" == typeof n && ("all" === n ? i = ie.slice() : -1 !== re(ie, n) && i.push(n)); else i = function () { for (var e = document.querySelectorAll(".c-tgl") || [], t = [], n = 0; n < e.length; n++)e[n].checked && t.push(e[n].value); return t }(); if (1 <= o.length) for (a = 0; a < o.length; a++)i = i.filter(function (e) { return e !== o[a] }); for (a = 0; a < ie.length; a++)!0 === ae[a] && -1 === re(i, ie[a]) && i.push(ie[a]); !function (e) { M = []; var t = document.querySelectorAll(".c-tgl") || []; if (0 < t.length) for (var n = 0; n < t.length; n++)-1 !== re(e, ie[n]) ? (t[n].checked = !0, oe[n] || (M.push(ie[n]), oe[n] = !0)) : (t[n].checked = !1, oe[n] && (M.push(ie[n]), oe[n] = !1)); !te && S.autoclear_cookies && 0 < M.length && ce(), u = u || new Date, f = f || de(), ee = { categories: e, level: e, revision: S.revision, data: N, rfc_cookie: S.use_rfc_cookie, consent_date: u.toISOString(), consent_uuid: f }, (te || 0 < M.length) && (j = !0, p = p ? new Date : u, ee.last_consent_update = p.toISOString(), v = he(ge()), _e(S.cookie_name, JSON.stringify(ee)), fe()), te && (S.autoclear_cookies && ce(!0), "function" == typeof m && m($.getUserPreferences(), ee), "function" == typeof h && h(ee), te = !1, "opt-in" === S.mode) || ("function" == typeof _ && 0 < M.length && _(ee, M), D && window.location.reload()) }(i) }, $.eraseCookies = function (e, t, n) { var o = [], n = n ? [n, "." + n] : [S.cookie_domain, "." + S.cookie_domain]; if ("object" == typeof e && 0 < e.length) for (var i = 0; i < e.length; i++)this.validCookie(e[i]) && o.push(e[i]); else this.validCookie(e) && o.push(e); ve(o, t, n) }; var _e = function (e, t) { var n = S.cookie_expiration; "number" == typeof S.cookie_necessary_only_expiration && "necessary" === v && (n = S.cookie_necessary_only_expiration), t = S.use_rfc_cookie ? encodeURIComponent(t) : t; var o = new Date; o.setTime(o.getTime() + 24 * n * 60 * 60 * 1e3); o = e + "=" + (t || "") + ("; expires=" + o.toUTCString()) + "; Path=" + S.cookie_path + ";"; o += " SameSite=" + S.cookie_same_site + ";", -1 < window.location.hostname.indexOf(".") && (o += " Domain=" + S.cookie_domain + ";"), "https:" === window.location.protocol && (o += " Secure;"), document.cookie = o, se("CookieConsent [SET_COOKIE]: '" + e + "' expires after " + n + " day(s)") }, me = function (e, t, n) { if ("one" === t) { if ((i = (i = document.cookie.match("(^|;)\\s*" + e + "\\s*=\\s*([^;]+)")) ? n ? i.pop() : e : "") && e === S.cookie_name) { try { i = JSON.parse(i) } catch (e) { try { i = JSON.parse(decodeURIComponent(i)) } catch (e) { i = {} } } i = JSON.stringify(i) } } else if ("all" === t) for (var o = document.cookie.split(/;\s*/), i = [], a = 0; a < o.length; a++)i.push(o[a].split("=")[0]); return i }, ve = function (e, t, n) { for (var o = t || "/", i = 0; i < e.length; i++) { for (var a = 0; a < n.length; a++)document.cookie = e[i] + "=; path=" + o + (0 == n[a].indexOf(".") ? "; domain=" + n[a] : "") + "; Expires=Thu, 01 Jan 1970 00:00:01 GMT;"; se("CookieConsent [AUTOCLEAR]: deleting cookie: '" + e[i] + "' path: '" + o + "' domain:", n) } }; $.validCookie = function (e) { return "" !== me(e, "one", !0) }; var be = function (e, t, n, o) { e.addEventListener(t, n, !0 === o && { passive: !0 }) }, ye = function (e) { if ("object" == typeof e) return Object.keys(e) }, ke = function (e, t) { e.classList.add(t) }, Ce = function (e, t) { e.classList.remove(t) }, Ae = function (e, t) { return e.classList.contains(t) }; return $ }) }();</script>
+
+    <!-- Scroll to top button -->
+    <button class="scroll-to-top" id="scroll-to-top" aria-label="Zpět nahoru">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#0b1929" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="4"/><polyline points="7 9 12 4 17 9"/></svg>
+    </button>
+    <script>
+        (function () {
+            var btn = document.getElementById('scroll-to-top');
+            var stickyCta = document.getElementById('stickyCta');
+            if (!btn) return;
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 400) {
+                    btn.classList.add('visible');
+                } else {
+                    btn.classList.remove('visible');
+                }
+                if (stickyCta && stickyCta.classList.contains('active')) {
+                    btn.classList.add('above-sticky');
+                } else {
+                    btn.classList.remove('above-sticky');
+                }
+            }, { passive: true });
+            btn.addEventListener('click', function () {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        })();
+    </script>
+
 </body>
 
 </html>
