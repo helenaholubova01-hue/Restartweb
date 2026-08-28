@@ -1,0 +1,1139 @@
+<title>Fáze 2 aplikace Restart muže</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=swap">
+
+<style>
+    :root {
+        --bg-deep: #050d17;
+        --bg-primary: #0b1929;
+        --bg-alt: #0f2236;
+        --bg-card: #132d47;
+
+        --accent: #e87722;
+        --accent-soft: rgba(232, 119, 34, 0.14);
+        --green: #3f9626;
+        --green-soft: rgba(63, 150, 38, 0.16);
+        --red: #c2503f;
+        --red-soft: rgba(194, 80, 63, 0.16);
+
+        --text-white: #ffffff;
+        --text-light: #c8d6e5;
+        --text-muted: #7f8fa6;
+
+        --border: rgba(255, 255, 255, 0.08);
+        --border-strong: rgba(255, 255, 255, 0.16);
+
+        --font-heading: 'Montserrat', 'Segoe UI', sans-serif;
+        --font-body: 'Open Sans', 'Segoe UI', sans-serif;
+
+        --wrap: 980px;
+        --prose: 68ch;
+        --radius: 12px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+        margin: 0;
+        background: var(--bg-deep);
+        color: var(--text-light);
+        font-family: var(--font-body);
+        font-size: 1.05rem;
+        line-height: 1.75;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background: radial-gradient(ellipse at 50% 0%, #0f2a42 0%, #0b1929 45%, #050d17 100%);
+    }
+
+    .wrap {
+        max-width: var(--wrap);
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+
+    .prose { max-width: var(--prose); }
+
+    h1, h2, h3 {
+        font-family: var(--font-heading);
+        color: var(--text-white);
+        text-wrap: balance;
+        margin: 0;
+    }
+
+    h1 {
+        font-weight: 800;
+        font-size: clamp(2rem, 5.2vw, 3rem);
+        line-height: 1.15;
+    }
+
+    h2 {
+        font-weight: 800;
+        font-size: clamp(1.5rem, 3.4vw, 2rem);
+        line-height: 1.25;
+    }
+
+    h3 {
+        font-weight: 700;
+        font-size: 1.2rem;
+        line-height: 1.35;
+    }
+
+    p { margin: 0; }
+
+    strong { color: var(--text-white); font-weight: 600; }
+    .t-accent { color: var(--accent); }
+
+    .eyebrow {
+        font-family: var(--font-heading);
+        font-weight: 600;
+        font-size: 0.78rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+    }
+
+    /* ---------- hlavička ---------- */
+
+    header.masthead {
+        padding: clamp(3rem, 8vw, 5.5rem) 0 clamp(2rem, 5vw, 3rem);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .masthead__inner {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        max-width: var(--prose);
+    }
+
+    .masthead__meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1.25rem;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+    }
+
+    .goal {
+        margin-top: 2.5rem;
+        padding: 1.25rem 1.5rem;
+        background: var(--accent-soft);
+        border-left: 3px solid var(--accent);
+        border-radius: 0 var(--radius) var(--radius) 0;
+        max-width: var(--prose);
+    }
+
+    .goal p { color: var(--text-white); }
+
+    .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1px;
+        margin-top: 2.5rem;
+        background: var(--border);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+    }
+
+    .stat {
+        background: var(--bg-primary);
+        padding: 1.1rem 1.25rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
+    }
+
+    .stat__num {
+        font-family: var(--font-heading);
+        font-weight: 800;
+        font-size: 1.9rem;
+        color: var(--accent);
+        line-height: 1.1;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .stat__label {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+    }
+
+    /* ---------- sekce ---------- */
+
+    section {
+        padding: clamp(2.75rem, 6vw, 4.25rem) 0;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .section__head {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        margin-bottom: 2rem;
+        max-width: var(--prose);
+    }
+
+    .stack {
+        display: flex;
+        flex-direction: column;
+        gap: 1.1rem;
+    }
+
+    /* ---------- zjištění od týmu ---------- */
+
+    .findings {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+    }
+
+    .finding {
+        background: var(--bg-primary);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.4rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    .finding h3 { font-size: 1.05rem; }
+
+    .finding p { font-size: 0.98rem; }
+
+    .finding--key {
+        border-color: rgba(232, 119, 34, 0.45);
+        background: linear-gradient(180deg, rgba(232, 119, 34, 0.08), var(--bg-primary) 60%);
+    }
+
+    /* ---------- karty funkcí ---------- */
+
+    .cards {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .card {
+        background: var(--bg-primary);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.5rem;
+        display: grid;
+        grid-template-columns: 44px 1fr;
+        gap: 0.5rem 1.25rem;
+        align-items: start;
+    }
+
+    .card__badge {
+        grid-row: span 2;
+        width: 44px;
+        height: 44px;
+        display: grid;
+        place-items: center;
+        border-radius: 10px;
+        background: var(--bg-card);
+        border: 1px solid var(--border-strong);
+        font-family: var(--font-heading);
+        font-weight: 800;
+        font-size: 1.15rem;
+        color: var(--accent);
+    }
+
+    .card__body {
+        display: flex;
+        flex-direction: column;
+        gap: 0.7rem;
+        min-width: 0;
+    }
+
+    .card__body p { font-size: 1rem; }
+
+    .card__q {
+        display: flex;
+        gap: 0.7rem;
+        padding: 0.85rem 1rem;
+        background: var(--bg-alt);
+        border-radius: 8px;
+        font-size: 0.95rem;
+        color: var(--text-white);
+    }
+
+    .card__q .q-mark {
+        font-family: var(--font-heading);
+        font-weight: 700;
+        color: var(--accent);
+        flex: none;
+    }
+
+    /* ---------- přepínač odpovědí ---------- */
+
+    .choice {
+        grid-column: 2;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 0.35rem;
+        padding-top: 0.9rem;
+        border-top: 1px dashed var(--border);
+    }
+
+    .choice__label {
+        font-family: var(--font-heading);
+        font-weight: 600;
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-right: 0.35rem;
+    }
+
+    .opt {
+        font-family: var(--font-heading);
+        font-weight: 600;
+        font-size: 0.88rem;
+        color: var(--text-light);
+        background: transparent;
+        border: 1px solid var(--border-strong);
+        border-radius: 100px;
+        padding: 0.35rem 1.1rem;
+        cursor: pointer;
+        transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .opt:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+    }
+
+    @media (hover: hover) {
+        .opt:hover { border-color: var(--text-muted); color: var(--text-white); }
+    }
+
+    .opt[aria-pressed="true"] {
+        background: var(--accent-soft);
+        border-color: var(--accent);
+        color: #f5b678;
+    }
+
+    .opt[aria-pressed="true"][data-value="ano"] {
+        background: var(--green-soft);
+        border-color: var(--green);
+        color: #9fe08a;
+    }
+
+    .opt[aria-pressed="true"][data-value="ne"] {
+        background: var(--red-soft);
+        border-color: var(--red);
+        color: #f0a294;
+    }
+
+    /* ---------- rozhodnutí ---------- */
+
+    .decision {
+        background: var(--bg-primary);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.6rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .decision__num {
+        font-family: var(--font-heading);
+        font-weight: 800;
+        font-size: 0.78rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent);
+    }
+
+    .urgent {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: var(--font-heading);
+        font-weight: 700;
+        font-size: 0.74rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #f0a294;
+        background: var(--red-soft);
+        border: 1px solid rgba(194, 80, 63, 0.5);
+        border-radius: 100px;
+        padding: 0.25rem 0.85rem;
+        align-self: flex-start;
+    }
+
+    .options {
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+    }
+
+    .option {
+        background: var(--bg-alt);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 1.1rem 1.25rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+
+    .option--rec {
+        border-color: rgba(232, 119, 34, 0.5);
+        background: linear-gradient(180deg, rgba(232, 119, 34, 0.07), var(--bg-alt) 70%);
+    }
+
+    .option__head {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 0.6rem;
+    }
+
+    .option__key {
+        font-family: var(--font-heading);
+        font-weight: 800;
+        color: var(--accent);
+    }
+
+    .option__name {
+        font-family: var(--font-heading);
+        font-weight: 700;
+        color: var(--text-white);
+        font-size: 1.05rem;
+    }
+
+    .tag-rec {
+        font-family: var(--font-heading);
+        font-weight: 700;
+        font-size: 0.7rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--accent);
+        border: 1px solid rgba(232, 119, 34, 0.5);
+        border-radius: 100px;
+        padding: 0.1rem 0.7rem;
+    }
+
+    .option p { font-size: 0.97rem; }
+
+    /* ---------- náčrt ---------- */
+
+    .sketch-wrap { overflow-x: auto; }
+
+    .sketch {
+        min-width: 560px;
+        display: grid;
+        grid-template-columns: 200px 1fr 250px;
+        gap: 1px;
+        background: var(--border);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+    }
+
+    .pane {
+        background: var(--bg-primary);
+        padding: 1.2rem 1.25rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        min-height: 260px;
+    }
+
+    .pane__title {
+        font-family: var(--font-heading);
+        font-weight: 600;
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+    }
+
+    .pane ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.45rem;
+        font-size: 0.92rem;
+    }
+
+    .pane li { color: var(--text-light); }
+
+    .pane li.is-active { color: var(--accent); font-weight: 600; }
+
+    .row-line {
+        background: var(--bg-alt);
+        border-radius: 6px;
+        padding: 0.55rem 0.75rem;
+        font-size: 0.9rem;
+        color: var(--text-light);
+        display: flex;
+        justify-content: space-between;
+        gap: 0.75rem;
+    }
+
+    .row-line span:last-child { color: var(--text-muted); font-size: 0.82rem; white-space: nowrap; }
+
+    .row-line--hot { border-left: 3px solid var(--accent); color: var(--text-white); }
+
+    .sketch-note {
+        margin-top: 1rem;
+        font-size: 0.92rem;
+        color: var(--text-muted);
+        max-width: var(--prose);
+    }
+
+    /* ---------- co nebude ---------- */
+
+    .notlist {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 0.6rem 2rem;
+    }
+
+    .notlist li {
+        display: flex;
+        gap: 0.75rem;
+        align-items: baseline;
+        color: var(--text-muted);
+        font-size: 0.98rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .notlist li::before {
+        content: "—";
+        color: var(--border-strong);
+        flex: none;
+    }
+
+    /* ---------- postup ---------- */
+
+    .steps {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        counter-reset: step;
+    }
+
+    .steps li {
+        counter-increment: step;
+        display: grid;
+        grid-template-columns: 34px 1fr;
+        gap: 1rem;
+        padding: 0.9rem 0;
+        border-bottom: 1px solid var(--border);
+        align-items: baseline;
+    }
+
+    .steps li:last-child { border-bottom: none; }
+
+    .steps li::before {
+        content: counter(step);
+        font-family: var(--font-heading);
+        font-weight: 800;
+        font-size: 0.85rem;
+        color: var(--accent);
+        border: 1px solid rgba(232, 119, 34, 0.4);
+        border-radius: 50%;
+        width: 28px;
+        height: 28px;
+        display: grid;
+        place-items: center;
+        font-variant-numeric: tabular-nums;
+    }
+
+    /* ---------- souhrn odpovědí ---------- */
+
+    .summary {
+        background: var(--bg-card);
+        border: 1px solid var(--border-strong);
+        border-radius: var(--radius);
+        padding: 1.6rem;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.25rem;
+    }
+
+    .summary__text {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+    }
+
+    .summary__count {
+        font-family: var(--font-heading);
+        font-weight: 800;
+        font-size: 1.3rem;
+        color: var(--text-white);
+        font-variant-numeric: tabular-nums;
+    }
+
+    .summary__hint { font-size: 0.9rem; color: var(--text-muted); }
+
+    .summary__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        align-items: center;
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        padding: 0.8rem 2rem;
+        background: var(--green);
+        color: #fff;
+        font-family: var(--font-heading);
+        font-weight: 700;
+        font-size: 0.95rem;
+        border: none;
+        border-radius: 100px;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    @media (hover: hover) {
+        .btn:hover { background: #4db82e; transform: scale(1.04); }
+    }
+
+    .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    .btn-ghost {
+        background: transparent;
+        border: 1px solid var(--border-strong);
+        color: var(--text-muted);
+        font-family: var(--font-heading);
+        font-weight: 600;
+        font-size: 0.85rem;
+        border-radius: 100px;
+        padding: 0.55rem 1.2rem;
+        cursor: pointer;
+        transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    @media (hover: hover) {
+        .btn-ghost:hover { color: var(--text-white); border-color: var(--text-muted); }
+    }
+
+    .btn-ghost:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    footer.end {
+        padding: 2.5rem 0 3.5rem;
+        color: var(--text-muted);
+        font-size: 0.88rem;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        * { transition: none !important; }
+    }
+
+    @media (max-width: 640px) {
+        .card { grid-template-columns: 36px 1fr; padding: 1.25rem; gap: 0.5rem 0.9rem; }
+        .card__badge { width: 36px; height: 36px; font-size: 1rem; }
+        .choice { grid-column: 1 / -1; }
+        .sketch { grid-template-columns: 150px 1fr 190px; }
+    }
+</style>
+
+<div class="wrap">
+
+    <header class="masthead">
+        <div class="masthead__inner">
+            <p class="eyebrow">Návrh k rozhodnutí · 28. 8. 2026</p>
+            <h1>Projektová appka: co má umět <span class="t-accent">obrazovka</span></h1>
+            <div class="masthead__meta">
+                <span>Fáze 2</span>
+                <span>Pro Daniela</span>
+                <span>Připravil Hugo, asistent Ondřeje</span>
+            </div>
+        </div>
+
+        <div class="goal">
+            <p><strong>Cíl Fáze 2 není mít všechno.</strong> Cíl je, aby tým appku začal používat místo hledání ve Slacku.</p>
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                <span class="stat__num">8</span>
+                <span class="stat__label">funkcí k odsouhlasení (A–H)</span>
+            </div>
+            <div class="stat">
+                <span class="stat__num">3</span>
+                <span class="stat__label">rozhodnutí pro Tebe</span>
+            </div>
+            <div class="stat">
+                <span class="stat__num">1</span>
+                <span class="stat__label">z nich spěchá před psaním kódu</span>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div class="section__head">
+            <p class="eyebrow">Kde jsme</p>
+            <h2>Motor je hotový, chybí obrazovka</h2>
+        </div>
+        <div class="stack prose">
+            <p>Appka umí úkoly, stavy, oblasti, kampaně, šablony, komentáře, odkazy, přehledy a historii změn. Přihlášení funguje přes Google účet @restartmuze.cz.</p>
+            <p>Chybí jí ale to hlavní pro tým: <strong>obrazovka, na kterou se člověk podívá a klikne.</strong> Fáze 2 je právě tahle obrazovka.</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="section__head">
+            <p class="eyebrow">Zjištění z rozhovoru s kolegyní, 28. 8.</p>
+            <h2>Co jsme se dozvěděli od týmu</h2>
+        </div>
+        <div class="findings">
+            <div class="finding">
+                <h3>Pracuje se v kampaních</h3>
+                <p>Zhruba 80 % úkolů je v každé kampani stejných. Šablony už v motoru jsou. Liší se jen slovník: tým říká „kampaň“ a „den spuštění“, appka zatím „projekt“ a „datum začátku“.</p>
+            </div>
+            <div class="finding finding--key">
+                <h3>Největší ztráta není v práci, ale v čekání</h3>
+                <p>Úkol projde rukama 3–4 lidí (texty → web → FAPI → e-maily) a mezi nimi leží. Nikdo nevidí, <strong>kde to visí a na kom.</strong> Obyčejný stav „Čeká“ tohle neumí, neřekne na koho ani jak dlouho.</p>
+            </div>
+            <div class="finding">
+                <h3>Ze Slacku jen dvě věci</h3>
+                <p>„Udělej z téhle zprávy úkol“ a „připomeň mi, co na mně visí“. Pracovat ve Slacku tým nechce. To je až Fáze 3, tady s tím jen počítáme dopředu.</p>
+            </div>
+            <div class="finding">
+                <h3>Přílohy netřeba</h3>
+                <p>Stačí odkazy na Dokumenty, Tabulky a stránky. To už funguje.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="section__head">
+            <p class="eyebrow">Návrh — odpověz ano, ne nebo později</p>
+            <h2>Co má obrazovka umět nejdřív</h2>
+            <p>Pořadí A–H je moje doporučení podle toho, co podle mě nejvíc pomůže, aby lidi appku opravdu otevírali. Odpovědi si můžeš rovnou klikat, dole je zkopíruješ jedním tlačítkem.</p>
+        </div>
+
+        <div class="cards">
+
+            <article class="card">
+                <div class="card__badge">A</div>
+                <div class="card__body">
+                    <h3>Přihlášení a „Moje úkoly“ jako úvodní stránka</h3>
+                    <p>Otevřu appku a hned vidím, co mám dělat já. Nic víc, nic míň.</p>
+                    <div class="card__q"><span class="q-mark">?</span><span>Stačí Ti seznam, nebo rovnou i sloupce podle stavu, jako v Trellu?</span></div>
+                </div>
+                <div class="choice" data-key="A" data-label="A) Moje úkoly jako úvodní stránka">
+                    <span class="choice__label">Odpověď</span>
+                    <button type="button" class="opt" data-value="ano" aria-pressed="false">Ano</button>
+                    <button type="button" class="opt" data-value="ne" aria-pressed="false">Ne</button>
+                    <button type="button" class="opt" data-value="později" aria-pressed="false">Později</button>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card__badge">B</div>
+                <div class="card__body">
+                    <h3>Nový úkol za pět vteřin</h3>
+                    <p>Stisknu jednu klávesu, napíšu název, vyberu kampaň, komu a dokdy. Hotovo. Když je zadání úkolu pomalé, lidi ho napíšou do Slacku a je pryč.</p>
+                    <div class="card__q"><span class="q-mark">?</span><span>Musí každý úkol patřit do kampaně nebo oblasti, nebo může existovat i „volný“ úkol?</span></div>
+                </div>
+                <div class="choice" data-key="B" data-label="B) Nový úkol za pět vteřin">
+                    <span class="choice__label">Odpověď</span>
+                    <button type="button" class="opt" data-value="ano" aria-pressed="false">Ano</button>
+                    <button type="button" class="opt" data-value="ne" aria-pressed="false">Ne</button>
+                    <button type="button" class="opt" data-value="později" aria-pressed="false">Později</button>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card__badge">C</div>
+                <div class="card__body">
+                    <h3>Detail úkolu</h3>
+                    <p>Vše upravím přímo na místě, pod tím komentáře, odkazy a kdo co kdy změnil. Tady se řeší předání dalšímu člověku.</p>
+                </div>
+                <div class="choice" data-key="C" data-label="C) Detail úkolu">
+                    <span class="choice__label">Odpověď</span>
+                    <button type="button" class="opt" data-value="ano" aria-pressed="false">Ano</button>
+                    <button type="button" class="opt" data-value="ne" aria-pressed="false">Ne</button>
+                    <button type="button" class="opt" data-value="později" aria-pressed="false">Později</button>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card__badge">D</div>
+                <div class="card__body">
+                    <h3>„Kde to visí“</h3>
+                    <p>Jeden přehled: všechny úkoly, které na někoho čekají — <strong>na kom</strong> a <strong>jak dlouho.</strong> Podle mě nejdůležitější funkce celé appky. Jak ji postavit, řeší rozhodnutí 1 níže.</p>
+                </div>
+                <div class="choice" data-key="D" data-label="D) Přehled Kde to visí">
+                    <span class="choice__label">Odpověď</span>
+                    <button type="button" class="opt" data-value="ano" aria-pressed="false">Ano</button>
+                    <button type="button" class="opt" data-value="ne" aria-pressed="false">Ne</button>
+                    <button type="button" class="opt" data-value="později" aria-pressed="false">Později</button>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card__badge">E</div>
+                <div class="card__body">
+                    <h3>Kampaň ze šablony</h3>
+                    <p>Zadám název a den spuštění, appka sama založí všechny úkoly s termíny (T-14, T-7, T-1, den D, konec). Ušetří nejvíc ruční práce.</p>
+                    <div class="card__q"><span class="q-mark">?</span><span>Máme v appce říkat „kampaň“ místo „projekt“? Viz rozhodnutí 2.</span></div>
+                </div>
+                <div class="choice" data-key="E" data-label="E) Kampaň ze šablony">
+                    <span class="choice__label">Odpověď</span>
+                    <button type="button" class="opt" data-value="ano" aria-pressed="false">Ano</button>
+                    <button type="button" class="opt" data-value="ne" aria-pressed="false">Ne</button>
+                    <button type="button" class="opt" data-value="později" aria-pressed="false">Později</button>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card__badge">F</div>
+                <div class="card__body">
+                    <h3>Nástěnka</h3>
+                    <p>Sloupce podle stavu, úkoly se přetahují myší. Lidi to znají z Trella.</p>
+                </div>
+                <div class="choice" data-key="F" data-label="F) Nástěnka">
+                    <span class="choice__label">Odpověď</span>
+                    <button type="button" class="opt" data-value="ano" aria-pressed="false">Ano</button>
+                    <button type="button" class="opt" data-value="ne" aria-pressed="false">Ne</button>
+                    <button type="button" class="opt" data-value="později" aria-pressed="false">Později</button>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card__badge">G</div>
+                <div class="card__body">
+                    <h3>Nastavení</h3>
+                    <p>Tým si sám mění stavy (název, barva, pořadí), oblasti a šablony, bez programátora.</p>
+                    <div class="card__q"><span class="q-mark">?</span><span>Má na nastavení vidět každý, nebo jen Ty? Zatím počítám, že každý.</span></div>
+                </div>
+                <div class="choice" data-key="G" data-label="G) Nastavení">
+                    <span class="choice__label">Odpověď</span>
+                    <button type="button" class="opt" data-value="ano" aria-pressed="false">Ano</button>
+                    <button type="button" class="opt" data-value="ne" aria-pressed="false">Ne</button>
+                    <button type="button" class="opt" data-value="později" aria-pressed="false">Později</button>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card__badge">H</div>
+                <div class="card__body">
+                    <h3>Mobil</h3>
+                    <p>Funguje v telefonu v prohlížeči, i o půlnoci v den spuštění, kdy se přepínají formuláře.</p>
+                </div>
+                <div class="choice" data-key="H" data-label="H) Mobil">
+                    <span class="choice__label">Odpověď</span>
+                    <button type="button" class="opt" data-value="ano" aria-pressed="false">Ano</button>
+                    <button type="button" class="opt" data-value="ne" aria-pressed="false">Ne</button>
+                    <button type="button" class="opt" data-value="později" aria-pressed="false">Později</button>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <section>
+        <div class="section__head">
+            <p class="eyebrow">Tři rozhodnutí</p>
+            <h2>Co potřebuju od Tebe</h2>
+        </div>
+
+        <div class="stack">
+
+            <article class="decision">
+                <p class="decision__num">Rozhodnutí 1</p>
+                <h3>Jak ukázat, kde to visí a na kom</h3>
+                <span class="urgent">Musí padnout před psaním kódu</span>
+                <p class="prose">Tohle rozhodnutí ovlivňuje, jak se úkol ukládá pod kapotou. Kdyby padlo až potom, přepisovala by se hotová práce včetně struktury dat, a to je nejdražší druh změny. Ostatní body se dají posouvat, tenhle ne.</p>
+
+                <div class="options">
+                    <div class="option">
+                        <div class="option__head">
+                            <span class="option__key">a)</span>
+                            <span class="option__name">Domluva v týmu</span>
+                        </div>
+                        <p>Když čekám na Lenku, přehodím úkol na Lenku a dám stav „Čeká“. Appka ukáže, jak dlouho úkol v tom stavu je. Nic nového se nestaví. Funguje to ale jen tehdy, když to všichni poctivě dělají, a ztrácí se, kdo byl původní vlastník.</p>
+                    </div>
+                    <div class="option option--rec">
+                        <div class="option__head">
+                            <span class="option__key">b)</span>
+                            <span class="option__name">Políčko „čeká na“</span>
+                            <span class="tag-rec">Moje doporučení</span>
+                        </div>
+                        <p>Úkol má svého vlastníka a vedle toho samostatné „čeká na: Lenka“. Přehled „Kde to visí“ ukáže všechno, co na někoho čeká, seřazené podle délky čekání. „Co na mně visí“ = moje úkoly plus úkoly, kde jsem ten, na koho se čeká. Malá změna, velký efekt.</p>
+                    </div>
+                    <div class="option">
+                        <div class="option__head">
+                            <span class="option__key">c)</span>
+                            <span class="option__name">Řetězec kroků v šabloně</span>
+                        </div>
+                        <p>Texty → web → FAPI → e-maily jako navazující úkoly, další se odemkne, až je předchozí hotový. Nejsilnější, ale nejsložitější. A začíná to připomínat Jiru, na které jste se spálili.</p>
+                    </div>
+                </div>
+
+                <p class="prose"><strong>Doporučuju (b) teď.</strong> Variantu (c) přidat až po pár týdnech, kdyby si ji tým sám řekl. Je to ale Tvoje rozhodnutí, ne moje.</p>
+
+                <div class="choice" data-key="R1" data-label="Rozhodnutí 1 — Kde to visí">
+                    <span class="choice__label">Volím</span>
+                    <button type="button" class="opt" data-value="(a) domluva v týmu" aria-pressed="false">a) Domluva</button>
+                    <button type="button" class="opt" data-value="(b) políčko čeká na" aria-pressed="false">b) Políčko „čeká na“</button>
+                    <button type="button" class="opt" data-value="(c) řetězec kroků" aria-pressed="false">c) Řetězec kroků</button>
+                </div>
+            </article>
+
+            <article class="decision">
+                <p class="decision__num">Rozhodnutí 2</p>
+                <h3>Slovník</h3>
+                <p class="prose">Má appka říkat <strong>„kampaň“</strong> místo „projekt“ a <strong>„den spuštění“</strong> místo „datum začátku“? „Oblast“ (Marketing, Web, Mentoring…) by zůstala. Mění se jen slova na obrazovce, uvnitř nic. Doporučuju ano, jinak to tým nebude číst jako svoje.</p>
+                <div class="choice" data-key="R2" data-label="Rozhodnutí 2 — Slovník">
+                    <span class="choice__label">Volím</span>
+                    <button type="button" class="opt" data-value="ano — kampaň a den spuštění" aria-pressed="false">Ano, přejmenovat</button>
+                    <button type="button" class="opt" data-value="ne — zůstává projekt a datum začátku" aria-pressed="false">Ne, nechat</button>
+                </div>
+            </article>
+
+            <article class="decision">
+                <p class="decision__num">Rozhodnutí 3</p>
+                <h3>Jedna vlna, nebo dvě?</h3>
+                <div class="options">
+                    <div class="option option--rec">
+                        <div class="option__head">
+                            <span class="option__name">Dvě vlny</span>
+                            <span class="tag-rec">Moje doporučení</span>
+                        </div>
+                        <p>Nejdřív A + B + C + D, tým to 2–3 týdny používá, pak E + F + G. Dřív zpětná vazba, méně předělávání.</p>
+                    </div>
+                    <div class="option">
+                        <div class="option__head">
+                            <span class="option__name">Jedna vlna</span>
+                        </div>
+                        <p>Všechno najednou. Déle se čeká, ale tým dostane hotovou věc.</p>
+                    </div>
+                </div>
+                <div class="choice" data-key="R3" data-label="Rozhodnutí 3 — Vlny">
+                    <span class="choice__label">Volím</span>
+                    <button type="button" class="opt" data-value="dvě vlny" aria-pressed="false">Dvě vlny</button>
+                    <button type="button" class="opt" data-value="jedna vlna" aria-pressed="false">Jedna vlna</button>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <section>
+        <div class="section__head">
+            <p class="eyebrow">Náčrt, ne grafika</p>
+            <h2>Jak to bude vypadat</h2>
+        </div>
+
+        <div class="sketch-wrap">
+            <div class="sketch">
+                <div class="pane">
+                    <p class="pane__title">Přehledy</p>
+                    <ul>
+                        <li>Moje úkoly</li>
+                        <li class="is-active">Kde to visí</li>
+                        <li>Hoří</li>
+                        <li>Tento týden</li>
+                        <li>Nástěnka</li>
+                    </ul>
+                    <p class="pane__title">Kampaně a oblasti</p>
+                    <ul>
+                        <li>Chlapský víkend</li>
+                        <li>Kniha</li>
+                        <li>Marketing</li>
+                    </ul>
+                </div>
+                <div class="pane">
+                    <p class="pane__title">Kde to visí</p>
+                    <div class="row-line row-line--hot"><span>Texty na prodejku</span><span>Lenka · 6 dní</span></div>
+                    <div class="row-line"><span>Nastavit FAPI formulář</span><span>Ondřej · 3 dny</span></div>
+                    <div class="row-line"><span>E-mailová série</span><span>Lenka · 2 dny</span></div>
+                    <div class="row-line"><span>Web: sekce s cenou</span><span>Kodér · 1 den</span></div>
+                </div>
+                <div class="pane">
+                    <p class="pane__title">Detail úkolu</p>
+                    <div class="row-line"><span>Vlastník</span><span>Ondřej</span></div>
+                    <div class="row-line"><span>Čeká na</span><span>Lenka</span></div>
+                    <div class="row-line"><span>Termín</span><span>T-7</span></div>
+                    <div class="row-line"><span>Odkazy</span><span>2</span></div>
+                    <div class="row-line"><span>Komentáře</span><span>4</span></div>
+                </div>
+            </div>
+        </div>
+
+        <p class="sketch-note">Klik na úkol otevře detail vpravo, žádná vyskakovací okna. Barvy Restart muže: tmavě modrá, oranžová, světle šedomodrá. Priorita „Hoří“ má animovaný ohýnek a je to jediná animace v celé appce, schválně, aby si člověk rozmyslel, jestli to opravdu hoří. Česky, jednoduše, žádné „Opravdu chcete…?“ kromě mazání.</p>
+    </section>
+
+    <section>
+        <div class="section__head">
+            <p class="eyebrow">Hranice zadání</p>
+            <h2>Co ve Fázi 2 vědomě nebude</h2>
+            <p>Aby to nikdo nečekal. Všechno z toho jde dodat později, až si to tým řekne.</p>
+        </div>
+        <ul class="notlist">
+            <li>kalendářové zobrazení úkolů</li>
+            <li>vlastní přehledy, které si každý sestaví sám (budou jen předpřipravené)</li>
+            <li>globální stránka „co se změnilo v celé appce“</li>
+            <li>hromadné úpravy více úkolů najednou</li>
+            <li>napojení na Slack (to je Fáze 3)</li>
+            <li>přílohy souborů (stačí odkazy)</li>
+            <li>tmavý režim</li>
+            <li>práce bez internetu</li>
+        </ul>
+    </section>
+
+    <section>
+        <div class="section__head">
+            <p class="eyebrow">Postup</p>
+            <h2>Co se stane po Tvém rozhodnutí</h2>
+        </div>
+        <ol class="steps prose">
+            <li>Hugo sepíše zadání pro programátora.</li>
+            <li>Kodér postaví obrazovku.</li>
+            <li>Ondřej ji zpřístupní na zkušební adrese.</li>
+            <li>Tým ji 2–3 týdny zkouší.</li>
+            <li>Fáze 3 — napojení na Slack.</li>
+        </ol>
+    </section>
+
+    <section>
+        <div class="summary">
+            <div class="summary__text">
+                <span class="summary__count" id="count">Rozhodnuto 0 z 11</span>
+                <span class="summary__hint">Odpovědi se drží v tomto prohlížeči. Tlačítkem je zkopíruješ a pošleš zpátky.</span>
+            </div>
+            <div class="summary__actions">
+                <button type="button" class="btn-ghost" id="reset">Vymazat</button>
+                <button type="button" class="btn" id="copy">Zkopírovat odpovědi</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="end">
+        <p>Restart muže · Projektová appka, Fáze 2 · Připravil Hugo, asistent Ondřeje, 28. 8. 2026</p>
+    </footer>
+
+</div>
+
+<script>
+    (function () {
+        var STORE = 'rm-faze2-odpovedi';
+        var groups = Array.prototype.slice.call(document.querySelectorAll('.choice'));
+        var countEl = document.getElementById('count');
+        var copyBtn = document.getElementById('copy');
+        var resetBtn = document.getElementById('reset');
+        var answers = {};
+
+        try {
+            var saved = window.localStorage.getItem(STORE);
+            if (saved) answers = JSON.parse(saved) || {};
+        } catch (e) {
+            answers = {};
+        }
+
+        function persist() {
+            try {
+                window.localStorage.setItem(STORE, JSON.stringify(answers));
+            } catch (e) { /* soukromé okno — jen se neuloží */ }
+        }
+
+        function render() {
+            groups.forEach(function (group) {
+                var key = group.getAttribute('data-key');
+                group.querySelectorAll('.opt').forEach(function (btn) {
+                    var on = answers[key] === btn.getAttribute('data-value');
+                    btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+                });
+            });
+            var done = groups.filter(function (g) {
+                return answers[g.getAttribute('data-key')];
+            }).length;
+            countEl.textContent = 'Rozhodnuto ' + done + ' z ' + groups.length;
+        }
+
+        groups.forEach(function (group) {
+            group.addEventListener('click', function (event) {
+                var btn = event.target.closest('.opt');
+                if (!btn) return;
+                var key = group.getAttribute('data-key');
+                var value = btn.getAttribute('data-value');
+                answers[key] = answers[key] === value ? null : value;
+                if (!answers[key]) delete answers[key];
+                persist();
+                render();
+            });
+        });
+
+        function buildText() {
+            var lines = ['Fáze 2 — moje odpovědi', ''];
+            groups.forEach(function (group) {
+                var key = group.getAttribute('data-key');
+                var label = group.getAttribute('data-label');
+                lines.push(label + ': ' + (answers[key] || '—'));
+            });
+            return lines.join('\n');
+        }
+
+        copyBtn.addEventListener('click', function () {
+            var text = buildText();
+            var done = function () {
+                copyBtn.textContent = 'Zkopírováno';
+                window.setTimeout(function () {
+                    copyBtn.textContent = 'Zkopírovat odpovědi';
+                }, 2000);
+            };
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(done, fallback);
+            } else {
+                fallback();
+            }
+            function fallback() {
+                var ta = document.createElement('textarea');
+                ta.value = text;
+                ta.setAttribute('readonly', 'readonly');
+                ta.style.position = 'fixed';
+                ta.style.opacity = '0';
+                document.body.appendChild(ta);
+                ta.select();
+                try { document.execCommand('copy'); done(); }
+                catch (e) { copyBtn.textContent = 'Kopírování nevyšlo'; }
+                document.body.removeChild(ta);
+            }
+        });
+
+        resetBtn.addEventListener('click', function () {
+            answers = {};
+            persist();
+            render();
+        });
+
+        render();
+    })();
+</script>
