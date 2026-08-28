@@ -1105,6 +1105,50 @@
             padding-top: 1rem;
         }
 
+        /* ===== ČTENÁŘI – POČET + NEJČASTĚJŠÍ ZPRÁVA ===== */
+        .readers-note {
+            max-width: 760px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .readers-count {
+            font-family: 'Montserrat', 'Montserrat Fallback', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            line-height: 1.4;
+            color: var(--text-white);
+            margin-bottom: 1.75rem;
+        }
+
+        .readers-count strong {
+            color: var(--accent-orange);
+        }
+
+        .readers-message {
+            display: inline-block;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-subtle);
+            border-left: 3px solid var(--accent-orange);
+            border-radius: 12px;
+            padding: 1.25rem 1.75rem;
+        }
+
+        .readers-message-label {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .readers-message-quote {
+            font-family: 'Montserrat', 'Montserrat Fallback', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            line-height: 1.45;
+            color: var(--text-white);
+        }
+
         /* ===== DESATERO ===== */
         .desatero-grid {
             display: grid;
@@ -1455,6 +1499,19 @@
 
             .reaction-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .readers-count {
+                font-size: 1.3rem;
+            }
+
+            .readers-message {
+                display: block;
+                padding: 1.1rem 1.25rem;
+            }
+
+            .readers-message-quote {
+                font-size: 1.15rem;
             }
 
             .testimonial-card.wide,
@@ -1960,6 +2017,14 @@
             <section class="section section-alt">
                 <div class="container">
                     <h2 class="center">Co o knize říkají naši <span class="underline-brush">čtenáři?</span></h2>
+                    <div class="readers-note">
+                        <p class="readers-count">Více než <strong>15&nbsp;000 mužů</strong> už četlo knihu Restart
+                            muže.</p>
+                        <div class="readers-message">
+                            <p class="readers-message-label">Nejčastější zpráva, kterou dostávám:</p>
+                            <p class="readers-message-quote">„Kéž bych to věděl už před lety.“</p>
+                        </div>
+                    </div>
                     <div class="reaction-grid">
                         <div class="testimonial-card narrow">
                             <p>Sláva mi otevřel oči – až teď vidím, jaké chyby jsem dělal celé ty roky. Uvědomil jsem
