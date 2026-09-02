@@ -1,34 +1,36 @@
 <!-- ============================================================
-     KOVÁRNA — upoutávka pro stránku restartmuze.cz/linky/
+     KOVÁRNA — 3DENNÍ TRÉNINK: upoutávka pro stránku restartmuze.cz/linky/
+     Kampaň 1.–21. 9. 2026 (registrace na živý online trénink 21.–23. 9.).
      Divi Code modul, stejný postup jako u kvízového bloku (CLAUDE.md §9):
 
-     1) SEKCE → Advanced → CSS Class: rm-kov-section
+     1) SEKCE → Advanced → CSS Class: rm-kovt-section
                Design → Background → Background Image: fotka z WP Media Library
-               (zdroj: linky/img/kovarna-hero.webp), Size: Cover, Position: Top Right
+               (zdroj: linky/img/kovarna-trenink-hero.webp), Size: Cover, Position: Top Right
                Make Section Fullwidth: ON, padding 0
      2) ŘÁDEK → Make Row Fullwidth: ON, Max Width: 100 %, padding 0
      3) CODE  → vložit celý obsah tohoto souboru
 
-     Blok má vlastní prefix tříd (rm-kov-), takže může být na stránce
+     Blok má vlastní prefix tříd (rm-kovt-), takže může být na stránce
      zároveň s kvízovým blokem (rm-hero-) bez kolize stylů.
 
-     KDY POUŽÍT: až po skončení 3denního tréninku (23. 9. 2026). Do té doby
-     je na /linky/ blok kovarna-trenink-linky-divi.html — roční program se
-     podle domluvy v #kovarna nabízí až v závěru tréninku.
-
-     TODO ODKAZ: v kořeni kovarna.restartmuze.cz je teď stránka tréninku.
-     Prodejka ročního programu má podle kanvasu „Odkazy" (#kovarna) být
-     na /kovarna/ — před nasazením ověřit a href upravit. Bez UTM.
+     ODKAZ: https://kovarna.restartmuze.cz/ — v kořeni subdomény je teď
+     stránka 3denního tréninku (kanvas „Odkazy" v #kovarna; Moni 1. 9. 2026
+     potvrdila, že se odkazuje na subdoménu, ne na novou doménu).
+     Bez UTM — UTM parametry patří jen do e-mailů a příspěvků, na webu by
+     přepsaly původní zdroj návštěvy v GA4.
+     Texty převzaté beze změny z hero sekce tréninkové stránky.
+     Po skončení tréninku (23. 9.) vyměnit za blok kovarna-linky-divi.html
+     (roční program Kovárna).
      ============================================================ -->
 <style>
 /* Kontejner bloku */
-.rm-kov,
-.rm-kov *,
-.rm-kov *::before,
-.rm-kov *::after {
+.rm-kovt,
+.rm-kovt *,
+.rm-kovt *::before,
+.rm-kovt *::after {
     box-sizing: border-box;
 }
-.rm-kov {
+.rm-kovt {
     position: relative;
     max-width: 1440px;
     margin: 0 auto;
@@ -37,10 +39,10 @@
 }
 
 /* Overlay přes celou Divi sekci (fotka je nastavená v pozadí sekce) */
-.rm-kov-section {
+.rm-kovt-section {
     position: relative;
 }
-.rm-kov-section::before {
+.rm-kovt-section::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -52,7 +54,7 @@
 }
 
 /* Spodní přechod do tmavého pozadí stránky */
-.rm-kov-section::after {
+.rm-kovt-section::after {
     content: '';
     position: absolute;
     left: 0;
@@ -65,13 +67,13 @@
 }
 
 /* Obsah musí být nad overlayem */
-.rm-kov-section .et_pb_row {
+.rm-kovt-section .et_pb_row {
     position: relative;
     z-index: 2;
 }
 
 /* Textová část */
-.rm-kov-left {
+.rm-kovt-left {
     position: relative;
     z-index: 2;
     width: 100%;
@@ -81,7 +83,7 @@
 }
 
 /* ── Badge ── */
-.rm-kov-badge {
+.rm-kovt-badge {
     display: inline-flex;
     align-items: center;
     flex-wrap: wrap;
@@ -93,7 +95,7 @@
     border: 1px solid rgba(232,119,34,0.45);
     border-radius: 100px;
 }
-.rm-kov-badge-pill {
+.rm-kovt-badge-pill {
     display: inline-flex;
     align-items: center;
     padding: 0.3rem 0.75rem;
@@ -107,7 +109,7 @@
     border-radius: 100px;
     white-space: nowrap;
 }
-.rm-kov-badge-text {
+.rm-kovt-badge-text {
     font-family: 'Montserrat', sans-serif;
     font-size: 0.85rem;
     font-weight: 700;
@@ -117,7 +119,7 @@
 }
 
 /* ── Nadpis ── */
-.rm-kov h2 {
+.rm-kovt h2 {
     font-family: 'Montserrat', sans-serif !important;
     font-weight: 800 !important;
     font-size: clamp(2.2rem, 4vw, 3.6rem) !important;
@@ -127,7 +129,7 @@
     margin: 0 0 1.75rem !important;
     padding: 0 !important;
 }
-.rm-kov h2 .rm-kov-sub {
+.rm-kovt h2 .rm-kovt-sub {
     display: block;
     font-size: 0.5em;
     font-weight: 700;
@@ -135,13 +137,13 @@
     color: #c8d6e5;
     margin-bottom: 0.55em;
 }
-.rm-kov h2 em {
+.rm-kovt h2 em {
     font-style: normal;
     color: #e87722;
 }
 
 /* ── Lead + kdo vede ── */
-.rm-kov-lead {
+.rm-kovt-lead {
     font-family: 'Open Sans', sans-serif;
     font-size: 1.1rem;
     line-height: 1.75;
@@ -149,20 +151,20 @@
     max-width: 560px;
     margin: 0 0 1.25rem;
 }
-.rm-kov-by {
+.rm-kovt-by {
     font-family: 'Montserrat', sans-serif;
     font-size: 0.95rem;
     font-weight: 600;
     color: #c8d6e5;
     margin: 0 0 2.25rem;
 }
-.rm-kov-by b {
+.rm-kovt-by b {
     color: #ffffff;
     font-weight: 700;
 }
 
 /* ── CTA ── */
-.rm-kov-cta {
+.rm-kovt-cta {
     display: inline-flex !important;
     align-items: center;
     justify-content: center;
@@ -186,26 +188,26 @@
     transition: background 0.3s ease, transform 0.2s ease;
     margin-bottom: 1.25rem;
 }
-.rm-kov-cta svg {
+.rm-kovt-cta svg {
     width: 1rem;
     height: 1rem;
     flex-shrink: 0;
 }
 @media (hover: hover) {
-    .rm-kov-cta:hover {
+    .rm-kovt-cta:hover {
         background: #4db82e !important;
         transform: scale(1.04);
     }
 }
 
 /* ── Trust row pod CTA ── */
-.rm-kov-trust-row {
+.rm-kovt-trust-row {
     display: flex;
     flex-wrap: wrap;
     gap: 0.6rem 1.5rem;
     margin-top: 0.25rem;
 }
-.rm-kov-trust-item {
+.rm-kovt-trust-item {
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
@@ -216,7 +218,7 @@
     text-transform: uppercase;
     color: #c8d6e5;
 }
-.rm-kov-trust-item svg {
+.rm-kovt-trust-item svg {
     width: 1rem;
     height: 1rem;
     color: #3f9626;
@@ -225,60 +227,60 @@
 
 /* ── Mobil ── */
 @media (max-width: 900px) {
-    .rm-kov-section::before {
+    .rm-kovt-section::before {
         background: linear-gradient(to bottom, rgba(5,13,23,0.72) 0%, rgba(5,13,23,0.92) 45%, rgba(5,13,23,0.94) 100%);
     }
-    .rm-kov-section::after {
+    .rm-kovt-section::after {
         display: none;
     }
-    .rm-kov-left {
+    .rm-kovt-left {
         max-width: none;
         padding: 3rem calc(1.5rem + env(safe-area-inset-right)) 2.5rem calc(1.5rem + env(safe-area-inset-left));
     }
-    .rm-kov-badge {
+    .rm-kovt-badge {
         margin-bottom: 1.25rem;
     }
-    .rm-kov-cta {
+    .rm-kovt-cta {
         width: 100%;
         padding: 1rem 1.75rem !important;
     }
 }
 </style>
 
-<section class="rm-kov">
-    <div class="rm-kov-left">
+<section class="rm-kovt">
+    <div class="rm-kovt-left">
 
-        <div class="rm-kov-badge">
-            <span class="rm-kov-badge-pill">Roční program</span>
-            <span class="rm-kov-badge-text">Pro ženaté podnikatele s&nbsp;dětmi</span>
+        <div class="rm-kovt-badge">
+            <span class="rm-kovt-badge-pill">3denní živý online trénink</span>
+            <span class="rm-kovt-badge-text">Pro ženaté podnikatele s&nbsp;dětmi</span>
         </div>
 
         <h2>
-            <span class="rm-kov-sub">Vybudoval jsi firmu.</span>
-            Teď ukovej muže, kterému se <em>nerozpadne rodina</em>.
+            <span class="rm-kovt-sub">Vyhráváš v&nbsp;podnikání.</span>
+            Začni vyhrávat i&nbsp;<em>doma</em>.
         </h2>
 
-        <p class="rm-kov-lead">Kovárna je prostředí pro ženaté podnikatele s&nbsp;dětmi, kteří k&nbsp;úspěchu v&nbsp;podnikání chtějí přidat i&nbsp;úspěch v&nbsp;rodině.</p>
+        <p class="rm-kovt-lead">Během tří večerů Ti ukážu, jak přestat obětovávat své manželství za&nbsp;podnikatelský úspěch, vystoupit z&nbsp;Trojúhelníku šílenství a&nbsp;stát se mužem, kterého Tvoje žena znovu respektuje a&nbsp;po&nbsp;kterém touží.</p>
 
-        <p class="rm-kov-by">Vede <b>Sláva Černý</b></p>
+        <p class="rm-kovt-by">Vede <b>Sláva Černý</b></p>
 
-        <a href="https://kovarna.restartmuze.cz/" class="rm-kov-cta">
-            Chci zjistit, jestli patřím do&nbsp;Kovárny
+        <a href="https://kovarna.restartmuze.cz/" class="rm-kovt-cta">
+            Chci začít vyhrávat i&nbsp;doma
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
         </a>
 
-        <div class="rm-kov-trust-row">
-            <span class="rm-kov-trust-item">
+        <div class="rm-kovt-trust-row">
+            <span class="rm-kovt-trust-item">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                12&nbsp;měsíců
+                21.–23.&nbsp;září · 18:00
             </span>
-            <span class="rm-kov-trust-item">
+            <span class="rm-kovt-trust-item">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                4× ročně osobně
+                Živě online
             </span>
-            <span class="rm-kov-trust-item">
+            <span class="rm-kovt-trust-item">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                Vstup přes 15minutový rozhovor
+                Vstup od&nbsp;297&nbsp;Kč
             </span>
         </div>
 
