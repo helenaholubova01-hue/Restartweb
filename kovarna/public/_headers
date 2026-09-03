@@ -1,0 +1,42 @@
+# Bezpečnostní hlavičky a řízení indexace.
+# Na Workers nahrazuje to, co se na Apache hostingu psalo do .htaccess.
+# Soubor se sám neservíruje, Cloudflare ho jen parsuje a aplikuje na odpovědi.
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), interest-cohort=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  # POZOR na 'unsafe-inline' ve script-src: GTM se spouští inline snippetem
+  # v <head> a přes GTM se pak načítají další tagy. Přísnější varianta je
+  # hash toho snippetu, ale ten je potřeba přepočítat při každé jeho změně.
+  # Až bude jasné, co přes GTM reálně běží, dá se seznam zdrojů zúžit.
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://connect.facebook.net https://form.fapi.cz; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.googletagmanager.com https://www.facebook.com; font-src 'self'; connect-src 'self' https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://connect.facebook.net https://form.fapi.cz; frame-src https://www.google.com https://form.fapi.cz; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://form.fapi.cz
+
+# Fonty se nemění, můžou se cachovat natvrdo.
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# ---------------------------------------------------------------------------
+# Indexace: řízená hlavičkou podle cesty, ne meta tagem v jednotlivých
+# souborech — ať to nestojí na tom, jestli si na něj někdo vzpomene.
+#
+# Indexovat SE MÁ:  /  a  /vyzva/
+# Neindexovat:      všechno uvnitř funnelu za registrací
+# ---------------------------------------------------------------------------
+
+/vyzva/dekujeme/*
+  X-Robots-Tag: noindex, nofollow
+
+/vyzva/pozvanka/*
+  X-Robots-Tag: noindex, nofollow
+
+/vyzva/den-1/*
+  X-Robots-Tag: noindex, nofollow
+
+/vyzva/den-2/*
+  X-Robots-Tag: noindex, nofollow
+
+/vyzva/den-3/*
+  X-Robots-Tag: noindex, nofollow

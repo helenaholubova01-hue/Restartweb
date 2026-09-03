@@ -1,0 +1,36 @@
+{
+  // Worker se statickými soubory: Cloudflare servíruje ./public sám,
+  // do kódu v src/index.js doběhnou jen požadavky na /api/*.
+  "name": "kovarna",
+  "main": "src/index.js",
+  "compatibility_date": "2026-08-21",
+
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+
+    // Jen tyhle cesty jdou do Workeru dřív než do statických souborů.
+    "run_worker_first": ["/api/*"],
+
+    // /sluzby  ->  /sluzby/  ->  public/sluzby/index.html
+    "html_handling": "auto-trailing-slash",
+
+    // Náhrada za ErrorDocument 404 z .htaccess (na Workers .htaccess neexistuje).
+    // Servíruje public/404.html se správným stavovým kódem 404.
+    "not_found_handling": "404-page"
+  },
+
+  // Nastavení registrace na webinář (POST /api/registrace → CliqSales).
+  // Tajné údaje sem NEPATŘÍ – GHL_API_KEY a GHL_LOCATION_ID se nastavují přes
+  //   npx wrangler secret put GHL_API_KEY
+  //   npx wrangler secret put GHL_LOCATION_ID
+  "vars": {
+    "TAGS_REGISTRACE": "kovarna_webinar_registrace",
+    "SOURCE": "Web Kovárna – webinář"
+  },
+
+  // Logy z console.* jsou vidět v dashboardu i přes `npx wrangler tail`.
+  "observability": {
+    "enabled": true
+  }
+}

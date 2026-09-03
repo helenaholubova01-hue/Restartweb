@@ -1,0 +1,151 @@
+<!-- ============================================================================
+     REGISTRACE NA WEBINÁŘ  →  CliqSales (přes Worker, POST /api/registrace)
+
+     Vlož celý blok do stránky webináře na místo, kde má být formulář.
+     Pole: křestní jméno, příjmení, e-mail. Nic dalšího se neposílá.
+
+     • Styl používá proměnné Kovárny (--btn-bg, --display, --text, --fg…);
+       mimo Kovárnu platí fallbacky, blok funguje i sám o sobě.
+     • Děkovačka: vyplň value u skrytého pole `_redirect` (např. /webinar/dekujeme/).
+       Když zůstane prázdné, zobrazí se potvrzení přímo na místě formuláře.
+     • Po úspěchu se pošle dataLayer event `webinar_registrace` (pro GTM konverzi).
+     • Skryté pole `web` je past na roboty – člověk ho nevidí a nevyplní.
+     ============================================================================ -->
+<style>
+  .reg { max-width: 520px; margin: 0 auto; text-align: center; }
+  .reg-form { display: flex; flex-direction: column; gap: 1rem; }
+  .reg-field { display: flex; flex-direction: column; gap: .4rem; text-align: left; }
+  .reg-field label {
+    font-family: var(--display, 'Oswald', 'Arial Narrow', sans-serif); font-weight: 500;
+    font-size: .7rem; letter-spacing: .13em; text-transform: uppercase; color: var(--fg3, #8d8d8d);
+  }
+  .reg-field input {
+    width: 100%; box-sizing: border-box; padding: .9rem 1.1rem;
+    background: #ffffff; color: #12151a; border: 1px solid var(--line, rgba(255,255,255,.16)); border-radius: 2px;
+    font-family: var(--text, 'Source Serif 4', Georgia, serif); font-size: 1.1rem; outline: none;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .reg-field input::placeholder { color: #8d8d8d; }
+  .reg-field input:focus { border-color: var(--fg, #ffffff); box-shadow: 0 0 0 3px rgba(255,255,255,.14); }
+  .reg-field input[aria-invalid="true"] { border-color: #e0663a; }
+  .reg-hp { position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none; }
+  .reg .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: .8rem; width: 100%;
+    padding: 1.05rem 2.5rem; background: var(--btn-bg, #ffffff); color: var(--btn-fg, #12151a);
+    font-family: var(--display, 'Oswald', 'Arial Narrow', sans-serif); font-weight: 700; font-size: .92rem;
+    letter-spacing: .09em; text-transform: uppercase; text-decoration: none;
+    border: none; border-radius: 100px; cursor: pointer; transition: background .3s, transform .2s;
+  }
+  @media (hover: hover) { .reg .btn:hover { background: var(--btn-hov, #d3d3d3); transform: scale(1.04); } }
+  .reg .btn[disabled] { opacity: .7; cursor: default; transform: none; }
+  .reg-msg { min-height: 1.4em; font-family: var(--text, 'Source Serif 4', Georgia, serif); font-size: .95rem; color: #e0663a; }
+  .reg-marks { display: flex; justify-content: center; gap: 1.6rem; flex-wrap: wrap; margin-top: 1.2rem; }
+  .reg-marks span {
+    display: flex; align-items: center; gap: .5rem;
+    font-family: var(--display, 'Oswald', 'Arial Narrow', sans-serif); font-weight: 500;
+    font-size: .7rem; letter-spacing: .13em; text-transform: uppercase; color: var(--fg3, #8d8d8d);
+  }
+  .reg-marks span::before { content: ''; width: 11px; height: 2px; background: var(--fg, #ffffff); transform: skewX(-28deg); }
+  .reg-gdpr {
+    margin: 1rem 0 0; font-family: var(--text, 'Source Serif 4', Georgia, serif);
+    font-size: .85rem; line-height: 1.5; color: var(--fg3, #8d8d8d);
+  }
+  .reg-gdpr a { color: inherit; text-decoration: underline; }
+  .reg-success { padding: 2.5rem 2rem; border: 1px solid var(--line, rgba(255,255,255,.16)); border-radius: 2px; }
+  .reg-success svg { width: 3rem; height: 3rem; color: var(--fg, #ffffff); margin-bottom: 1rem; }
+  .reg-success h3 {
+    margin: 0 0 .5rem; font-family: var(--display, 'Oswald', 'Arial Narrow', sans-serif); font-weight: 700;
+    font-size: 1.4rem; letter-spacing: .04em; text-transform: uppercase; color: var(--fg, #ffffff);
+  }
+  .reg-success p { margin: 0; font-family: var(--text, 'Source Serif 4', Georgia, serif); font-size: 1.1rem; color: var(--fg2, #e4e0d9); }
+</style>
+
+<div class="reg" id="registrace">
+  <div id="reg-body">
+    <form class="reg-form" id="reg-form" action="/api/registrace" method="post" novalidate>
+      <div class="reg-field">
+        <label for="reg-jmeno">Křestní jméno</label>
+        <input type="text" id="reg-jmeno" name="jmeno" placeholder="Tvoje křestní jméno" autocomplete="given-name" maxlength="100" required>
+      </div>
+      <div class="reg-field">
+        <label for="reg-prijmeni">Příjmení</label>
+        <input type="text" id="reg-prijmeni" name="prijmeni" placeholder="Tvoje příjmení" autocomplete="family-name" maxlength="100" required>
+      </div>
+      <div class="reg-field">
+        <label for="reg-email">E-mail</label>
+        <input type="email" id="reg-email" name="email" placeholder="tvuj@email.cz" autocomplete="email" inputmode="email" maxlength="254" required>
+      </div>
+      <div class="reg-hp" aria-hidden="true">
+        <label for="reg-web">Web</label>
+        <input type="text" id="reg-web" name="web" tabindex="-1" autocomplete="off">
+      </div>
+      <!-- Děkovačka: doplň cestu, např. value="/webinar/dekujeme/". Prázdné = potvrzení na místě. -->
+      <input type="hidden" name="_redirect" value="">
+      <button type="submit" class="btn" id="reg-submit">Chci se registrovat zdarma</button>
+      <div class="reg-msg" id="reg-msg" role="alert" aria-live="polite"></div>
+    </form>
+    <div class="reg-marks" aria-hidden="true"><span>100&nbsp;% zdarma</span><span>Bez závazků</span></div>
+    <p class="reg-gdpr">Registrací souhlasíš se zpracováním e-mailu, abych Ti mohl poslat přístup na webinář a&nbsp;občas i&nbsp;další novinky. Z&nbsp;odběru se můžeš kdykoliv odhlásit jedním kliknutím. Podrobnosti najdeš v&nbsp;<a href="/ochrana-udaju/">Zásadách ochrany osobních údajů</a>.</p>
+  </div>
+  <div class="reg-success" id="reg-success" hidden>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+    <h3>Jsi zaregistrovaný!</h3>
+    <p>Odkaz na webinář Ti pošleme na e-mail. Zkontroluj i&nbsp;spam.</p>
+  </div>
+</div>
+
+<script>
+(function () {
+  var form = document.getElementById('reg-form');
+  if (!form) return;
+  var msg = document.getElementById('reg-msg');
+  var btn = document.getElementById('reg-submit');
+  var puvodniText = btn.textContent;
+  var pole = { jmeno: form.elements.jmeno, prijmeni: form.elements.prijmeni, email: form.elements.email };
+
+  function chyba(text, klic) {
+    msg.textContent = text || '';
+    Object.keys(pole).forEach(function (k) { pole[k].setAttribute('aria-invalid', k === klic ? 'true' : 'false'); });
+    if (klic && pole[klic]) pole[klic].focus();
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var data = {
+      jmeno: pole.jmeno.value.trim(),
+      prijmeni: pole.prijmeni.value.trim(),
+      email: pole.email.value.trim(),
+      web: form.elements.web.value
+    };
+    if (!data.jmeno) return chyba('Zadej prosím své křestní jméno.', 'jmeno');
+    if (!data.prijmeni) return chyba('Zadej prosím své příjmení.', 'prijmeni');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(data.email)) return chyba('Zadej prosím platný e-mail.', 'email');
+
+    chyba('', null);
+    btn.disabled = true;
+    btn.textContent = 'Registruji…';
+
+    fetch(form.getAttribute('action') || '/api/registrace', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+      .then(function (r) {
+        return r.json().catch(function () { return {}; }).then(function (d) { return { ok: r.ok && d.ok === true, d: d }; });
+      })
+      .then(function (v) {
+        if (!v.ok) throw v.d;
+        if (window.dataLayer) window.dataLayer.push({ event: 'webinar_registrace' });
+        var cil = form.elements._redirect ? form.elements._redirect.value : '';
+        if (cil && cil.charAt(0) === '/' && cil.charAt(1) !== '/') { window.location.href = cil; return; }
+        document.getElementById('reg-body').hidden = true;
+        document.getElementById('reg-success').hidden = false;
+      })
+      .catch(function (d) {
+        btn.disabled = false;
+        btn.textContent = puvodniText;
+        chyba((d && d.message) || 'Registrace se nezdařila. Zkus to prosím znovu.', d && d.pole);
+      });
+  });
+})();
+</script>
