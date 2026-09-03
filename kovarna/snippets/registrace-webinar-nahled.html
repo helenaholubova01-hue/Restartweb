@@ -85,15 +85,17 @@
   .reg-termin {
     display: flex; align-items: center; gap: .8rem; padding: .85rem 1rem; cursor: pointer;
     background: rgba(255,255,255,.04); border: 1px solid var(--line, rgba(255,255,255,.16)); border-radius: 2px;
-    font-family: var(--text, 'Source Serif 4', Georgia, serif); font-size: 1.02rem; line-height: 1.3; color: var(--fg2, #e4e0d9);
-    transition: border-color .2s, color .2s, box-shadow .2s;
+    transition: border-color .2s, box-shadow .2s;
   }
   .reg-termin input {
     appearance: none; -webkit-appearance: none; flex: 0 0 auto; width: 13px; height: 2px; margin: 0;
     background: var(--fg3, #8d8d8d); opacity: .5; transform: skewX(-28deg); transition: opacity .2s, background .2s;
   }
+  .reg-termin-txt { display: flex; flex-direction: column; gap: .2rem; font-family: var(--display, 'Oswald', 'Arial Narrow', sans-serif); font-weight: 600; font-size: 1.05rem; letter-spacing: .02em; line-height: 1.2; color: var(--fg, #ffffff); }
+  .reg-termin small { font-weight: 600; font-size: .62rem; letter-spacing: .22em; text-transform: uppercase; color: var(--fg3, #8d8d8d); }
   .reg-termin input:checked { background: var(--fg, #ffffff); opacity: 1; }
-  .reg-termin:has(input:checked) { border-color: var(--fg, #ffffff); color: var(--fg, #ffffff); }
+  .reg-termin:has(input:checked) small { color: var(--fg, #ffffff); }
+  .reg-termin:has(input:checked) { border-color: var(--fg, #ffffff); background: rgba(255,255,255,.07); }
   .reg-termin:has(input:focus-visible) { border-color: var(--fg, #ffffff); box-shadow: 0 0 0 3px rgba(255,255,255,.12); }
   .reg-terminy[aria-invalid="true"] .reg-termin { border-color: var(--reg-ember); }
 
@@ -132,6 +134,7 @@
   @media (max-width: 640px) {
     .reg-form, .reg-terminy-list { grid-template-columns: 1fr; }
     .reg-plate { padding: 1.6rem 1.2rem; }
+    .reg .btn { padding-left: 1.25rem; padding-right: 1.25rem; }
   }
   @media (prefers-reduced-motion: reduce) { .reg .btn, .reg-field input, .reg-termin, .reg-termin input { transition: none; } }
 </style>
@@ -165,9 +168,9 @@
         <fieldset class="reg-terminy" id="reg-terminy">
           <legend>Vyber termín</legend>
           <div class="reg-terminy-list">
-            <label class="reg-termin"><input type="radio" name="termin" value="webinar-06-09-26" required><span>Neděle 6.&nbsp;9.&nbsp;2026</span></label>
-            <label class="reg-termin"><input type="radio" name="termin" value="webinar-13-09-26" required><span>Neděle 13.&nbsp;9.&nbsp;2026</span></label>
-            <label class="reg-termin"><input type="radio" name="termin" value="webinar-17-09-26" required><span>Čtvrtek 17.&nbsp;9.&nbsp;2026</span></label>
+            <label class="reg-termin"><input type="radio" name="termin" value="webinar-06-09-26" required><span class="reg-termin-txt"><small>Neděle</small>6.&nbsp;9.&nbsp;2026</span></label>
+            <label class="reg-termin"><input type="radio" name="termin" value="webinar-13-09-26" required><span class="reg-termin-txt"><small>Neděle</small>13.&nbsp;9.&nbsp;2026</span></label>
+            <label class="reg-termin"><input type="radio" name="termin" value="webinar-17-09-26" required><span class="reg-termin-txt"><small>Čtvrtek</small>17.&nbsp;9.&nbsp;2026</span></label>
           </div>
         </fieldset>
         <div class="reg-hp" aria-hidden="true">
