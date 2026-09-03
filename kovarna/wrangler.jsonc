@@ -21,10 +21,11 @@
   },
 
   // Nastavení registrace na webinář (POST /api/registrace → CliqSales).
-  // Tajné údaje sem NEPATŘÍ – GHL_API_KEY a GHL_LOCATION_ID se nastavují přes
-  //   npx wrangler secret put GHL_API_KEY
-  //   npx wrangler secret put GHL_LOCATION_ID
+  // API klíč sem NEPATŘÍ – nastavuje se jako secret (stejný název i token jako u Workeru webinar-stats):
+  //   npx wrangler secret put CLIQSALES_API_KEY
   "vars": {
+    // Lokace (sub-account) CliqSales – stejná jako u webinar-stats.
+    "CLIQSALES_LOCATION_ID": "hWB2FWpsBEaVnj2BCUKs",
     // Tagy termínů: hodnota radio buttonu ve formuláři = tag. Při změně termínů
     // uprav i seznam ve snippets/registrace-webinar.html.
     "TAGS_TERMINY": "webinar-06-09-26,webinar-13-09-26,webinar-17-09-26",

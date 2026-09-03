@@ -131,10 +131,11 @@ a přidá mu tagy. API klíč leží jen ve Workeru jako secret, v HTML ani JS n
 ```
 formulář (snippets/registrace-webinar.html)
    └─ POST /api/registrace  { jmeno, prijmeni, email, termin }
-        └─ src/index.js
-             ├─ kontakt s e-mailem existuje → odebere tag jiného termínu, přidá tagy
-             │                                 (jméno doplní jen tam, kde chybí)
-             └─ neexistuje → upsert: založí kontakt s tagy a source
+        └─ src/index.js  (stejný postup jako Worker webinar-stats)
+             ├─ upsert podle e-mailu → nový kontakt, nebo ten existující
+             ├─ existující: odebere tag jiného termínu
+             ├─ přidá tagy přes /contacts/{id}/tags (ostatní tagy zůstávají)
+             └─ jméno: novému zapíše celé + source, existujícímu doplní jen chybějící
 ```
 
 Tagy, které kontakt dostane:
@@ -153,12 +154,15 @@ Worker starý termínový tag odebere a přidá nový. Ostatních tagů se nedot
 
 ```bash
 cd kovarna
-npx wrangler secret put GHL_API_KEY       # Private Integration token CliqSales: kontakty číst + zapisovat
-npx wrangler secret put GHL_LOCATION_ID   # ID lokace (sub-accountu) v CliqSales
+npx wrangler secret put CLIQSALES_API_KEY   # Private Integration token CliqSales: kontakty číst + zapisovat
 npx wrangler deploy
 ```
 
-Secrets patří k Workeru podle `name` ve `wrangler.jsonc`. Pro ostrý Worker je
+Jediný tajný údaj. Název i token jsou stejné jako u Workeru `webinar-stats`,
+který už do CliqSales tagy zapisuje, takže jde použít ten samý. ID lokace je
+ve `wrangler.jsonc` jako `CLIQSALES_LOCATION_ID` (stejná lokace jako webinar-stats).
+
+Secret patří k Workeru podle `name` ve `wrangler.jsonc`. Pro ostrý Worker ho
 nastav z adresáře, odkud se nasazuje, nebo přidej `--name chlapska-kovarna`.
 Viz upozornění v části Deploy níže.
 
@@ -169,6 +173,7 @@ Tagy a source jsou ve `wrangler.jsonc` → `vars`:
 
 | Proměnná | Význam | Výchozí |
 |---|---|---|
+| `CLIQSALES_LOCATION_ID` | ID lokace (sub-accountu) v CliqSales | `hWB2FWpsBEaVnj2BCUKs` |
 | `TAGS_TERMINY` | povolené tagy termínů oddělené čárkou; formulář posílá v poli `termin` jeden z nich | `webinar-06-09-26,webinar-13-09-26,webinar-17-09-26` |
 | `TAGS_REGISTRACE` | obecné tagy oddělené čárkou, dostane je každý registrovaný | `kovarna_webinar_registrace` |
 | `SOURCE` | pole Source u nově založeného kontaktu | `Web Kovárna – webinář` |
@@ -177,7 +182,7 @@ Tagy a source jsou ve `wrangler.jsonc` → `vars`:
 ### Ověření
 
 ```bash
-npx wrangler dev            # lokálně; secrets pro dev do .dev.vars (GHL_API_KEY=…, GHL_LOCATION_ID=…)
+npx wrangler dev            # lokálně; secrets pro dev do .dev.vars (CLIQSALES_API_KEY=…, CLIQSALES_LOCATION_ID=…)
 curl -s -X POST http://localhost:8787/api/registrace \
   -H 'Content-Type: application/json' \
   -d '{"jmeno":"Test","prijmeni":"Testovací","email":"test@example.cz","termin":"webinar-06-09-26"}'
@@ -262,7 +267,7 @@ Metodika v `../instrukce-web.md` počítá s `.htaccess`. Na Workers neexistuje:
       Restart muže (`GTM-MZ6KX3VV`) za vlastní
 - [ ] landing výzvy a zbytek funnelu
 - [ ] rezervační systém na 15minutový vstupní rozhovor
-- [ ] registrace na webinář: nastavit secrets `GHL_API_KEY` a `GHL_LOCATION_ID`,
+- [ ] registrace na webinář: nastavit secrets `CLIQSALES_API_KEY` a `CLIQSALES_LOCATION_ID`,
       vložit `snippets/registrace-webinar.html` do stránky webináře, ověřit první
       registraci v CliqSales, publikovat workflow s e-mailem (Zoom odkaz)
 - [ ] právní stránky — IČ, sídlo a zápis v rejstříku Mentoring SČ s.r.o.

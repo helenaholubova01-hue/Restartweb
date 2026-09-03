@@ -7,20 +7,22 @@
  * Jediný endpoint:
  *   POST /api/registrace  { jmeno, prijmeni, email, termin }  →  kontakt + tagy v CliqSales
  *
- * Nastavení (wrangler.jsonc → vars, tajné údaje přes `npx wrangler secret put`):
- *   GHL_API_KEY       tajné  – Private Integration token CliqSales (práva: kontakty číst i zapisovat)
- *   GHL_LOCATION_ID   tajné  – ID lokace (sub-accountu) v CliqSales
- *   TAGS_TERMINY      var    – povolené tagy termínů oddělené čárkou (např. webinar-06-09-26,…);
- *                              formulář posílá v poli `termin` přesně jeden z nich. Prázdné = bez termínů.
- *   TAGS_REGISTRACE   var    – obecné tagy oddělené čárkou, přidají se každému registrovanému
- *   SOURCE            var    – hodnota pole „Source“ u nově založeného kontaktu
- *   ALLOWED_ORIGINS   var    – volitelně; další weby (origin), které smí formulář posílat.
- *                              Stejná doména je povolená vždy.
+ * Nastavení (wrangler.jsonc → vars, tajný údaj přes `npx wrangler secret put`):
+ *   CLIQSALES_API_KEY      tajné – Private Integration token CliqSales (práva: kontakty číst i zapisovat).
+ *                          Stejný název i token jako u Workeru webinar-stats.
+ *   CLIQSALES_LOCATION_ID  var   – ID lokace (sub-accountu) v CliqSales
+ *   TAGS_TERMINY           var   – povolené tagy termínů oddělené čárkou (např. webinar-06-09-26,…);
+ *                                  formulář posílá v poli `termin` přesně jeden z nich. Prázdné = bez termínů.
+ *   TAGS_REGISTRACE        var   – obecné tagy oddělené čárkou, přidají se každému registrovanému
+ *   SOURCE                 var   – hodnota pole „Source“ u nově založeného kontaktu
+ *   ALLOWED_ORIGINS        var   – volitelně; další weby (origin), které smí formulář posílat.
+ *                                  Stejná doména je povolená vždy.
  *
- * Co se stane s existujícím kontaktem: CliqSales ho najde podle e-mailu, přidají se mu
- * jen tagy. Původní tagy, historie ani jméno se nepřepisují – jméno se doplní pouze tam,
- * kde chybí. Výjimka: tagy ostatních termínů. Když se člověk přihlásí znovu na jiný
- * termín, starý termínový tag se odebere, aby byl vždy jen na jednom termínu.
+ * Zápis do CliqSales jde stejnou cestou jako Worker webinar-stats: upsert podle e-mailu
+ * (založí nový kontakt, nebo vrátí existující), pak tagy přes /contacts/{id}/tags.
+ * Existujícímu kontaktu se nic nepřepisuje: jméno se doplní jen tam, kde chybí, původní
+ * tagy a historie zůstávají. Výjimka: tagy ostatních termínů. Když se člověk přihlásí
+ * znovu na jiný termín, starý termínový tag se odebere, aby byl vždy jen na jednom termínu.
  */
 
 const GHL_API = 'https://services.leadconnectorhq.com';
@@ -58,8 +60,8 @@ async function registrace(request, env) {
   if (cors === null) {
     return json({ ok: false, message: 'Odesláno z nepovolené domény.' }, 403);
   }
-  if (!env.GHL_API_KEY || !env.GHL_LOCATION_ID) {
-    console.error('[registrace] chybí GHL_API_KEY nebo GHL_LOCATION_ID – nastav přes `wrangler secret put`');
+  if (!env.CLIQSALES_API_KEY || !env.CLIQSALES_LOCATION_ID) {
+    console.error('[registrace] chybí CLIQSALES_API_KEY (secret) nebo CLIQSALES_LOCATION_ID (var)');
     return json({ ok: false, message: 'Registrace zatím není nastavená.' }, 500, cors);
   }
 
@@ -122,67 +124,57 @@ async function registrace(request, env) {
 /* ------------------------------------------------------------------ */
 
 async function zapisDoCliqsales(env, { jmeno, prijmeni, email, tags, odebrat }) {
-  const locationId = env.GHL_LOCATION_ID;
+  const locationId = env.CLIQSALES_LOCATION_ID;
 
-  // 1) Existuje už kontakt s tímhle e-mailem?
-  //    Když dotaz selže (např. chybí právo číst kontakty), jdeme rovnou na upsert –
-  //    ten duplicitu také nezaloží.
-  let existujici = null;
-  const dup = await ghl(env, 'GET',
-    `/contacts/search/duplicate?locationId=${encodeURIComponent(locationId)}&email=${encodeURIComponent(email)}`);
-  if (dup.ok && dup.data && dup.data.contact && dup.data.contact.id) {
-    existujici = dup.data.contact;
-  } else if (!dup.ok && dup.status !== 404) {
-    console.warn('[registrace] hledání duplicity vrátilo', dup.status, '– pokračuji přes upsert');
-  }
-
-  if (existujici) {
-    // 2a) Změna termínu: odebrat tagy ostatních termínů, které kontakt má.
-    const maTagy = Array.isArray(existujici.tags) ? existujici.tags.map((t) => String(t).toLowerCase()) : [];
-    const kOdebrani = odebrat.filter((t) => maTagy.includes(t.toLowerCase()));
-    if (kOdebrani.length > 0) {
-      const d = await ghl(env, 'DELETE', `/contacts/${existujici.id}/tags`, { tags: kOdebrani });
-      if (!d.ok) console.warn('[registrace] odebrání starého termínu selhalo', d.status, popis(d.data));
-    }
-
-    // Přidat tagy. Endpoint /tags tagy přidává, existující nechává.
-    const t = await ghl(env, 'POST', `/contacts/${existujici.id}/tags`, { tags });
-    if (!t.ok) {
-      throw new Error(`přidání tagů selhalo (${t.status}): ${popis(t.data)}`);
-    }
-
-    // Jméno doplnit jen tam, kde chybí. Bez pole `tags`, aby se nepřepsaly.
-    const doplnit = {};
-    if (!existujici.firstName && jmeno) doplnit.firstName = jmeno;
-    if (!existujici.lastName && prijmeni) doplnit.lastName = prijmeni;
-    if (Object.keys(doplnit).length > 0) {
-      const u = await ghl(env, 'PUT', `/contacts/${existujici.id}`, doplnit);
-      if (!u.ok) console.warn('[registrace] doplnění jména selhalo', u.status, popis(u.data));
-    }
-    return { novy: false };
-  }
-
-  // 2b) Nový kontakt. Upsert místo create: kdyby kontakt mezitím přece vznikl,
-  //     CliqSales ho podle e-mailu doplní a tagy přidá, místo aby vrátil chybu.
-  const up = await ghl(env, 'POST', '/contacts/upsert', {
-    locationId,
-    firstName: jmeno,
-    lastName: prijmeni,
-    email,
-    tags,
-    source: env.SOURCE || 'Web Kovárna',
-  });
-  if (!up.ok) {
+  // 1) Upsert podle e-mailu: založí nový kontakt, nebo vrátí existující. Posíláme jen
+  //    e-mail, aby se existujícímu kontaktu nic nepřepsalo. Odpověď: { new, contact }.
+  const up = await ghl(env, 'POST', '/contacts/upsert', { locationId, email });
+  const kontakt = up.ok && up.data ? up.data.contact : null;
+  if (!kontakt || !kontakt.id) {
     throw new Error(`upsert kontaktu selhal (${up.status}): ${popis(up.data)}`);
   }
-  return { novy: !!(up.data && up.data.new) };
+  const novy = up.data.new === true;
+
+  // 2) Změna termínu: existujícímu kontaktu odebrat tagy ostatních termínů. Když odpověď
+  //    tagy kontaktu obsahuje, odebíráme jen ty, které má; jinak všechny ostatní termíny.
+  if (!novy && odebrat.length > 0) {
+    const maTagy = Array.isArray(kontakt.tags) ? kontakt.tags.map((t) => String(t).toLowerCase()) : null;
+    const kOdebrani = maTagy ? odebrat.filter((t) => maTagy.includes(t.toLowerCase())) : odebrat;
+    if (kOdebrani.length > 0) {
+      const d = await ghl(env, 'DELETE', `/contacts/${kontakt.id}/tags`, { tags: kOdebrani });
+      if (!d.ok) console.warn('[registrace] odebrání starého termínu selhalo', d.status, popis(d.data));
+    }
+  }
+
+  // 3) Přidat tagy. Endpoint /tags tagy přidává, existující nechává.
+  const t = await ghl(env, 'POST', `/contacts/${kontakt.id}/tags`, { tags });
+  if (!t.ok) {
+    throw new Error(`přidání tagů selhalo (${t.status}): ${popis(t.data)}`);
+  }
+
+  // 4) Jméno: novému kontaktu zapsat celé i se zdrojem, existujícímu doplnit jen chybějící.
+  //    Bez pole `tags`, aby se nepřepsaly.
+  const doplnit = {};
+  if (novy) {
+    doplnit.firstName = jmeno;
+    doplnit.lastName = prijmeni;
+    if (env.SOURCE) doplnit.source = env.SOURCE;
+  } else {
+    if (!kontakt.firstName && jmeno) doplnit.firstName = jmeno;
+    if (!kontakt.lastName && prijmeni) doplnit.lastName = prijmeni;
+  }
+  if (Object.keys(doplnit).length > 0) {
+    const u = await ghl(env, 'PUT', `/contacts/${kontakt.id}`, doplnit);
+    if (!u.ok) console.warn('[registrace] zápis jména selhal', u.status, popis(u.data));
+  }
+  return { novy };
 }
 
 async function ghl(env, method, path, body) {
   const res = await fetch(GHL_API + path, {
     method,
     headers: {
-      Authorization: `Bearer ${env.GHL_API_KEY}`,
+      Authorization: `Bearer ${env.CLIQSALES_API_KEY}`,
       Version: GHL_VERSION,
       Accept: 'application/json',
       ...(body ? { 'Content-Type': 'application/json' } : {}),
