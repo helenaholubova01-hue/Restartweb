@@ -1,8 +1,16 @@
 # Kovárna — samostatný web
 
 Roční program pro ženaté podnikatele s dětmi. Vede Sláva Černý.
-Vlastní doména, statický web hostovaný přes **Cloudflare Workers se static
-assets** (ne Pages — ty jsou od roku 2026 v režimu údržby).
+Statický web hostovaný přes **Cloudflare Workers se static assets** (ne Pages —
+ty jsou od roku 2026 v režimu údržby), Worker `chlapska-kovarna`.
+
+**Doména:** cílová `chlapskakovarna.cz` zatím není koupená. Web běží na
+subdoméně **kovarna.restartmuze.cz**. Formulář registrace i endpoint
+`/api/registrace` jsou na stejném hostname, takže CORS není potřeba a po
+přechodu na vlastní doménu se nic nemění. Pozor: ostré stránky mají
+`canonical` a `og:url` už na `https://chlapskakovarna.cz/`, tedy na doménu,
+která neexistuje — dokud běží subdoména, má tam být `https://kovarna.restartmuze.cz/`,
+jinak vyhledávače stránky ignorují a náhled při sdílení nefunguje.
 
 ## Struktura webu
 
@@ -174,7 +182,7 @@ fallbacky. Děkovačka se nastaví ve skrytém poli `_redirect`; prázdné = pot
 se zobrazí na místě formuláře. Po úspěchu odejde `dataLayer` event
 `webinar_registrace` pro konverzi v GTM. Texty (tlačítko, potvrzení, GDPR věta)
 jsou převzaté ze stávající webinářové stránky Restart muže; odkaz na GDPR míří
-na `/ochrana-udaju/`.
+na `/gdpr/`, kde má ostrý web Kovárny zásady zpracování osobních údajů.
 
 ### Návazně v CliqSales
 
@@ -228,8 +236,9 @@ Metodika v `../instrukce-web.md` počítá s `.htaccess`. Na Workers neexistuje:
 
 ## Co ještě chybí
 
-- [ ] doména — registrovat na Mentoring SČ s.r.o., pak doplnit do kanonických
-      URL, `robots.txt` a `sitemap.xml`
+- [ ] doména — registrovat `chlapskakovarna.cz` na Mentoring SČ s.r.o., pak
+      přepnout kanonické URL, `robots.txt` a `sitemap.xml`; do té doby mají
+      `canonical` a `og:url` ukazovat na `https://kovarna.restartmuze.cz/`
 - [ ] jméno akce → finální slug místo `/vyzva/`
 - [ ] homepage — zatím neexistuje
 - [ ] prodejka: přenést z hostingu (`vibe-pages/kovarnafable/`) na `/kovarna/`, přepsat
