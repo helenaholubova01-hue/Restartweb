@@ -124,17 +124,30 @@ a aplikuje jejich pravidla na odpovědi.
 ## Registrace na webinář → CliqSales
 
 Webinář běží přes Zoom, registrace jde mimo WebinarJam: vlastní formulář na
-stránce pošle jméno, příjmení a e-mail na Worker (`POST /api/registrace`) a ten
-přes API CliqSales založí nebo doplní kontakt a přidá mu tag. API klíč leží jen
-ve Workeru jako secret, v HTML ani JS není.
+stránce pošle jméno, příjmení, e-mail a vybraný termín na Worker
+(`POST /api/registrace`) a ten přes API CliqSales založí nebo doplní kontakt
+a přidá mu tagy. API klíč leží jen ve Workeru jako secret, v HTML ani JS není.
 
 ```
 formulář (snippets/registrace-webinar.html)
-   └─ POST /api/registrace  { jmeno, prijmeni, email }
+   └─ POST /api/registrace  { jmeno, prijmeni, email, termin }
         └─ src/index.js
-             ├─ kontakt s e-mailem existuje → jen přidá tagy (jméno doplní, kde chybí)
+             ├─ kontakt s e-mailem existuje → odebere tag jiného termínu, přidá tagy
+             │                                 (jméno doplní jen tam, kde chybí)
              └─ neexistuje → upsert: založí kontakt s tagy a source
 ```
+
+Tagy, které kontakt dostane:
+
+| Tag | Kdo | Význam |
+|---|---|---|
+| `kovarna_webinar_registrace` | každý registrovaný | obecný; na něj je navázané workflow v CliqSales |
+| `webinar-06-09-26` | vybral neděli 6. 9. 2026 | termín |
+| `webinar-13-09-26` | vybral neděli 13. 9. 2026 | termín |
+| `webinar-17-09-26` | vybral čtvrtek 17. 9. 2026 | termín |
+
+Člověk je vždy jen na jednom termínu: když se registruje znovu na jiný,
+Worker starý termínový tag odebere a přidá nový. Ostatních tagů se nedotkne.
 
 ### Nastavení (jednorázově, Ondra)
 
@@ -156,7 +169,8 @@ Tagy a source jsou ve `wrangler.jsonc` → `vars`:
 
 | Proměnná | Význam | Výchozí |
 |---|---|---|
-| `TAGS_REGISTRACE` | tagy oddělené čárkou, dostane je každý registrovaný | `kovarna_webinar_registrace` |
+| `TAGS_TERMINY` | povolené tagy termínů oddělené čárkou; formulář posílá v poli `termin` jeden z nich | `webinar-06-09-26,webinar-13-09-26,webinar-17-09-26` |
+| `TAGS_REGISTRACE` | obecné tagy oddělené čárkou, dostane je každý registrovaný | `kovarna_webinar_registrace` |
 | `SOURCE` | pole Source u nově založeného kontaktu | `Web Kovárna – webinář` |
 | `ALLOWED_ORIGINS` | volitelně další weby, které smí formulář posílat (origin, čárkou) | – (stejná doména je povolená vždy) |
 
@@ -166,8 +180,8 @@ Tagy a source jsou ve `wrangler.jsonc` → `vars`:
 npx wrangler dev            # lokálně; secrets pro dev do .dev.vars (GHL_API_KEY=…, GHL_LOCATION_ID=…)
 curl -s -X POST http://localhost:8787/api/registrace \
   -H 'Content-Type: application/json' \
-  -d '{"jmeno":"Test","prijmeni":"Testovací","email":"test@example.cz"}'
-# → {"ok":true,"novy":true}   a v CliqSales kontakt s tagem kovarna_webinar_registrace
+  -d '{"jmeno":"Test","prijmeni":"Testovací","email":"test@example.cz","termin":"webinar-06-09-26"}'
+# → {"ok":true,"novy":true}   a v CliqSales kontakt s tagy kovarna_webinar_registrace + webinar-06-09-26
 ```
 
 Chyby vrací Worker jako `{"ok":false,"message":"…"}` s českou hláškou, kterou
@@ -178,7 +192,9 @@ formulář rovnou zobrazí. Podrobnosti o selhání CliqSales jsou v logu
 
 Blok `snippets/registrace-webinar.html` (styl + HTML + JS) se vloží do stránky
 webináře tam, kde má být formulář. Počítá s proměnnými Kovárny, bez nich má
-fallbacky. Děkovačka se nastaví ve skrytém poli `_redirect`; prázdné = potvrzení
+fallbacky. Náhled vzhledu se stavy odeslání: `snippets/registrace-webinar-nahled.html`.
+Termíny jsou ve formuláři natvrdo jako tři radio buttony, hodnota = tag; při
+změně termínů se mění formulář i `TAGS_TERMINY` ve `wrangler.jsonc`. Děkovačka se nastaví ve skrytém poli `_redirect`; prázdné = potvrzení
 se zobrazí na místě formuláře. Po úspěchu odejde `dataLayer` event
 `webinar_registrace` pro konverzi v GTM. Texty (tlačítko, potvrzení, GDPR věta)
 jsou převzaté ze stávající webinářové stránky Restart muže; odkaz na GDPR míří

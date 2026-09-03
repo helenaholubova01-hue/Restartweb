@@ -5,19 +5,22 @@
  * Sem doběhnou jen požadavky na /api/* (viz `run_worker_first` ve wrangler.jsonc).
  *
  * Jediný endpoint:
- *   POST /api/registrace  { jmeno, prijmeni, email }  →  kontakt + tagy v CliqSales
+ *   POST /api/registrace  { jmeno, prijmeni, email, termin }  →  kontakt + tagy v CliqSales
  *
  * Nastavení (wrangler.jsonc → vars, tajné údaje přes `npx wrangler secret put`):
  *   GHL_API_KEY       tajné  – Private Integration token CliqSales (práva: kontakty číst i zapisovat)
  *   GHL_LOCATION_ID   tajné  – ID lokace (sub-accountu) v CliqSales
- *   TAGS_REGISTRACE   var    – tagy oddělené čárkou, přidají se každému registrovanému
+ *   TAGS_TERMINY      var    – povolené tagy termínů oddělené čárkou (např. webinar-06-09-26,…);
+ *                              formulář posílá v poli `termin` přesně jeden z nich. Prázdné = bez termínů.
+ *   TAGS_REGISTRACE   var    – obecné tagy oddělené čárkou, přidají se každému registrovanému
  *   SOURCE            var    – hodnota pole „Source“ u nově založeného kontaktu
  *   ALLOWED_ORIGINS   var    – volitelně; další weby (origin), které smí formulář posílat.
  *                              Stejná doména je povolená vždy.
  *
- * Co se stane s existujícím kontaktem: CliqSales ho najde podle e-mailu, přidají se
- * mu jen tagy. Původní tagy, historie ani jméno se nepřepisují – jméno se doplní
- * pouze tam, kde chybí.
+ * Co se stane s existujícím kontaktem: CliqSales ho najde podle e-mailu, přidají se mu
+ * jen tagy. Původní tagy, historie ani jméno se nepřepisují – jméno se doplní pouze tam,
+ * kde chybí. Výjimka: tagy ostatních termínů. Když se člověk přihlásí znovu na jiný
+ * termín, starý termínový tag se odebere, aby byl vždy jen na jednom termínu.
  */
 
 const GHL_API = 'https://services.leadconnectorhq.com';
@@ -80,15 +83,27 @@ async function registrace(request, env) {
   if (!prijmeni) return json({ ok: false, message: 'Zadej prosím své příjmení.', pole: 'prijmeni' }, 400, cors);
   if (!platnyEmail(email)) return json({ ok: false, message: 'Zadej prosím platný e-mail.', pole: 'email' }, 400, cors);
 
+  // Termín: hodnota z formuláře je přímo tag, ale jen z povoleného seznamu.
+  const terminy = rozdelTagy(env.TAGS_TERMINY);
+  let termin = '';
+  if (terminy.length > 0) {
+    termin = ocisti(vstup.termin);
+    if (!terminy.includes(termin)) {
+      return json({ ok: false, message: 'Vyber prosím termín.', pole: 'termin' }, 400, cors);
+    }
+  }
+
   const tags = rozdelTagy(env.TAGS_REGISTRACE);
+  if (termin) tags.push(termin);
   if (tags.length === 0) {
-    console.error('[registrace] TAGS_REGISTRACE je prázdné – kontakt by vznikl bez tagu');
+    console.error('[registrace] TAGS_REGISTRACE i TAGS_TERMINY jsou prázdné – kontakt by vznikl bez tagu');
     return json({ ok: false, message: 'Registrace zatím není nastavená.' }, 500, cors);
   }
+  const odebrat = termin ? terminy.filter((t) => t !== termin) : [];
 
   let vysledek;
   try {
-    vysledek = await zapisDoCliqsales(env, { jmeno, prijmeni, email, tags });
+    vysledek = await zapisDoCliqsales(env, { jmeno, prijmeni, email, tags, odebrat });
   } catch (err) {
     console.error('[registrace] CliqSales selhalo:', err && err.message ? err.message : err);
     return json({ ok: false, message: ZPRAVA_CHYBA }, 502, cors);
@@ -106,7 +121,7 @@ async function registrace(request, env) {
 /* CliqSales (GoHighLevel API v2)                                      */
 /* ------------------------------------------------------------------ */
 
-async function zapisDoCliqsales(env, { jmeno, prijmeni, email, tags }) {
+async function zapisDoCliqsales(env, { jmeno, prijmeni, email, tags, odebrat }) {
   const locationId = env.GHL_LOCATION_ID;
 
   // 1) Existuje už kontakt s tímhle e-mailem?
@@ -122,7 +137,15 @@ async function zapisDoCliqsales(env, { jmeno, prijmeni, email, tags }) {
   }
 
   if (existujici) {
-    // 2a) Jen přidat tagy. Endpoint /tags tagy přidává, existující nechává.
+    // 2a) Změna termínu: odebrat tagy ostatních termínů, které kontakt má.
+    const maTagy = Array.isArray(existujici.tags) ? existujici.tags.map((t) => String(t).toLowerCase()) : [];
+    const kOdebrani = odebrat.filter((t) => maTagy.includes(t.toLowerCase()));
+    if (kOdebrani.length > 0) {
+      const d = await ghl(env, 'DELETE', `/contacts/${existujici.id}/tags`, { tags: kOdebrani });
+      if (!d.ok) console.warn('[registrace] odebrání starého termínu selhalo', d.status, popis(d.data));
+    }
+
+    // Přidat tagy. Endpoint /tags tagy přidává, existující nechává.
     const t = await ghl(env, 'POST', `/contacts/${existujici.id}/tags`, { tags });
     if (!t.ok) {
       throw new Error(`přidání tagů selhalo (${t.status}): ${popis(t.data)}`);

@@ -1,21 +1,40 @@
-<!-- ============================================================================
-     REGISTRACE NA WEBINÁŘ  →  CliqSales (přes Worker, POST /api/registrace)
-
-     Vlož celý blok do stránky webináře na místo, kde má být formulář.
-     Pole: křestní jméno, příjmení, e-mail, termín – všechna povinná. Nic dalšího se neposílá.
-
-     • Vzhled: sazba Kovárny (Oswald + Source Serif 4, kovářská čerň, rohové značky,
-       razítko u potvrzení). Proměnné bere ze stránky, bez nich platí fallbacky.
-     • Texty nadpisu a úvodní věta jsou převzaté z webinářové stránky Restart muže
-       (byznys-rodina); tlačítko, potvrzení a GDPR věta ze stránky Skoncuj s hodným klukem.
-     • Termíny: hodnota radio buttonu = tag v CliqSales (webinar-DD-MM-RR). Stejný seznam
-       musí být v TAGS_TERMINY ve wrangler.jsonc, jinak Worker termín odmítne.
-     • Děkovačka: vyplň value u skrytého pole `_redirect` (např. /webinar/dekujeme/).
-       Když zůstane prázdné, zobrazí se potvrzení přímo na místě formuláře.
-     • Po úspěchu se pošle dataLayer event `webinar_registrace` s polem `termin` (GTM konverze).
-     • Skryté pole `web` je past na roboty – člověk ho nevidí a nevyplní.
-     • Náhled vzhledu: snippets/registrace-webinar-nahled.html
-     ============================================================================ -->
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Registrace na webinář Kovárny</title>
+<!-- NÁHLED pro kontrolu vzhledu. Písma tu jdou z Google Fonts jen kvůli náhledu;
+     ostrá stránka Kovárny má stejná písma self-hostovaná ve fonts/. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Source+Serif+4:wght@400;600&display=swap">
+<style>
+  :root {
+    --iron: #12151a; --iron2: #1b1e24; --blade: #ffffff; --ash: #e4e0d9; --smoke: #8d8d8d;
+    --line: rgba(255,255,255,.16); --hair: rgba(255,255,255,.09);
+    --bg: var(--iron); --fg: var(--blade); --fg2: var(--ash); --fg3: var(--smoke);
+    --btn-bg: #fff; --btn-fg: #12151a; --btn-hov: #d3d3d3;
+    --display: 'Oswald', 'Arial Narrow', sans-serif;
+    --text: 'Source Serif 4', Georgia, serif;
+    --maxw: 1280px; --gut: 3rem;
+  }
+  * { box-sizing: border-box; }
+  html { font-size: 19px; -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--fg2); font-family: var(--text); font-size: 1.09rem; line-height: 1.72; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  body::after {
+    content: ''; position: fixed; inset: 0; z-index: 4; pointer-events: none; opacity: .055; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  :focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gut); }
+  .ledger { border-bottom: 1px solid var(--hair); background: #0b0d11; font-family: var(--display); font-weight: 500; font-size: .66rem; letter-spacing: .22em; text-transform: uppercase; color: #7a7a7a; }
+  .ledger .wrap { display: flex; gap: 2.5rem; justify-content: space-between; padding-top: .6rem; padding-bottom: .6rem; flex-wrap: wrap; }
+  .ledger span { white-space: nowrap; }
+  .sekce { padding: clamp(3rem, 8vw, 6rem) 0; }
+  .sekce .reg { margin: 0 auto; }
+  .pozn { margin: 0 auto; max-width: 640px; padding: 0 0 1.8rem; font-family: var(--display); font-weight: 500; font-size: .66rem; letter-spacing: .18em; text-transform: uppercase; color: #6f6f6f; }
+  .pozn b { color: #c9cfd6; font-weight: 500; }
+  @media (max-width: 640px) { :root { --gut: 1.25rem; } }
+</style>
 <style>
   /* Registrace na webinář – sazba Kovárny. Proměnné (--display, --text, --fg…) bere ze stránky,
      bez nich platí fallbacky, blok funguje i sám o sobě. */
@@ -116,7 +135,11 @@
   }
   @media (prefers-reduced-motion: reduce) { .reg .btn, .reg-field input, .reg-termin, .reg-termin input { transition: none; } }
 </style>
-
+</head>
+<body>
+<div class="ledger"><div class="wrap"><span>Kovárna</span><span>Náhled formuláře registrace</span><span>kovarna.restartmuze.cz</span></div></div>
+<section class="sekce"><div class="wrap">
+<p class="pozn"><b>Náhled vzhledu.</b> Odeslání tady nic neposílá, jen předvede stavy: chybu u pole a potvrzení.</p>
 <div class="reg" id="registrace">
   <div class="reg-head">
     <div class="reg-eyebrow" aria-hidden="true"><span class="reg-cap">Registrace zdarma</span><span class="reg-rule"></span></div>
@@ -166,7 +189,23 @@
     </div>
   </div>
 </div>
-
+</div></section>
+<script>
+// Jen v náhledu: místo Workeru odpoví po chvilce „ok“, ať jde proklikat potvrzení.
+(function () {
+  var puvodni = window.fetch;
+  window.fetch = function (url) {
+    if (String(url).indexOf('/api/registrace') !== -1) {
+      return new Promise(function (res) {
+        setTimeout(function () {
+          res(new Response(JSON.stringify({ ok: true, novy: true }), { status: 200, headers: { 'Content-Type': 'application/json' } }));
+        }, 900);
+      });
+    }
+    return puvodni.apply(this, arguments);
+  };
+})();
+</script>
 <script>
 (function () {
   var form = document.getElementById('reg-form');
@@ -230,3 +269,5 @@
   });
 })();
 </script>
+</body>
+</html>

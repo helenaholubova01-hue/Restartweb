@@ -25,6 +25,10 @@
   //   npx wrangler secret put GHL_API_KEY
   //   npx wrangler secret put GHL_LOCATION_ID
   "vars": {
+    // Tagy termínů: hodnota radio buttonu ve formuláři = tag. Při změně termínů
+    // uprav i seznam ve snippets/registrace-webinar.html.
+    "TAGS_TERMINY": "webinar-06-09-26,webinar-13-09-26,webinar-17-09-26",
+    // Obecný tag pro každého registrovaného (na něj je navázané workflow v CliqSales).
     "TAGS_REGISTRACE": "kovarna_webinar_registrace",
     "SOURCE": "Web Kovárna – webinář"
   },
