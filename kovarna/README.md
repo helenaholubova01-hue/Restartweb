@@ -137,6 +137,10 @@ npx wrangler secret put GHL_LOCATION_ID   # ID lokace (sub-accountu) v CliqSales
 npx wrangler deploy
 ```
 
+Secrets patří k Workeru podle `name` ve `wrangler.jsonc`. Pro ostrý Worker je
+nastav z adresáře, odkud se nasazuje, nebo přidej `--name chlapska-kovarna`.
+Viz upozornění v části Deploy níže.
+
 Token vznikne v CliqSales: Settings → Private Integrations → New. Práva stačí
 „View Contacts“ a „Edit Contacts“.
 
@@ -187,6 +191,22 @@ npx wrangler deploy
 ```
 
 Náhled lokálně: `npx wrangler dev`
+
+> **Pozor, než spustíš deploy z tohohle adresáře.** Ostrý web běží ve Workeru
+> `chlapska-kovarna` na účtu Cloudflare Kovárny a je nasazený odjinud. Zdejší
+> `public/` má jen `404.html` a `_headers`, ostrý web v něm není. `wrangler deploy`
+> nahrazuje statické soubory Workeru celým obsahem `public/`, takže deploy odsud
+> pod jménem `chlapska-kovarna` by web přepsal na samotnou 404. Proto tu zůstává
+> `name: "kovarna"`: deploy odsud založí oddělený Worker a ostrého webu se nedotkne.
+>
+> Endpoint registrace se do ostrého webu dostane jedním z těchto postupů:
+>
+> 1. do adresáře, odkud se `chlapska-kovarna` nasazuje, přenést `src/index.js`
+>    a z `wrangler.jsonc` klíče `main`, `assets.binding`, `assets.run_worker_first`
+>    a `vars`; tam nastavit secrets a nasadit, nebo
+> 2. přenést ostrý web do zdejšího `public/`, přejmenovat `name` na
+>    `chlapska-kovarna` a nasazovat už jen odsud. To je cílový stav, aby byl
+>    web ve verzování.
 
 ## Doména
 
