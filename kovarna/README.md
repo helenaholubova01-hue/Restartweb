@@ -267,7 +267,7 @@ Metodika v `../instrukce-web.md` počítá s `.htaccess`. Na Workers neexistuje:
       Restart muže (`GTM-MZ6KX3VV`) za vlastní
 - [ ] landing výzvy a zbytek funnelu
 - [ ] rezervační systém na 15minutový vstupní rozhovor
-- [ ] registrace na webinář: nastavit secrets `CLIQSALES_API_KEY` a `CLIQSALES_LOCATION_ID`,
+- [ ] registrace na webinář: nastavit secret `CLIQSALES_API_KEY`,
       vložit `snippets/registrace-webinar.html` do stránky webináře, ověřit první
       registraci v CliqSales, publikovat workflow s e-mailem (Zoom odkaz)
 - [ ] právní stránky — IČ, sídlo a zápis v rejstříku Mentoring SČ s.r.o.
