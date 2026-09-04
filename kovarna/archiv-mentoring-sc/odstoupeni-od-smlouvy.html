@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Odstoupení od smlouvy — Chlapská kovárna</title>
+<meta name="description" content="Oznámení o odstoupení od smlouvy — Mentoring SČ s.r.o. Vyplňte přímo na stránce, žádný formulář ke stažení.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../pravni.css">
+<link rel="stylesheet" href="../cookie-banner.css?v=2">
+<style>
+/* ---------- kroky ---------- */
+.kroky{list-style:none;counter-reset:k;margin:0 0 3rem;padding:0;display:grid;gap:1.4rem}
+.kroky li{counter-increment:k;position:relative;padding-left:3.4rem;max-width:46rem}
+.kroky li::before{content:counter(k);position:absolute;left:0;top:.1rem;width:2.1rem;height:2.1rem;
+    display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:50%;
+    font-family:var(--display);font-weight:700;font-size:.8rem;color:var(--head);background:var(--band)}
+.kroky b{display:block;font-family:var(--display);font-weight:500;text-transform:uppercase;
+    letter-spacing:.1em;font-size:.74rem;color:var(--head);margin-bottom:.25rem}
+
+/* ---------- formulář ---------- */
+.form{background:var(--band);border:1px solid var(--line);padding:2rem 2.2rem;margin:0 0 2rem;max-width:50rem}
+.pole{display:grid;gap:.4rem;margin-bottom:1.35rem}
+.pole label{font-family:var(--display);font-weight:500;text-transform:uppercase;letter-spacing:.11em;
+    font-size:.7rem;color:var(--mut)}
+.pole label .hv{color:#ff7a6b}
+.pole input,.pole textarea{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:2px;
+    padding:.72rem .85rem;color:var(--head);font-family:var(--text);font-size:.95rem;line-height:1.5}
+.pole input:focus,.pole textarea:focus{outline:none;border-color:var(--mut)}
+.pole textarea{min-height:5.5rem;resize:vertical}
+.pole .napoveda{font-size:.78rem;color:var(--mut);line-height:1.55}
+.dvojice{display:grid;gap:0 1.4rem;grid-template-columns:1fr 1fr}
+
+/* ---------- náhled ---------- */
+.nahled{background:#fff;color:#1a1a1a;padding:2.2rem 2.4rem;margin:0 0 1.6rem;max-width:50rem;
+    font-family:var(--text);font-size:.92rem;line-height:1.75;white-space:pre-wrap;word-wrap:break-word}
+.nahled .chybi{color:#b3261e;border-bottom:1px dashed #b3261e}
+
+/* ---------- tlačítka ---------- */
+.akce{display:flex;flex-wrap:wrap;gap:.7rem;margin:0 0 1rem;max-width:50rem}
+.akce button{font-family:var(--display);font-weight:500;text-transform:uppercase;letter-spacing:.12em;
+    font-size:.74rem;padding:.85rem 1.6rem;border:1px solid var(--line);border-radius:2px;cursor:pointer;
+    background:var(--raised);color:var(--head);transition:background .2s ease,border-color .2s ease}
+.akce button.hlavni{background:#fff;color:#12151a;border-color:#fff}
+@media (hover:hover){
+    .akce button:hover{background:#2a2f37}
+    .akce button.hlavni:hover{background:#d3d3d3;border-color:#d3d3d3}
+}
+.akce button:disabled{opacity:.4;cursor:not-allowed}
+.akce button:disabled:hover{background:var(--raised)}
+.hlaska{font-size:.82rem;color:var(--mut);margin:0 0 2.6rem;max-width:50rem;min-height:1.4rem}
+
+@media (max-width:768px){
+    .form{padding:1.4rem 1.2rem}
+    .nahled{padding:1.4rem 1.2rem}
+    .dvojice{grid-template-columns:1fr}
+    .kroky li{padding-left:2.9rem}
+    .akce button{flex:1 1 100%}
+}
+
+/* ---------- tisk: čistý podepsatelný dokument ---------- */
+@media print{
+    .topbar,.foot,.form,.akce,.hlaska,.kroky,.netisknout{display:none !important}
+    .nahled{background:#fff;color:#000;padding:0;margin:0;max-width:none;font-size:11pt}
+    .nahled .chybi{color:#000;border-bottom:1px dashed #000}
+    .doc{padding:0}
+    h1{font-size:15pt;margin-bottom:1.5rem}
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+<a href="../">&larr; Chlapská kovárna</a>
+<span>Mentoring SČ s.r.o.</span>
+</header>
+<main class="doc">
+
+<p class="eyebrow">Právní dokument</p><h1>Odstoupení od smlouvy</h1>
+<div class="rule"></div>
+
+<p class="lead netisknout">Tahle stránka slouží k&nbsp;oznámení o&nbsp;odstoupení od&nbsp;smlouvy. Nic si nestahujete ani netisknete — formulář vyplníte rovnou tady a&nbsp;jedním kliknutím z&nbsp;něj vznikne hotový e-mail. Kdo chce papír, může si dokument vytisknout nebo uložit jako PDF.</p>
+
+<p class="lead netisknout">Právo na&nbsp;odstoupení se liší podle typu produktu. U&nbsp;digitálního obsahu zpřístupněného s&nbsp;Vaším souhlasem a&nbsp;u&nbsp;akcí konaných k&nbsp;určitému datu ho zákon vylučuje — než formulář vyplníte, ověřte si níže, zda Vám ve&nbsp;Vašem případě náleží.</p>
+
+<h2 class="ch netisknout" id="kroky"><span class="no">I</span><span class="ttl">Jak na&nbsp;to</span></h2>
+
+<ol class="kroky netisknout">
+<li><b>Vyplníte formulář</b>Níže uvedete své údaje a&nbsp;údaje o&nbsp;objednávce. Text oznámení se skládá sám a&nbsp;vidíte ho pod formulářem.</li>
+<li><b>Odešlete oznámení</b>Tlačítkem otevřete svého e-mailového klienta s&nbsp;hotovou zprávou, nebo si text zkopírujete a&nbsp;pošlete odkudkoli. Data zůstávají ve&nbsp;Vašem prohlížeči — nikam se sama neodesílají.</li>
+<li><b>Obdržíte potvrzení</b>Přijetí oznámení Vám potvrdíme e-mailem. Zaplacenou částku vrátíme do&nbsp;14&nbsp;dnů od&nbsp;jeho doručení.</li>
+</ol>
+
+<h2 class="ch netisknout" id="kdy"><span class="no">II</span><span class="ttl">Kdy právo na&nbsp;odstoupení platí a&nbsp;kdy ne</span></h2>
+
+<p class="cl netisknout"><span class="n">1.</span>Právo odstoupit od&nbsp;smlouvy do&nbsp;14&nbsp;dnů Vám náleží zejména u&nbsp;online služeb a&nbsp;digitálního obsahu, u&nbsp;kterých jste nedal výslovný souhlas s&nbsp;okamžitým zpřístupněním, a&nbsp;dále u&nbsp;nevyčerpaného členství nebo programu před začátkem dalšího platebního období.</p>
+
+<p class="cl netisknout"><span class="n">2.</span>Právo Vám naopak nenáleží, pokud:</p>
+<p class="netisknout">a) jste v&nbsp;objednávce dal výslovný souhlas s&nbsp;okamžitým zpřístupněním digitálního obsahu a&nbsp;obsah Vám byl zpřístupněn — § 1837 písm.&nbsp;l) občanského zákoníku;</p>
+<p class="netisknout">b) jde o&nbsp;akci konanou k&nbsp;určitému datu nebo v&nbsp;určitém období — trénink, víkend, živé vysílání nebo workshop — § 1837 písm.&nbsp;j) občanského zákoníku.</p>
+
+<p class="cl netisknout"><span class="n">3.</span>Pokud si nejste jistý, jestli právo uplatnit můžete, napište nám dřív, než formulář vyplníte. Kontakt najdete na&nbsp;konci stránky.</p>
+
+<h2 class="ch netisknout" id="formular"><span class="no">III</span><span class="ttl">Formulář</span></h2>
+
+<form class="form netisknout" id="f" autocomplete="on" novalidate>
+<div class="pole">
+    <label for="jmeno">Jméno a&nbsp;příjmení <span class="hv">*</span></label>
+    <input type="text" id="jmeno" name="jmeno" autocomplete="name">
+</div>
+<div class="pole">
+    <label for="adresa">Adresa <span class="hv">*</span></label>
+    <input type="text" id="adresa" name="adresa" autocomplete="street-address" placeholder="Ulice a číslo, PSČ, obec">
+</div>
+<div class="pole">
+    <label for="email">Váš e-mail <span class="hv">*</span></label>
+    <input type="email" id="email" name="email" autocomplete="email">
+    <span class="napoveda">Použijte prosím tu adresu, se kterou jste objednával — najdeme podle ní objednávku.</span>
+</div>
+<div class="dvojice">
+    <div class="pole">
+        <label for="objednavka">Číslo objednávky <span class="hv">*</span></label>
+        <input type="text" id="objednavka" name="objednavka">
+    </div>
+    <div class="pole">
+        <label for="datum-obj">Datum objednání <span class="hv">*</span></label>
+        <input type="date" id="datum-obj" name="datum-obj">
+    </div>
+</div>
+<div class="dvojice">
+    <div class="pole">
+        <label for="faktura">Číslo faktury</label>
+        <input type="text" id="faktura" name="faktura">
+    </div>
+    <div class="pole">
+        <label for="ucet">Číslo účtu pro vrácení peněz <span class="hv">*</span></label>
+        <input type="text" id="ucet" name="ucet" placeholder="123456789/0100">
+    </div>
+</div>
+<div class="pole">
+    <label for="produkt">Název produktu nebo služby <span class="hv">*</span></label>
+    <input type="text" id="produkt" name="produkt">
+</div>
+<div class="pole">
+    <label for="duvod">Důvod odstoupení</label>
+    <textarea id="duvod" name="duvod"></textarea>
+    <span class="napoveda">Nepovinné. Důvod uvádět nemusíte, ale pomůže nám zlepšit se.</span>
+</div>
+</form>
+
+<h2 class="ch netisknout" id="nahled-h"><span class="no">IV</span><span class="ttl">Náhled oznámení</span></h2>
+
+<div class="nahled" id="nahled"></div>
+
+<div class="akce netisknout">
+    <button type="button" class="hlavni" id="btn-mail">Odeslat e-mailem</button>
+    <button type="button" id="btn-kopie">Zkopírovat text</button>
+    <button type="button" id="btn-tisk">Vytisknout / uložit PDF</button>
+</div>
+<p class="hlaska netisknout" id="hlaska"></p>
+
+<h2 class="ch netisknout" id="dalsi"><span class="no">V</span><span class="ttl">Další způsoby a&nbsp;vrácení peněz</span></h2>
+
+<p class="cl netisknout"><span class="n">1.</span>Odstoupení můžete oznámit i&nbsp;běžným e-mailem nebo poštou na&nbsp;adresu sídla uvedenou v&nbsp;patičce. Stačí jednoznačné prohlášení, že od&nbsp;smlouvy odstupujete, a&nbsp;údaje o&nbsp;objednávce — formulář na&nbsp;této stránce je jen pomůcka, používat ho nemusíte.</p>
+<p class="cl netisknout"><span class="n">2.</span>Zaplacenou částku Vám vrátíme do&nbsp;14&nbsp;dnů od&nbsp;přijetí oznámení, a&nbsp;to stejným způsobem, jakým jste platil, pokud se nedohodneme jinak.</p>
+<p class="cl netisknout"><span class="n">3.</span>Pokud jste placenou službu částečně vyčerpal, vrátíme poměrnou část podle § 1834 občanského zákoníku.</p>
+<p class="cl netisknout"><span class="n">4.</span>Odstoupíte-li od&nbsp;smlouvy o&nbsp;digitálním obsahu, bude Vám přístup k&nbsp;němu zrušen.</p>
+<p class="cl netisknout"><span class="n">5.</span>Máte-li dotaz, napište nám na&nbsp;<mark class="todo">Doplnit kontaktní e-mail</mark> — odpovíme do&nbsp;2&nbsp;pracovních dnů.</p>
+
+<p class="netisknout" style="font-size:.85rem;color:var(--mut);max-width:46rem">Údaje z&nbsp;formuláře zpracováváme podle <a href="../gdpr/">zásad zpracování osobních údajů</a>. Podmínky, ze&nbsp;kterých právo na&nbsp;odstoupení vychází, najdete v&nbsp;<a href="../obchodni-podminky/">obchodních podmínkách</a>.</p>
+
+</main>
+<footer class="foot"><div class="wrap">
+<b>Mentoring SČ s.r.o.</b>
+IČO: 21947872 &middot; DIČ: CZ21947872<br>
+Kyjevská 1937/64, Východní Předměstí, 326 00 Plzeň<br>
+Zapsaná v&nbsp;obchodním rejstříku vedeném u&nbsp;Krajského soudu v&nbsp;Plzni, sp. zn. C&nbsp;45632
+</div></footer>
+
+<script>
+(function () {
+    'use strict';
+
+    /* ===== JEDINÉ MÍSTO K DOPLNĚNÍ ===== */
+    var KONTAKT = 'DOPLNIT@chlapskakovarna.cz';
+    /* =================================== */
+
+    var POLE = ['jmeno', 'adresa', 'email', 'objednavka', 'datum-obj', 'faktura', 'ucet', 'produkt', 'duvod'];
+    var POVINNA = ['jmeno', 'adresa', 'email', 'objednavka', 'datum-obj', 'ucet', 'produkt'];
+
+    /* Zástupný znak pro nevyplněné pole. V náhledu se obarví červeně,
+       na vytištěném prázdném formuláři vyjde jako tečkovaná linka. */
+    var PRAZDNO = '. . . . . . . . . . . . . . . . . . . .';
+
+    var nahled = document.getElementById('nahled');
+    var hlaska = document.getElementById('hlaska');
+    var btnMail = document.getElementById('btn-mail');
+    var btnKopie = document.getElementById('btn-kopie');
+    var btnTisk = document.getElementById('btn-tisk');
+
+    function el(id) { return document.getElementById(id); }
+    function hodnota(id) { return (el(id).value || '').trim(); }
+
+    function datumCesky(iso) {
+        if (!iso) return '';
+        var d = iso.split('-');
+        if (d.length !== 3) return iso;
+        return parseInt(d[2], 10) + '. ' + parseInt(d[1], 10) + '. ' + d[0];
+    }
+
+    function dnesCesky() {
+        var d = new Date();
+        return d.getDate() + '. ' + (d.getMonth() + 1) + '. ' + d.getFullYear();
+    }
+
+    /* Text oznámení — čistý, bez HTML. Používá se pro e-mail i schránku. */
+    function textOznameni() {
+        var r = [];
+        r.push('ODSTOUPENÍ OD SMLOUVY');
+        r.push('');
+        r.push('Mentoring SČ s.r.o.');
+        r.push('Kyjevská 1937/64, Východní Předměstí, 326 00 Plzeň');
+        r.push('IČO: 21947872');
+        r.push('');
+        r.push('Oznamuji, že tímto odstupuji od smlouvy o poskytnutí těchto služeb:');
+        r.push('');
+        r.push('Název produktu nebo služby: ' + (hodnota('produkt') || PRAZDNO));
+        r.push('Datum objednání: ' + (datumCesky(hodnota('datum-obj')) || PRAZDNO));
+        r.push('Číslo objednávky: ' + (hodnota('objednavka') || PRAZDNO));
+        r.push('Číslo faktury: ' + (hodnota('faktura') || 'neuvedeno'));
+        r.push('');
+        r.push('Jméno a příjmení spotřebitele: ' + (hodnota('jmeno') || PRAZDNO));
+        r.push('Adresa spotřebitele: ' + (hodnota('adresa') || PRAZDNO));
+        r.push('E-mail spotřebitele: ' + (hodnota('email') || PRAZDNO));
+        r.push('Číslo bankovního účtu pro vrácení peněz: ' + (hodnota('ucet') || PRAZDNO));
+        if (hodnota('duvod')) {
+            r.push('');
+            r.push('Důvod odstoupení: ' + hodnota('duvod'));
+        }
+        r.push('');
+        r.push('Datum: ' + dnesCesky());
+        r.push('');
+        r.push('Podpis spotřebitele: ......................................');
+        r.push('(pouze pokud je oznámení zasíláno v listinné podobě)');
+        return r.join('\n');
+    }
+
+    /* Náhled — stejný text, jen nevyplněná místa se obarví červeně. */
+    function vykresliNahled() {
+        nahled.textContent = textOznameni();
+        if (nahled.textContent.indexOf(PRAZDNO) === -1) return;
+        var kusy = nahled.innerHTML.split(PRAZDNO);
+        nahled.innerHTML = kusy.join('<span class="chybi">' + PRAZDNO + '</span>');
+    }
+
+    function chybiPovinne() {
+        var chybi = [];
+        POVINNA.forEach(function (id) { if (!hodnota(id)) chybi.push(id); });
+        var mail = hodnota('email');
+        if (mail && mail.indexOf('@') < 1) chybi.push('email');
+        return chybi;
+    }
+
+    function prekresli() {
+        vykresliNahled();
+        var chybi = chybiPovinne();
+        var ok = chybi.length === 0;
+        btnMail.disabled = !ok;
+        btnKopie.disabled = !ok;
+        if (!ok) {
+            hlaska.textContent = 'Vyplňte prosím povinná pole označená hvězdičkou (' + chybi.length + ' zbývá).';
+        } else {
+            hlaska.textContent = 'Oznámení je připravené — můžete ho odeslat, zkopírovat nebo vytisknout.';
+        }
+    }
+
+    POLE.forEach(function (id) {
+        var e = el(id);
+        e.addEventListener('input', prekresli);
+        e.addEventListener('change', prekresli);
+    });
+
+    btnMail.addEventListener('click', function () {
+        var predmet = 'Odstoupení od smlouvy — objednávka ' + hodnota('objednavka');
+        var url = 'mailto:' + encodeURIComponent(KONTAKT)
+            + '?subject=' + encodeURIComponent(predmet)
+            + '&body=' + encodeURIComponent(textOznameni());
+        window.location.href = url;
+        hlaska.textContent = 'Otevřeli jsme Váš e-mailový program s připravenou zprávou. Pokud se nic neotevřelo, použijte tlačítko Zkopírovat text.';
+    });
+
+    btnKopie.addEventListener('click', function () {
+        var t = textOznameni();
+        function hotovo() { hlaska.textContent = 'Text je ve schránce. Vložte ho do e-mailu na adresu ' + KONTAKT + '.'; }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(t).then(hotovo, zaloha);
+        } else {
+            zaloha();
+        }
+        function zaloha() {
+            var ta = document.createElement('textarea');
+            ta.value = t;
+            ta.setAttribute('readonly', '');
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            try { document.execCommand('copy'); hotovo(); }
+            catch (e) { hlaska.textContent = 'Zkopírování se nepovedlo — text si prosím označte v náhledu výše a zkopírujte ručně.'; }
+            document.body.removeChild(ta);
+        }
+    });
+
+    btnTisk.addEventListener('click', function () { window.print(); });
+
+    prekresli();
+})();
+</script>
+<!-- Cookie lišta — sdílený soubor pro celý web -->
+<script src="../cookie-banner.js?v=2" defer></script>
+</body>
+</html>

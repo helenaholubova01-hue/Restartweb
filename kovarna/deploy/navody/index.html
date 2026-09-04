@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<meta name="theme-color" content="#12151a">
+<title>Jak se připojíš — 3denní živý online trénink</title>
+<meta name="description" content="Jak se připojit k živému vysílání přes Zoom — na počítači, Androidu i iPhonu. Co si připravit před večerem.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+
+<!-- ============================================================
+     JAK SE PŘIPOJÍŠ — Chlapská kovárna
+     Kovářská verze návodů z restartmuze.cz/kviz-vztahu/3denni-trenink/navody/
+     (lokálně navody-3dtrenink.html; sesterská navody_koch.html má stejnou
+     stavbu i stejná čtyři zoomová videa, liší se jen komunitní částí).
+     Z komunitní části zůstal jen postup na připojení (aktivace přes
+     web → teprve pak GoKollab v telefonu), který platí pro platformu
+     obecně; KOCH věci (Kanály, Základ/Plus, Kochtalks) jsou pryč.
+
+     PŘESTAVBA 31. 8. po zpětné vazbě Heleny („kapitálky se nedají
+     přečíst, není na první pohled vidět, o co jde"):
+     · Oswald verzálky JEN na H1, H2, nadnadpisy a záložky — tedy tam,
+       kde je text krátký nebo velký. Popisky kroků a položek jsou
+       serifem v běžné sazbě; drobných prostrkaných kapitálek bylo na
+       stránce tolik, že se slily do šedi.
+     · Připojení k vysílání je PRVNÍ sekce hned pod hlavičkou (dřív až
+       druhá, pod ohybem) a jako jediná je na světlém papíru — díky
+       tomu je na první pohled vidět, k čemu stránka je.
+     · Pryč rozcestník v hlavičce a tlačítko zpět nahoru — na krátké
+       stránce to byl jen šum.
+
+     Videa: knihovna Bunny 371834. Referrery doplnila Helena 31. 8.,
+     ověřeno, že kovarna.restartmuze.cz i chlapskakovarna.cz vrací
+     přehrávač. POZOR: www.chlapskakovarna.cz zatím 403 — doplnit,
+     až se přejde na ostrou doménu.
+     Přehrávač se vkládá až na kliknutí, do té doby je vidět náhled
+     z Bunny (thumbnail.jpg) — stránka se nenatahuje čtyřmi cizími
+     iframy a Bunny se nenačte dřív, než člověk sám chce.
+
+     Analytika: kontejner GTM-MZ6KX3VV je správně a měnit se nebude —
+     web jede pod IČem Restartu muže (potvrzeno 1. 9. 2026).
+     ============================================================ -->
+
+<!-- Kontejner Restartu muže — web jede pod jeho IČem, takže je správný. -->
+<script>(function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-MZ6KX3VV');</script>
+
+<link rel="stylesheet" href="../cookie-banner.css?v=5">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jak se připojíš — 3denní živý online trénink">
+<meta property="og:description" content="Připojení k živému vysílání přes Zoom — počítač, Android i iPhone.">
+<meta property="og:locale" content="cs_CZ">
+<meta property="og:site_name" content="Kovárna">
+<!-- Náhledovka míří na kovarna.restartmuze.cz, protože chlapskakovarna.cz
+     zatím NEEXISTUJE (ověřeno 1. 9. 2026 — NXDOMAIN). Na neexistující doméně
+     by se při sdílení odkazu nenačetla. Přepsat, až doména naběhne. -->
+<meta property="og:image" content="https://kovarna.restartmuze.cz/img/navody-og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Jak se připojíš k živému vysílání — 3denní trénink Chlapské kovárny">
+<style>
+@font-face{font-family:'Oswald';src:url('../fonts/oswald-500-latin-ext.woff2') format('woff2');font-weight:500;font-display:swap;unicode-range:U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Oswald';src:url('../fonts/oswald-500-latin.woff2') format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'Oswald';src:url('../fonts/oswald-700-latin-ext.woff2') format('woff2');font-weight:700;font-display:swap;unicode-range:U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Oswald';src:url('../fonts/oswald-700-latin.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'Source Serif 4';src:url('../fonts/sourceserif-400-latin-ext.woff2') format('woff2');font-weight:400;font-display:swap;unicode-range:U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Source Serif 4';src:url('../fonts/sourceserif-400-latin.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Source Serif 4';src:url('../fonts/sourceserif-600-latin-ext.woff2') format('woff2');font-weight:600;font-display:swap;unicode-range:U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Source Serif 4';src:url('../fonts/sourceserif-600-latin.woff2') format('woff2');font-weight:600;font-display:swap}
+
+/* ---------- paleta ----------
+   Role proměnné (--bg/--fg/…) místo napevno zapsaných barev, aby se
+   sekce dala přepnout na světlý papír třídou .invert — stejně jako
+   na stránce tréninku. */
+:root{
+    --bg:#12151a; --fg:#ffffff; --fg2:#e4e0d9; --fg3:#8d8d8d;
+    --line:rgba(255,255,255,.16); --hair:rgba(255,255,255,.09); --card:#1b2027;
+    --display:'Oswald','Arial Narrow',sans-serif;
+    --text:'Source Serif 4',Georgia,serif;
+    --maxw:1080px;
+}
+.invert{
+    --bg:#f2efe9; --fg:#12151a; --fg2:#23211e; --fg3:#6c6862;
+    --line:rgba(0,0,0,.2); --hair:rgba(0,0,0,.1); --card:#e7e2d9;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{font-size:19px;scroll-behavior:auto;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;background:#12151a;color:var(--fg2);font-family:var(--text);
+    font-size:1.06rem;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 1.6rem}
+
+/* ---------- lišta ----------
+   Kovadlina + logo Restartu převzaté z prodejky tréninku
+   (deploy/trenink/index.html, .brand a .brand-rm) — Helena chtěla
+   stejnou hlavičku jako tam. Logo Restartu odděluje svislá linka,
+   pod 520 px se zmenšuje, ať se lišta nezalomí. */
+.topbar{border-bottom:1px solid var(--hair);padding:calc(.9rem + env(safe-area-inset-top)) 0 .9rem}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.brand{display:inline-flex;align-items:center;gap:.75rem;text-decoration:none}
+.brand svg{width:26px;height:26px;color:var(--fg);fill:currentColor;flex:none}
+.brand b{font-family:var(--display);font-weight:700;font-size:.92rem;letter-spacing:.34em;
+    text-transform:uppercase;color:var(--fg)}
+.brand-rm{display:inline-flex;align-items:center;margin-left:.6rem;padding-left:1.15rem;
+    border-left:1px solid var(--line)}
+.brand-rm img{height:44px;width:auto;display:block}
+.topbar span{font-family:var(--display);font-weight:500;text-transform:uppercase;
+    letter-spacing:.2em;font-size:.72rem;color:var(--fg3)}
+
+/* ---------- hlavička stránky ---------- */
+.hero{padding:3rem 0 2.4rem;border-bottom:1px solid var(--hair)}
+.eyebrow{font-family:var(--display);font-weight:500;text-transform:uppercase;
+    letter-spacing:.24em;font-size:.74rem;color:var(--fg3);margin:0 0 .9rem}
+h1{font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:.01em;
+    color:var(--fg);font-size:clamp(2.2rem,6vw,3.4rem);line-height:1.04;margin:0 0 1rem}
+.lead{max-width:38rem;font-size:1.16rem;color:var(--fg2);margin:0}
+.lead b{color:var(--fg);font-weight:600}
+
+/* pás s termíny */
+.terminy{display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem 1.6rem;
+    margin:2rem 0 0;padding:1.1rem 0 0;border-top:1px solid var(--hair)}
+.terminy span{font-family:var(--display);font-weight:700;text-transform:uppercase;
+    color:var(--fg);font-size:1.15rem;letter-spacing:.03em;white-space:nowrap}
+.terminy span b{font-weight:500;color:var(--fg3);margin-right:.4rem;font-size:.85rem;letter-spacing:.12em}
+.terminy em{font-style:normal;font-size:.98rem;color:var(--fg2);flex:1 1 16rem}
+
+/* ---------- sekce ---------- */
+.sek{background:var(--bg);color:var(--fg2);padding:3.2rem 0 3.4rem;border-bottom:1px solid var(--hair)}
+.sek-head{margin:0 0 2rem}
+.cap{font-family:var(--display);font-weight:500;text-transform:uppercase;letter-spacing:.24em;
+    font-size:.74rem;color:var(--fg3);margin:0 0 .6rem}
+h2{font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:.03em;
+    color:var(--fg);font-size:clamp(1.5rem,3.4vw,2.1rem);line-height:1.12;margin:0}
+.sek-head p{max-width:44rem;margin:.9rem 0 0;font-size:1.06rem;color:var(--fg2)}
+
+/* Podnadpis je Oswald v běžné sazbě, ne prostrkané verzálky — drobných
+   kapitálek bylo na stránce tolik, že se přestaly číst. */
+h3{font-family:var(--display);font-weight:500;color:var(--fg);
+    font-size:1.3rem;line-height:1.25;letter-spacing:.005em;
+    margin:0 0 1.2rem;padding-bottom:.7rem;border-bottom:1px solid var(--hair);
+    display:flex;align-items:center;gap:.7rem}
+h3 svg{width:1.15rem;height:1.15rem;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;
+    stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- kroky ---------- */
+.kroky{list-style:none;counter-reset:k;margin:0;padding:0;display:grid;gap:1.4rem;max-width:44rem}
+.kroky li{counter-increment:k;position:relative;padding-left:2.9rem}
+.kroky li::before{content:counter(k);position:absolute;left:0;top:.05rem;width:1.85rem;height:1.85rem;
+    display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:50%;
+    font-family:var(--display);font-weight:700;font-size:.82rem;color:var(--fg)}
+.kroky b{display:block;font-weight:600;color:var(--fg);margin-bottom:.1rem}
+.kroky em{font-style:normal;color:var(--fg);font-weight:600}
+.kroky a{color:var(--fg);text-underline-offset:3px}
+
+/* ---------- záložky zařízení ---------- */
+.zalozky{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 2rem}
+.zalozka{font-family:var(--display);font-weight:500;text-transform:uppercase;letter-spacing:.14em;
+    font-size:.82rem;padding:.8rem 1.6rem;border:1px solid var(--line);background:transparent;
+    color:var(--fg3);cursor:pointer;transition:border-color .2s ease,color .2s ease,background .2s ease}
+@media (hover:hover){.zalozka:hover{border-color:var(--fg);color:var(--fg)}}
+.zalozka[aria-selected="true"]{background:var(--fg);border-color:var(--fg);color:var(--bg);font-weight:700}
+.zarizeni[hidden]{display:none}
+.zarizeni{display:grid;gap:2.6rem}
+
+/* ---------- video ----------
+   Do kliknutí je vidět jen náhled z Bunny; přehrávač se vloží až potom.
+   Návody k Zoomu jsou záznamy z telefonu, tedy na VÝŠKU (1080×2412) —
+   v 16:9 kartě by z nich zůstal jen proužek. Mají proto vlastní poměr
+   a užší sloupec. Průvodce komunitou je běžný záznam obrazovky, ten
+   zůstává na šířku.
+   Náhledy jdou do šedé: jsou to barevné screenshoty cizích aplikací
+   (modrý Zoom, oranžové logo Restartu) a na černobílé stránce by
+   křičely. Přehrávač po kliknutí hraje video tak, jak je. */
+.video{position:relative;display:block;width:100%;max-width:44rem;aspect-ratio:16/9;
+    padding:0;border:1px solid var(--line);background:var(--card);overflow:hidden;cursor:pointer}
+.video--telefon{max-width:19rem;aspect-ratio:9/16}
+.video img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;
+    filter:grayscale(1) contrast(1.04)}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video .stin{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,12,16,.15),rgba(10,12,16,.55))}
+.video .hrot{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    width:4rem;height:4rem;border:1px solid rgba(255,255,255,.75);border-radius:50%;
+    background:rgba(10,12,16,.35);display:flex;align-items:center;justify-content:center;
+    transition:background .2s ease,border-color .2s ease,transform .2s ease}
+.video .hrot svg{width:1.2rem;height:1.2rem;fill:#fff;stroke:none;margin-left:.2rem}
+@media (hover:hover){
+    .video:hover .hrot{background:rgba(10,12,16,.6);border-color:#fff;transform:translate(-50%,-50%) scale(1.06)}
+}
+/* Když náhled z Bunny nedorazí (jiná doména, výpadek CDN), karta se nesmí
+   rozpadnout — zmizí ztmavení a hrot se přebarví na barvu sekce. */
+.video.bez-nahledu .stin{display:none}
+.video.bez-nahledu .hrot{border-color:var(--line);background:transparent}
+.video.bez-nahledu .hrot svg{fill:var(--fg)}
+@media (hover:hover){.video.bez-nahledu:hover .hrot{border-color:var(--fg);background:transparent}}
+.pod-videem{font-size:.95rem;color:var(--fg3);margin:.8rem 0 0;max-width:44rem}
+
+/* ---------- karty „co si připravit" ---------- */
+.priprava{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem 2.6rem}
+.polozka{border-left:2px solid var(--fg);padding-left:1.1rem}
+.polozka b{display:block;font-weight:600;color:var(--fg);margin-bottom:.1rem}
+
+/* ---------- poznámka ---------- */
+.pozn{border:1px solid var(--line);padding:1.2rem 1.4rem;margin:2rem 0 0;max-width:44rem}
+.pozn b{display:block;font-weight:600;color:var(--fg);margin-bottom:.3rem}
+.pozn a{color:var(--fg);text-underline-offset:3px}
+
+/* ---------- skupina ---------- */
+.skupina{display:grid;grid-template-columns:1.15fr .85fr;gap:2.4rem 3.4rem;align-items:start}
+ul.seznam{list-style:none;margin:0;padding:0;display:grid;gap:.7rem}
+ul.seznam li{position:relative;padding-left:1.6rem}
+ul.seznam li::before{content:"";position:absolute;left:0;top:.85em;width:.7rem;height:1px;background:var(--fg3)}
+.stahnout{display:flex;flex-wrap:wrap;gap:.7rem;margin:1.8rem 0 0}
+/* Plná tlačítka, ne obrysová: na tmavém podkladu měl obrys kontrast jen
+   1px linky v 16% bílé a odkazy ke stažení splývaly s pozadím. Barvy jsou
+   z role proměnných, takže ve světlé sekci se otočí samy. */
+.stahnout a{display:inline-flex;align-items:center;justify-content:center;gap:.65rem;
+    font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:.14em;
+    font-size:.8rem;padding:.9rem 1.6rem;border:1px solid var(--fg);background:var(--fg);
+    color:var(--bg);text-decoration:none;transition:background .2s ease,border-color .2s ease}
+.stahnout a svg{width:1.05rem;height:1.05rem;fill:currentColor;stroke:none;flex:none}
+@media (hover:hover){.stahnout a:hover{background:#d3d3d3;border-color:#d3d3d3}}
+
+/* ---------- pomoc ---------- */
+.pomoc{padding:3.2rem 0 3.4rem;text-align:center}
+.pomoc p{margin:.9rem auto 0;max-width:34rem;color:var(--fg2)}
+.mail{display:inline-block;margin-top:1.5rem;font-family:var(--display);font-weight:700;
+    text-transform:uppercase;letter-spacing:.12em;font-size:.9rem;color:var(--fg);
+    text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:.3rem;
+    transition:border-color .2s ease}
+@media (hover:hover){.mail:hover{border-color:var(--fg)}}
+
+/* ---------- patička ---------- */
+.foot{border-top:1px solid var(--hair);
+    padding:2.2rem 0 calc(2.2rem + env(safe-area-inset-bottom));
+    font-size:.88rem;color:var(--fg3);line-height:1.7}
+.foot .copy{margin:0}
+/* Odvolat souhlas musí jít stejně snadno jako ho udělit — data-cc="c-settings"
+   je vlastní API knihovny, otevře podrobné nastavení cookie lišty. */
+.foot a{color:var(--fg2);text-underline-offset:3px}
+
+@media (max-width:900px){
+    .priprava{grid-template-columns:1fr 1fr}
+    .skupina{grid-template-columns:1fr}
+}
+@media (max-width:768px){
+    /* Kořen 17px stejně jako na stránce tréninku — hlavní páka na
+       velikost písma; jednotlivé prvky se pak ladit nemusí. */
+    html{font-size:17px}
+    .hero{padding:2.4rem 0 2rem}
+    .sek,.pomoc{padding:2.4rem 0 2.6rem}
+    .priprava{grid-template-columns:1fr;gap:1.5rem}
+    .zalozky{gap:.4rem}
+    .zalozka{flex:1 1 0;min-width:0;text-align:center;padding:.8rem .3rem;font-size:.78rem;letter-spacing:.08em}
+    .video{max-width:none}
+    .terminy{gap:.5rem 1.1rem}
+    .brand-rm img{height:36px}
+}
+/* Pod 520 px se lišta jinak zalomí — stejné hodnoty jako na prodejce. */
+@media (max-width:520px){
+    .brand{gap:.5rem}
+    .brand b{font-size:.85rem;letter-spacing:.22em}
+    .brand-rm{margin-left:.45rem;padding-left:.8rem}
+    .brand-rm img{height:28px}
+    .topbar .wrap{gap:.7rem}
+    .topbar > .wrap > span{display:none}
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar"><div class="wrap">
+    <a href="../" class="brand" aria-label="Kovárna — program Restart muže">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M1.6 8.2c1.9-1.5 4-2.2 6.4-2.2h10l3 1v2l-3 1.1h-2.1l-1 3.8 3 1.4.6 2.7H5.5l.6-2.7 3-1.4-1-3.8H6C4.3 10.1 2.8 9.5 1.6 8.2Z"/></svg>
+        <b>Kovárna</b>
+        <span class="brand-rm" aria-hidden="true">
+            <img src="../img/logo-restart-muze.png" alt="" width="699" height="193">
+        </span>
+    </a>
+    <span>Návody</span>
+</div></header>
+
+<div class="hero"><div class="wrap">
+    <p class="eyebrow">Před prvním večerem</p>
+    <h1>Jak se připojíš</h1>
+    <p class="lead">Trénink běží živě v&nbsp;<b>Zoomu</b>. Odkaz na&nbsp;vysílání Ti přijde e-mailem — jeden platí pro&nbsp;všechny tři večery. Níže si vyber zařízení, ze&nbsp;kterého se budeš připojovat.</p>
+
+    <p class="terminy">
+        <span><b>Po</b>21.&nbsp;9.</span>
+        <span><b>Út</b>22.&nbsp;9.</span>
+        <span><b>St</b>23.&nbsp;9.</span>
+        <em>Vždy od&nbsp;18:00, každý večer maximálně 90&nbsp;minut.</em>
+    </p>
+</div></div>
+
+<!-- ===================== 1 PŘIPOJENÍ (světlá sekce) ===================== -->
+<section class="sek invert" id="pripojeni"><div class="wrap">
+    <div class="sek-head">
+        <p class="cap">Zoom</p>
+        <h2>Připojení k&nbsp;vysílání</h2>
+        <p>Vyzkoušej si to v&nbsp;klidu předem, ne pět minut před&nbsp;startem.</p>
+    </div>
+
+    <div class="zalozky" role="tablist" aria-label="Zařízení">
+        <button class="zalozka" type="button" role="tab" id="zal-pc" aria-controls="zar-pc" aria-selected="true">Počítač</button>
+        <button class="zalozka" type="button" role="tab" id="zal-android" aria-controls="zar-android" aria-selected="false">Android</button>
+        <button class="zalozka" type="button" role="tab" id="zal-iphone" aria-controls="zar-iphone" aria-selected="false">iPhone</button>
+    </div>
+
+    <!-- ---------- POČÍTAČ ---------- -->
+    <div class="zarizeni" id="zar-pc" role="tabpanel" aria-labelledby="zal-pc">
+        <div>
+            <h3>
+                <svg viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="13" rx="1.5"/><line x1="8" y1="20.5" x2="16" y2="20.5"/><line x1="12" y1="17" x2="12" y2="20.5"/></svg>
+                Notebook nebo stolní počítač
+            </h3>
+            <ol class="kroky">
+                <li><b>Otevři odkaz z&nbsp;e-mailu</b>Klikni na&nbsp;odkaz na&nbsp;vysílání. Otevře se stránka Zoomu.</li>
+                <li><b>Máš Zoom nainstalovaný?</b>Prohlížeč se zeptá, jestli má aplikaci otevřít — potvrď <em>Otevřít Zoom Meetings</em>. Vysílání se spustí v&nbsp;aplikaci.</li>
+                <li><b>Nemáš Zoom nainstalovaný?</b>Nic si instalovat nemusíš. Na&nbsp;stránce dole klikni na&nbsp;<em>Join from your browser</em> (česky <em>Připojit se z&nbsp;prohlížeče</em>). Nejspolehlivěji to funguje v&nbsp;Chrome nebo Edge.</li>
+                <li><b>Připoj se do&nbsp;místnosti</b>Klikni na&nbsp;<em>Join</em> / <em>Připojit se</em>.</li>
+                <li><b>Povol mikrofon a&nbsp;kameru</b>Prohlížeč se na&nbsp;to zeptá nahoře v&nbsp;liště — dej <em>Povolit</em>. Bez toho Tě neuslyšíme.</li>
+                <li><b>Počkej v&nbsp;čekárně</b>Pokud se objeví hláška o&nbsp;čekárně, jen počkej. Pustíme Tě dovnitř.</li>
+            </ol>
+            <div class="pozn">
+                <b>Když se nic neděje</b>
+                Zavři jiné programy, které používají kameru (Teams, Meet, Skype) — Zoom se k&nbsp;ní pak nedostane. A&nbsp;jsi-li na&nbsp;firemním notebooku, může připojení blokovat firemní síť; zkus mobilní data nebo telefon.
+            </div>
+        </div>
+    </div>
+
+    <!-- ---------- ANDROID ---------- -->
+    <div class="zarizeni" id="zar-android" role="tabpanel" aria-labelledby="zal-android" hidden>
+
+        <div>
+            <h3>
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 12.75 11.25 15 15 9.75"/></svg>
+                Video: s&nbsp;nainstalovanou aplikací
+            </h3>
+            <button class="video video--telefon" type="button"
+                data-video="https://iframe.mediadelivery.net/embed/371834/4675c9e8-99c9-4bc5-b9d0-f5042f98b4d8?autoplay=true&amp;responsive=true"
+                data-popis="Připojení k Zoomu na Androidu s nainstalovanou aplikací"
+                aria-label="Pustit video: připojení k Zoomu na Androidu s nainstalovanou aplikací">
+                <img src="https://vz-0c3a91ec-d57.b-cdn.net/4675c9e8-99c9-4bc5-b9d0-f5042f98b4d8/thumbnail.jpg" alt="" loading="lazy">
+                <span class="stin"></span>
+                <span class="hrot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+            </button>
+            <p class="pod-videem">Klikneš na&nbsp;odkaz z&nbsp;e-mailu, telefon nabídne otevření Zoomu — potvrdíš a&nbsp;jsi uvnitř.</p>
+        </div>
+
+        <div>
+            <h3>
+                <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Video: bez nainstalované aplikace
+            </h3>
+            <button class="video video--telefon" type="button"
+                data-video="https://iframe.mediadelivery.net/embed/371834/395057ec-b252-490b-b368-44e87c73b768?autoplay=true&amp;responsive=true"
+                data-popis="Připojení k Zoomu na Androidu bez nainstalované aplikace"
+                aria-label="Pustit video: připojení k Zoomu na Androidu bez nainstalované aplikace">
+                <img src="https://vz-0c3a91ec-d57.b-cdn.net/395057ec-b252-490b-b368-44e87c73b768/thumbnail.jpg" alt="" loading="lazy">
+                <span class="stin"></span>
+                <span class="hrot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+            </button>
+            <p class="pod-videem">Stažení z&nbsp;Google Play zabere minutu — udělej to radši den předem.</p>
+        </div>
+    </div>
+
+    <!-- ---------- IPHONE ---------- -->
+    <div class="zarizeni" id="zar-iphone" role="tabpanel" aria-labelledby="zal-iphone" hidden>
+
+        <div>
+            <h3>
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 12.75 11.25 15 15 9.75"/></svg>
+                Video: s&nbsp;nainstalovanou aplikací
+            </h3>
+            <button class="video video--telefon" type="button"
+                data-video="https://iframe.mediadelivery.net/embed/371834/4cd3726e-ba9f-4cf2-95ea-958dad9d8832?autoplay=true&amp;responsive=true"
+                data-popis="Připojení k Zoomu na iPhonu s nainstalovanou aplikací"
+                aria-label="Pustit video: připojení k Zoomu na iPhonu s nainstalovanou aplikací">
+                <img src="https://vz-0c3a91ec-d57.b-cdn.net/4cd3726e-ba9f-4cf2-95ea-958dad9d8832/thumbnail.jpg" alt="" loading="lazy">
+                <span class="stin"></span>
+                <span class="hrot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+            </button>
+            <p class="pod-videem">Klikneš na&nbsp;odkaz z&nbsp;e-mailu, telefon nabídne otevření Zoomu — potvrdíš a&nbsp;jsi uvnitř.</p>
+        </div>
+
+        <div>
+            <h3>
+                <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Video: bez nainstalované aplikace
+            </h3>
+            <button class="video video--telefon" type="button"
+                data-video="https://iframe.mediadelivery.net/embed/371834/858d4cd0-aa9f-459b-9083-8bc3b0e812cd?autoplay=true&amp;responsive=true"
+                data-popis="Připojení k Zoomu na iPhonu bez nainstalované aplikace"
+                aria-label="Pustit video: připojení k Zoomu na iPhonu bez nainstalované aplikace">
+                <img src="https://vz-0c3a91ec-d57.b-cdn.net/858d4cd0-aa9f-459b-9083-8bc3b0e812cd/thumbnail.jpg" alt="" loading="lazy">
+                <span class="stin"></span>
+                <span class="hrot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+            </button>
+            <p class="pod-videem">Stažení z&nbsp;App Store zabere minutu — udělej to radši den předem.</p>
+        </div>
+    </div>
+</div></section>
+
+<!-- ===================== 2 CO SI PŘIPRAVIT ===================== -->
+<section class="sek" id="priprava"><div class="wrap">
+    <div class="sek-head">
+        <p class="cap">Než začneme</p>
+        <h2>Co si připravit</h2>
+        <p>Pět věcí, které rozhodnou o&nbsp;tom, jestli si z&nbsp;večera odneseš práci, nebo jen puštěné video na&nbsp;pozadí.</p>
+    </div>
+
+    <!-- Pět bodů je doslova Slávův seznam z podkladu KOCH prodejky
+         („prodejka po treninku 3dny/prodejka po treninku 3 dny.md", ř. 951–956).
+         Nadpisy karet jsou zkratky jeho vlastních vět — nevymýšlet sem nic. -->
+    <div class="priprava">
+        <div class="polozka">
+            <b>Přijď včas</b>
+            Připoj se dřív, ať nemusíš dobíhat začátek.
+        </div>
+        <div class="polozka">
+            <b>Měj zapnutou kameru</b>
+            Standard naší místnosti je zapnutá kamera a&nbsp;100%&nbsp;přítomnost.
+        </div>
+        <div class="polozka">
+            <b>Odlož mobil</b>
+            Pokud se z&nbsp;něj nepřipojuješ, dej ho pryč z&nbsp;dosahu.
+        </div>
+        <div class="polozka">
+            <b>Zavři zbytečné karty</b>
+            E-maily a&nbsp;práce počkají hodinu a&nbsp;půl.
+        </div>
+        <div class="polozka">
+            <b>Buď se mnou naplno</b>
+            Devadesát minut, kdy za&nbsp;Tebou nikdo nechodí. Řekni to doma dopředu.
+        </div>
+    </div>
+</div></section>
+
+<!-- ===================== 3 UZAVŘENÁ SKUPINA ===================== -->
+<section class="sek" id="skupina"><div class="wrap">
+    <div class="sek-head">
+        <p class="cap">Mezi večery</p>
+        <h2>Uzavřená online skupina</h2>
+        <p>Skupina běží v&nbsp;komunitě na&nbsp;<strong style="color:var(--fg);font-weight:600">komunita.restartmuze.cz</strong>. V&nbsp;telefonu se do&nbsp;ní dostaneš přes&nbsp;aplikaci GoKollab.</p>
+    </div>
+
+    <div class="skupina">
+        <div>
+            <h3>
+                <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="3.5"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                Jak se do&nbsp;ní dostaneš
+            </h3>
+            <ol class="kroky">
+                <li><b>Nejdřív přes&nbsp;prohlížeč — tenhle krok nepřeskakuj</b>Otevři si uvítací e-mail z&nbsp;komunity a&nbsp;klikni v&nbsp;něm na&nbsp;odkaz. Dostaneš se do&nbsp;komunity v&nbsp;běžném prohlížeči a&nbsp;teprve tímhle proklikem se Tvůj přístup plně aktivuje.</li>
+                <li><b>Až potom aplikace v&nbsp;telefonu</b>Když máš první krok hotový, stáhni si aplikaci <em>GoKollab</em> a&nbsp;přihlas se do&nbsp;ní stejným e-mailem, kterým ses hlásil do&nbsp;tréninku.</li>
+                <li><b>Nastav si upozornění</b>Vpravo nahoře si vyber, co Ti má chodit na&nbsp;e-mail a&nbsp;co jen do&nbsp;aplikace. Ať se Ti neplní schránka.</li>
+            </ol>
+
+            <div class="stahnout">
+                <a href="https://play.google.com/store/apps/details?id=net.clientclub.app.kollab" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3v18l14-9L5 3z"/></svg>
+                    Stáhnout pro&nbsp;Android
+                </a>
+                <a href="https://apps.apple.com/cz/app/gokollab/id6484272411?l=cs" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 14.25 3.51 5.88 9.05 5.6c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.51 4.79zM12.03 5.55C11.88 3.32 13.69 1.48 15.77 1.3c.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+                    Stáhnout pro&nbsp;iPhone
+                </a>
+            </div>
+        </div>
+
+        <div>
+            <h3>
+                <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                K&nbsp;čemu je
+            </h3>
+            <ul class="seznam">
+                <li>Není povinná. Trénink zvládneš i&nbsp;bez ní.</li>
+                <li>Je to místo, kam po&nbsp;každém večeru napíšeš, jak Ti šla mise — a&nbsp;přečteš si, jak šla ostatním.</li>
+                <li>Co se ve&nbsp;skupině napíše, ve&nbsp;skupině zůstane.</li>
+            </ul>
+
+            <div class="pozn">
+                <b>Přístup Ti nedorazil?</b>
+                Napiš na&nbsp;<a href="mailto:podpora@restartmuze.cz">podpora@restartmuze.cz</a> a&nbsp;pošleme pozvánku znovu. Zkontroluj i&nbsp;spam a&nbsp;záložku Hromadné.
+            </div>
+        </div>
+    </div>
+
+    <!-- Průvodce komunitou — záznam obrazovky komunita.restartmuze.cz.
+         Na KOCHu je tohle první video na stránce návodů; Helena dodala
+         31. 8. novou verzi (f80f155b…). Na šířku, proto bez .video--telefon. -->
+    <div style="margin-top:2.6rem">
+        <h3>
+            <svg viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="13" rx="1.5"/><line x1="8" y1="20.5" x2="16" y2="20.5"/><line x1="12" y1="17" x2="12" y2="20.5"/></svg>
+            Video: průvodce komunitou
+        </h3>
+        <button class="video" type="button"
+            data-video="https://iframe.mediadelivery.net/embed/371834/f80f155b-2b15-401f-8282-ba22f42ec38e?autoplay=true&amp;responsive=true"
+            data-popis="Průvodce komunitou na komunita.restartmuze.cz"
+            aria-label="Pustit video: průvodce komunitou na komunita.restartmuze.cz">
+            <!-- Bez loading="lazy" schválně: náhledům ve čtyřech zoomových
+                 kartách vynutí načtení přepnutí záložky (nactiNahledy),
+                 tenhle ale žádnou takovou pojistku nemá a na živé stránce
+                 se s lazy nenačetl, ani když byl ve výřezu. Jeden obrázek
+                 navíc při načtení je menší zlo než prázdná karta. -->
+            <img src="https://vz-0c3a91ec-d57.b-cdn.net/f80f155b-2b15-401f-8282-ba22f42ec38e/thumbnail.jpg" alt="">
+            <span class="stin"></span>
+            <span class="hrot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+        </button>
+        <p class="pod-videem">Krok za&nbsp;krokem Tě provede komunitou — kde najdeš oznámení, diskuzi, materiály i&nbsp;kalendář vysílání.</p>
+    </div>
+</div></section>
+
+<!-- ===================== 4 POMOC ===================== -->
+<section class="pomoc" id="pomoc"><div class="wrap">
+    <p class="cap">Když to nejde</p>
+    <h2>Ozvi se nám</h2>
+    <p>Když ani návody nepomohly, napiš nám — radši den předem než pět minut před&nbsp;startem. Ozveme se do&nbsp;2&nbsp;pracovních dnů.</p>
+    <a class="mail" href="mailto:podpora@restartmuze.cz">podpora@restartmuze.cz</a>
+</div></section>
+
+<footer class="foot"><div class="wrap">
+    <p class="copy">&copy; 2026 Restart muže s.r.o. &nbsp;&middot;&nbsp; <a href="#" data-cc="c-settings">Nastavení cookies</a></p>
+</div></footer>
+
+<!-- Cookie lišta — sdílený soubor pro celý web (viz deploy/cookie-banner.js) -->
+<script src="../cookie-banner.js?v=4" defer></script>
+
+<script>
+(function () {
+    'use strict';
+
+    /* ---- záložky zařízení ---- */
+    var zalozky = Array.prototype.slice.call(document.querySelectorAll('.zalozka'));
+
+    /* Náhledy jsou lazy, ale prohlížeč je ve skryté záložce nezačne stahovat
+       ani po jejím odkrytí — proto se v otevřené záložce přepnou na eager. */
+    function nactiNahledy(panel) {
+        panel.querySelectorAll('img[loading="lazy"]').forEach(function (obrazek) {
+            obrazek.loading = 'eager';
+        });
+    }
+
+    function prepni(zalozka) {
+        zalozky.forEach(function (z) {
+            var vybrana = z === zalozka;
+            var panel = document.getElementById(z.getAttribute('aria-controls'));
+            z.setAttribute('aria-selected', vybrana ? 'true' : 'false');
+            panel.hidden = !vybrana;
+            if (vybrana) nactiNahledy(panel);
+        });
+    }
+
+    zalozky.forEach(function (z, i) {
+        z.addEventListener('click', function () { prepni(z); });
+        z.addEventListener('keydown', function (e) {
+            var posun = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+            if (!posun) return;
+            e.preventDefault();
+            var dalsi = zalozky[(i + posun + zalozky.length) % zalozky.length];
+            prepni(dalsi);
+            dalsi.focus();
+        });
+    });
+
+    /* Mobil a tablet nemají důvod začínat u počítače. */
+    if (window.matchMedia('(pointer: coarse)').matches) {
+        var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        prepni(document.getElementById(iOS ? 'zal-iphone' : 'zal-android'));
+    }
+
+    /* ---- přehrávač se vkládá až na kliknutí ---- */
+    document.querySelectorAll('.video').forEach(function (nahled) {
+        var obrazek = nahled.querySelector('img');
+        if (obrazek) {
+            obrazek.addEventListener('error', function () {
+                nahled.classList.add('bez-nahledu');
+                obrazek.remove();
+            });
+        }
+
+        nahled.addEventListener('click', function () {
+            var prehravac = document.createElement('iframe');
+            prehravac.src = nahled.dataset.video;
+            prehravac.title = nahled.dataset.popis;
+            prehravac.allow = 'accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;fullscreen;';
+            prehravac.setAttribute('allowfullscreen', 'true');
+            nahled.innerHTML = '';
+            nahled.appendChild(prehravac);
+        }, { once: true });
+    });
+})();
+</script>
+
+</body>
+
+</html>

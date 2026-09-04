@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Zásady zpracování osobních údajů — Chlapská kovárna</title>
+<meta name="description" content="Zásady zpracování osobních údajů společnosti Mentoring SČ s.r.o.">
+
+<style>
+/* Chlapská kovárna — právní dokumenty. Sdílený styl pro /gdpr/ a /obchodni-podminky/. */
+
+@font-face{font-family:'Oswald';src:url('fonts/oswald-500-latin-ext.woff2') format('woff2');font-weight:500;font-display:swap;unicode-range:U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Oswald';src:url('fonts/oswald-500-latin.woff2') format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'Oswald';src:url('fonts/oswald-700-latin-ext.woff2') format('woff2');font-weight:700;font-display:swap;unicode-range:U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Oswald';src:url('fonts/oswald-700-latin.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'Source Serif 4';src:url('fonts/sourceserif-400-latin-ext.woff2') format('woff2');font-weight:400;font-display:swap;unicode-range:U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Source Serif 4';src:url('fonts/sourceserif-400-latin.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Source Serif 4';src:url('fonts/sourceserif-600-latin-ext.woff2') format('woff2');font-weight:600;font-display:swap;unicode-range:U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Source Serif 4';src:url('fonts/sourceserif-600-latin.woff2') format('woff2');font-weight:600;font-display:swap}
+
+:root{
+    --bg:#12151a; --bar:#0b0d11; --band:#0d0f13; --raised:#1b1e24;
+    --line:#242a32; --hair:#1c2128;
+    --ink:#c9cfd6; --head:#fff; --mut:#78818c;
+    --display:'Oswald','Arial Narrow',sans-serif;
+    --text:'Source Serif 4',Georgia,serif;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{font-size:19px;scroll-behavior:auto;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:1rem;line-height:1.78;-webkit-font-smoothing:antialiased}
+
+/* ---------- lišta ---------- */
+.topbar{position:sticky;top:0;z-index:10;background:var(--bar);border-bottom:1px solid var(--line);
+    padding:calc(.8rem + env(safe-area-inset-top)) 1.5rem .8rem;
+    display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.topbar a,.topbar span{font-family:var(--display);font-weight:500;text-transform:uppercase;
+    letter-spacing:.14em;font-size:.62rem;line-height:1}
+.topbar a{color:var(--head);text-decoration:none}
+.topbar span{color:var(--mut)}
+@media (hover:hover){.topbar a:hover{color:var(--mut)}}
+
+/* ---------- sazební plocha ---------- */
+.doc{max-width:60rem;margin:0 auto;padding:4rem 2.2rem 5rem}
+.measure{max-width:46rem}
+
+/* ---------- titul ---------- */
+.eyebrow{font-family:var(--display);font-weight:500;text-transform:uppercase;letter-spacing:.18em;
+    font-size:.62rem;color:var(--mut);margin:0 0 1rem}
+h1{font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:.03em;
+    color:var(--head);font-size:clamp(1.9rem,5.4vw,2.9rem);line-height:1.08;margin:0 0 1.8rem}
+.rule{height:1px;background:var(--line);margin:0 0 2.6rem}
+
+/* ---------- pracovní verze ---------- */
+.draft{background:var(--band);border:1px solid var(--line);border-left:3px solid var(--mut);
+    padding:1.3rem 1.5rem;margin:0 0 3rem;font-size:.82rem;line-height:1.65;color:var(--ink)}
+.draft b{display:block;font-family:var(--display);font-weight:700;text-transform:uppercase;
+    letter-spacing:.13em;color:var(--head);font-size:.66rem;margin-bottom:.55rem}
+
+/* ---------- lead ---------- */
+p.lead{font-size:1.06rem;line-height:1.8;color:var(--head);max-width:46rem;margin:0 0 1.2rem}
+
+/* ---------- kapitola ---------- */
+h2.ch{display:flex;align-items:baseline;gap:1.1rem;margin:4.2rem 0 1.8rem;scroll-margin-top:5rem}
+h2.ch::after{content:"";flex:1;height:1px;background:var(--line)}
+h2.ch .no{font-family:var(--display);font-weight:700;font-size:1.5rem;line-height:1;
+    color:var(--mut);letter-spacing:.02em;flex:none;min-width:2.4rem}
+h2.ch .ttl{font-family:var(--display);font-weight:500;text-transform:uppercase;letter-spacing:.13em;
+    font-size:.84rem;line-height:1.35;color:var(--head);flex:none;max-width:40rem}
+
+/* ---------- obsah ---------- */
+.toc-h{font-family:var(--display);font-weight:500;text-transform:uppercase;letter-spacing:.16em;
+    font-size:.68rem;color:var(--mut);margin:3.4rem 0 1.2rem}
+ol.toc{list-style:none;margin:0 0 1rem;padding:0;border-top:1px solid var(--hair)}
+ol.toc li{border-bottom:1px solid var(--hair)}
+ol.toc a{display:grid;grid-template-columns:2.6rem 1fr;gap:0 1rem;padding:.85rem .4rem;
+    text-decoration:none;color:inherit}
+ol.toc .tn{font-family:var(--display);font-weight:500;font-size:.8rem;color:var(--mut);line-height:1.5}
+ol.toc .tt{font-family:var(--display);font-weight:500;text-transform:uppercase;letter-spacing:.1em;
+    font-size:.72rem;color:var(--head);line-height:1.5}
+ol.toc .td{grid-column:2;font-size:.82rem;color:var(--mut);line-height:1.55;margin-top:.15rem}
+@media (hover:hover){ol.toc a:hover{background:var(--band)}ol.toc a:hover .tt{color:var(--mut)}}
+
+/* ---------- číslované body ---------- */
+p{margin:0 0 1.15rem;max-width:46rem}
+p.cl{position:relative;padding-left:3.4rem;max-width:50rem;margin-bottom:1.35rem}
+p.cl .n{position:absolute;left:0;top:.24rem;width:2.7rem;text-align:right;
+    font-family:var(--display);font-weight:500;font-size:.76rem;color:var(--mut);
+    font-variant-numeric:tabular-nums;letter-spacing:.02em}
+
+/* ---------- definice termínu ---------- */
+b.term{display:block;font-family:var(--display);font-weight:700;text-transform:uppercase;
+    letter-spacing:.11em;font-size:.76rem;color:var(--head);margin-bottom:.3rem}
+
+/* ---------- seznamy ---------- */
+ul.chisel{list-style:none;margin:0 0 1.4rem;padding:0 0 0 3.4rem;max-width:50rem}
+ul.chisel li{position:relative;padding-left:1.2rem;margin-bottom:.5rem}
+ul.chisel li::before{content:"";position:absolute;left:0;top:.82em;width:.55rem;height:1px;background:var(--mut)}
+
+/* ---------- drobnosti ---------- */
+strong{font-weight:600;color:var(--head)}
+a{color:var(--head);text-underline-offset:3px;text-decoration-thickness:1px}
+mark.todo{background:transparent;border:1px dashed var(--mut);border-radius:2px;color:var(--head);
+    font-family:var(--display);font-weight:500;font-size:.64rem;letter-spacing:.1em;
+    padding:.2em .55em;text-transform:uppercase;white-space:nowrap}
+
+/* ---------- nesrovnalosti v podkladu (k ověření právničkou) ---------- */
+mark.err{background:transparent;color:#ff7a6b;border-bottom:1px dashed #ff7a6b;padding:0 .05em}
+.pozn{background:var(--band);border:1px solid #4d2622;border-left:3px solid #ff7a6b;
+    padding:1.1rem 1.3rem;margin:-.5rem 0 1.8rem 3.4rem;max-width:46rem;
+    font-size:.82rem;line-height:1.7;color:var(--ink)}
+.pozn b{display:block;font-family:var(--display);font-weight:700;text-transform:uppercase;
+    letter-spacing:.13em;color:#ff7a6b;font-size:.66rem;margin-bottom:.55rem}
+.pozn ol{margin:.5rem 0 .6rem;padding-left:1.2rem}
+.pozn li{margin-bottom:.35rem}
+
+mark.ok{background:transparent;color:#6ece8a;border-bottom:1px dashed #6ece8a;padding:0 .05em}
+.navrh{background:var(--band);border:1px solid #22452e;border-left:3px solid #6ece8a;
+    padding:1.1rem 1.3rem;margin:-.6rem 0 1.8rem 3.4rem;max-width:46rem;
+    font-size:.86rem;line-height:1.75;color:var(--head)}
+.navrh b{display:block;font-family:var(--display);font-weight:700;text-transform:uppercase;
+    letter-spacing:.13em;color:#6ece8a;font-size:.66rem;margin-bottom:.55rem}
+
+/* ---------- patička ---------- */
+.foot{background:var(--bar);border-top:1px solid var(--line);
+    padding:3rem 1.6rem calc(3rem + env(safe-area-inset-bottom));font-size:.78rem;color:var(--mut);line-height:1.75}
+.foot .wrap{max-width:60rem;margin:0 auto}
+.foot b{display:block;color:var(--head);font-family:var(--display);font-weight:500;
+    letter-spacing:.13em;text-transform:uppercase;font-size:.68rem;margin-bottom:.6rem}
+
+/* ---------- mobil ---------- */
+@media (max-width:768px){
+    html{font-size:16px}
+    .doc{padding:2.6rem 1.2rem 3.5rem}
+    h2.ch{flex-wrap:wrap;gap:.7rem;margin:3.2rem 0 1.4rem}
+    h2.ch .no{min-width:0}
+    h2.ch::after{flex-basis:100%;order:3}
+    p.cl{padding-left:2.5rem}
+    p.cl .n{width:1.8rem}
+    ul.chisel{padding-left:2.4rem}
+    .pozn{margin-left:2.5rem;padding:1rem 1.1rem}
+    .navrh{margin-left:2.5rem;padding:1rem 1.1rem}
+}
+
+/* ---------- tisk (dokument putuje k právníkovi) ---------- */
+@media print{
+    html{font-size:11pt}
+    body{background:#fff;color:#000}
+    .topbar,.foot{display:none}
+    .doc{max-width:none;padding:0}
+    h1,h2.ch .ttl,h2.ch .no,b.term,strong,ol.toc .tt{color:#000}
+    h2.ch{page-break-after:avoid}
+    p.cl{page-break-inside:avoid}
+    .draft{border:1px solid #000;background:#fff;color:#000}
+    .draft b{color:#000}
+    mark.todo{border:1px dashed #000;color:#000}
+    mark.err{color:#b3261e;border-bottom:1px dashed #b3261e}
+    .pozn{background:#fff;border:1px solid #b3261e;border-left:3px solid #b3261e;color:#000;page-break-inside:avoid}
+    .pozn b{color:#b3261e}
+    mark.ok{color:#1e7a3c;border-bottom:1px dashed #1e7a3c}
+    .navrh{background:#fff;border:1px solid #1e7a3c;border-left:3px solid #1e7a3c;color:#000;page-break-inside:avoid}
+    .navrh b{color:#1e7a3c}
+    a{color:#000}
+}
+
+/* ---------- tabulka cookies ---------- */
+.tw{overflow-x:auto;margin:0 0 2rem;-webkit-overflow-scrolling:touch}
+table.ck{border-collapse:collapse;width:100%;min-width:34rem;font-size:.8rem;line-height:1.55}
+table.ck th{font-family:var(--display);font-weight:500;text-transform:uppercase;letter-spacing:.11em;
+    font-size:.62rem;color:var(--mut);text-align:left;padding:0 1rem .55rem 0;
+    border-bottom:1px solid var(--line);white-space:nowrap}
+table.ck td{padding:.7rem 1rem .7rem 0;border-bottom:1px solid var(--hair);vertical-align:top;color:var(--ink)}
+table.ck td:first-child{font-family:var(--display);font-weight:500;color:var(--head);white-space:nowrap}
+table.ck td:last-child{font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--mut)}
+table.ck tr:last-child td{border-bottom:none}
+.cat{font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:.12em;
+    font-size:.72rem;color:var(--head);margin:2.6rem 0 .6rem}
+.cat .tag{font-weight:500;color:var(--mut);letter-spacing:.1em;margin-left:.7rem}
+@media (max-width:768px){table.ck{min-width:30rem}}
+@media print{table.ck th,table.ck td{color:#000}.cat{color:#000}}
+
+</style>
+</head>
+<body>
+<header class="topbar">
+<a href="../">&larr; Chlapská kovárna</a>
+<span>Mentoring SČ s.r.o.</span>
+</header>
+<main class="doc">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p class="eyebrow">Právní dokument</p><h1>Zásady zpracování osobních údajů</h1>
+<div class="rule"></div>
+<div class="draft"><b>Pracovní verze — před zveřejněním musí projít právní kontrolou</b>Dokument vychází ze znění platného pro Restart muže s.r.o. a je upravený pro Mentoring SČ s.r.o. Znění jednotlivých ustanovení zůstalo beze změny; měnila se identita poskytovatele, doména a seznam zpracovatelů. Místa označená rámečkem je nutné doplnit. Červeně je vyznačené znění, kde si podklad od právničky odporuje — zeleně je návrh, jak to bylo zřejmě myšleno — viz čl. VII bod 7.</div>
+
+
+
+
+
+<p class="lead">Níže naleznete zásady zpracování osobních údajů, které nám jako správci poskytnete, pokud navštívíte naše webové stránky dostupné na internetové adrese https://chlapskakovarna.cz, dále pokud jste našimi zákazníky nebo zájemci o naše produkty či služby.</p>
+<p class="lead">Osobní údaje zpracováváme v souladu s platnými a účinnými právními předpisy, zejména v souladu s nařízením Evropského parlamentu a Rady (EU) 2016/679 &#8211; obecné nařízení o ochraně osobních údajů (dále jen „GDPR“) a v souladu se zákonem č. 110/2019 Sb., o zpracování osobních údajů.</p>
+<p class="lead">Účelem tohoto dokumentu je seznámit Vás s tím, jak bude s Vašimi osobními údaji nakládáno a informovat Vás o Vašich právech.</p>
+
+
+
+
+
+<h2 class="toc-h">Obsah</h2>
+<ol class="toc">
+
+
+
+
+
+<li><a href="#cl-I"><span class="tn">I</span><span class="tt">Správce osobních údajů</span><span class="td">naše identifikační a kontaktní údaje</span></a></li>
+<li><a href="#cl-II"><span class="tn">II</span><span class="tt">Zdroj osobních údajů</span><span class="td">odkud získáme k Vašim osobním údajům přístup</span></a></li>
+<li><a href="#cl-III"><span class="tn">III</span><span class="tt">Kategorie osobních údajů a požadavek na jejich poskytnutí</span><span class="td">které osobní údaje o Vás zpracováváme, zda máte povinnost nám je poskytnout a jaký je důsledek jejich neposkytnutí</span></a></li>
+<li><a href="#cl-IV"><span class="tn">IV</span><span class="tt">Účely a doba zpracování</span><span class="td">k jakým účelům a po jakou dobu Vaše osobní údaje zpracováváme a co nás k tomu opravňuje</span></a></li>
+<li><a href="#cl-V"><span class="tn">V</span><span class="tt">Automatizované rozhodování a profilování</span><span class="td">zda z naší strany dochází k automatizovanému individuálnímu rozhodování nebo k profilování</span></a></li>
+<li><a href="#cl-VI"><span class="tn">VI</span><span class="tt">Cookies</span><span class="td">které cookies používáme</span></a></li>
+<li><a href="#cl-VII"><span class="tn">VII</span><span class="tt">Příjemci osobních údajů</span><span class="td">komu Vaše osobní údaje zpřístupňujeme</span></a></li>
+<li><a href="#cl-VIII"><span class="tn">VIII</span><span class="tt">Předávání osobních údajů do třetí země nebo mezinárodní organizaci</span><span class="td">zda Vaše osobní údaje budou předány do země mimo Evropskou unii</span></a></li>
+<li><a href="#cl-IX"><span class="tn">IX</span><span class="tt">Zabezpečení osobních údajů</span><span class="td">která technická a organizační opatření k zabezpečení Vašich osobních údajů jsme přijali</span></a></li>
+<li><a href="#cl-X"><span class="tn">X</span><span class="tt">Vaše práva</span><span class="td">jaká máte práva ve vztahu ke zpracování osobních údajů</span></a></li>
+<li><a href="#cl-XI"><span class="tn">XI</span><span class="tt">Změna správce a předání osobních údajů</span><span class="td">kdy můžeme Vaše osobní údaje předat novému správci</span></a></li>
+<li><a href="#cl-XII"><span class="tn">XII</span><span class="tt">Závěrečná ustanovení</span><span class="td">účinnost tohoto dokumentu a možnost jeho změny</span></a></li></ol>
+
+
+
+
+
+<h2 class="ch" id="cl-I"><span class="no">I</span><span class="ttl">Správce osobních údajů</span></h2>
+
+
+
+
+
+<p style="content-visibility: auto;contain-intrinsic-size: auto 192px;"><strong>Správcem osobních údajů je:</strong><br />Mentoring SČ s.r.o.<br />Společnost zapsaná v obchodním rejstříku vedeném u Krajského soudu v Plzni, oddíl C, vložka 45632 IČO: 21947872<br /><b>Sídlo:</b> Kyjevská 1937/64, Východní Předměstí, 326 00 Plzeň<br /><b>Telefonní číslo:</b> +420 774 883 834<br /><b>E-mail:</b> <mark class="todo">Doplnit kontaktní e-mail</mark></p>
+
+
+
+
+
+<h2 class="ch" id="cl-II"><span class="no">II</span><span class="ttl">Zdroj osobních údajů</span></h2>
+
+
+
+
+
+<p class="p1">Zpracováváme osobní údaje, které získáme přímo od Vás. Vaše osobní údaje získáváme tím, že navštívíte naše webové stránky, že na našich webových stránkách vyplníte a odešlete některý z formulářů nebo jiným způsobem (např. tím, že nám je poskytnete e-mailem, telefonicky, v průběhu videohovoru či prostřednictvím sociálních sítí).</p>
+
+
+
+
+
+<h2 class="ch" id="cl-III"><span class="no">III</span><span class="ttl">Kategorie osobních údajů a požadavek na jejich poskytnutí</span></h2>
+
+
+
+
+
+<p class="cl"><span class="n">1.</span>V nezbytném rozsahu o Vás zpracováváme zejména následující běžné osobní údaje, pokud nám je zpřístupníte: jméno a příjmení, adresa bydliště, platební údaje, telefonní číslo, e-mailová adresa, identifikátor jiné formy komunikace na dálku, IP adresa, informace o Vámi objednaných produktech či službách a další informace, které nám v průběhu naší komunikace či spolupráce poskytnete (údaje týkající se Vašeho rodinného stavu, osobních a majetkových poměrů apod.).</p>
+<p class="cl"><span class="n">2.</span>Pokud nám umožníte zveřejnit Vaši referenci, a případně nám také poskytnete svou fotografii či videozáznam, zpracováváme o Vás rovněž osobní údaje uvedené v referenci a příslušnou fotografii či videozáznam. Pokud využijete možnosti přihlášení, diskuze, hodnocení nebo sdílení prostřednictvím sociálních sítí (Facebook, Instagram, LinkedIn, YouTube, TikTok, příp. další), zpracováváme o Vás také informace uvedené ve Vašem příspěvku či komentáři a veřejné informace na Vašem profilu v příslušné sociální síti (zejm. jméno a příjmení, fotografie, věková kategorie a další veřejné informace podle Vašeho nastavení). S Vaším souhlasem pak zpracováváme rovněž Vaše osobní údaje spočívající v marketingových a analytických cookies a informace o Vašich zájmech a preferencích. A pokud se zúčastníte některé z námi pořádaných akcí naživo, můžeme o Vás zpracovávat také osobní údaje zachycené na fotografiích či videozáznamech z této akce.</p>
+<p class="cl"><span class="n">3.</span>Poskytnutí kategorie běžných osobních údajů uvedených v odstavci 1 tohoto článku je nezbytné pro vzájemnou komunikaci nebo pro uzavření a splnění smlouvy; v případě jejich neposkytnutí tedy nebude možné vzájemně komunikovat nebo uzavřít a splnit smlouvu. V případech, kdy zpracování osobních údajů je založeno na Vašem souhlasu, závisí pouze na Vašem rozhodnutí, zda nám své osobní údaje poskytnete či nikoli.</p>
+<p class="cl"><span class="n">4.</span>Zvláštní kategorie osobních údajů (citlivé údaje) o Vás zpracováváme jen tehdy, pokud nám tyto údaje v průběhu naší spolupráce dobrovolně sdělíte a jen s Vaším výslovným souhlasem. Jedná se o osobní údaje, které vypovídají o rasovém či etnickém původu, politických názorech, náboženském vyznání či filozofickém přesvědčení, členství v odborech, zdravotním stavu, sexuálním životě nebo sexuální orientaci.</p>
+
+
+
+
+
+<h2 class="ch" id="cl-IV"><span class="no">IV</span><span class="ttl">Účely a doba zpracování</span></h2>
+
+
+
+
+
+<p class="p1"><b>A. ZPRACOVÁNÍ OSOBNÍCH ÚDAJŮ PRO ÚČELY UZAVŘENÍ A SPLNĚNÍ SMLOUVY</b><b></b></p>
+<p class="cl"><span class="n">1.</span>Vaše osobní údaje zpracováváme pro účely uzavření smlouvy a splnění mezi námi uzavřené smlouvy (vzájemná komunikace před i po uzavření smlouvy, dodání objednaného produktu nebo služby, uskutečnění platby). K tomuto účelu zpracováváme Vaše běžné osobní údaje uvedené v čl. III odst. 1 výše a s Vaším výslovným souhlasem i zvláštní kategorie osobních údajů (citlivé údaje) uvedené v čl. III odst. 4 výše.</p>
+<p class="cl"><span class="n">2.</span>Právním titulem (oprávněním) pro zpracování osobních údajů je splnění smlouvy uzavřené mezi námi a provedení opatření přijatých před uzavřením smlouvy na Vaši žádost.</p>
+<p class="cl"><span class="n">3.</span>K tomuto účelu Vaše osobní údaje zpracováváme po dobu trvání smluvního vztahu mezi námi a po jeho skončení pak některé Vaše osobní údaje dále zpracováváme za jinými účely (viz písmena B až F níže).</p>
+<p class="p1"><b>B. ZPRACOVÁNÍ OSOBNÍCH ÚDAJŮ PRO ÚČELY SPLNĚNÍ PRÁVNÍCH POVINNOSTÍ</b><b></b></p>
+<p class="cl"><span class="n">1.</span>Osobní údaje zpracováváme dále pro účely splnění právních povinností, které se na nás vztahují (např. zákonné povinnosti v oblasti daní). K tomuto účelu zpracováváme tyto Vaše osobní údaje: jméno a příjmení, adresa bydliště, platební údaje a informace o Vámi objednaných produktech či službách.</p>
+<p class="cl"><span class="n">2.</span>Právním titulem (oprávněním) pro zpracování osobních údajů je tedy splnění právní povinnosti, která se na nás vztahuje.</p>
+<p class="cl"><span class="n">3.</span>K tomuto účelu Vaše osobní údaje zpracováváme po dobu stanovenou obecně závaznými právními předpisy.</p>
+<p class="p1"><b>C. ZPRACOVÁNÍ OSOBNÍCH ÚDAJŮ PRO ÚČELY PŘÍMÉHO MARKETINGU </b><b></b></p>
+<p class="cl"><span class="n">1.</span>Vaše osobní údaje zpracováváme také pro účely přímého marketingu (zasílání obchodních sdělení, newsletterů apod.). K tomuto účelu zpracováváme tyto Vaše osobní údaje: jméno a příjmení, adresa bydliště, telefonní číslo, e-mailová adresa a informace o Vámi objednaných produktech či službách.</p>
+<p class="cl"><span class="n">2.</span>Jste-li naším zákazníkem, je právním titulem (oprávněním) pro takové zpracování osobních údajů náš oprávněný zájem. Vzhledem k Vašemu předchozímu nákupu našeho produktu či služby totiž předpokládáme, že Vás naše novinky a informace o našich obdobných produktech či službách zajímají.</p>
+<p class="cl"><span class="n">3.</span>Zasílání obchodních sdělení můžete kdykoli jednoduše ukončit kliknutím na příslušný odkaz, který najdete v každém zaslaném e-mailu, nebo oznámením této skutečnosti na naši e-mailovou adresu uvedenou výše. Jinak k tomuto účelu budeme Vaše osobní údaje zpracovávat nejdéle po dobu 2 let od zaslání posledního obchodních sdělení.</p>
+<p class="p1"><b>D. ZPRACOVÁNÍ OSOBNÍCH ÚDAJŮ PRO ÚČELY VEŘEJNÉ PREZENTACE</b><b></b></p>
+<p class="cl"><span class="n">1.</span>Z hromadných akcí naživo, které pořádáme, bývají pořizovány fotografie a videozáznamy za účelem naší propagace a prezentace našich produktů a služeb na webových stránkách a sociálních sítích, případně v jiných propagačních materiálech. K tomuto účelu tedy zpracováváme Vaše osobní údaje zachycené na fotografiích a videozáznamech z dané akce.</p>
+<p class="cl"><span class="n">2.</span>V případě, že fotografie či videozáznam zachycují celkovou atmosféru dané akce (tedy nikoli Vaši osobu v detailu), je právním titulem (oprávněním) pro takové zpracování osobních údajů náš oprávněný zájem. Pokud se však na fotografiích a ve videích objevit nechcete, můžete nám tuto skutečnost před zahájením či v průběhu dané akce sdělit a v takovém případě Vás fotografovat a natáčet nebudeme.</p>
+<p class="cl"><span class="n">3.</span>K tomuto účelu Vaše osobní údaje zpracováváme po dobu zveřejnění fotografií a videozáznamů z dané akce na webových stránkách, sociálních sítích nebo v jiných propagačních materiálech.</p>
+<p class="p1"><b>E. ZPRACOVÁNÍ OSOBNÍCH ÚDAJŮ PRO ÚČELY OCHRANY PRÁV A VYMÁHÁNÍ NÁROKŮ</b><b></b></p>
+<p class="cl"><span class="n">1.</span>Osobní údaje zpracováváme i pro účely ochrany našich práv a vymáhání právních nároků (zejm. z uzavřených smluv nebo způsobené újmy). K tomuto účelu zpracováváme Vaše osobní údaje z uzavřených smluv a naší vzájemné komunikace.</p>
+<p class="cl"><span class="n">2.</span>Právním titulem (oprávněním) pro zpracování osobních údajů je náš oprávněný zájem.</p>
+<p class="cl"><span class="n">3.</span>K tomuto účelu Vaše osobní údaje zpracováváme po dobu trvání smluvního vztahu a následující 4 roky po jeho ukončení, nebo po dobu 4 let od našeho posledního kontaktu, pokud k uzavření smlouvy nedošlo, a v případě vzniku sporu rovněž po celou dobu trvání sporu až do jeho pravomocného skončení a uspokojení všech nároků.</p>
+<p class="p1"><b>F. ZPRACOVÁNÍ OSOBNÍCH ÚDAJŮ NA ZÁKLADĚ VAŠEHO SOUHLASU</b><b></b></p>
+<p class="cl"><span class="n">1.</span>Na základě Vašeho souhlasu budeme Vaše osobní údaje zpracovávat k následujícím účelům:<br />a) zasílání newsletterů, informací o novinkách, našich produktech a službách a jiných obchodní sdělení, pokud nejste naším zákazníkem;<br />b) zasílání obchodních sdělení týkajících se třetích osob;<br />c) analýza Vašich preferencí a zájmů, zlepšování našich webových stránek a cílení reklamy;<br />d) zveřejnění Vaší reference na našich webových stránkách, sociálních sítích či v jiných propagačních materiálech;<br />e) zveřejnění detailního zachycení Vaší osoby na fotografii či videozáznamu z akce naživo na našich webových stránkách, sociálních sítích či v jiných propagačních materiálech;<br />f) diskuze, hodnocení nebo sdílení informací prostřednictvím sociálních sítí.</p>
+<p class="cl"><span class="n">2.</span>Souhlas nám můžete udělit např. prostřednictvím vyplnění a odeslání některého formuláře na našich webových stránkách, prostřednictvím vyskakovací lišty na našich webových stránkách, v průběhu individuální komunikace (např. e-mailem), v listinné podobě, vložením příspěvku, komentáře nebo reakce na příspěvek či komentář v sociální síti, případně jiným způsobem. Před udělením souhlasu Vás budeme informovat, které osobní údaje budeme na základě Vašeho souhlasu zpracovávat a k jakému konkrétnímu účelu zpracování se bude Váš souhlas vztahovat.</p>
+<p class="cl"><span class="n">3.</span>Svůj souhlas můžete kdykoli odvolat kliknutím na příslušný odkaz, který najdete v každém zaslaném e-mailu, nebo tím, že nám odvolání souhlasu oznámíte na naši shora uvedenou e-mailovou adresu, a v případě cookies tím, že ve svém prohlížeči nebo prostřednictvím cookie lišty umístěné na našich webových stránkách ukládání těchto cookies zakážete. Pokud ovšem Vaše osobní údaje zpracováváme i na základě jiných právních titulů uvedených pod písmeny A až E výše, budeme je na základě tohoto příslušného titulu zpracovávat i po odvolání Vašeho souhlasu.</p>
+
+
+
+
+
+<h2 class="ch" id="cl-V"><span class="no">V</span><span class="ttl">Automatizované rozhodování a profilování</span></h2>
+
+
+
+
+
+<p class="cl"><span class="n">1.</span>Z naší strany nedochází k automatizovanému individuálnímu rozhodování ve smyslu čl. 22 GDPR.</p>
+<p class="cl"><span class="n">2.</span>Osobní údaje, které nám poskytnete (zejm. e-mailová adresa a telefonní číslo), můžeme na základě Vašeho souhlasu profilovat za účelem analýzy Vašich preferencí a zájmů a cílení reklamy.</p>
+
+
+
+
+
+<h2 class="ch" id="cl-VI"><span class="no">VI</span><span class="ttl">Cookies</span></h2>
+
+
+
+
+
+<p class="cl"><span class="n">1.</span>Při užívání webových stránek používáme cookies a další související technologie. Cookies jsou obsahově malé soubory, které slouží k ukládání a přijímání identifikátorů a dalších informací o zařízeních, z nichž přistupujete na naše webové stránky.</p>
+<p class="cl"><span class="n">2.</span>Používáme technické a funkční soubory cookies, analytické cookies a marketingové cookies. Technické a funkční soubory cookies zajišťují správnou funkci našich webových stránek a usnadňují jejich návštěvu. Tyto cookies můžou být umístěny bez Vašeho souhlasu. Analytické cookies používáme k analýze dat za účelem zlepšení našich produktů a služeb. Marketingové cookies jsou používány ke sledování preferencí uživatelů webových stránek za účelem cílení reklamy. Analytické a marketingové cookies využíváme ve spolupráci s nástroji třetích osob jen na základě Vašeho předchozího souhlasu.</p>
+<p class="cl"><span class="n">3.</span>Využití cookies můžete v nastavení svého internetového prohlížeče odmítnout, nebo si můžete nastavit užívání jen některých cookies.</p>
+<p class="cl"><span class="n">4.</span>Více informací o jednotlivých cookies, které používáme, najdete na našich webových stránkách.</p>
+
+
+
+
+
+<h2 class="ch" id="cl-VII"><span class="no">VII</span><span class="ttl">Příjemci osobních údajů</span></h2>
+
+
+
+
+
+<p class="cl"><span class="n">1.</span>Pokud Vaše osobní údaje sdílíme s jinou osobou, dbáme na to, aby byla zajištěna jejich ochrana.</p>
+<p class="cl"><span class="n">2.</span>Vzhledem k tomu, že veškeré činnosti v rámci svého podnikání nedokážeme zajistit vlastními silami, využíváme služeb a aplikací třetích osob, které tak získají k Vašim osobním údajům přístup. S těmito osobami máme uzavřeny příslušné smlouvy podle GDPR.</p>
+<p class="cl"><span class="n">3.</span>Konkrétně se jedná o poskytovatele následujících platforem a služeb:</p>
+<p>Poskytovatelé hostingu a serverových služeb:<br />Cloudflare: Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, USA<br />Webkitty: Webkitty hosting s.r.o., Budilova 161/15, Jižní Předměstí, 301 00 Plzeň, IČO: 19863209, zapsaná v obchodním rejstříku vedeném u Krajského soudu v Plzni, sp. zn. C 44406</p>
+<p>Analytické nástroje:<br />Google Analytics a Google Tag Manager: Google Inc., 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA</p>
+<p>Rezervace termínů:<br />Calendly: Calendly, LLC, 271 17th St NW, Ste 1000, Atlanta, Georgia 30363, USA</p>
+<p>E-mailing a marketingová automatizace:<br />Cliqsales: Cliqsales International Limited, Office 2, 12a Lower Main Street, Lucan, Dublin, K78 X5P8, Irsko, registrační číslo (CRO): 793862</p>
+<p>Marketing a sociální sítě:<br />Facebook a Instagram: Meta Platforms, Inc., Menlo Park, 1 Hacker Way, 940 25 USA<br />YouTube: Google Inc., 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA<br />LinkedIn: LinkedIn Ireland Unlimited Company, Wilton Plaza, Wilton Place, Dublin 2, Irsko</p>
+<p>Fakturace:<br />FAPI: SmartSelling a.s., Netroufalky 797/5, 625 00 Brno, IČ: 29210372</p>
+<p>Platební brána:<br />Stripe: Stripe, Inc., 354 Oyster Point Blvd. South San Francisco, CA 94080, USA</p>
+<p>Spolupracovníci: projektový manažer, účetní, daňový poradce, IT konzultanti, webový specialista, příp. další</p>
+
+<p class="cl"><span class="n">4.</span>S Vaším souhlasem mohou být Vaše osobní údaje, které nám poskytnete (zejm. e-mailová adresa, telefonní číslo, cookies), sdíleny s třetími osobami (Google a další) za účelem analýzy Vašich preferencí a zájmů a cílení reklamy.</p>
+<p class="cl"><span class="n">5.</span>K Vašim osobním údajům mají přístup také další uživatelé sociálních sítí, kam vkládáte příspěvky, komentáře či reakce, a dále ostatní klienti, kteří si zakoupili tentýž produkt či službu jako Vy (např. v případě skupinového volání v rámci online kurzu je Vaše jméno, příp. přezdívka, a při zapnuté kameře i Váš obraz viditelný pro všechny účastníky tohoto volání). Využitím těchto možností vyslovujete s tímto sdílením svých osobních údajů souhlas.</p>
+<p class="cl"><span class="n">6.</span>Vaše osobní údaje budou zpřístupněny i příslušným správním orgánům nebo soudům, případně právním zástupcům, abychom splnili svou zákonnou povinnost nebo ochránili svá práva a oprávněné zájmy.</p>
+<p class="cl"><span class="n">7.</span>Mezi příjemce osobních údajů může patřit také subjekt, na který bude převedeno naše podnikání nebo jeho část jako nový správce, jak je podrobněji popsáno v článku <mark class="err">„Předání osobních údajů v případě změny správce“</mark> <mark class="err">v novém bodě 9 tohoto článku</mark>.</p>
+<div class="pozn"><b>K ověření právničkou — podklad si tady odporuje</b>Odkaz v tomto bodě nesedí se zbytkem toho, co právnička poslala:<ol><li>„Tohoto článku“ je čl. VII, ale text, na který se odkazuje, je podle stejného podkladu <strong>samostatný čl. XI</strong>, ne bod uvnitř čl. VII.</li><li>Čl. VII má po vložení tohoto bodu <strong>osm bodů</strong> — bod 9 v něm nevznikne.</li><li>Nový článek se podle podkladu jmenuje <strong>„Změna správce a předání osobních údajů“</strong>, ne „Předání osobních údajů v případě změny správce“.</li></ol>Závorku právnička jinde používá jako ukazatel na <strong>již existující</strong> článek — u čl. VII (Příjemci osobních údajů), čl. X (Vaše práva) i čl. XI (Závěrečná ustanovení) sedí přesně. U nového článku ale žádný existující není a v závorce je znovu „Příjemci osobních údajů“ — tedy název čl. VII. Spolu s odkazem na „bod 9“ to vypadá, že text byl původně psaný jako body uvnitř čl. VII a při přesunu do samostatného článku obojí zůstalo nezměněné. Název nového článku je tedy to, co následuje za dvojtečkou: <strong>„Změna správce a předání osobních údajů“</strong>. Zbytek podkladu je se samostatným čl. XI konzistentní — čl. X písm. f) odkazuje „dle čl. XI těchto zásad“ a bod 5 čl. XI zpět na „čl. X písm. f)“.</div>
+<div class="navrh"><b>Návrh znění bodu 7 — jak to právnička zřejmě myslela</b>7. Mezi příjemce osobních údajů může patřit také subjekt, na který bude převedeno naše podnikání nebo jeho část jako nový správce, jak je podrobněji popsáno <mark class="ok">v čl. XI „Změna správce a předání osobních údajů“ těchto zásad</mark>.</div>
+<p class="cl"><span class="n">8.</span>Pokud by v budoucnu došlo k využívání dalších aplikací nebo služeb jiných osob, budeme při jejich výběru dbát na to, aby byl zachován náš standard zabezpečení a zpracování osobních údajů.</p>
+
+
+
+
+
+<h2 class="ch" id="cl-VIII"><span class="no">VIII</span><span class="ttl">Předávání osobních údajů do třetí země nebo mezinárodní organizaci</span></h2>
+
+
+
+
+
+<p class="cl"><span class="n">1.</span>Jelikož využíváme některé zahraniční zpracovatele, mohou být Vaše osobní údaje předávány do třetích zemí, a to do Spojených států amerických a dalších států, v nichž mají tito zahraniční zpracovatelé své zastoupení.</p>
+<p class="cl"><span class="n">2.</span>Pokud jde o předávání osobních údajů do Spojených států amerických, dne 10. 7. 2023 přijala Evropská komise rozhodnutí o odpovídající úrovni ochrany osobních údajů ve smyslu čl. 45 odst. 3 GDPR. Podle něj Spojené státy americké zajišťují odpovídající úroveň ochrany osobním údajům předávaným z Evropské unie organizacím ve Spojených státech amerických, které jsou zapsány na příslušném seznamu, tzv. Data Privacy Famework List. Naši zpracovatelé, společnosti Stripe, Inc., Cloudflare, Inc., Meta Platforms, Inc., a Google Inc., jsou na tomto seznamu zapsáni, čímž je zajištěna odpovídající úroveň ochrany Vašich osobních údajů.</p>
+<p class="cl"><span class="n">3.</span>Pokud jde o předávání osobních údajů do jiných třetích zemí, je ochrana Vašich osobních údajů garantována vydáním rozhodnutí Evropské komise o zajištění odpovídající úrovně ochrany osobních údajů ve smyslu čl. 45 GDPR, případně uzavřením smluv obsahujících standardní smluvní doložky ve smyslu čl. 46 GDPR. V případě některých třetích zemí, kde není ochrana osobních údajů garantována některým ze způsobů uvedených v předchozí větě, dochází k předávání osobních údajů na základě čl. 49 odst. 1 písm. b) a c) GDPR.</p>
+
+
+
+
+
+<h2 class="ch" id="cl-IX"><span class="no">IX</span><span class="ttl">Zabezpečení osobních údajů</span></h2>
+
+
+
+
+
+<p class="cl"><span class="n">1.</span>Jako správce jsme přijali veškerá technická a organizační opatření k zabezpečení Vašich osobních údajů, aby nemohlo dojít k náhodnému nebo protiprávnímu přístupu k Vašim osobním údajům, k jejich změně, zničení či ztrátě, k jejich neoprávněnému zpracování či k jejich jinému zneužití. Přijatá technická a organizační opatření odpovídají míře rizika pro práva a svobody fyzických osob, povaze, rozsahu a účelům zpracování osobních údajů.</p>
+<p class="cl"><span class="n">2.</span>K zabezpečení Vašich osobních údajů jsme přijali zejména následující technická a organizační opatření:</p>
+<p>a) ochrana přístupu k výpočetní technice, jíž jsou zpracovávány osobní údaje, individuálními silnými hesly a ochrana těchto hesel před vyzrazením;</p>
+<p>b) ochrana této výpočetní techniky antivirovými programy;</p>
+<p>c) ochrana přenosné výpočetní techniky nebo přenosných úložišť dat (dohled, zaheslování dat atd.);</p>
+<p>d) uzamykání prostor, v nichž jsou uloženy dokumenty s osobními údaji;</p>
+<p>e) svěření přístupu k osobním údajům pouze pověřeným osobám, které jsou vázány povinností zachovávat mlčenlivost o Vašich osobních údajích i přijatých bezpečnostních opatřeních.</p>
+<p class="cl"><span class="n">3.</span>Zavedená technická a organizační opatření jsou pravidelně testována a je posuzována a hodnocena jejich účinnost pro zajištění bezpečnosti zpracování osobních údajů.</p>
+
+
+
+
+
+<h2 class="ch" id="cl-X"><span class="no">X</span><span class="ttl">Vaše práva</span></h2>
+
+
+
+
+
+<p class="cl"><span class="n">1.</span>Ve vztahu ke zpracování osobních údajů máte následující práva:</p>
+<p>a) Právo na přístup k osobním údajům (čl. 15 GDPR)<br />Máte právo získat informaci, zda Vaše osobní údaje jsou či nejsou zpracovávány, a pokud zpracovávány jsou, máte právo na přístup k osobním údajům a na podrobnosti týkající se zpracování Vašich osobních údajů.</p>
+<p>b) Právo na opravu, resp. doplnění osobních údajů (čl. 16 GDPR)<br />Máte právo požadovat, abychom opravili nepřesné osobní údaje, které se Vás týkají, a s přihlédnutím k účelům zpracování máte rovněž právo na doplnění neúplných osobních údajů.</p>
+<p>c) Právo na výmaz osobních údajů (čl. 17 GDPR)<br />Máte právo požadovat, abychom vymazali osobní údaje, které se Vás týkají, a pokud je dán některý z důvodů uvedených v čl. 17 GDPR, máme povinnost Vaše osobní údaje na základě Vaší žádosti vymazat.</p>
+<p>d) Právo na omezení zpracování osobních údajů (čl. 18 GDPR)<br />Jsou-li splněny podmínky stanovené v čl. 18 GDPR, máte právo na to, abychom omezili zpracování Vašich osobních údajů.</p>
+<p>e) Právo na přenositelnost osobních údajů (čl. 20 GDPR)<br />Pokud je zpracování Vašich osobních údajů prováděno automatizovaně, a zároveň je založeno na souhlasu nebo na smlouvě, máte právo získat osobní údaje, které se Vás týkají, ve strukturovaném, běžně používaném a strojově čitelném formátu, a předat je jinému správci. Je-li to technicky proveditelné, máte rovněž právo požadovat, abychom Vaše osobní údaje sami předali jinému správci.</p>
+<p>f) Právo vznést námitku proti zpracování osobních údajů (čl. 21 GDPR)<br />Za podmínek uvedených v čl. 21 GDPR máte právo kdykoli vznést námitku proti zpracování osobních údajů. Pokud vznesete námitku proti zpracování osobních údajů pro účely přímého marketingu, vč. profilování, nebudeme už Vaše osobní údaje pro tyto účely zpracovávat. Stejně tak můžete vznést námitku proti zpracování osobních údajů založenému na našem oprávněném zájmu, např. v souvislosti s předáním osobních údajů novému správci dle čl. XI těchto zásad.</p>
+<p>g) Právo odvolat souhlas se zpracováním osobních údajů<br />Pokud jsou osobní údaje zpracovávány na základě Vašeho souhlasu, máte právo kdykoli svůj souhlas se zpracováním osobních údajů odvolat. Odvoláním souhlasu není dotčena zákonnost zpracování založená na dříve uděleném souhlasu.</p>
+<p>h) Právo podat stížnost k Úřadu pro ochranu osobních údajů<br />V případě, že se domníváte, že bylo porušeno Vaše právo na ochranu osobních údajů, máte právo podat stížnost k Úřadu pro ochranu osobních údajů (https://uoou.gov.cz/).</p>
+<p class="cl"><span class="n">2.</span>Svá práva můžete u nás uplatnit s využitím kontaktů uvedených výše (poštovní či e-mailová adresa). Před vyřízením Vaší žádosti Vás můžeme ještě kontaktovat, a to za tím účelem, abychom si přiměřeným způsobem ověřili Vaši totožnost.</p>
+
+
+
+
+
+<h2 class="ch" id="cl-XI"><span class="no">XI</span><span class="ttl">Změna správce a předání osobních údajů</span></h2>
+
+
+
+
+
+<p class="cl"><span class="n">1.</span>V případě, že dojde k převodu našeho podnikání, jeho části, nebo jiného obdobného obchodního převodu (např. prodej podniku, fúze, rozdělení společnosti, převod činnosti), mohou být osobní údaje předány novému správci, který bude pokračovat v obdobné činnosti jako současný správce.</p>
+<p class="cl"><span class="n">2.</span>Takové předání je prováděno na základě oprávněného zájmu správce (čl. 6 odst. 1 písm. f) GDPR) spočívajícího v zajištění kontinuity podnikání a poskytovaných služeb, případně na základě plnění smlouvy (čl. 6 odst. 1 písm. b) GDPR), pokud je předání nezbytné pro další poskytování služeb nebo plnění smluvních závazků vůči Vám.</p>
+<p class="cl"><span class="n">3.</span>Nový správce je povinen Vám poskytnout informace podle čl. 13 a 14 GDPR a zaručit dodržení všech práv, která Vám jako subjektu údajů náleží (zejména právo na přístup, opravu, výmaz, omezení zpracování a právo vznést námitku proti zpracování).</p>
+<p class="cl"><span class="n">4.</span>V případě realizace takového převodu Vám, pokud to bude přiměřené a možné, poskytneme informace o změně správce vhodným způsobem (např. e-mailem, prostřednictvím našeho webu nebo v rámci komunikace týkající se poskytovaných služeb).</p>
+<p class="cl"><span class="n">5.</span>Máte právo kdykoli vznést námitku proti zpracování osobních údajů, které je založeno na našem oprávněném zájmu (zejména v souvislosti s předáním osobních údajů novému správci), jak je uvedeno v čl. X písm. f) těchto zásad. V takovém případě zpracování ukončíme, pokud neprokážeme závažné oprávněné důvody pro zpracování, které převažují nad Vašimi zájmy, právy a svobodami, nebo pokud není zpracování nezbytné pro určení, výkon nebo obhajobu právních nároků.</p>
+
+
+
+
+
+<h2 class="ch" id="cl-XII"><span class="no">XII</span><span class="ttl">Závěrečná ustanovení</span></h2>
+
+
+
+
+
+<p class="cl"><span class="n">1.</span>Tyto zásady zpracování osobních údajů jsme oprávněni v přiměřeném rozsahu změnit. Jejich aktuální znění naleznete na našich shora uvedených webových stránkách.</p>
+<p class="cl"><span class="n">2.</span>Tyto zásady zpracování osobních údajů nabývají účinnosti dnem 1. 9. 2026.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</main>
+<footer class="foot"><div class="wrap">
+<b>Mentoring SČ s.r.o.</b>
+IČO: 21947872 &middot; DIČ: CZ21947872<br>
+Kyjevská 1937/64, Východní Předměstí, 326 00 Plzeň<br>
+Zapsaná v obchodním rejstříku vedeném u Krajského soudu v Plzni, sp. zn. C 45632
+</div></footer>
+</body>
+</html>

@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#12151a">
+
+    <!-- ============================================================
+         WEBINÁŘ ZDARMA PRO PODNIKATELE — leadovka v barvách Kovárny
+         Zadání Heleny 3. 9. 2026: podobná leadovka jako
+         „Webinář pro podnikatele Leadovka/index-cerna.html"
+         (živě restartmuze.cz/byznys-rodina/), ale v identitě Kovárny,
+         s registračním formulářem z Cliqsales (webinář jede přes Zoom,
+         ne přes WebinarJam). Podpora prodeje 3denního tréninku 21.–23. 9.
+         Tři termíny: ne 6. 9., ne 13. 9., čt 17. 9. 2026.
+
+         Základ vzhledu = trenink-3-dny-v7.html (paleta, písma, hlavička,
+         hero, pásy, patička, cookie lišta). Texty Slávy z původní
+         leadovky beze změny — jen čísla podle aktuálního standardu
+         (7 let / 60 000+).
+
+         OTEVŘENÉ BODY (hledej TODO v souboru):
+         · TODO FORMULÁŘ — ID formuláře z Cliqsales (ID_FORMULARE)
+         · TODO GRAFIKA  — og:image 1200×630 (img/webinar-og.jpg)
+         ============================================================ -->
+
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+
+    <!-- Kontejner Restart muže (stejně jako zbytek Kovárny). -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+            var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MZ6KX3VV');</script>
+
+    <link rel="stylesheet" href="deploy/cookie-banner.css?v=5">
+
+    <title>Proč Tvůj byznys vzkvétá, zatímco rodina krvácí — webinář zdarma pro podnikatele</title>
+    <meta name="description" content="Webinář zdarma pro podnikatele, majitele firem a manažery. Tři termíny: neděle 6. 9., neděle 13. 9. a čtvrtek 17. 9. 2026 od 18:00, živě online přes Zoom. Vede Sláva Černý.">
+    <meta name="author" content="Sláva Černý">
+    <!-- Shodně s ostatními stránkami Kovárny. Až se web pustí do vyhledávačů,
+         přepsat na: content="index, follow, max-image-preview:large" -->
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://kovarna.restartmuze.cz/webinar/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kovarna.restartmuze.cz/webinar/">
+    <meta property="og:title" content="Proč Tvůj byznys vzkvétá, zatímco rodina krvácí">
+    <meta property="og:description" content="Webinář zdarma pro podnikatele, majitele firem a manažery. 6. 9., 13. 9. nebo 17. 9. 2026 od 18:00, živě online. Vede Sláva Černý.">
+    <meta property="og:locale" content="cs_CZ">
+    <meta property="og:site_name" content="Kovárna">
+    <!-- TODO GRAFIKA: náhled 1200×630, černobílý -->
+    <meta property="og:image" content="https://kovarna.restartmuze.cz/img/webinar-og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Proč Tvůj byznys vzkvétá, zatímco rodina krvácí — webinář zdarma pro podnikatele">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preload" as="font" type="font/woff2" href="fonts/oswald-700-latin.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="fonts/sourceserif-600-latin.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="fonts/sourceserif-400-latin.woff2" crossorigin>
+    <link rel="preload" as="image" href="img/slava-studio-hero.webp">
+
+    <!-- Písma jsou self-hostovaná (SIL OFL). `latin` nese á é í ó ú ý,
+         `latin-ext` nese č ř š ž ě ů ď ť ň — proto dva soubory na řez. -->
+    <style>
+        @font-face { font-family:'Oswald'; font-style:normal; font-weight:500 600; font-display:swap; src:url('fonts/oswald-500-latin.woff2') format('woff2'); unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+        @font-face { font-family:'Oswald'; font-style:normal; font-weight:500 600; font-display:swap; src:url('fonts/oswald-500-latin-ext.woff2') format('woff2'); unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+        @font-face { font-family:'Oswald'; font-style:normal; font-weight:700 900; font-display:swap; src:url('fonts/oswald-700-latin.woff2') format('woff2'); unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+        @font-face { font-family:'Oswald'; font-style:normal; font-weight:700 900; font-display:swap; src:url('fonts/oswald-700-latin-ext.woff2') format('woff2'); unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+        @font-face { font-family:'Source Serif 4'; font-style:normal; font-weight:400; font-display:swap; src:url('fonts/sourceserif-400-latin.woff2') format('woff2'); unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+        @font-face { font-family:'Source Serif 4'; font-style:normal; font-weight:400; font-display:swap; src:url('fonts/sourceserif-400-latin-ext.woff2') format('woff2'); unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+        @font-face { font-family:'Source Serif 4'; font-style:normal; font-weight:600; font-display:swap; src:url('fonts/sourceserif-600-latin.woff2') format('woff2'); unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+        @font-face { font-family:'Source Serif 4'; font-style:normal; font-weight:600; font-display:swap; src:url('fonts/sourceserif-600-latin-ext.woff2') format('woff2'); unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+    </style>
+
+    <style>
+        /* ============ PALETA — kovářská čerň, papír na světlých sekcích (jako trenink v7) ============ */
+        :root {
+            --iron:  #12151a;   /* kovářská čerň — surové železo */
+            --blade: #ffffff;   /* ukovaná čepel */
+            --ash:   #e4e0d9;   /* popel — teplá bílá pro delší text */
+            --smoke: #8d8d8d;
+
+            --bg: var(--iron); --fg: var(--blade); --fg2: var(--ash); --fg3: var(--smoke);
+            --line:  rgba(255,255,255,.16);
+            --hair:  rgba(255,255,255,.09);
+            --card:  #1b2027;
+            --btn-bg: #fff; --btn-fg: #12151a; --btn-hov: #d3d3d3;
+
+            --display: 'Oswald','Arial Narrow',sans-serif;
+            --text: 'Source Serif 4', Georgia, serif;
+            --maxw: 1280px; --gut: 3rem;
+            --ease: cubic-bezier(.2,.7,.3,1);
+        }
+        /* světlá sekce — stejný scope jako na tréninku */
+        .invert {
+            --bg: #f2efe9; --fg: #12151a; --fg2: #23211e; --fg3: #6c6862;
+            --line: rgba(0,0,0,.2); --hair: rgba(0,0,0,.1);
+            --card: #faf8f4;
+            --btn-bg: #12151a; --btn-fg: #fff; --btn-hov: #333;
+        }
+
+        * { box-sizing:border-box; margin:0; padding:0; }
+        html { font-size:19px; scroll-behavior:auto; -webkit-text-size-adjust:100%; text-size-adjust:100%; }
+        body {
+            background:var(--iron); color:var(--fg2);
+            font-family:var(--text); font-size:1.09rem; line-height:1.72;
+            -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; overflow-x:hidden;
+        }
+        body::after {
+            content:''; position:fixed; inset:0; z-index:4; pointer-events:none; opacity:.055; mix-blend-mode:overlay;
+            background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
+        ::selection { background:currentColor; }
+        :focus-visible { outline:2px solid currentColor; outline-offset:4px; }
+        .skip { position:absolute; left:-9999px; z-index:200; background:#fff; color:#12151a; padding:.8rem 1.4rem; font-family:var(--display); font-weight:700; font-size:.8rem; }
+        .skip:focus { left:0; top:0; }
+
+        .wrap { max-width:var(--maxw); margin:0 auto; padding:0 var(--gut); }
+
+        /* ============ TYPOGRAFIE ============ */
+        h1,h2,h3,h4 { font-family:var(--display); color:var(--fg); font-weight:700; letter-spacing:0; }
+        h1 { font-size:clamp(2.6rem,5.6vw,4.5rem); line-height:1.05; }
+        h2 { font-size:clamp(1.9rem,4vw,3rem); line-height:1.1; }
+        h3 { font-size:1.22rem; line-height:1.32; font-weight:600; }
+        p { color:var(--fg2); }
+        p + p { margin-top:1.05rem; }
+        strong { color:var(--fg); font-weight:600; }
+
+        .cap {
+            display:flex; align-items:center; gap:.7rem;
+            font-family:var(--display); font-weight:600; font-size:.78rem;
+            letter-spacing:.28em; text-transform:uppercase; color:var(--fg3);
+        }
+        /* centrovaná hlavička sekce — nadnadpis + nadpis na střed */
+        .shead { text-align:center; max-width:52rem; margin:0 auto; }
+        .shead .cap { justify-content:center; }
+        .shead h2 { margin-top:1.1rem; max-width:none; text-wrap:balance; }
+        .narrow { max-width:70ch; margin-left:auto; margin-right:auto; }
+        .lede { font-family:var(--text); font-size:1.15rem; line-height:1.6; color:var(--fg); }
+        .punch { font-family:var(--display); font-weight:600; color:var(--fg); font-size:clamp(1.25rem,2.4vw,1.6rem); line-height:1.38; }
+
+        /* ============ ODRÁŽKY — sekaná rytá značka ============ */
+        .chisel { list-style:none; padding:0; display:flex; flex-direction:column; gap:.62rem; }
+        .chisel li { display:flex; gap:1rem; align-items:flex-start; color:var(--fg); line-height:1.55; }
+        .chisel li::before { content:''; flex:0 0 auto; width:13px; height:2px; margin-top:.72em; background:currentColor; }
+        .chisel--no li { color:var(--fg2); }
+        .chisel--no li::before { width:15px; height:1px; opacity:.55; }
+
+        /* ============ TLAČÍTKO ============ */
+        .btn {
+            display:inline-flex; align-items:center; justify-content:center; gap:.8rem;
+            padding:1.05rem 2.6rem; background:var(--btn-bg); color:var(--btn-fg);
+            font-family:var(--display); font-weight:700; font-size:.92rem;
+            letter-spacing:.09em; text-transform:uppercase; text-decoration:none; white-space:nowrap;
+            border:none; border-radius:100px; cursor:pointer;
+            transition:background .3s var(--ease), transform .2s var(--ease);
+        }
+        @media (hover:hover){ .btn:hover{ background:var(--btn-hov); transform:scale(1.04);} }
+        .marks { display:flex; gap:1.6rem; flex-wrap:wrap; margin-top:1.2rem; }
+        .marks span { display:flex; align-items:center; gap:.5rem; font-family:var(--display); font-weight:500; font-size:.78rem; letter-spacing:.13em; text-transform:uppercase; color:var(--fg3); }
+        .marks span::before { content:''; width:11px; height:2px; background:var(--fg); }
+
+        /* ============ HLAVIČKA WEBU ============ */
+        .head {
+            position:sticky; top:0; z-index:60; background:rgba(18,21,26,.82);
+            backdrop-filter:blur(16px); border-bottom:1px solid var(--hair);
+        }
+        .head .wrap { display:flex; align-items:center; justify-content:space-between; gap:1.5rem; padding-top:.85rem; padding-bottom:.85rem; }
+        .brand { display:inline-flex; align-items:center; gap:.75rem; text-decoration:none; }
+        .brand svg { width:26px; height:26px; color:#fff; }
+        .brand b { font-family:var(--display); font-weight:700; font-size:.92rem; letter-spacing:.34em; text-transform:uppercase; color:#fff; }
+        .brand-rm { display:inline-flex; align-items:center; margin-left:.6rem; padding-left:1.15rem; border-left:1px solid var(--line); }
+        .brand-rm img { height:44px; width:auto; display:block; }
+        .nav { display:flex; gap:2rem; }
+        .nav a { font-family:var(--display); font-weight:600; font-size:.78rem; letter-spacing:.18em; text-transform:uppercase; color:#cfccc5; text-decoration:none; transition:color .2s; }
+        .nav a:hover { color:#fff; }
+        .head .btn { padding:.7rem 1.7rem; font-size:.78rem; }
+        .menu-btn { display:none; background:none; border:1px solid var(--line); border-radius:6px; width:40px; height:38px; cursor:pointer; position:relative; flex:0 0 auto; }
+        .menu-btn i { position:absolute; left:10px; right:10px; top:50%; height:2px; background:#fff; transition:transform .25s var(--ease), opacity .25s; }
+        .menu-btn i:nth-child(1){ transform:translateY(-7px); }
+        .menu-btn i:nth-child(3){ transform:translateY(7px); }
+        .menu-btn[aria-expanded="true"] i:nth-child(1){ transform:rotate(45deg); }
+        .menu-btn[aria-expanded="true"] i:nth-child(2){ opacity:0; }
+        .menu-btn[aria-expanded="true"] i:nth-child(3){ transform:rotate(-45deg); }
+        @media (max-width:900px){
+            .head .wrap { position:relative; }
+            .menu-btn { display:block; }
+            .nav { display:none; position:absolute; top:100%; left:0; right:0; z-index:70; background:#12151a; border-bottom:1px solid var(--hair); flex-direction:column; gap:0; padding:.4rem 0 .9rem; }
+            .nav.open { display:flex; }
+            .nav a { padding:.85rem var(--gut); }
+            .brand-rm img{ height:36px; }
+        }
+        @media (max-width:520px){ .brand-rm{ display:inline-flex; margin-left:.45rem; padding-left:.8rem; } .brand-rm img{ height:28px; } .brand b{ font-size:.85rem; letter-spacing:.22em; } .head > .wrap > .btn{ display:none; } .head .wrap{ gap:.7rem; } }
+
+        /* ============ HERO ============ */
+        .hero { position:relative; overflow:hidden; background:var(--iron); }
+        .hero-photo {
+            position:absolute; inset:0 0 0 28%; z-index:1;
+            background-image:url('img/slava-studio-hero.webp');
+            background-repeat:no-repeat; background-size:auto 114%; background-position:38% 100%;
+            filter:grayscale(1) contrast(1.1) brightness(.95);
+            mask-image:linear-gradient(to right, transparent 0%, #000 65%);
+            -webkit-mask-image:linear-gradient(to right, transparent 0%, #000 65%);
+        }
+        .hero::after { content:''; position:absolute; inset:0; z-index:1; background:linear-gradient(to top, rgba(18,21,26,.9) 0%, rgba(18,21,26,.08) 45%, rgba(18,21,26,.18) 100%); }
+        .hero > .wrap { position:relative; z-index:2; display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:3rem; align-items:end; padding-top:calc(5.5rem + env(safe-area-inset-top)); padding-bottom:4.25rem; min-height:min(84vh, 46rem); }
+        .hero .cap { color:#b7b3ab; }
+        .hero h1 { margin-top:1.3rem; }
+        .hero h1 .sub { display:block; }
+        .hero .lede { margin-top:1.6rem; max-width:46ch; color:#e4e0d9; font-size:1.09rem; }
+        .hero-by { display:flex; align-items:center; gap:.8rem; margin-top:1.8rem; font-family:var(--display); font-weight:500; font-size:.82rem; letter-spacing:.16em; text-transform:uppercase; color:#b7b3ab; }
+        .hero-by img { width:44px; height:44px; border-radius:50%; object-fit:cover; filter:grayscale(1) contrast(1.05); }
+        .hero-by b { color:#fff; font-weight:700; }
+        .hero-cta { margin-top:2.4rem; }
+        /* ledger fakt — řádek údajů pod hero (tři termíny + čas) */
+        .ledger { border-top:1px solid var(--hair); border-bottom:1px solid var(--hair); background:rgba(18,21,26,.6); position:relative; z-index:2; }
+        .ledger .wrap { display:flex; gap:2.5rem; justify-content:space-between; padding-top:1.3rem; padding-bottom:1.3rem; }
+        .fact b { display:block; font-family:var(--display); font-weight:700; font-size:1.18rem; letter-spacing:.05em; text-transform:uppercase; color:#fff; }
+        .fact span { display:block; margin-top:.12rem; font-family:var(--display); font-weight:500; font-size:.68rem; letter-spacing:.2em; text-transform:uppercase; color:var(--fg3); }
+
+        /* ============ SEKCE ============ */
+        .sec { background:var(--bg); padding:6.5rem 0; }
+        .sec--tight { padding:5rem 0; }
+        .sec.invert { color:var(--fg2); }
+
+        /* citátový pás / CTA pás */
+        .said { padding:6rem 0; border-top:1px solid var(--hair); border-bottom:1px solid var(--hair); background:var(--bg); }
+        .said .wrap { text-align:center; }
+        .said .cap { margin-bottom:1.4rem; justify-content:center; }
+        /* vlasový oddělovač mezi stejně tmavými sekcemi — nevede do krajů */
+        .sep { border:none; height:1px; background:var(--hair); max-width:56rem; margin:0 auto; }
+
+        /* ============ LEDGER-LIST — číslované řádky (vrcholy trojúhelníku) ============ */
+        .ledger-list { margin-top:3rem; border-top:1px solid var(--hair); }
+        .row2 { display:grid; grid-template-columns:5.5rem minmax(0,1fr) minmax(0,1.25fr); gap:2.5rem; padding:2.4rem 0; border-bottom:1px solid var(--hair); align-items:start; }
+        .row2 .no { font-family:var(--display); font-weight:700; font-size:2.6rem; line-height:.9; color:var(--fg); opacity:.2; }
+        .row2 h3 { padding-top:.2rem; }
+        .row2 p { font-size:1.05rem; }
+
+        /* ============ TROJÚHELNÍK ============ */
+        .tri-stage { margin:3rem auto 0; }
+        .tri-stage svg { width:100%; max-width:640px; height:auto; display:block; margin:0 auto; color:var(--fg); }
+        .tri-stage figcaption { font-family:var(--display); font-weight:500; font-size:.68rem; letter-spacing:.2em; text-transform:uppercase; color:var(--fg3); text-align:center; margin-top:1.3rem; }
+
+        /* ============ DUO — dvě karty vedle sebe (pro koho) ============ */
+        .duo { display:grid; grid-template-columns:1fr 1fr; gap:1.75rem; }
+        .duo-col { background:var(--card); padding:2.4rem 2.5rem 2.6rem; }
+        .duo--koho { grid-template-columns:minmax(0,1.35fr) minmax(0,1fr); }
+        .duo-head { display:flex; flex-direction:column; gap:.3rem; margin-bottom:1.6rem; }
+        .duo-head b { font-family:var(--display); font-weight:700; font-size:1rem; letter-spacing:.14em; text-transform:uppercase; color:var(--fg); }
+        .duo-head i { font-style:normal; font-family:var(--display); font-weight:500; font-size:.7rem; letter-spacing:.22em; text-transform:uppercase; color:var(--fg3); }
+
+        /* ============ CO SI ODNESEŠ — svislé číslované řádky ============ */
+        .steps { margin-top:3rem; border-top:1px solid var(--hair); }
+        .step { display:grid; grid-template-columns:5.5rem 1fr; gap:2.5rem; padding:2.4rem 0; border-bottom:1px solid var(--hair); }
+        .step .no { font-family:var(--display); font-weight:700; font-size:2.6rem; line-height:.9; color:var(--fg); opacity:.2; }
+        .step h3 { margin-bottom:.55rem; font-size:1.3rem; }
+        .step p { font-size:1.05rem; }
+
+        /* ============ CTA PÁS ============ */
+        .cta-band { text-align:center; }
+        .cta-band .cap { justify-content:center; }
+        .cta-band h2 { margin:1.2rem auto 0; max-width:24ch; }
+        .cta-band .btn { margin-top:2.2rem; }
+        .cta-band .marks { justify-content:center; }
+
+        /* ============ OSOBNÍ ZPRÁVA — papírový dopis na černé ============ */
+        .paper {
+            max-width:46rem; margin:3rem auto 0; background:#f2efe9; color:#23211e;
+            padding:3.75rem 3.5rem; box-shadow:0 24px 70px rgba(0,0,0,.45);
+        }
+        .paper > * + * { margin-top:1.1rem; }
+        .paper p { color:#23211e; font-size:1.05rem; }
+        .paper strong { color:#12151a; }
+        .sign { margin-top:2.4rem; padding-top:1.5rem; border-top:1px solid rgba(0,0,0,.14); display:flex; align-items:center; gap:1.1rem; }
+        .sign img { width:60px; height:60px; border-radius:50%; object-fit:cover; object-position:70% 24%; filter:grayscale(1) contrast(1.08); }
+        .sign b { display:block; font-family:var(--display); font-weight:700; font-size:1rem; letter-spacing:.06em; color:#12151a; }
+        .sign span { display:block; font-family:var(--display); font-weight:500; font-size:.78rem; letter-spacing:.16em; text-transform:uppercase; color:#6c6862; margin-top:.28rem; }
+
+        /* ============ REGISTRACE — termíny + formulář z Cliqsales ============ */
+        .terms { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; max-width:56rem; margin:3rem auto 0; }
+        .term { background:#fff; border:1px solid var(--hair); padding:1.7rem 1.5rem; text-align:center; box-shadow:0 18px 50px rgba(18,21,26,.09); }
+        .term i { display:block; font-style:normal; font-family:var(--display); font-weight:500; font-size:.7rem; letter-spacing:.22em; text-transform:uppercase; color:var(--fg3); }
+        .term b { display:block; font-family:var(--display); font-weight:700; font-size:clamp(1.7rem,3.2vw,2.3rem); line-height:1; color:var(--fg); margin:.55rem 0 .5rem; }
+        .term span { display:block; font-family:var(--display); font-weight:600; font-size:.8rem; letter-spacing:.18em; text-transform:uppercase; color:var(--fg); }
+        .terms-note { text-align:center; margin-top:1.4rem; font-family:var(--display); font-weight:500; font-size:.78rem; letter-spacing:.16em; text-transform:uppercase; color:var(--fg3); }
+        .formcard { max-width:44rem; margin:2.75rem auto 0; background:#fff; border:2px solid #12151a; padding:1.25rem; box-shadow:0 18px 50px rgba(18,21,26,.09); }
+        /* než se iframe načte, drží místo (jako u FAPI); form_embed.js pak výšku sám dorovná */
+        .formcard .cs-form { min-height:520px; }
+        .formcard iframe { display:block; width:100%; border:0; }
+        .form-note { text-align:center; margin:1.4rem auto 0; max-width:40ch; font-size:.95rem; color:var(--fg3); }
+
+        /* ============ PATIČKA — centrovaná (z v3/v7) ============ */
+        .foot { background:#0b0d11; border-top:1px solid var(--hair); padding:4rem 0 1.75rem; text-align:center; }
+        .foot .brand { margin-bottom:1.1rem; }
+        .foot .brand-rm img { height:56px; }
+        .foot .legal { display:flex; flex-wrap:wrap; justify-content:center; gap:.7rem 1.7rem; }
+        .foot .legal a { font-family:var(--display); font-weight:500; font-size:.78rem; letter-spacing:.16em; text-transform:uppercase; color:#cfccc5; text-decoration:none; border-bottom:1px solid rgba(255,255,255,.2); padding-bottom:.2rem; }
+        .foot .ident { font-size:.84rem; line-height:1.7; color:#8d8d8d; }
+        .foot .ident b { display:block; font-family:var(--display); font-weight:500; letter-spacing:.14em; text-transform:uppercase; font-size:.8rem; color:#cfccc5; margin-bottom:.45rem; }
+        .foot .ident a { color:#cfccc5; }
+        .foot .trust { margin:3rem auto 0; padding-top:2.5rem; border-top:1px solid var(--hair); display:grid; grid-template-columns:repeat(3,1fr); gap:2.6rem; text-align:left; }
+        .foot .trust b { display:block; font-family:var(--display); font-weight:500; letter-spacing:.14em; text-transform:uppercase; font-size:.8rem; color:#cfccc5; margin-bottom:.7rem; }
+        .foot .trust p { font-size:.86rem; line-height:1.65; color:#8d8d8d; margin:0 0 1.1rem; max-width:none; }
+        .foot .trust .legal { display:flex; flex-direction:column; align-items:flex-start; gap:.55rem; }
+        @media (max-width:860px) {
+            .foot .trust { grid-template-columns:1fr; gap:2.4rem; text-align:center; }
+            .foot .trust .legal { align-items:center; }
+        }
+        .foot p { font-size:.88rem; color:#8d8d8d; max-width:44ch; margin:0 auto; }
+        .foot .bottom { margin-top:2.75rem; padding-top:1.5rem; border-top:1px solid var(--hair); font-family:var(--display); font-weight:500; font-size:.78rem; letter-spacing:.2em; text-transform:uppercase; color:#6c6862; padding-bottom:calc(.5rem + env(safe-area-inset-bottom)); }
+
+        /* ============ PEVNÉ PRVKY ============ */
+        .prog { position:fixed; top:0; left:0; height:2px; width:0; z-index:100; background:#fff; mix-blend-mode:difference; pointer-events:none; }
+        .sticky { position:fixed; right:1.75rem; bottom:max(1.25rem,env(safe-area-inset-bottom)); z-index:90; opacity:0; visibility:hidden; transform:translateY(10px); transition:opacity .35s var(--ease), visibility .35s var(--ease), transform .35s var(--ease); }
+        .sticky.on { opacity:1; visibility:visible; transform:none; }
+        .sticky .btn { background:#fff; color:#12151a; box-shadow:0 10px 34px rgba(0,0,0,.6); }
+        .up { position:fixed; right:1.75rem; bottom:1.25rem; width:42px; height:42px; background:rgba(18,21,26,.6); border:1px solid rgba(255,255,255,.3); border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; opacity:0; visibility:hidden; z-index:85; transition:opacity .3s, visibility .3s, transform .2s; }
+        .up.on { opacity:1; visibility:visible; }
+        .up.above { bottom:5.4rem; }
+        @media (hover:hover){ .up:hover{ transform:scale(1.08); } }
+        .up svg { width:17px; height:17px; fill:none; stroke:#fff; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; }
+
+        /* ============ REVEAL ============ */
+        .rv { opacity:0; transform:translateY(14px); transition:opacity .65s var(--ease), transform .65s var(--ease); }
+        .rv.in { opacity:1; transform:none; }
+        @media (prefers-reduced-motion:reduce){ .rv{opacity:1;transform:none;transition:none} .btn,.up{transition:none} }
+
+        /* ============ MOBIL ============ */
+        @media (max-width:1180px){ :root{ --gut:2rem; } }
+        @media (max-width:1000px){
+            .row2 { grid-template-columns:1fr; gap:.75rem; padding:1.9rem 0; }
+            .row2 .no { font-size:1.5rem; opacity:.35; }
+            .duo, .duo--koho { grid-template-columns:1fr; }
+        }
+        @media (max-width:768px){
+            html { font-size:17px; }
+            :root{ --gut:1.35rem; }
+            .sec { padding:3.5rem 0; }
+            .sec--tight { padding:3rem 0; }
+            .said { padding:3.25rem 0; }
+            /* pod tlačítkem jen „zdarma" — termíny a čas říká fakta pás hned pod hero */
+            .hero-cta .marks span { display:none; }
+            .hero-cta .marks span:last-child { display:flex; }
+            .hero-by { font-size:.95rem; }
+            /* SVG se na mobilu zmenšuje celé — popisky vrcholů potřebují větší jednotky */
+            .tri-stage svg g text { font-size:28px; letter-spacing:2.6px; }
+            .hero > .wrap { grid-template-columns:1fr; min-height:0; padding-top:calc(3rem + env(safe-area-inset-top)); padding-bottom:3rem; }
+            .hero-photo { inset:0; background-size:auto 104%; background-position:60% calc(100% - 102px); mask-image:linear-gradient(to bottom, rgba(0,0,0,.4) 0%, rgba(0,0,0,.75) 30%, #000 100%); -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,.4) 0%, rgba(0,0,0,.75) 30%, #000 100%); opacity:.72; }
+            .hero::after { background:linear-gradient(to top, rgba(18,21,26,.96) 0%, rgba(18,21,26,.55) 60%, rgba(18,21,26,.75) 100%); }
+            .ledger .wrap { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+            .step { grid-template-columns:1fr; gap:.8rem; padding:2.1rem 0; }
+            .step .no { font-size:1.5rem; opacity:.35; }
+            .duo-col { padding:1.9rem 1.6rem 2.1rem; }
+            .paper { padding:2.4rem 1.6rem; }
+            .terms { grid-template-columns:1fr; gap:1rem; }
+            .term { padding:1.3rem 1.2rem; }
+            .formcard { padding:.75rem; }
+            .sticky { right:1rem; left:1rem; }
+            .sticky .btn { width:100%; }
+            .up { right:1rem; }
+            .up.above { bottom:5.6rem; }
+        }
+    </style>
+</head>
+
+<body>
+<a class="skip" href="#obsah">Přeskočit na obsah</a>
+<div class="prog" id="prog" aria-hidden="true"></div>
+
+<header class="head">
+    <div class="wrap">
+        <a href="#top" class="brand" aria-label="Kovárna — program Restart muže — na začátek">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M1.6 8.2c1.9-1.5 4-2.2 6.4-2.2h10l3 1v2l-3 1.1h-2.1l-1 3.8 3 1.4.6 2.7H5.5l.6-2.7 3-1.4-1-3.8H6C4.3 10.1 2.8 9.5 1.6 8.2Z"/></svg>
+            <b>Kovárna</b>
+            <span class="brand-rm" aria-hidden="true">
+                <img src="img/logo-restart-muze.png" alt="" width="699" height="193">
+            </span>
+        </a>
+        <nav class="nav" id="hlavni-nav" aria-label="Hlavní">
+            <a href="#trojuhelnik">Trojúhelník</a>
+            <a href="#obsah">Co si odneseš</a>
+            <a href="#pro-koho">Pro koho</a>
+            <a href="#registrace">Registrace</a>
+        </nav>
+        <a href="#registrace" class="btn">Chci se registrovat</a>
+        <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="hlavni-nav"><i></i><i></i><i></i></button>
+    </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="top">
+    <div class="hero-photo" role="img" aria-label="Sláva Černý"></div>
+    <div class="wrap">
+        <div>
+            <p class="cap">Webinář zdarma pro&nbsp;podnikatele, majitele firem a&nbsp;manažery</p>
+            <h1>
+                <span class="sub">Proč Tvůj byznys vzkvétá,</span>
+                zatímco rodina krvácí
+            </h1>
+            <p class="lede">Ve&nbsp;firmě rozhoduješ, vyděláváš a&nbsp;neseš tlak. Doma je ale pocit, že Ti <strong>žena a&nbsp;děti mizí před očima</strong>.</p>
+            <p class="hero-by"><img src="img/slava-portret.webp" alt="" width="44" height="44" aria-hidden="true">Vede <b>Sláva Černý</b></p>
+            <div class="hero-cta">
+                <a href="#registrace" class="btn">Chci se registrovat zdarma</a>
+                <div class="marks">
+                    <!-- Začátek 18:00 potvrdila Helena 3. 9. 2026 -->
+                    <span>6.&nbsp;9. · 13.&nbsp;9. · 17.&nbsp;9. · 18:00</span>
+                    <span>Živě online přes Zoom</span>
+                    <span>Zdarma</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ledger">
+        <div class="wrap">
+            <div class="fact"><b>Ne 6.&nbsp;9.</b><span>1. termín</span></div>
+            <div class="fact"><b>Ne 13.&nbsp;9.</b><span>2. termín</span></div>
+            <div class="fact"><b>Čt 17.&nbsp;9.</b><span>3. termín</span></div>
+            <div class="fact"><b>18:00</b><span>online · zdarma</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== TROJÚHELNÍK ŠÍLENSTVÍ ===================== -->
+<section class="sec" id="trojuhelnik">
+    <div class="wrap">
+        <div class="shead rv">
+            <p class="cap">Tři světy. Jeden chlap.</p>
+            <h2>Žiješ v&nbsp;trojúhelníku šílenství?</h2>
+            <p class="lede" style="margin-top:1.4rem;">Možná si říkáš, že je toho teď jen moc. Moc práce. Moc chaosu. Moc odpovědnosti. Jenže problém není jen tlak kolem Tebe.</p>
+        </div>
+        <figure class="tri-stage rv">
+            <svg viewBox="-120 -25 830 575" role="img" aria-label="Trojúhelník šílenství: manželství, rodina a byznys táhnou muže uprostřed každý jiným směrem">
+                <defs><marker id="a-out" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="currentColor"/></marker></defs>
+                <polygon points="310,74 566,434 54,434" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="9 7" opacity=".8"/>
+                <circle cx="310" cy="74" r="6" fill="currentColor"/><circle cx="566" cy="434" r="6" fill="currentColor"/><circle cx="54" cy="434" r="6" fill="currentColor"/>
+                <g font-family="Oswald, sans-serif" font-size="18" font-weight="700" letter-spacing="2.5" fill="currentColor">
+                    <text x="310" y="34" text-anchor="middle">MANŽELSTVÍ</text>
+                    <text x="54" y="512" text-anchor="middle">RODINA</text>
+                    <text x="566" y="512" text-anchor="middle">BYZNYS</text>
+                </g>
+                <circle cx="310" cy="314" r="46" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="5 6" opacity=".8"/>
+                <text x="310" y="322" text-anchor="middle" font-family="Oswald, sans-serif" font-size="17" font-weight="700" letter-spacing="2" fill="currentColor">TY</text>
+                <g stroke="currentColor" stroke-width="2.5" marker-end="url(#a-out)">
+                    <line x1="310" y1="250" x2="310" y2="150"/><line x1="256" y1="340" x2="174" y2="378"/><line x1="364" y1="340" x2="446" y2="378"/>
+                </g>
+            </svg>
+            <figcaption>Každá síla táhne jinam — a&nbsp;trhá Tě</figcaption>
+        </figure>
+        <div class="ledger-list">
+            <div class="row2 rv">
+                <div class="no">01</div>
+                <h3>Manželství</h3>
+                <p>Doma máš být opora. Ale přicházíš vyčerpaný a&nbsp;vzdálený.</p>
+            </div>
+            <div class="row2 rv">
+                <div class="no">02</div>
+                <h3>Rodina</h3>
+                <p>Máš být přítomný. A&nbsp;přitom Ti děti mizí před očima.</p>
+            </div>
+            <div class="row2 rv">
+                <div class="no">03</div>
+                <h3>Byznys</h3>
+                <p>Máš rozhodovat, vydělávat, vést. Tlak nikdy nekončí.</p>
+            </div>
+        </div>
+        <div class="narrow rv" style="margin-top:2.75rem; text-align:center;">
+            <p class="punch">Problém je, že ses možná začal schovávat za&nbsp;výkon a&nbsp;přestal vést tam, kde na&nbsp;tom záleží nejvíc.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== CO SI ODNESEŠ — světlá ===================== -->
+<section class="sec invert" id="obsah">
+    <div class="wrap">
+        <div class="shead rv">
+            <p class="cap">Obsah webináře</p>
+            <h2>Co si z&nbsp;webináře odneseš</h2>
+        </div>
+        <div class="steps">
+            <div class="step rv">
+                <div><span class="no">01</span></div>
+                <div>
+                    <h3>Proč úspěšní muži doma stagnují</h3>
+                    <p>To, co Tě v&nbsp;byznysu udělalo silným, Tě doma oslabuje. Ukážu Ti konkrétní mechanismus.</p>
+                </div>
+            </div>
+            <div class="step rv">
+                <div><span class="no">02</span></div>
+                <div>
+                    <h3>Co ničí důvěru a&nbsp;blízkost</h3>
+                    <p>Tiché vzorce, které fungují roky, než se ozvou. A&nbsp;proč si jich většina chlapů všimne až pozdě.</p>
+                </div>
+            </div>
+            <div class="step rv">
+                <div><span class="no">03</span></div>
+                <div>
+                    <h3>Proč problém není jen v&nbsp;tlaku kolem Tebe</h3>
+                    <p>Tlak k&nbsp;životu chlapa patří. Jde o&nbsp;to, co s&nbsp;Tebou tlak dělá — a&nbsp;kam se schováváš.</p>
+                </div>
+            </div>
+            <div class="step rv">
+                <div><span class="no">04</span></div>
+                <div>
+                    <h3>Jak poznat, že už neutíkáš před okolnostmi, ale sám před sebou</h3>
+                    <p>Konkrétní signály úniku do&nbsp;výkonu, telefonu, mlčení.</p>
+                </div>
+            </div>
+            <div class="step rv">
+                <div><span class="no">05</span></div>
+                <div>
+                    <h3>Jak to začít otáčet, dokud není pozdě</h3>
+                    <p>První kroky, které můžeš udělat hned — dřív, než Ti doma začne téct krev doopravdy.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== CTA PÁS ===================== -->
+<section class="said cta-band">
+    <div class="wrap rv">
+        <span class="cap">Webinář zdarma · živě online přes Zoom</span>
+        <h2 style="margin:1.2rem auto 0;">Proč Tvůj byznys vzkvétá, zatímco rodina krvácí</h2>
+        <a href="#registrace" class="btn">Chci se registrovat zdarma</a>
+        <div class="marks">
+            <span>6.&nbsp;9. · 13.&nbsp;9. · 17.&nbsp;9. · 18:00</span>
+            <span>Registrace zdarma</span>
+            <span>Bez následných závazků</span>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== PRO KOHO ===================== -->
+<section class="sec" id="pro-koho">
+    <div class="wrap">
+        <div class="shead rv">
+            <p class="cap">Cílím na&nbsp;Tebe přímo</p>
+            <h2>Tenhle webinář je pro&nbsp;Tebe</h2>
+        </div>
+        <div class="duo duo--koho" style="margin-top:3rem;">
+            <div class="duo-col rv">
+                <div class="duo-head"><b>Je to pro&nbsp;Tebe, pokud…</b><i>Poznáváš se?</i></div>
+                <ul class="chisel">
+                    <li>Ve&nbsp;firmě funguješ jako tahoun, ale doma cítíš odstup, chlad nebo tiché napětí.</li>
+                    <li>Vyděláváš, rozhoduješ a&nbsp;neseš odpovědnost — ale vztah se ženou a&nbsp;dětmi Ti začíná protékat mezi prsty.</li>
+                    <li>Víš, že problém není jen v&nbsp;okolnostech, ale i&nbsp;v&nbsp;tom, jak poslední měsíce nebo roky funguješ.</li>
+                    <li>Už nechceš být úspěšný jen navenek.</li>
+                    <li>Nechceš jednou zjistit, že jsi vybudoval byznys, ale přišel o&nbsp;to nejcennější.</li>
+                </ul>
+            </div>
+            <div class="duo-col rv">
+                <div class="duo-head"><b>Není to pro&nbsp;Tebe, pokud…</b><i>Řeknu to narovinu</i></div>
+                <ul class="chisel chisel--no">
+                    <li>Hledáš rychlé triky, jak „opravit ženu“.</li>
+                    <li>Chceš slyšet, že za&nbsp;všechno může tlak, práce nebo okolnosti.</li>
+                    <li>Nechceš se podívat pravdě do&nbsp;očí.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="sep" aria-hidden="true">
+
+<!-- ===================== OSOBNÍ ZPRÁVA — papír na černé ===================== -->
+<section class="sec">
+    <div class="wrap">
+        <div class="shead rv">
+            <p class="cap">Osobní zpráva</p>
+            <h2>Proč to otevírám právě teď</h2>
+        </div>
+        <div class="paper rv">
+            <p>Před 7&nbsp;lety jsem spoluzaložil Restart muže. Našimi tréninky prošlo <strong>přes 60&nbsp;000 chlapů</strong>.</p>
+            <p>Teď poprvé otevírám tohle téma přímo pro&nbsp;podnikatele, majitele firem a&nbsp;chlapy, kteří vedou. Protože přemýšlí jinak než běžný muž chodící do&nbsp;regulérní práce.</p>
+            <p>Právě u&nbsp;nich vídám jeden opakující se vzorec: navenek rostou, vydělávají a&nbsp;nesou odpovědnost — ale doma ztrácejí půdu pod&nbsp;nohama. A&nbsp;velmi často jsou se svými problémy a&nbsp;tlakem <strong>sami</strong>.</p>
+            <p>Když to chlap nepojmenuje včas, nezačne se rozpadat jen vztah. Začne se rozpadat i&nbsp;on sám.</p>
+            <div class="sign">
+                <img src="img/slava-portret.webp" alt="" width="56" height="56" aria-hidden="true">
+                <div><b>Sláva Černý</b><span>Spoluzakladatel Restart muže</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== REGISTRACE — světlá sekce s formulářem z Cliqsales ===================== -->
+<section class="sec invert" id="registrace">
+    <div class="wrap">
+        <div class="shead rv">
+            <p class="cap">Registrace zdarma</p>
+            <h2>Zarezervuj si místo</h2>
+            <p class="lede" style="margin-top:1.4rem;">Tenhle webinář je zrcadlo pro&nbsp;chlapy, kteří už nechtějí dál utíkat do&nbsp;výkonu a&nbsp;nechat doma vykrvácet to, na&nbsp;čem jim ve&nbsp;skutečnosti záleží nejvíc.</p>
+        </div>
+
+        <div class="terms rv">
+            <div class="term"><i>1. termín</i><b>6.&nbsp;září</b><span>Neděle · 18:00</span></div>
+            <div class="term"><i>2. termín</i><b>13.&nbsp;září</b><span>Neděle · 18:00</span></div>
+            <div class="term"><i>3. termín</i><b>17.&nbsp;září</b><span>Čtvrtek · 18:00</span></div>
+        </div>
+        <p class="terms-note rv">Živě online přes Zoom · termín si vybereš přímo ve&nbsp;formuláři</p>
+
+        <!-- TODO FORMULÁŘ: registrační formulář z Cliqsales (Sites → Forms → Integrate → Inline).
+             Ve formuláři: Jméno + E-mail + výběr termínu (6. 9. / 13. 9. / 17. 9.).
+             Nahradit všech pět výskytů ID_FORMULARE skutečným ID formuláře. -->
+        <div class="formcard rv">
+            <div class="cs-form">
+                <iframe
+                    src="https://api.cliqsales.cz/widget/form/ID_FORMULARE"
+                    style="width:100%;height:100%;border:none;border-radius:0"
+                    id="inline-ID_FORMULARE"
+                    data-layout="{'id':'INLINE'}"
+                    data-trigger-type="alwaysShow"
+                    data-trigger-value=""
+                    data-activation-type="alwaysActivated"
+                    data-activation-value=""
+                    data-deactivation-type="neverDeactivate"
+                    data-deactivation-value=""
+                    data-form-name="Webinář pro podnikatele — registrace"
+                    data-height="520"
+                    data-layout-iframe-id="inline-ID_FORMULARE"
+                    data-form-id="ID_FORMULARE"
+                    title="Registrace na webinář">
+                </iframe>
+            </div>
+        </div>
+        <p class="form-note rv">Odkaz na&nbsp;Zoom Ti pošleme na&nbsp;e-mail. Zkontroluj i&nbsp;spam.</p>
+    </div>
+</section>
+
+<!-- ===================== PATIČKA =====================
+     Kovárna dočasně pod Restart muže s.r.o. (rozhodnutí Slávy 31. 8. 2026).
+     Stránka zdarma → prostřední sloupec „Bezpečná registrace" místo platby.
+     ==================================================== -->
+<footer class="foot">
+    <div class="wrap">
+        <a href="#top" class="brand" aria-label="Kovárna — program Restart muže">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M1.6 8.2c1.9-1.5 4-2.2 6.4-2.2h10l3 1v2l-3 1.1h-2.1l-1 3.8 3 1.4.6 2.7H5.5l.6-2.7 3-1.4-1-3.8H6C4.3 10.1 2.8 9.5 1.6 8.2Z"/></svg>
+            <b>Kovárna</b>
+            <span class="brand-rm" aria-hidden="true">
+                <img src="img/logo-restart-muze.png" alt="" width="699" height="193">
+            </span>
+        </a>
+        <p>Webinář zdarma pro&nbsp;podnikatele, majitele firem a&nbsp;manažery. Vede Sláva Černý.</p>
+        <div class="trust">
+            <div>
+                <b>Údaje jsou v&nbsp;bezpečí</b>
+                <p>Spojení je šifrované a&nbsp;Tvoje údaje nepředáváme nikomu dalšímu.</p>
+                <nav class="legal">
+                    <a href="obchodni-podminky/">Obchodní podmínky</a>
+                    <a href="cookies/">Cookies</a>
+                    <a href="gdpr/">Zásady zpracování osobních údajů</a>
+                </nav>
+            </div>
+
+            <div>
+                <b>Bezpečná registrace</b>
+                <p>Registrace na&nbsp;webinář je zdarma. Žádná platba se neprovádí a&nbsp;nikde nezadáváš platební údaje.</p>
+            </div>
+
+            <div>
+                <b>Kontakt</b>
+                <p>Když si nebudeš vědět rady s&nbsp;registrací nebo připojením, napiš nám.</p>
+                <div class="ident">
+                    <b>Restart muže s.r.o.</b>
+                    IČO: 10947116 &middot; DIČ: CZ10947116<br>
+                    Kyjevská 1937/64, Východní Předměstí, 326&nbsp;00 Plzeň<br>
+                    Zapsaná v&nbsp;obchodním rejstříku vedeném u&nbsp;Krajského soudu v&nbsp;Plzni, sp. zn. C 40854<br>
+                    Kontakt: <a href="mailto:podpora@restartmuze.cz">podpora@restartmuze.cz</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom">© 2026 Restart muže s.r.o.</div>
+    </div>
+</footer>
+
+<button class="up" id="up" aria-label="Zpět nahoru">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="20" x2="12" y2="4"/><polyline points="7 9 12 4 17 9"/></svg>
+</button>
+<div class="sticky" id="sticky"><a href="#registrace" class="btn">Chci se registrovat zdarma</a></div>
+
+<script>
+(function () {
+    var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    var prog = document.getElementById('prog'), sticky = document.getElementById('sticky'),
+        up = document.getElementById('up'), hero = document.getElementById('top'),
+        stop = document.getElementById('registrace');
+    function tick() {
+        var y = pageYOffset || 0;
+        var h = document.documentElement.scrollHeight - innerHeight;
+        prog.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
+        if (hero && stop) {
+            var on = (y + 60) >= (hero.offsetTop + hero.offsetHeight) && stop.getBoundingClientRect().top > innerHeight;
+            sticky.classList.toggle('on', on);
+        }
+        up.classList.toggle('on', y > 600);
+        up.classList.toggle('above', sticky.classList.contains('on'));
+    }
+    up.addEventListener('click', function () { scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); });
+    ['scroll', 'resize', 'orientationchange'].forEach(function (e) { addEventListener(e, tick, { passive: true }); });
+    addEventListener('load', tick); tick();
+
+    // Formulář z Cliqsales — rezervovanou min-height uvolni až ve chvíli, kdy form_embed.js
+    // nastaví iframe skutečnou výšku podle obsahu (ne při pouhém načtení — to by
+    // při chybě formuláře karta splaskla na proužek)
+    (function () {
+        var holder = document.querySelector('.cs-form'), frame = holder && holder.querySelector('iframe');
+        if (!holder || !frame || !('MutationObserver' in window)) return;
+        var mo = new MutationObserver(function () {
+            if (parseInt(frame.style.height, 10) > 100) { holder.style.minHeight = '0'; mo.disconnect(); }
+        });
+        mo.observe(frame, { attributes: true, attributeFilter: ['style', 'height'] });
+    })();
+
+    var items = document.querySelectorAll('.rv');
+    if (reduce || !('IntersectionObserver' in window)) {
+        items.forEach(function (el) { el.classList.add('in'); });
+    } else {
+        var io = new IntersectionObserver(function (es) {
+            es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+        }, { rootMargin: '0px 0px -8% 0px', threshold: .04 });
+        items.forEach(function (el) { io.observe(el); });
+        /* pojistka: kdyby observer nestíhal (pomalé zařízení, rychlý scroll),
+           po 3 s od načtení se odkryje všechno, co je nad spodním okrajem okna */
+        addEventListener('load', function () {
+            setTimeout(function () {
+                items.forEach(function (el) {
+                    if (!el.classList.contains('in') && el.getBoundingClientRect().top < innerHeight * 1.15) el.classList.add('in');
+                });
+            }, 3000);
+        });
+    }
+
+    var menuBtn = document.getElementById('menuBtn'), mnav = document.querySelector('.nav');
+    if (menuBtn && mnav) {
+        menuBtn.addEventListener('click', function () {
+            var open = mnav.classList.toggle('open');
+            menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        mnav.querySelectorAll('a').forEach(function (a) {
+            a.addEventListener('click', function () { mnav.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); });
+        });
+    }
+
+    var head = document.querySelector('.head');
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+            var id = a.getAttribute('href').slice(1), t = id ? document.getElementById(id) : null;
+            if (!t) return;
+            e.preventDefault();
+            var top = t.getBoundingClientRect().top + pageYOffset - (head ? head.offsetHeight + 14 : 0);
+            scrollTo({ top: Math.max(0, top), behavior: reduce ? 'auto' : 'smooth' });
+        });
+    });
+})();
+</script>
+
+    <!-- Embed formulářů Cliqsales — dorovnává výšku iframe podle obsahu -->
+    <script src="https://api.cliqsales.cz/js/form_embed.js" defer></script>
+
+    <!-- Cookie lišta — sdílený soubor pro celý web (viz deploy/cookie-banner.js) -->
+    <script src="deploy/cookie-banner.js?v=4" defer></script>
+
+</body>
+
+</html>

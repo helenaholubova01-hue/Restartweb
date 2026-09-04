@@ -1,0 +1,42 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:'Oswald';src:url('oswald-700-latin-ext.woff2') format('woff2');font-weight:700;font-display:block;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Oswald';src:url('oswald-700-latin.woff2') format('woff2');font-weight:700;font-display:block;}
+@font-face{font-family:'Oswald';src:url('oswald-500-latin-ext.woff2') format('woff2');font-weight:500;font-display:block;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'Oswald';src:url('oswald-500-latin.woff2') format('woff2');font-weight:500;font-display:block;}
+@font-face{font-family:'SS';src:url('sourceserif-400-latin-ext.woff2') format('woff2');font-weight:400;font-display:block;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;}
+@font-face{font-family:'SS';src:url('sourceserif-400-latin.woff2') format('woff2');font-weight:400;font-display:block;}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#12151a}
+.c{position:relative;width:1200px;height:675px;transform:scale(1.6);transform-origin:0 0;overflow:hidden;background:#12151a}
+.photo{position:absolute;inset:0 0 0 32%;
+  background:url('foto.webp') 78% 12% / auto 118% no-repeat;
+  filter:grayscale(1) contrast(1.1) brightness(.92);
+  -webkit-mask-image:linear-gradient(to right,transparent 0%,#000 38%);
+          mask-image:linear-gradient(to right,transparent 0%,#000 38%);}
+.shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(18,21,26,.55) 0%,rgba(18,21,26,0) 40%)}
+.txt{position:absolute;left:132px;top:43%;transform:translateY(-50%);width:600px;z-index:2}
+.eyebrow{font-family:'Oswald',sans-serif;font-weight:500;font-size:20px;letter-spacing:.28em;
+  text-transform:uppercase;color:#b7b3ab;margin-bottom:26px}
+.lead{font-family:'SS',Georgia,serif;font-size:40px;line-height:1.25;color:#e4e0d9;margin-bottom:10px}
+.h1{font-family:'Oswald',sans-serif;font-weight:700;font-size:76px;line-height:1.02;
+  letter-spacing:.01em;text-transform:uppercase;color:#fff}
+.brand{position:absolute;left:132px;bottom:92px;display:flex;align-items:center;gap:14px;z-index:2}
+.brand svg{width:30px;height:30px;color:#fff;display:block}
+.brand b{font-family:'Oswald',sans-serif;font-weight:700;font-size:19px;letter-spacing:.34em;
+  text-transform:uppercase;color:#fff;margin-right:-.34em}
+.sep{width:1px;height:30px;background:rgba(255,255,255,.28);margin:0 4px}
+.rm{height:38px;width:auto;display:block}
+</style></head><body>
+<div class="c">
+  <div class="photo"></div><div class="shade"></div>
+  <div class="txt">
+    <div class="eyebrow">3denní trénink</div>
+    <div class="lead">Vyhráváš v&nbsp;podnikání.</div>
+    <div class="h1">Začni vyhrávat<br>i&nbsp;doma.</div>
+  </div>
+  <div class="brand">
+    <svg viewBox="0.4 4.8 21.8 14.4" fill="currentColor"><path d="M1.6 8.2c1.9-1.5 4-2.2 6.4-2.2h10l3 1v2l-3 1.1h-2.1l-1 3.8 3 1.4.6 2.7H5.5l.6-2.7 3-1.4-1-3.8H6C4.3 10.1 2.8 9.5 1.6 8.2Z"/></svg>
+    <b>Kovárna</b>
+    <span class="sep"></span><img class="rm" src="logo-rm.png" alt="">
+  </div>
+</div></body></html>

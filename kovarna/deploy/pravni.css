@@ -1,0 +1,175 @@
+/* Chlapská kovárna — právní dokumenty. Sdílený styl pro /gdpr/ a /obchodni-podminky/. */
+
+@font-face{font-family:'Oswald';src:url('fonts/oswald-500-latin-ext.woff2') format('woff2');font-weight:500;font-display:swap;unicode-range:U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Oswald';src:url('fonts/oswald-500-latin.woff2') format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'Oswald';src:url('fonts/oswald-700-latin-ext.woff2') format('woff2');font-weight:700;font-display:swap;unicode-range:U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Oswald';src:url('fonts/oswald-700-latin.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'Source Serif 4';src:url('fonts/sourceserif-400-latin-ext.woff2') format('woff2');font-weight:400;font-display:swap;unicode-range:U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Source Serif 4';src:url('fonts/sourceserif-400-latin.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Source Serif 4';src:url('fonts/sourceserif-600-latin-ext.woff2') format('woff2');font-weight:600;font-display:swap;unicode-range:U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Source Serif 4';src:url('fonts/sourceserif-600-latin.woff2') format('woff2');font-weight:600;font-display:swap}
+
+:root{
+    --bg:#12151a; --bar:#0b0d11; --band:#0d0f13; --raised:#1b1e24;
+    --line:#242a32; --hair:#1c2128;
+    --ink:#c9cfd6; --head:#fff; --mut:#78818c;
+    --display:'Oswald','Arial Narrow',sans-serif;
+    --text:'Source Serif 4',Georgia,serif;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{font-size:19px;scroll-behavior:auto;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:1rem;line-height:1.78;-webkit-font-smoothing:antialiased}
+
+/* ---------- lišta ---------- */
+.topbar{position:sticky;top:0;z-index:10;background:var(--bar);border-bottom:1px solid var(--line);
+    padding:calc(.8rem + env(safe-area-inset-top)) 1.5rem .8rem;
+    display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.topbar a,.topbar span{font-family:var(--display);font-weight:500;text-transform:uppercase;
+    letter-spacing:.14em;font-size:.62rem;line-height:1}
+.topbar a{color:var(--head);text-decoration:none}
+.topbar span{color:var(--mut)}
+@media (hover:hover){.topbar a:hover{color:var(--mut)}}
+
+/* ---------- sazební plocha ---------- */
+.doc{max-width:60rem;margin:0 auto;padding:4rem 2.2rem 5rem}
+.measure{max-width:46rem}
+
+/* ---------- titul ---------- */
+.eyebrow{font-family:var(--display);font-weight:500;text-transform:uppercase;letter-spacing:.18em;
+    font-size:.62rem;color:var(--mut);margin:0 0 1rem}
+h1{font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:.03em;
+    color:var(--head);font-size:clamp(1.9rem,5.4vw,2.9rem);line-height:1.08;margin:0 0 1.8rem}
+.rule{height:1px;background:var(--line);margin:0 0 2.6rem}
+
+/* ---------- pracovní verze ---------- */
+.draft{background:var(--band);border:1px solid var(--line);border-left:3px solid var(--mut);
+    padding:1.3rem 1.5rem;margin:0 0 3rem;font-size:.82rem;line-height:1.65;color:var(--ink)}
+.draft b{display:block;font-family:var(--display);font-weight:700;text-transform:uppercase;
+    letter-spacing:.13em;color:var(--head);font-size:.66rem;margin-bottom:.55rem}
+
+/* ---------- lead ---------- */
+p.lead{font-size:1.06rem;line-height:1.8;color:var(--head);max-width:46rem;margin:0 0 1.2rem}
+
+/* ---------- kapitola ---------- */
+h2.ch{display:flex;align-items:baseline;gap:1.1rem;margin:4.2rem 0 1.8rem;scroll-margin-top:5rem}
+h2.ch::after{content:"";flex:1;height:1px;background:var(--line)}
+h2.ch .no{font-family:var(--display);font-weight:700;font-size:1.5rem;line-height:1;
+    color:var(--mut);letter-spacing:.02em;flex:none;min-width:2.4rem}
+h2.ch .ttl{font-family:var(--display);font-weight:500;text-transform:uppercase;letter-spacing:.13em;
+    font-size:.84rem;line-height:1.35;color:var(--head);flex:none;max-width:40rem}
+
+/* ---------- obsah ---------- */
+.toc-h{font-family:var(--display);font-weight:500;text-transform:uppercase;letter-spacing:.16em;
+    font-size:.68rem;color:var(--mut);margin:3.4rem 0 1.2rem}
+ol.toc{list-style:none;margin:0 0 1rem;padding:0;border-top:1px solid var(--hair)}
+ol.toc li{border-bottom:1px solid var(--hair)}
+ol.toc a{display:grid;grid-template-columns:2.6rem 1fr;gap:0 1rem;padding:.85rem .4rem;
+    text-decoration:none;color:inherit}
+ol.toc .tn{font-family:var(--display);font-weight:500;font-size:.8rem;color:var(--mut);line-height:1.5}
+ol.toc .tt{font-family:var(--display);font-weight:500;text-transform:uppercase;letter-spacing:.1em;
+    font-size:.72rem;color:var(--head);line-height:1.5}
+ol.toc .td{grid-column:2;font-size:.82rem;color:var(--mut);line-height:1.55;margin-top:.15rem}
+@media (hover:hover){ol.toc a:hover{background:var(--band)}ol.toc a:hover .tt{color:var(--mut)}}
+
+/* ---------- číslované body ---------- */
+p{margin:0 0 1.15rem;max-width:46rem}
+p.cl{position:relative;padding-left:3.4rem;max-width:50rem;margin-bottom:1.35rem}
+main.doc{overflow-x:hidden}
+p.cl .n{position:absolute;left:0;top:.24rem;width:2.7rem;text-align:right;
+    font-family:var(--display);font-weight:500;font-size:.76rem;color:var(--mut);
+    font-variant-numeric:tabular-nums;letter-spacing:.02em}
+
+/* ---------- definice termínu ---------- */
+b.term{display:block;font-family:var(--display);font-weight:700;text-transform:uppercase;
+    letter-spacing:.11em;font-size:.76rem;color:var(--head);margin-bottom:.3rem}
+
+/* ---------- seznamy ---------- */
+ul.chisel{list-style:none;margin:0 0 1.4rem;padding:0 0 0 3.4rem;max-width:50rem}
+ul.chisel li{position:relative;padding-left:1.2rem;margin-bottom:.5rem}
+ul.chisel li::before{content:"";position:absolute;left:0;top:.82em;width:.55rem;height:1px;background:var(--mut)}
+
+/* ---------- drobnosti ---------- */
+strong{font-weight:600;color:var(--head)}
+a{color:var(--head);text-underline-offset:3px;text-decoration-thickness:1px}
+mark.todo{background:transparent;border:1px dashed var(--mut);border-radius:2px;color:var(--head);
+    font-family:var(--display);font-weight:500;font-size:.64rem;letter-spacing:.1em;
+    padding:.2em .55em;text-transform:uppercase;white-space:nowrap}
+
+/* ---------- nesrovnalosti v podkladu (k ověření právničkou) ---------- */
+/* ---------- patička ---------- */
+.foot{background:var(--bar);border-top:1px solid var(--line);
+    padding:3rem 1.6rem calc(3rem + env(safe-area-inset-bottom));font-size:.78rem;color:var(--mut);line-height:1.75}
+.foot .wrap{max-width:60rem;margin:0 auto}
+.foot b{display:block;color:var(--head);font-family:var(--display);font-weight:500;
+    letter-spacing:.13em;text-transform:uppercase;font-size:.68rem;margin-bottom:.6rem}
+/* Odkazy v patičce právních dokumentů. „Nastavení cookies" má data-cc="c-settings",
+   což je vlastní API cookie lišty — odvolat souhlas musí jít stejně snadno jako ho udělit. */
+.foot .odkazy{margin:0 0 1.2rem;display:flex;flex-wrap:wrap;gap:.4rem 1.4rem}
+.foot a{color:var(--ink);text-underline-offset:3px}
+
+/* ---------- mobil ----------
+   Kořen je 17px stejně jako na stránce tréninku — to je hlavní páka na
+   velikost písma. Navíc se zvedají všechny popisky pod 1rem: na desktopu
+   drží rytmus dokumentu, na telefonu byly na hraně čitelnosti. */
+@media (max-width:768px){
+    html{font-size:17px}
+    body{font-size:1.06rem}
+    .doc{padding:2.6rem 1.2rem 3.5rem}
+    h2.ch{flex-wrap:wrap;gap:.7rem;margin:3.2rem 0 1.4rem}
+    h2.ch .ttl{flex:0 1 auto;min-width:0;max-width:100%;font-size:.95rem}
+    h2.ch .no{min-width:0}
+    h2.ch::after{flex-basis:100%;order:3}
+    p.cl{padding-left:2.5rem}
+    p.cl .n{width:1.8rem;font-size:.86rem}
+    ul.chisel{padding-left:2.4rem}
+
+    .topbar a,.topbar span{font-size:.7rem}
+    .eyebrow{font-size:.72rem}
+    .draft{font-size:.92rem}
+    .draft b{font-size:.74rem}
+    p.lead{font-size:1.12rem}
+    .toc-h{font-size:.76rem}
+    ol.toc .tn{font-size:.88rem}
+    ol.toc .tt{font-size:.82rem}
+    ol.toc .td{font-size:.9rem}
+    b.term{font-size:.88rem}
+    mark.todo{font-size:.72rem}
+    .foot{font-size:.88rem}
+    .foot b{font-size:.76rem}
+}
+
+/* ---------- tisk (dokument putuje k právníkovi) ---------- */
+@media print{
+    html{font-size:11pt}
+    body{background:#fff;color:#000}
+    .topbar,.foot{display:none}
+    .doc{max-width:none;padding:0}
+    h1,h2.ch .ttl,h2.ch .no,b.term,strong,ol.toc .tt{color:#000}
+    h2.ch{page-break-after:avoid}
+    p.cl{page-break-inside:avoid}
+    .draft{border:1px solid #000;background:#fff;color:#000}
+    .draft b{color:#000}
+    mark.todo{border:1px dashed #000;color:#000}
+    a{color:#000}
+}
+
+/* ---------- tabulka cookies ---------- */
+.tw{overflow-x:auto;margin:0 0 2rem;-webkit-overflow-scrolling:touch}
+table.ck{border-collapse:collapse;width:100%;min-width:34rem;font-size:.8rem;line-height:1.55}
+table.ck th{font-family:var(--display);font-weight:500;text-transform:uppercase;letter-spacing:.11em;
+    font-size:.62rem;color:var(--mut);text-align:left;padding:0 1rem .55rem 0;
+    border-bottom:1px solid var(--line);white-space:nowrap}
+table.ck td{padding:.7rem 1rem .7rem 0;border-bottom:1px solid var(--hair);vertical-align:top;color:var(--ink)}
+table.ck td:first-child{font-family:var(--display);font-weight:500;color:var(--head);white-space:nowrap}
+table.ck td:last-child{font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--mut)}
+table.ck tr:last-child td{border-bottom:none}
+.cat{font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:.12em;
+    font-size:.72rem;color:var(--head);margin:2.6rem 0 .6rem}
+.cat .tag{font-weight:500;color:var(--mut);letter-spacing:.1em;margin-left:.7rem}
+@media (max-width:768px){
+    table.ck{min-width:30rem;font-size:.88rem}
+    table.ck th{font-size:.7rem}
+    .cat{font-size:.82rem}
+}
+@media print{table.ck th,table.ck td{color:#000}.cat{color:#000}}

@@ -1,0 +1,400 @@
+<!-- =====================================================================
+     KOVÁRNA / 3DENNÍ TRÉNINK — hero sekce na homepage restartmuze.cz
+     Vlož jako Divi "Code" modul do vlastní sekce.
+
+     Černobílá verze — Kovárna má černobílou identitu (přání Moniky).
+
+     NASTAVENÍ SEKCE V DIVI (bez toho fotka nebude vidět):
+       Advanced → CSS Class:  rmk-hero-section
+       Design → Background → Background Image:
+           https://restartmuze.cz/wp-content/uploads/2026/09/slava-studio-hero-cb.webp
+           (nahrát do Media Library soubor kovarna/img/slava-studio-hero-cb.webp
+            — je už převedený do černobílé, stejně jako fotky na Kovárně)
+       Design → Background → Background Color:  #050d17
+       Content → Make Section Fullwidth: ON
+       (odsazení sekce ani řádku nastavovat nemusíš, modul si ho vynuluje sám)
+
+     Výřez a velikost fotky řeší CSS níž (přebíjí Divi přes !important),
+     v Divi se nic dalšího nastavovat nemusí.
+
+     Prefix tříd je rmk- schválně: obě stávající hero sekce na homepage
+     (rozcestník i „Skoncuj s hodným klukem") už používají .rm-hero*
+     a jejich styly se navzájem přebíjejí. Třetí kopie stejných názvů
+     by je rozhodila.
+     ===================================================================== -->
+
+<style>
+/* ── PALETA ───────────────────────────────────────────────────────────
+   Černobílá (Kovárna). Kdyby ji Monika nakonec chtěla v barvách Restartu,
+   stačí přepsat těchhle pět hodnot na:
+       --rmk-accent: #e87722;  --rmk-accent-bg: rgba(232,119,34,.14);
+       --rmk-accent-line: rgba(232,119,34,.5);
+       --rmk-btn-bg: #3f9626;  --rmk-btn-fg: #ffffff;  --rmk-btn-hov: #4db82e;
+   a do Divi vrátit barevnou fotku slava-studio-hero.webp.            */
+.rmk-hero-section,
+.rmk-hero {
+    --rmk-accent:      #ffffff;
+    --rmk-accent-bg:   rgba(255, 255, 255, 0.08);
+    --rmk-accent-line: rgba(255, 255, 255, 0.42);
+    --rmk-pill-bg:     #ffffff;
+    --rmk-pill-fg:     #0b1420;
+    --rmk-btn-bg:      #ffffff;
+    --rmk-btn-fg:      #0b1420;
+    --rmk-btn-hov:     #d3d3d3;
+}
+
+.rmk-hero {
+    position: relative;
+    /* Strop na výšku schválně — bez něj je hero na vysokém monitoru přes 1300 px
+       a fotka nedosáhne na spodek sekce. */
+    min-height: min(90vh, 46rem);
+    display: flex;
+    align-items: center;
+    /* Záměrně BEZ max-width: kontejner jede přes celou šířku sekce, aby spodní
+       ztmavení (.rmk-hero-fade) sahalo až k okrajům i na širokém monitoru.
+       Rám 1440 px drží jen textový sloupec níž (margin-left + šířka). */
+}
+
+/* ── Divi: vynulovat vlastní odsazení sekce, řádku a sloupce ──
+   Aby hero vypadalo stejně bez ohledu na to, co je nastavené v Divi.
+   Bez toho zůstane výchozích 50 px na sekci a 30 px na řádku, sekce
+   je o třetinu vyšší a text užší, než na co je fotka doladěná. */
+.rmk-hero-section {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    /* natvrdo, ať se nikde neprosvítí bílé pozadí sekce z Divi */
+    background-color: #050d17 !important;
+}
+.rmk-hero-section .et_pb_row {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+.rmk-hero-section .et_pb_column {
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+/* ── Sekce: fotka + překryv ── */
+.rmk-hero-section {
+    position: relative;
+    /* Velikost fotky se POČÍTÁ ZE ŠÍŘKY sekce, ne z výšky — výška je 90vh
+       a na vysokém monitoru by se fotka nafoukla do obřího detailu.
+       Šířka je stabilní, takže Sláva vychází vždy na 60 % šířky — doměřeno
+       na živém webu, aby nebyl zbytečně zvětšený ani nalepený na pravý kraj. */
+    background-repeat: no-repeat !important;
+    background-size: 118% auto !important;
+    background-position: 0% 22% !important;
+    background-attachment: scroll !important;
+}
+.rmk-hero-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* horní gradient = měkký přechod z předchozí sekce, žádná ostrá hrana */
+    background:
+        linear-gradient(180deg, rgba(5, 13, 23, 0.96) 0%, rgba(5, 13, 23, 0.5) 12%, rgba(5, 13, 23, 0) 26%),
+        linear-gradient(90deg, rgba(5, 13, 23, 0.94) 0%, rgba(5, 13, 23, 0.82) 38%, rgba(5, 13, 23, 0.3) 72%, rgba(5, 13, 23, 0.05) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+.rmk-hero-section .rmk-hero-left {
+    z-index: 2;
+}
+
+.rmk-hero-left {
+    position: relative;
+    z-index: 2;
+    /* text zůstává v rámu 1440 px uprostřed: šířka 55 % rámu (792 px),
+       odsazení zleva = levá hrana rámu (nad 1440 px roste, jinak 0) */
+    width: min(55%, 792px);
+    margin-left: max(0px, calc(50% - 720px));
+    padding: 5rem 4rem 5rem 5rem;
+}
+
+/* ── Termínový štítek ── */
+.rmk-hero-new {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.75rem;
+    padding: 0.45rem 0.9rem 0.45rem 0.5rem;
+    background: var(--rmk-accent-bg);
+    border: 1px solid var(--rmk-accent-line);
+    border-radius: 100px;
+    width: fit-content;
+}
+.rmk-hero-new-pill {
+    display: inline-flex;
+    align-items: center;
+    background: var(--rmk-pill-bg);
+    color: var(--rmk-pill-fg);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    gap: 0.42rem;
+    padding: 0.3rem 0.8rem 0.3rem 0.62rem;
+    border-radius: 100px;
+    white-space: nowrap;
+}
+.rmk-hero-anvil {
+    width: 0.95rem;
+    height: 0.95rem;
+    flex-shrink: 0;
+}
+.rmk-hero-new-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.62);
+}
+
+.rmk-hero h2 {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 800 !important;
+    /* menší než dřív: „Vyhráváš v podnikání." je teď stejně velké jako druhá
+       řádka a v šířce textového sloupce se musí vejít na jeden řádek */
+    font-size: clamp(2.3rem, 3.4vw, 3.1rem) !important;
+    line-height: 1.08 !important;
+    color: #ffffff !important;
+    margin-bottom: 1.75rem !important;
+    letter-spacing: -0.02em;
+}
+.rmk-hero h2 em {
+    font-style: normal;
+    color: var(--rmk-accent);
+}
+/* obě řádky nadpisu stejným písmem, velikostí i barvou (přání Heleny) */
+.rmk-hero h2 .rmk-hero-sub {
+    display: block;
+}
+
+.rmk-hero-lead {
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    line-height: 1.75;
+    color: #ffffff;
+    margin-bottom: 2.5rem;
+    max-width: 520px;
+}
+
+.rmk-hero-by {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #e2eaf2;
+}
+.rmk-hero-by img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--rmk-accent-line);
+    filter: grayscale(1) contrast(1.05);
+    flex-shrink: 0;
+}
+.rmk-hero-by strong {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.rmk-hero-cta {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--rmk-btn-bg) !important;
+    color: var(--rmk-btn-fg) !important;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 1.1rem 2.5rem !important;
+    border-radius: 100px !important;
+    text-decoration: none !important;
+    transition: background 0.25s ease, transform 0.2s ease;
+    margin-bottom: 1rem;
+    border: none !important;
+    box-shadow: none !important;
+}
+@media (hover: hover) {
+    .rmk-hero-cta:hover {
+        background: var(--rmk-btn-hov) !important;
+        color: var(--rmk-btn-fg) !important;
+        transform: scale(1.04);
+    }
+}
+
+/* ── Odrážky pod tlačítkem — čárka jako na Kovárně, ne zelená fajfka ── */
+.rmk-hero-meta {
+    display: flex;
+    gap: 1.6rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+.rmk-hero-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.55);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+.rmk-hero-meta-item::before {
+    content: '';
+    width: 11px;
+    height: 2px;
+    background: var(--rmk-accent);
+    flex-shrink: 0;
+}
+
+/* Spodní přechod — fotka musí zhasnout do barvy stránky dřív, než začne
+   další sekce, jinak Sláva navazuje natvrdo na oblohu rozcestníku.
+   z-index 1 = pod textem, jinak by fade ztmavil tlačítko a odrážky. */
+.rmk-hero-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 260px;
+    background: linear-gradient(to top, #050d17 0%, rgba(5, 13, 23, 0.92) 22%, rgba(5, 13, 23, 0.55) 55%, rgba(5, 13, 23, 0) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Horní přechod NÁSLEDUJÍCÍ sekce — ať se její fotka rozsvítí postupně.
+   Cílí na sousední sekci, ne na .rm-hero-section, aby to nerozhodilo
+   druhé hero na homepage, které tu třídu sdílí. */
+.rmk-hero-section + .et_pb_section {
+    position: relative;
+}
+.rmk-hero-section + .et_pb_section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 220px;
+    background: linear-gradient(to bottom, #050d17 0%, rgba(5, 13, 23, 0.85) 32%, rgba(5, 13, 23, 0) 100%);
+    z-index: 2;
+    pointer-events: none;
+}
+.rmk-hero-section + .et_pb_section > .et_pb_row {
+    position: relative;
+    z-index: 3;
+}
+
+/* ── Široké obrazovky (nad 1440 px) ──
+   Text je v rámu 1440 px uprostřed, fotka by se ale dál roztahovala s celou
+   obrazovkou a Sláva by odjížděl doprava a rostl. Proto se nad 1440 px
+   velikost zamkne v pixelech (1,18 × 1440) a fotka se ukotví k levé hraně
+   toho rámu (50vw − 720px) — kompozice je pak stejná jako na 1440 px.
+   Vpravo za rámem fotka končí, gradient ji tam nechá zhasnout do pozadí. */
+@media (min-width: 1441px) {
+    .rmk-hero-section {
+        background-size: 1699px auto !important;
+        background-position: calc(50vw - 720px) 22% !important;
+    }
+    .rmk-hero-section::before {
+        background:
+            linear-gradient(180deg, rgba(5, 13, 23, 0.96) 0%, rgba(5, 13, 23, 0.5) 12%, rgba(5, 13, 23, 0) 26%),
+            linear-gradient(90deg, rgba(5, 13, 23, 0.94) 0%, rgba(5, 13, 23, 0.82) calc(50% - 170px), rgba(5, 13, 23, 0.3) calc(50% + 320px), rgba(5, 13, 23, 0.05) calc(50% + 720px), rgba(5, 13, 23, 0.7) calc(50% + 900px), #050d17 calc(50% + 980px));
+    }
+}
+
+/* ── Užší desktop / tablet ── */
+@media (max-width: 1200px) {
+    .rmk-hero-left {
+        width: 62%;
+        padding: 4.5rem 2.5rem 4.5rem 3rem;
+    }
+}
+
+/* ── Mobil ── */
+/* Přesně jak to má hero na kovarna.restartmuze.cz: fotka kryje celou sekci,
+   je slabá a slouží jako stín za textem, Sláva vychází vpravo nahoře za
+   nadpisem. Velikost i posun jsou převzaté z Kovárny (auto 104 %,
+   ukotvení dolní hranou zvednuté o 102 px). Kovárna k tomu má fotku
+   v samostatném divu s opacity a maskou — to na pozadí Divi sekce nejde,
+   protože by maska zasáhla i text, takže totéž dělá překryv níž:
+   tmavý nahoře i dole, nejsvětlejší v místě obličeje. */
+@media (max-width: 900px) {
+    .rmk-hero {
+        min-height: auto;
+    }
+    .rmk-hero-left {
+        width: 100%;
+        padding: 3.2rem 1.5rem 2.6rem;
+    }
+    .rmk-hero-new {
+        margin-bottom: 1.4rem;
+    }
+    /* štítek: logo + termín, „živě online" se na mobil nevejde */
+    .rmk-hero-new-more {
+        display: none;
+    }
+    /* pod tlačítkem jen cena — tři řádky odrážek na mobilu vypadaly blbě,
+       Kovárna to má stejně */
+    .rmk-hero-meta-item {
+        display: none;
+    }
+    .rmk-hero-meta-cena {
+        display: flex;
+    }
+    .rmk-hero-fade {
+        display: none;
+    }
+    .rmk-hero-section {
+        background-size: auto 104% !important;
+        background-position: 60% calc(100% - 102px) !important;
+    }
+    .rmk-hero-section::before {
+        background: linear-gradient(to top, rgba(5, 13, 23, 0.96) 0%, rgba(5, 13, 23, 0.62) 45%, rgba(5, 13, 23, 0.70) 72%, rgba(5, 13, 23, 0.88) 100%);
+    }
+}
+</style>
+
+<section class="rmk-hero">
+
+    <div class="rmk-hero-left">
+        <div class="rmk-hero-new">
+            <span class="rmk-hero-new-pill">
+                <svg class="rmk-hero-anvil" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M1.6 8.2c1.9-1.5 4-2.2 6.4-2.2h10l3 1v2l-3 1.1h-2.1l-1 3.8 3 1.4.6 2.7H5.5l.6-2.7 3-1.4-1-3.8H6C4.3 10.1 2.8 9.5 1.6 8.2Z"/></svg>
+                Kovárna
+            </span>
+            <span class="rmk-hero-new-text">21.–23.&nbsp;září<span class="rmk-hero-new-more"> &nbsp;·&nbsp; živě online</span></span>
+        </div>
+        <h2>
+            <span class="rmk-hero-sub">Vyhráváš v&nbsp;podnikání.</span>
+            Začni vyhrávat <em>i&nbsp;doma</em>
+        </h2>
+        <p class="rmk-hero-lead">Tři večery pro&nbsp;ženaté podnikatele s&nbsp;dětmi. Jak přestat obětovávat své manželství za&nbsp;podnikatelský úspěch a&nbsp;stát se mužem, kterého Tvoje žena znovu respektuje.</p>
+        <p class="rmk-hero-by">
+            <img src="https://restartmuze.cz/wp-content/uploads/2026/05/slava-portret.webp" alt="Sláva Černý" width="44" height="44">
+            <span>Trénink vede <strong>Sláva&nbsp;Černý</strong></span>
+        </p>
+        <a href="https://kovarna.restartmuze.cz/?utm_source=restartmuze&utm_medium=homepage&utm_campaign=trenink-zari-2026" class="rmk-hero-cta">
+            Chci začít vyhrávat i&nbsp;doma
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" style="width:1rem;height:1rem;flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+        </a>
+        <div class="rmk-hero-meta">
+            <span class="rmk-hero-meta-item">Živě online + záznam</span>
+            <span class="rmk-hero-meta-item rmk-hero-meta-cena">Vstup od&nbsp;297&nbsp;Kč</span>
+            <span class="rmk-hero-meta-item">Max. 90&nbsp;minut večer</span>
+        </div>
+    </div>
+
+    <div class="rmk-hero-fade"></div>
+
+</section>

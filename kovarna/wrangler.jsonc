@@ -1,41 +1,49 @@
 {
-  // Worker se statickými soubory: Cloudflare servíruje ./public sám,
-  // do kódu v src/index.js doběhnou jen požadavky na /api/*.
-  "name": "kovarna",
-  "main": "src/index.js",
-  "compatibility_date": "2026-08-21",
+    // Chlapská kovárna — statický web na Cloudflare Workers (Static Assets).
+    // Nasazení:  npx wrangler deploy      (spouštět ze složky kovarna/)
+    // Přihlášení: npx wrangler login      (jednorázově, otevře prohlížeč)
+    "name": "chlapska-kovarna",
+    "main": "src/index.js",
+    "compatibility_date": "2026-08-22",
 
-  "assets": {
-    "directory": "./public",
-    "binding": "ASSETS",
+    // Dočasný náhled na subdoméně Restartu (domluva s Ondrou, 31. 8. 2026).
+    // Cloudflare si DNS záznam i certifikát založí sám. Až bude chlapskakovarna.cz,
+    // pattern se vymění a tahle subdoména se zruší.
+    "routes": [
+        { "pattern": "kovarna.restartmuze.cz", "custom_domain": true }
+    ],
 
-    // Jen tyhle cesty jdou do Workeru dřív než do statických souborů.
-    "run_worker_first": ["/api/*"],
+    // Statické soubory servíruje Cloudflare sám ze složky deploy/. Do kódu
+    // v src/index.js doběhnou jen požadavky na /api/* (viz run_worker_first).
+    "assets": {
+        "directory": "./deploy",
+        "binding": "ASSETS",
 
-    // /sluzby  ->  /sluzby/  ->  public/sluzby/index.html
-    "html_handling": "auto-trailing-slash",
+        "run_worker_first": ["/api/*"],
 
-    // Náhrada za ErrorDocument 404 z .htaccess (na Workers .htaccess neexistuje).
-    // Servíruje public/404.html se správným stavovým kódem 404.
-    "not_found_handling": "404-page"
-  },
+        // /gdpr/ → /gdpr/index.html, /gdpr → /gdpr/  (výchozí chování)
+        "html_handling": "auto-trailing-slash",
 
-  // Nastavení registrace na webinář (POST /api/registrace → CliqSales).
-  // API klíč sem NEPATŘÍ – nastavuje se jako secret (stejný název i token jako u Workeru webinar-stats):
-  //   npx wrangler secret put CLIQSALES_API_KEY
-  "vars": {
-    // Lokace (sub-account) CliqSales – stejná jako u webinar-stats.
-    "CLIQSALES_LOCATION_ID": "hWB2FWpsBEaVnj2BCUKs",
-    // Tagy termínů: hodnota radio buttonu ve formuláři = tag. Při změně termínů
-    // uprav i seznam ve snippets/registrace-webinar.html.
-    "TAGS_TERMINY": "webinar-06-09-26,webinar-13-09-26,webinar-17-09-26",
-    // Obecný tag pro každého registrovaného (na něj je navázané workflow v CliqSales).
-    "TAGS_REGISTRACE": "kovarna_webinar_registrace",
-    "SOURCE": "Web Kovárna – webinář"
-  },
+        // TODO: až vznikne deploy/404.html, přepnout na "404-page"
+        "not_found_handling": "none"
+    },
 
-  // Logy z console.* jsou vidět v dashboardu i přes `npx wrangler tail`.
-  "observability": {
-    "enabled": true
-  }
+    // Nastavení registrace na webinář (POST /api/registrace → CliqSales).
+    // API klíč sem NEPATŘÍ – nastavuje se jako secret (stejný název i token jako u Workeru webinar-stats):
+    //   npx wrangler secret put CLIQSALES_API_KEY
+    "vars": {
+        // Lokace (sub-account) CliqSales – stejná jako u webinar-stats.
+        "CLIQSALES_LOCATION_ID": "hWB2FWpsBEaVnj2BCUKs",
+        // Tagy termínů: hodnota radio buttonu ve formuláři = tag. Při změně termínů
+        // uprav i seznam v deploy/webinar/index.html (snippet registrace-webinar.html).
+        "TAGS_TERMINY": "webinar-06-09-26,webinar-13-09-26,webinar-17-09-26",
+        // Obecný tag pro každého registrovaného (na něj je navázané workflow v CliqSales).
+        "TAGS_REGISTRACE": "kovarna_webinar_registrace",
+        "SOURCE": "Web Kovárna – webinář"
+    },
+
+    // Logy z console.* jsou vidět v dashboardu i přes `npx wrangler tail`.
+    "observability": {
+        "enabled": true
+    }
 }

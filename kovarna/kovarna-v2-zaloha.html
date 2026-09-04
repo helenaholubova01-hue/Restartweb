@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <!-- ============================================================
+         KOVÁRNA — samostatný web
+         TODO DOMÉNA: přepiš `https://ZMEN-DOMENU.cz/` v canonical,
+         og:url a og:image. Fonty i obrázky jsou relativní (fonts/, img/),
+         takže fungují na jakékoliv doméně i v podsložce.
+         ============================================================ -->
+
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+
+    <!-- TODO ANALYTIKA: zatím kontejner Restart muže. Pro nový web vyměnit ID. -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+            var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MZ6KX3VV');</script>
+
+    <title>Kovárna — roční program pro ženaté podnikatele s dětmi</title>
+    <meta name="description" content="Vybudoval jsi firmu. Teď ukovej muže, kterému se nerozpadne rodina. Roční program pro ženaté podnikatele s dětmi. Vede Sláva Černý.">
+    <meta name="author" content="Sláva Černý">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://ZMEN-DOMENU.cz/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ZMEN-DOMENU.cz/">
+    <meta property="og:title" content="Kovárna — roční program pro ženaté podnikatele s dětmi">
+    <meta property="og:description" content="Vybudoval jsi firmu. Teď ukovej muže, kterému se nerozpadne rodina.">
+    <meta property="og:locale" content="cs_CZ">
+    <meta property="og:site_name" content="Kovárna">
+    <!-- TODO GRAFIKA: náhled 1200×630, černobílý -->
+    <meta property="og:image" content="https://ZMEN-DOMENU.cz/img/kovarna-og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preload" as="font" type="font/woff2" href="fonts/oswald-700-latin.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="fonts/oswald-700-latin-ext.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="fonts/open-sans-v44-latin_latin-ext-regular.woff2" crossorigin>
+    <link rel="preload" as="image" href="img/slava-studio.webp">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.9.2/dist/cookieconsent.css" media="print" onload="this.media='all'">
+
+    <!-- Oswald (SIL Open Font License) — úzký industriální grotesk pro nadpisy.
+         Dvě sady na váhu: `latin` má á é í ó ú ý, `latin-ext` má č ř š ž ě ů ď ť ň.
+         Prohlížeč si podle unicode-range stáhne jen to, co na stránce opravdu potřebuje. -->
+    <style>
+        @font-face { font-display: swap; font-family: 'Oswald'; font-style: normal; font-weight: 400; src: url('fonts/oswald-400-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+        @font-face { font-display: swap; font-family: 'Oswald'; font-style: normal; font-weight: 400; src: url('fonts/oswald-400-latin-ext.woff2') format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+        @font-face { font-display: swap; font-family: 'Oswald'; font-style: normal; font-weight: 500; src: url('fonts/oswald-500-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+        @font-face { font-display: swap; font-family: 'Oswald'; font-style: normal; font-weight: 500; src: url('fonts/oswald-500-latin-ext.woff2') format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+        @font-face { font-display: swap; font-family: 'Oswald'; font-style: normal; font-weight: 600; src: url('fonts/oswald-600-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+        @font-face { font-display: swap; font-family: 'Oswald'; font-style: normal; font-weight: 600; src: url('fonts/oswald-600-latin-ext.woff2') format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+        /* 700 pokrývá i váhu 800, kterou používají velké nadpisy — Oswald výš nejde */
+        @font-face { font-display: swap; font-family: 'Oswald'; font-style: normal; font-weight: 700 900; src: url('fonts/oswald-700-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+        @font-face { font-display: swap; font-family: 'Oswald'; font-style: normal; font-weight: 700 900; src: url('fonts/oswald-700-latin-ext.woff2') format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+        @font-face { font-display: swap; font-family: 'Open Sans'; font-style: normal; font-weight: 400; src: url('fonts/open-sans-v44-latin_latin-ext-regular.woff2') format('woff2'); }
+        @font-face { font-display: swap; font-family: 'Open Sans'; font-style: normal; font-weight: 600; src: url('fonts/open-sans-v44-latin_latin-ext-600.woff2') format('woff2'); }
+    </style>
+
+    <style>
+        /* =========================================================
+           KOVÁRNA — černobílý design systém, v2
+           Dvě polarity. Tmavá je výchozí, .invert celý blok otočí
+           na světlou. Komponenty barvy neřeší — čtou proměnné,
+           takže tlačítko, ikona i grafika se přebarví samy.
+           ========================================================= */
+        :root {
+            --bg:      #0a0a0a;
+            --bg-2:    #101010;
+            --fg:      #ffffff;
+            --fg-2:    #d5d5d5;
+            --fg-3:    #858585;
+            --line:    rgba(255, 255, 255, 0.15);
+            --line-2:  rgba(255, 255, 255, 0.08);
+            --btn-bg:  #ffffff;
+            --btn-fg:  #0a0a0a;
+            --btn-hov: #d4d4d4;
+
+            --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+            --font-body: 'Open Sans', 'Open Sans Fallback', sans-serif;
+
+            --fs-body: 1.12rem;
+            --maxw: 1240px;
+            --gut: 3rem;
+            --ease: cubic-bezier(0.2, 0.7, 0.3, 1);
+        }
+        .invert {
+            --bg:      #f3f1ee;
+            --bg-2:    #e9e6e2;
+            --fg:      #0a0a0a;
+            --fg-2:    #2b2b2b;
+            --fg-3:    #6a6a6a;
+            --line:    rgba(0, 0, 0, 0.18);
+            --line-2:  rgba(0, 0, 0, 0.09);
+            --btn-bg:  #0a0a0a;
+            --btn-fg:  #ffffff;
+            --btn-hov: #333333;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: auto; font-size: 19px; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+        body {
+            background: var(--bg); color: var(--fg-2);
+            font-family: var(--font-body); font-size: var(--fs-body); line-height: 1.75;
+            -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility; overflow-x: hidden;
+        }
+        /* zrno — struktura kovu, funguje na tmavé i světlé polaritě */
+        body::after {
+            content: ''; position: fixed; inset: 0; z-index: 3; pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
+            opacity: 0.05; mix-blend-mode: overlay;
+        }
+        ::selection { background: currentColor; }
+        :focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+
+        .skip {
+            position: absolute; left: -9999px; top: 0; z-index: 200;
+            background: #fff; color: #0a0a0a; padding: 0.8rem 1.4rem;
+            font-family: var(--font-display); font-weight: 700; font-size: 0.8rem;
+        }
+        .skip:focus { left: 0; }
+
+        .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gut); }
+        .col { max-width: 720px; }
+        .col-c { max-width: 720px; margin-left: auto; margin-right: auto; }
+
+        /* ===== TYPOGRAFIE ===== */
+        h1, h2, h3, h4 { font-family: var(--font-display); color: var(--fg); }
+        /* Oswald je úzký a vysoký — nesnese zápornou prostrkanost, kterou by chtěl
+           široký grotesk. Proto tracking na nule a řádkování o chlup volnější. */
+        h1 { font-weight: 800; font-size: clamp(2.6rem, 5.6vw, 4.4rem); line-height: 1.07; letter-spacing: 0; }
+        h2 { font-weight: 800; font-size: clamp(2rem, 4.5vw, 3.3rem); line-height: 1.1; letter-spacing: 0; }
+        h3 { font-weight: 600; font-size: 1.24rem; line-height: 1.35; letter-spacing: 0.005em; }
+        p { color: var(--fg-2); }
+        strong { color: var(--fg); font-weight: 600; }
+
+        .tag {
+            display: inline-flex; align-items: center; gap: 0.9rem;
+            font-family: var(--font-display); font-weight: 700; font-size: 0.74rem;
+            letter-spacing: 0.26em; text-transform: uppercase; color: var(--fg-3);
+            margin-bottom: 1.6rem;
+        }
+        .tag::before { content: ''; width: 2.4rem; height: 1px; background: currentColor; opacity: 0.7; }
+        .tag em { font-style: normal; color: var(--fg); }
+
+        .kicker {
+            font-family: var(--font-display); font-weight: 700;
+            font-size: clamp(1.15rem, 2.3vw, 1.45rem); line-height: 1.45;
+            color: var(--fg); margin-top: 2rem;
+        }
+
+        /* ===== SEKCE ===== */
+        .sec { position: relative; padding: 8.5rem 0; background: var(--bg); color: var(--fg-2); }
+        .sec--tight { padding: 6rem 0; }
+        .head { max-width: 900px; }
+        .head--c { max-width: 840px; margin: 0 auto; text-align: center; }
+        .head--c .tag { justify-content: center; }
+        .head h2 + p { margin-top: 1.6rem; font-size: 1.18rem; }
+        .copy > p { margin-bottom: 1.15rem; }
+        .copy > p:last-child { margin-bottom: 0; }
+
+        /* ===== NÁDECH — celoplošné prohlášení ===== */
+        .statement {
+            background: var(--bg); padding: 11rem 0; text-align: center;
+            border-top: 1px solid var(--line-2); border-bottom: 1px solid var(--line-2);
+        }
+        .statement p {
+            font-family: var(--font-display); font-weight: 800;
+            font-size: clamp(2.2rem, 6.4vw, 4.6rem); line-height: 1.1; letter-spacing: 0;
+            color: var(--fg); max-width: 20ch; margin: 0 auto;
+        }
+        .statement p em { font-style: normal; color: var(--fg-3); }
+
+        /* ===== TLAČÍTKO ===== */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 0.8rem;
+            padding: 1.1rem 2.7rem; background: var(--btn-bg); color: var(--btn-fg);
+            font-family: var(--font-display); font-weight: 700; font-size: 0.96rem;
+            text-decoration: none; border: none; border-radius: 100px; cursor: pointer;
+            text-transform: uppercase; letter-spacing: 0.06em; text-align: center;
+            transition: background 0.3s var(--ease), transform 0.2s var(--ease);
+        }
+        @media (hover: hover) { .btn:hover { background: var(--btn-hov); transform: scale(1.04); } }
+        .btn svg { width: 1.05rem; height: 1.05rem; flex-shrink: 0; }
+        .cta { margin-top: 2.75rem; }
+        .cta--c { text-align: center; }
+        .marks { display: flex; gap: 1.75rem; flex-wrap: wrap; margin-top: 1.3rem; }
+        .cta--c .marks { justify-content: center; }
+        .mark {
+            display: flex; align-items: center; gap: 0.5rem;
+            font-family: var(--font-display); font-weight: 600; font-size: 0.71rem;
+            letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-3);
+        }
+        .mark svg { width: 0.9rem; height: 0.9rem; flex-shrink: 0; color: var(--fg); }
+
+        /* ===== UKAZATEL POSUNU ===== */
+        .progress {
+            position: fixed; top: 0; left: 0; height: 2px; width: 0; z-index: 100;
+            background: #ffffff; mix-blend-mode: difference; pointer-events: none;
+        }
+
+        /* ===== HLAVIČKA ===== */
+        .site-head {
+            position: sticky; top: 0; z-index: 60;
+            background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+        .site-head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding-top: 0.9rem; padding-bottom: 0.9rem; }
+        .brand { display: inline-flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+        .brand svg { width: 26px; height: 26px; color: #fff; }
+        .brand span { font-family: var(--font-display); font-weight: 800; font-size: 0.92rem; letter-spacing: 0.32em; text-transform: uppercase; color: #fff; }
+        .site-nav { display: flex; align-items: center; gap: 2.1rem; }
+        .site-nav a {
+            font-family: var(--font-display); font-weight: 600; font-size: 0.71rem;
+            letter-spacing: 0.15em; text-transform: uppercase; color: #969696; text-decoration: none;
+            transition: color 0.2s;
+        }
+        @media (hover: hover) { .site-nav a:hover { color: #fff; } }
+        .site-head .btn { padding: 0.72rem 1.6rem; font-size: 0.71rem; background: #fff; color: #0a0a0a; }
+        @media (max-width: 980px) { .site-nav { display: none; } }
+        @media (max-width: 520px) { .site-head .btn { display: none; } }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative; overflow: hidden; background: #0a0a0a;
+            min-height: 92vh; display: flex; align-items: center;
+            padding: calc(5.5rem + env(safe-area-inset-top)) 0 9rem;
+        }
+        .hero-photo {
+            position: absolute; top: 0; right: 0; bottom: 0; width: 48%;
+            background: #0a0a0a url('img/slava-studio.webp') 80% 22% / cover no-repeat;
+            filter: grayscale(1) contrast(1.12) brightness(0.82);
+            -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 42%, #000 100%);
+            mask-image: linear-gradient(90deg, transparent 0%, #000 42%, #000 100%);
+        }
+        .hero-photo::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(90deg, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.2) 45%, rgba(10,10,10,0) 100%);
+        }
+        .hero .wrap { position: relative; z-index: 2; width: 100%; }
+        .hero-copy { max-width: 760px; }
+        .hero h1 { margin-bottom: 1.9rem; }
+        .hero h1 .thin {
+            display: block; font-weight: 400; color: var(--fg-3);
+            font-size: 0.36em; letter-spacing: 0.01em; margin-bottom: 1.2rem;
+        }
+        .hero-lead { font-size: 1.22rem; color: #d9d9d9; max-width: 40ch; }
+        .hero-by {
+            display: inline-flex; align-items: center; gap: 0.85rem; margin-top: 2.1rem;
+            font-family: var(--font-display); font-weight: 600; font-size: 0.84rem;
+            letter-spacing: 0.05em; color: var(--fg-3);
+        }
+        .hero-by img { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; filter: grayscale(1) contrast(1.06); }
+        .hero-by strong { color: #fff; font-weight: 700; }
+
+        /* spodní lišta hero — parametry programu */
+        .rail {
+            position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
+            border-top: 1px solid var(--line-2);
+            background: linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(10,10,10,0.85) 40%);
+        }
+        .rail-grid { display: grid; grid-template-columns: repeat(4, 1fr); max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gut); }
+        .rail-item { padding: 1.5rem 1.5rem 1.5rem 0; }
+        .rail-item + .rail-item { border-left: 1px solid var(--line-2); padding-left: 1.75rem; }
+        .rail-item b { display: block; font-family: var(--font-display); font-weight: 800; font-size: 1.4rem; color: #fff; letter-spacing: 0; line-height: 1.15; }
+        .rail-item span { display: block; font-size: 0.74rem; letter-spacing: 0.09em; text-transform: uppercase; color: #7d7d7d; margin-top: 0.4rem; }
+
+        /* ===== PROBLÉMY ===== */
+        .probs { display: grid; grid-template-columns: 1fr 1fr; margin-top: 4.5rem; border-top: 1px solid var(--line-2); }
+        .prob { padding: 3rem 3rem 3rem 0; border-bottom: 1px solid var(--line-2); }
+        .prob:nth-child(even) { padding-left: 3rem; padding-right: 0; border-left: 1px solid var(--line-2); }
+        .prob-n { font-family: var(--font-display); font-weight: 800; font-size: 0.72rem; letter-spacing: 0.22em; color: var(--fg-3); display: block; margin-bottom: 1rem; }
+        .prob h3 { margin-bottom: 1rem; font-size: 1.28rem; }
+        .prob p { font-size: 1.04rem; margin-bottom: 0.85rem; }
+        .prob p:last-child { margin-bottom: 0; }
+        .prob .quote { border-left: 2px solid var(--fg); padding-left: 1.1rem; color: var(--fg); font-weight: 600; }
+
+        /* ===== SEZNAMY ===== */
+        .list { list-style: none; padding: 0; margin: 1.8rem 0 0; display: flex; flex-direction: column; gap: 0.68rem; }
+        .list li { display: flex; gap: 1rem; align-items: flex-start; font-size: 1.05rem; line-height: 1.6; color: var(--fg); }
+        .list li::before { content: ''; flex-shrink: 0; width: 14px; height: 1px; margin-top: 0.85em; background: currentColor; opacity: 0.45; }
+        .list--icon li::before { display: none; }
+        .list--icon li svg { width: 1.1rem; height: 1.1rem; flex-shrink: 0; margin-top: 0.3em; color: var(--fg); }
+        .list--muted li { color: var(--fg-2); }
+        .list--muted li svg { color: var(--fg-3); }
+        .cols-2 { columns: 2; column-gap: 3rem; }
+        .cols-2 li { break-inside: avoid; }
+
+        /* ===== SPLIT: dva trojúhelníky vedle sebe ===== */
+        .split { display: grid; grid-template-columns: 1fr 1fr; }
+        .pane { background: var(--bg); color: var(--fg-2); padding: 5.5rem 3.5rem 6rem; }
+        .pane-label {
+            font-family: var(--font-display); font-weight: 800; font-size: 0.76rem;
+            letter-spacing: 0.3em; text-transform: uppercase; color: var(--fg);
+            padding-bottom: 1.4rem; border-bottom: 1px solid var(--line); margin-bottom: 2.5rem;
+            display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
+        }
+        .pane-label em { font-style: normal; color: var(--fg-3); letter-spacing: 0.18em; font-weight: 700; }
+        .pane figure svg { width: 100%; max-width: 460px; height: auto; display: block; margin: 0 auto; color: var(--fg); }
+        .pane figcaption {
+            font-family: var(--font-display); font-weight: 700; font-size: 0.7rem;
+            letter-spacing: 0.2em; text-transform: uppercase; color: var(--fg-3);
+            text-align: center; margin-top: 1.4rem;
+        }
+        .pane-rows { margin-top: 3rem; }
+        .pane-row { padding: 1.6rem 0; border-top: 1px solid var(--line-2); }
+        .pane-row:first-child { border-top: none; padding-top: 0; }
+        .pane-row:last-child { padding-bottom: 0; }
+        .pane-row h3 { margin-bottom: 0.55rem; }
+        .pane-row p { font-size: 1.01rem; }
+
+        .triad {
+            font-family: var(--font-display); font-weight: 800;
+            font-size: clamp(1.5rem, 4vw, 2.5rem); letter-spacing: 0.01em;
+            color: var(--fg); line-height: 1.2; margin-top: 1.2rem;
+        }
+
+        /* ===== 5 FÁZÍ KOVÁNÍ ===== */
+        .forge { display: grid; grid-template-columns: repeat(5, 1fr); margin-top: 4rem; border: 1px solid var(--line-2); }
+        .forge-step { padding: 2.4rem 1.25rem; text-align: center; border-right: 1px solid var(--line-2); }
+        .forge-step:last-child { border-right: none; }
+        .forge-step svg { width: 2.1rem; height: 2.1rem; color: var(--fg); margin-bottom: 1rem; }
+        .forge-step b { display: block; font-family: var(--font-display); font-weight: 800; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg); }
+        .forge-step small { display: block; font-size: 0.75rem; color: var(--fg-3); margin-top: 0.45rem; line-height: 1.5; }
+
+        /* ===== METODA ===== */
+        .steps { margin-top: 4.5rem; }
+        .step { display: grid; grid-template-columns: 6rem 1fr; gap: 2.5rem; padding: 3.25rem 0; border-top: 1px solid var(--line-2); }
+        .step:last-child { border-bottom: 1px solid var(--line-2); }
+        .step-n { font-family: var(--font-display); font-weight: 800; font-size: 3.9rem; line-height: 0.9; color: var(--fg); opacity: 0.16; letter-spacing: 0; }
+        .step h3 { margin-bottom: 0.95rem; font-size: 1.38rem; }
+        .step p { font-size: 1.05rem; margin-bottom: 0.85rem; }
+        .step p:last-child { margin-bottom: 0; }
+
+        .flow { display: flex; flex-wrap: wrap; margin: 1.9rem 0; border: 1px solid var(--line); }
+        .flow-cell { flex: 1 1 0; min-width: 130px; padding: 1.2rem 1rem; text-align: center; border-right: 1px solid var(--line-2); }
+        .flow-cell:last-child { border-right: none; }
+        .flow-cell b { display: block; font-family: var(--font-display); font-weight: 800; font-size: 0.73rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg); }
+        .flow-cell i { font-style: normal; display: block; font-size: 0.69rem; color: var(--fg-3); margin-top: 0.32rem; letter-spacing: 0.05em; }
+
+        /* ===== CO DOSTANEŠ ===== */
+        .gets { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 4.5rem; background: var(--line-2); border: 1px solid var(--line-2); }
+        .get { background: var(--bg); padding: 2.75rem 2.25rem; }
+        .get--wide { grid-column: span 2; }
+        .get .ic { width: 1.8rem; height: 1.8rem; color: var(--fg); margin-bottom: 1.35rem; }
+        .get h3 { margin-bottom: 0.85rem; }
+        .get p { font-size: 1rem; }
+        .get .list { margin-top: 1.15rem; }
+        .get .list li { font-size: 0.97rem; }
+
+        /* ===== VÝSLEDEK ===== */
+        .becomes { display: grid; grid-template-columns: 1fr 1fr; gap: 3.25rem 4.5rem; margin-top: 4.5rem; }
+        .become h3 { margin-bottom: 1.15rem; padding-bottom: 1.15rem; border-bottom: 1px solid var(--line-2); }
+        .become .list { margin-top: 0; }
+
+        /* ===== REFERENCE ===== */
+        .ref-slot { margin-top: 3.5rem; border: 1px dashed var(--line); padding: 4.5rem 2rem; text-align: center; color: var(--fg-3); }
+        .ref-slot b { display: block; font-family: var(--font-display); font-weight: 800; font-size: 0.76rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--fg); margin-bottom: 0.8rem; }
+
+        /* ===== KVALIFIKACE ===== */
+        .fit { display: grid; grid-template-columns: 1.15fr 0.85fr; margin-top: 4.5rem; border: 1px solid var(--line-2); }
+        .fit-col { padding: 3rem 2.75rem; }
+        .fit-col + .fit-col { border-left: 1px solid var(--line-2); }
+        .fit-col h3 { font-size: 0.76rem; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 1.75rem; }
+        .fit-col--no h3 { color: var(--fg-3); }
+
+        /* ===== SLÁVA ===== */
+        .who { display: grid; grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr); gap: 4.5rem; align-items: center; margin-top: 4.5rem; }
+        .who-photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 74% 26%; display: block; filter: grayscale(1) contrast(1.1) brightness(0.95); }
+        .who-quote {
+            font-family: var(--font-display); font-weight: 700;
+            font-size: clamp(1.15rem, 2.2vw, 1.42rem); line-height: 1.45; color: var(--fg);
+            border-left: 2px solid var(--fg); padding-left: 1.6rem; margin-top: 2.4rem;
+        }
+        .stats { display: flex; gap: 3.5rem; flex-wrap: wrap; margin-top: 2.75rem; padding-top: 2rem; border-top: 1px solid var(--line-2); }
+        .stat-num { font-family: var(--font-display); font-weight: 800; font-size: 1.95rem; color: var(--fg); line-height: 1; letter-spacing: 0; }
+        .stat-lab { font-size: 0.76rem; color: var(--fg-3); margin-top: 0.45rem; letter-spacing: 0.05em; }
+
+        /* ===== INVESTICE ===== */
+        .price-head { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: end; padding-bottom: 2.25rem; border-bottom: 1px solid var(--line); }
+        .price-num { font-family: var(--font-display); font-weight: 800; font-size: clamp(3.1rem, 9vw, 6.2rem); line-height: 0.95; letter-spacing: 0; color: var(--fg); }
+        .price-sub { font-family: var(--font-display); font-weight: 700; font-size: 0.76rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--fg-3); text-align: right; line-height: 1.8; }
+        .price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem 4.5rem; margin-top: 3.25rem; }
+        .price-grid h3 { font-size: 0.76rem; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 1.35rem; }
+        .booking { margin-top: 4rem; border: 1px solid var(--fg); padding: 3.5rem 2.5rem; text-align: center; }
+        .booking h3 { font-size: clamp(1.35rem, 2.7vw, 1.85rem); margin-bottom: 1rem; }
+        .booking > p { max-width: 48ch; margin: 0 auto; }
+        .fineprint { font-size: 0.81rem; color: var(--fg-3); line-height: 1.65; max-width: 62ch; margin: 1.75rem auto 0; }
+
+        /* ===== FAQ ===== */
+        .faq { margin-top: 3.5rem; border-top: 1px solid var(--line-2); }
+        .faq-item { border-bottom: 1px solid var(--line-2); }
+        .faq-q {
+            width: 100%; background: none; border: none; cursor: pointer; color: var(--fg);
+            display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+            padding: 1.7rem 0; text-align: left;
+            font-family: var(--font-display); font-weight: 700; font-size: 1.08rem; line-height: 1.4;
+        }
+        .faq-q svg { width: 1rem; height: 1rem; flex-shrink: 0; transition: transform 0.3s var(--ease); }
+        .faq-item.open .faq-q svg { transform: rotate(45deg); }
+        .faq-a { display: none; padding: 0 0 1.85rem; max-width: 68ch; }
+        .faq-item.open .faq-a { display: block; }
+        .faq-a p { margin-bottom: 0.8rem; color: var(--fg); }
+        .faq-a p:last-child { margin-bottom: 0; }
+
+        /* ===== ZÁVĚR ===== */
+        .close-triad { display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 3.25rem; }
+        .close-triad span {
+            font-family: var(--font-display); font-weight: 800;
+            font-size: clamp(1.25rem, 3.1vw, 2.1rem); line-height: 1.32; color: var(--fg); letter-spacing: 0;
+        }
+        .close-triad span em { font-style: normal; color: var(--fg-3); }
+
+        /* ===== PATIČKA (dočasná) ===== */
+        .site-foot { background: #060606; border-top: 1px solid rgba(255, 255, 255, 0.08); padding: 4.5rem 0 2rem; text-align: center; }
+        .foot-brand { display: inline-flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; }
+        .foot-brand svg { width: 26px; height: 26px; color: #fff; }
+        .foot-brand span { font-family: var(--font-display); font-weight: 800; font-size: 0.9rem; letter-spacing: 0.32em; text-transform: uppercase; color: #fff; }
+        .site-foot p { font-size: 0.88rem; color: #8a8a8a; max-width: 46ch; margin: 0 auto; }
+        .foot-bottom { margin-top: 3rem; padding: 1.5rem 0 calc(0.5rem + env(safe-area-inset-bottom)); border-top: 1px solid rgba(255, 255, 255, 0.07); font-size: 0.75rem; color: #5c5c5c; }
+
+        /* ===== STICKY CTA + ZPĚT NAHORU ===== */
+        .sticky {
+            position: fixed; right: 1.75rem; bottom: max(1.25rem, env(safe-area-inset-bottom));
+            z-index: 90; opacity: 0; visibility: hidden; transform: translateY(10px);
+            transition: opacity 0.35s var(--ease), visibility 0.35s var(--ease), transform 0.35s var(--ease);
+        }
+        .sticky.active { opacity: 1; visibility: visible; transform: none; }
+        .sticky .btn { background: #fff; color: #0a0a0a; box-shadow: 0 10px 34px rgba(0, 0, 0, 0.6); }
+        @media (hover: hover) { .sticky .btn:hover { background: #d4d4d4; } }
+        @media (max-width: 768px) {
+            .sticky { left: 1rem; right: 1rem; bottom: 0; padding-bottom: calc(0.5rem + env(safe-area-inset-bottom)); }
+            .sticky .btn { width: 100%; padding: 0.95rem 1.5rem; font-size: 0.8rem; }
+        }
+        .totop {
+            position: fixed; right: 1.75rem; bottom: 1.25rem; width: 44px; height: 44px;
+            background: transparent; border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 50%;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden; z-index: 85;
+            transition: opacity 0.3s var(--ease), visibility 0.3s var(--ease), background 0.2s, transform 0.2s;
+        }
+        .totop.visible { opacity: 1; visibility: visible; }
+        @media (hover: hover) { .totop:hover { background: rgba(255, 255, 255, 0.12); transform: scale(1.08); } }
+        .totop svg { width: 18px; height: 18px; fill: none; stroke: #fff; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+        @media (max-width: 768px) { .totop.above-sticky { bottom: 86px; } }
+
+        /* ===== POSTUPNÉ ODKRÝVÁNÍ ===== */
+        .rv { opacity: 0; transform: translateY(20px); transition: opacity 0.75s var(--ease), transform 0.75s var(--ease); }
+        .rv.in { opacity: 1; transform: none; }
+        @media (prefers-reduced-motion: reduce) {
+            .rv { opacity: 1; transform: none; transition: none; }
+            html { scroll-behavior: auto; }
+            .btn, .totop, .faq-q svg { transition: none; }
+        }
+
+        /* ===== COOKIE BANNER — černobílý ===== */
+        #cc--main {
+            --cc-bg: #0f0f0f; --cc-text: #d5d5d5;
+            --cc-btn-primary-bg: #ffffff; --cc-btn-primary-text: #0a0a0a; --cc-btn-primary-hover-bg: #d4d4d4;
+            --cc-btn-secondary-bg: #1e1e1e; --cc-btn-secondary-text: #ffffff; --cc-btn-secondary-hover-bg: #2c2c2c;
+            --cc-toggle-bg-off: #3a3a3a; --cc-toggle-bg-on: #ffffff; --cc-toggle-bg-readonly: #2a2a2a;
+            --cc-toggle-knob-bg: #0a0a0a; --cc-toggle-knob-icon-color: #0a0a0a;
+            --cc-cookie-category-block-bg: #151515; --cc-cookie-category-block-bg-hover: #1c1c1c;
+            --cc-section-border: #262626; --cc-block-text: #b2b2b2;
+            --cc-webkit-scrollbar-bg: #262626; --cc-webkit-scrollbar-bg-hover: #3a3a3a;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1180px) {
+            :root { --gut: 2rem; }
+            .hero-photo { width: 42%; }
+            .pane { padding: 4rem 2.25rem 4.5rem; }
+        }
+        @media (max-width: 1000px) {
+            .split { grid-template-columns: 1fr; }
+            .gets { grid-template-columns: 1fr 1fr; }
+            .get--wide { grid-column: span 2; }
+            .who { grid-template-columns: 1fr; gap: 3rem; }
+            .who-photo { max-width: 340px; }
+            .hero-photo {
+                width: 100%; height: 52%; bottom: auto;
+                background-position: 100% 12%;
+                -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 38%, transparent 96%);
+                mask-image: linear-gradient(180deg, #000 0%, #000 38%, transparent 96%);
+            }
+            .hero-photo::after { background: linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.2) 40%, rgba(10,10,10,1) 100%); }
+            .hero { min-height: 0; padding: calc(20rem + env(safe-area-inset-top)) 0 3rem; align-items: flex-end; }
+            .rail { position: static; background: none; margin-top: 3rem; border-top: none; }
+            .rail-grid { grid-template-columns: 1fr 1fr; padding: 0; border-top: 1px solid var(--line-2); }
+            .rail-item { padding: 1.35rem 1rem 1.35rem 0; border-top: 1px solid var(--line-2); }
+            .rail-item:nth-child(-n+2) { border-top: none; }
+            .rail-item + .rail-item { border-left: none; padding-left: 0; }
+            .rail-item:nth-child(even) { padding-left: 1.5rem; border-left: 1px solid var(--line-2); }
+        }
+        @media (max-width: 860px) {
+            :root { --gut: 1.5rem; }
+            .sec { padding: 4.75rem 0; }
+            .sec--tight { padding: 3.5rem 0; }
+            .statement { padding: 6rem 0; }
+            .statement p { max-width: none; }
+            .probs { grid-template-columns: 1fr; }
+            .prob, .prob:nth-child(even) { padding: 2.25rem 0; border-left: none; }
+            .gets { grid-template-columns: 1fr; }
+            .get--wide { grid-column: span 1; }
+            .get { padding: 2.25rem 1.5rem; }
+            .cols-2 { columns: 1; }
+            .becomes { grid-template-columns: 1fr; gap: 2.75rem; }
+            .fit { grid-template-columns: 1fr; }
+            .fit-col { padding: 2.25rem 1.5rem; }
+            .fit-col + .fit-col { border-left: none; border-top: 1px solid var(--line-2); }
+            .price-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .price-head { grid-template-columns: 1fr; gap: 0.9rem; align-items: start; }
+            .price-sub { text-align: left; }
+            .booking { padding: 2.5rem 1.5rem; }
+            .step { grid-template-columns: 1fr; gap: 1rem; padding: 2.5rem 0; }
+            .step-n { font-size: 2.5rem; }
+            .forge { grid-template-columns: 1fr 1fr; }
+            .forge-step { border-bottom: 1px solid var(--line-2); }
+            .forge-step:nth-child(odd) { border-right: 1px solid var(--line-2); }
+            .forge-step:nth-child(even) { border-right: none; }
+            .forge-step:last-child { grid-column: span 2; border-bottom: none; border-right: none; }
+            .flow-cell { flex: 1 1 50%; min-width: 50%; border-bottom: 1px solid var(--line-2); }
+            .flow-cell:nth-child(even) { border-right: none; }
+            .flow-cell:nth-last-child(-n+2) { border-bottom: none; }
+            .pane { padding: 3.25rem 1.5rem 3.5rem; }
+            .stats { gap: 2rem 2.5rem; }
+            .totop { right: 1rem; }
+        }
+        @media (max-width: 768px) { html { font-size: 16px; } }
+    </style>
+</head>
+
+<body>
+    <a class="skip" href="#obsah">Přeskočit na obsah</a>
+    <div class="progress" id="progress"></div>
+
+    <!-- ===================== HLAVIČKA ===================== -->
+    <header class="site-head">
+        <div class="wrap">
+            <a href="#top" class="brand" aria-label="Kovárna — na začátek">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M1.6 8.2c1.9-1.5 4-2.2 6.4-2.2h10l3 1v2l-3 1.1h-2.1l-1 3.8 3 1.4.6 2.7H5.5l.6-2.7 3-1.4-1-3.8H6C4.3 10.1 2.8 9.5 1.6 8.2Z"/></svg>
+                <span>Kovárna</span>
+            </a>
+            <nav class="site-nav" aria-label="Hlavní">
+                <a href="#problem">Problém</a>
+                <a href="#trojuhelnik">Trojúhelník</a>
+                <a href="#program">Program</a>
+                <a href="#pro-koho">Pro koho</a>
+                <a href="#investice">Investice</a>
+                <a href="#faq">Otázky</a>
+            </nav>
+            <a href="#rezervace" class="btn">Vstupní rozhovor</a>
+        </div>
+    </header>
+
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" id="top">
+        <div class="hero-photo" role="img" aria-label="Sláva Černý"></div>
+        <div class="wrap">
+            <div class="hero-copy">
+                <div class="tag"><em>Kovárna</em> · roční program</div>
+                <h1>
+                    <span class="thin">Vybudoval jsi firmu.</span>
+                    Teď ukovej muže, kterému se nerozpadne rodina.
+                </h1>
+                <p class="hero-lead">Kovárna je prostředí pro ženaté podnikatele s&nbsp;dětmi, kteří k&nbsp;úspěchu v&nbsp;podnikání chtějí přidat i&nbsp;úspěch v&nbsp;rodině.</p>
+                <p class="hero-by">
+                    <img src="img/slava-portret.webp" alt="" width="42" height="42" aria-hidden="true">
+                    Kovárnu vede <strong>Sláva Černý</strong>
+                </p>
+                <div class="cta">
+                    <a href="#rezervace" class="btn">Chci zjistit, jestli patřím do&nbsp;Kovárny</a>
+                    <div class="marks">
+                        <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>15minutový vstupní rozhovor</span>
+                        <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Rezervace Tě nezavazuje</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="rail">
+            <div class="rail-grid">
+                <div class="rail-item"><b>12&nbsp;měsíců</b><span>délka programu</span></div>
+                <div class="rail-item"><b>50&nbsp;000&nbsp;Kč</b><span>investice</span></div>
+                <div class="rail-item"><b>4× ročně</b><span>osobní setkání</span></div>
+                <div class="rail-item"><b>Přes rozhovor</b><span>vstup do programu</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== 01 PROBLÉM ===================== -->
+    <section class="sec" id="obsah">
+        <div class="wrap">
+            <div class="head rv" id="problem">
+                <div class="tag"><em>01</em> · Problém</div>
+                <h2>Největší riziko Tvého podnikání není konkurence. Je to napětí v&nbsp;rodině.</h2>
+                <p>Možná se Ti ve firmě daří. Vyděláváš víc než dřív. Vedeš lidi. Řešíš problémy, se kterými by si většina lidí nevěděla rady. Ale doma začínáš prohrávat.</p>
+            </div>
+
+            <div class="probs">
+                <div class="prob rv">
+                    <span class="prob-n">01</span>
+                    <h3>Se ženou si přestáváte rozumět</h3>
+                    <p>Každý těžší rozhovor může skončit hádkou nebo tichem. Některým tématům se raději úplně vyhýbáš. Máš pocit, že cokoliv řekneš, bude špatně. Fungujete jako spolubydlící a&nbsp;manažeři domácnosti.</p>
+                    <p>Domů se netěšíš tak jako dřív. Mnohdy raději zůstaneš déle v&nbsp;práci, protože tam alespoň víš, co máš dělat.</p>
+                </div>
+                <div class="prob rv">
+                    <span class="prob-n">02</span>
+                    <h3>Jsi doma, ale nejsi přítomný</h3>
+                    <p>Sedíš se svou rodinou, ale hlavou jsi pořád ve firmě. Telefon má přednost. Další zakázka má přednost. Další problém má přednost.</p>
+                    <p class="quote">„Až bude firma stabilnější, budu mít na rodinu víc času.“</p>
+                    <p>Jenže firma nikdy nebude hotová. A&nbsp;zatímco čekáš, Tvoje děti si zvykají, že táta není skutečně přítomný. Tvoje žena se učí zvládat život bez Tebe.</p>
+                </div>
+                <div class="prob rv">
+                    <span class="prob-n">03</span>
+                    <h3>Z&nbsp;vašeho vztahu se vytrácí blízkost</h3>
+                    <p>Přestáváte spolu trávit čas jako muž a&nbsp;žena. Doteky, objetí a&nbsp;sex jsou čím dál vzácnější. Řešíte děti, domácnost, peníze a&nbsp;povinnosti. Ale přestáváte řešit vás dva.</p>
+                    <p>Začínáš pochybovat, jestli Tě žena ještě opravdu chce. Cítíš se doma osaměle, přestože v&nbsp;něm nejsi sám.</p>
+                </div>
+                <div class="prob rv">
+                    <span class="prob-n">04</span>
+                    <h3>Přestáváš být mužem, kterým se chceš být</h3>
+                    <p>V&nbsp;práci dokážeš vést lidi. Doma často nedokážeš vést ani sám sebe. Víš, že můžeš být lepším manželem a&nbsp;tátou. Přesto znovu reaguješ způsobem, za který se později stydíš.</p>
+                    <p>Navenek úspěšný podnikatel. Uvnitř zklamaný muž. A&nbsp;obrat firmy už nedokáže vyvážit pocit, že doma nejsi člověkem, kterým ses chtěl stát.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== NÁDECH ===================== -->
+    <section class="statement">
+        <div class="wrap rv">
+            <p>Nejsi rozbitý. <em>Jen Tě to nikdo nenaučil.</em></p>
+        </div>
+    </section>
+
+    <!-- ===================== 02 PROČ SE TO DĚJE ===================== -->
+    <section class="sec sec--tight">
+        <div class="wrap">
+            <div class="head rv">
+                <div class="tag"><em>02</em> · Proč se to děje</div>
+                <h2>Nikdo Tě nenaučil vést to, co po Tobě život každý den chce</h2>
+            </div>
+            <div class="col copy rv" style="margin-top: 2.75rem;">
+                <p>Když ses učil podnikat, učil ses prodávat, vyjednávat, řídit finance nebo vést tým. Nikdo Tě ale nenaučil, jak zároveň vést:</p>
+                <ul class="list">
+                    <li>sám sebe,</li>
+                    <li>svou ženu s&nbsp;láskou a&nbsp;respektem,</li>
+                    <li>své děti,</li>
+                    <li>svůj čas,</li>
+                    <li>a&nbsp;směr svého života.</li>
+                </ul>
+                <p style="margin-top: 1.9rem;">Přesto to od sebe každý den očekáváš. Když to nezvládáš, začneš hledat problém ve své ženě, zaměstnancích nebo okolnostech.</p>
+                <p>Nebo utečeš. Do práce. Do telefonu. Do výkonu. Do jídla, alkoholu, sportu, porna nebo jiné ženy. Každý muž utíká jinam.</p>
+                <p class="kicker">Princip je stejný: nechce se podívat na pravdu, kterou už uvnitř dávno zná.</p>
+                <p style="margin-top: 1.3rem;">A&nbsp;je mnohem jednodušší utišit tu bolest útěkem, který je tak jednoduchý.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== 03 TROJÚHELNÍK ===================== -->
+    <section class="sec sec--tight" id="trojuhelnik">
+        <div class="wrap">
+            <div class="head head--c rv">
+                <div class="tag"><em>03</em> · Trojúhelník</div>
+                <h2>Každý ženatý podnikatel žije uvnitř stejného trojúhelníku</h2>
+                <p class="triad">Manželství. Peníze. Smysl.</p>
+                <p>Tyto tři síly jsou přítomné v&nbsp;životě každého ženatého podnikatele. Tvoje manželství. Tvoje podnikání a&nbsp;peníze. A&nbsp;otázka, proč to všechno vlastně děláš. Problém není v&nbsp;tom, že tento trojúhelník existuje. <strong>Problém je, co se s&nbsp;Tebou děje pod jeho tlakem.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- GRAFIKA: dva stavy stejného trojúhelníku vedle sebe — to je celý argument stránky -->
+    <div class="split">
+        <div class="pane">
+            <div class="pane-label"><span>Trojúhelník šílenství</span><em>Dnes</em></div>
+            <figure class="rv">
+                <svg viewBox="0 0 620 500" role="img" aria-label="Trojúhelník šílenství: manželství, peníze a smysl táhnou muže uprostřed každý jiným směrem">
+                    <defs>
+                        <marker id="ar-out" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                            <path d="M0 0 L10 5 L0 10 z" fill="currentColor"/>
+                        </marker>
+                    </defs>
+                    <polygon points="310,74 566,434 54,434" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="9 7" opacity="0.5"/>
+                    <circle cx="310" cy="74" r="6" fill="currentColor"/>
+                    <circle cx="566" cy="434" r="6" fill="currentColor"/>
+                    <circle cx="54" cy="434" r="6" fill="currentColor"/>
+                    <g font-family="Oswald, sans-serif" font-size="15" font-weight="800" letter-spacing="3" fill="currentColor">
+                        <text x="310" y="42" text-anchor="middle">MANŽELSTVÍ</text>
+                        <text x="42" y="470" text-anchor="start">PENÍZE</text>
+                        <text x="578" y="470" text-anchor="end">SMYSL</text>
+                    </g>
+                    <circle cx="310" cy="314" r="44" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.55" stroke-dasharray="5 6"/>
+                    <path d="M300 274 l12 18 -14 14 12 18 -10 16" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.45"/>
+                    <text x="310" y="322" text-anchor="middle" font-family="Oswald, sans-serif" font-size="16" font-weight="800" letter-spacing="2" fill="currentColor">TY</text>
+                    <g stroke="currentColor" stroke-width="2" marker-end="url(#ar-out)">
+                        <line x1="310" y1="252" x2="310" y2="150"/>
+                        <line x1="256" y1="340" x2="174" y2="378"/>
+                        <line x1="364" y1="340" x2="446" y2="378"/>
+                    </g>
+                </svg>
+                <figcaption>Každá síla táhne jinam — a&nbsp;trhá Tě</figcaption>
+            </figure>
+            <div class="pane-rows rv">
+                <div class="pane-row">
+                    <h3>Manželství Tě vysává</h3>
+                    <p>Doma jsi ve střehu. Vyhýbáš se rozhovorům. Ztrácíš respekt, blízkost a&nbsp;intimitu. Místo aby Ti manželství dávalo sílu, bere Ti energii, kterou potom nemáš ani pro sebe, ani pro firmu.</p>
+                </div>
+                <div class="pane-row">
+                    <h3>Peníze Tě zotročují</h3>
+                    <p>Vyděláváš víc, ale musíš také víc pracovat. Rodinu zabezpečuješ, ale postupně se jí vzdaluješ. Peníze už nerozšiřují Tvoje možnosti. Začínají určovat, jak dlouho pracuješ, co toleruješ a&nbsp;jak žiješ.</p>
+                </div>
+                <div class="pane-row">
+                    <h3>Smysl se vytrácí</h3>
+                    <p>Plníš další cíle. Zvyšuješ obrat. Buduješ větší firmu. Ale stále častěji se ptáš: „Proč tohle všechno vlastně dělám?“ Výkon pokračuje. Jenže uvnitř přichází prázdno.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="pane invert">
+            <div class="pane-label"><span>Trojúhelník transformace</span><em>Po roce</em></div>
+            <figure class="rv">
+                <svg viewBox="0 0 620 500" role="img" aria-label="Trojúhelník transformace: manželství, peníze a smysl posilují muže uprostřed">
+                    <defs>
+                        <marker id="ar-in" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                            <path d="M0 0 L10 5 L0 10 z" fill="currentColor"/>
+                        </marker>
+                    </defs>
+                    <polygon points="310,74 566,434 54,434" fill="none" stroke="currentColor" stroke-width="2.5"/>
+                    <circle cx="310" cy="74" r="7" fill="currentColor"/>
+                    <circle cx="566" cy="434" r="7" fill="currentColor"/>
+                    <circle cx="54" cy="434" r="7" fill="currentColor"/>
+                    <g font-family="Oswald, sans-serif" font-size="15" font-weight="800" letter-spacing="3" fill="currentColor">
+                        <text x="310" y="42" text-anchor="middle">MANŽELSTVÍ</text>
+                        <text x="42" y="470" text-anchor="start">PENÍZE</text>
+                        <text x="578" y="470" text-anchor="end">SMYSL</text>
+                    </g>
+                    <circle cx="310" cy="314" r="46" fill="currentColor"/>
+                    <text x="310" y="322" text-anchor="middle" font-family="Oswald, sans-serif" font-size="16" font-weight="800" letter-spacing="2" style="fill: var(--bg)">TY</text>
+                    <g stroke="currentColor" stroke-width="2.5" marker-end="url(#ar-in)">
+                        <line x1="310" y1="150" x2="310" y2="250"/>
+                        <line x1="174" y1="378" x2="256" y2="340"/>
+                        <line x1="446" y1="378" x2="364" y2="340"/>
+                    </g>
+                </svg>
+                <figcaption>Stejné síly, opačný směr — a&nbsp;kovou Tě</figcaption>
+            </figure>
+            <div class="pane-rows rv">
+                <div class="pane-row">
+                    <h3>Manželství Tě posiluje</h3>
+                    <p>Ne proto, že už nikdy nepřijde konflikt. Ale protože před ním neutíkáš. Dokážeš svou ženu vyslechnout. Říct pravdu. Udržet své emoce a&nbsp;mít kapacitu na ty její. Nastavit hranici. A&nbsp;vést nepříjemný rozhovor bez útoku, obhajování nebo ticha. Tvoje žena se postupně přestává cítit sama. Znovu se může stát Tvým nejbližším spojencem.</p>
+                </div>
+                <div class="pane-row">
+                    <h3>Peníze rozšiřují Tvoje možnosti</h3>
+                    <p>Už jimi nemusíš nahrazovat svoji nepřítomnost. Nemusíš dokazovat svou hodnotu dalším obratem, autem nebo projektem. Peníze znovu získají své správné místo. Stanou se nástrojem pro život, který vědomě vedeš — ne pánem, kterému obětuješ sebe a&nbsp;svou rodinu.</p>
+                </div>
+                <div class="pane-row">
+                    <h3>Smysl dává Tvému úspěchu směr</h3>
+                    <p>Už nebuduješ firmu jen proto, abys dosáhl dalšího čísla. Víš, jakým mužem se chceš stát. Jakou rodinu chceš vést. Co chceš předat svým dětem. A&nbsp;proč má Tvoje podnikání v&nbsp;celém tomto obrazu své místo.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== 04 PROČ OPRAVA JEDNOHO VRCHOLU NESTAČÍ ===================== -->
+    <section class="sec">
+        <div class="wrap">
+            <div class="head rv">
+                <div class="tag"><em>04</em> · Proč to nefunguje</div>
+                <h2>Většina mužů se snaží opravit jeden vrchol trojúhelníku</h2>
+            </div>
+            <div class="col copy rv" style="margin-top: 2.75rem;">
+                <p>Začnou víc pracovat, aby vydělali další peníze. Vezmou rodinu na drahou dovolenou, aby napravili, že doma nejsou. Kupují si děti drahými věcmi. Snaží se být několik týdnů hodnější, pozornější a&nbsp;poslušnější, aby uklidnili manželku. Nebo hledají nový cíl, projekt či výzvu, aby znovu cítili smysl.</p>
+                <p>Jenže tím se nezmění celý systém. Pouze na chvíli uhasí jeden požár. Pak přijde další tlak — a&nbsp;muž se vrátí ke stejnému chování. Protože skutečný problém neleží na jednom z&nbsp;vrcholů.</p>
+                <p class="kicker">Skutečný problém je v&nbsp;tom, že jsi nebyl trénovaný na tento život.</p>
+                <p style="margin-top: 1.3rem;">Protože ses nikdy nenaučil unést tlak manželství, peněz a&nbsp;smyslu tak, aby Tě neroztrhal. Nenaučil ses:</p>
+                <ul class="list">
+                    <li>zachytit, co se v&nbsp;Tobě skutečně děje,</li>
+                    <li>přestat před sebou utíkat,</li>
+                    <li>říct si pravdu,</li>
+                    <li>vědomě pracovat se svými emocemi,</li>
+                    <li>rozhodovat se podle svého standardu,</li>
+                    <li>a&nbsp;zůstat pevným mužem, i&nbsp;když je doma nebo ve firmě tlak.</li>
+                </ul>
+                <p style="margin-top: 1.9rem;">Dokud se nezmění muž uprostřed, budou ho všechny tři vrcholy dál tahat každý jiným směrem. Cesta ven proto není v&nbsp;tom, že opravíš jen manželství. Ani v&nbsp;tom, že budeš méně pracovat. Ani v&nbsp;tom, že si najdeš větší cíl.</p>
+                <p class="kicker">Cesta ven začíná tím, že začneš kovat sám sebe. Každý den.</p>
+                <p style="margin-top: 1.3rem;">Trojúhelník transformace není jiný život. Je to jiný muž uprostřed stejného života. Pořád budeš řešit firmu. Pořád budou přicházet konflikty. Pořád budeš nést odpovědnost za peníze, lidi a&nbsp;rodinu. Rozdíl je v&nbsp;tom, že Tě tento tlak už nemusí ovládat. Může Tě kovat.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== 05 PROČ VZNIKLA KOVÁRNA ===================== -->
+    <section class="sec sec--tight" id="program">
+        <div class="wrap">
+            <div class="head head--c rv">
+                <div class="tag"><em>05</em> · Proč vznikla Kovárna</div>
+                <h2>Jedno uvědomění Tvůj život nezmění</h2>
+                <p>Možná už jsi přečetl knihy. Sledoval videa. Navštívil semináře. Řekl sis, že budeš doma víc přítomný. Několik dní nebo týdnů ses snažil. Pak ale přišel tlak ve firmě. Konflikt doma. Únava. A&nbsp;všechno se vrátilo do starých kolejí. Problém není, že bys nevěděl dost. <strong>Problém je, že nový standard ještě není dostatečně ukovaný.</strong></p>
+            </div>
+
+            <p class="kicker col-c rv" style="text-align: center; margin-top: 3.5rem;">Kus železa se nestane pevnou čepelí tím, že jednou vstoupí do ohně.</p>
+
+            <!-- GRAFIKA: 5 fází kování -->
+            <div class="forge rv">
+                <div class="forge-step">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.36 5.21A8.25 8.25 0 0 1 12 21a8.25 8.25 0 0 1-5.96-13.95A8.29 8.29 0 0 0 9 9.6a8.98 8.98 0 0 1 3.36-6.87 8.21 8.21 0 0 0 3 2.48Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 18a3.75 3.75 0 0 0 .5-7.47 5.99 5.99 0 0 0-1.93 3.55 5.98 5.98 0 0 1-2.13-1A3.75 3.75 0 0 0 12 18Z"/></svg>
+                    <b>Zahřát</b><small>do ruda</small>
+                </div>
+                <div class="forge-step">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3.5 20.5 12 12"/><path stroke-linecap="round" stroke-linejoin="round" d="m10.2 10.2 3.6 3.6"/><path stroke-linecap="round" stroke-linejoin="round" d="m13.4 7 3.2-3.2a1.8 1.8 0 0 1 2.6 0l1.4 1.4a1.8 1.8 0 0 1 0 2.6L17.4 11z"/></svg>
+                    <b>Tlak</b><small>úder kladiva</small>
+                </div>
+                <div class="forge-step">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2 8c2-1.5 4-2 6-2h10l3 1v2l-3 1h-2l-1 4 3 1.5.5 2.5h-13L6 15.5 9 14 8 10H6c-1.5 0-3-.5-4-2Z"/></svg>
+                    <b>Tvarovat</b><small>nový standard</small>
+                </div>
+                <div class="forge-step">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M16 9.35h5V4.36M3 19.64v-4.99h5m-5 0 3.18 3.18a8.25 8.25 0 0 0 13.8-3.7M4.03 9.87a8.25 8.25 0 0 1 13.8-3.7L21 9.35"/></svg>
+                    <b>Zpět do ohně</b><small>a znovu</small>
+                </div>
+                <div class="forge-step">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a7 7 0 0 0 7-7c0-4-7-11-7-11S5 10 5 14a7 7 0 0 0 7 7Z"/></svg>
+                    <b>Zakalit</b><small>aby to drželo</small>
+                </div>
+            </div>
+
+            <div class="col-c copy rv" style="margin-top: 3.5rem; text-align: center;">
+                <p>Musí se opakovaně zahřát. Dostat pod tlak. Být formován. Vrátit se do ohně. A&nbsp;nakonec se zakalit. Stejně vzniká nový standard muže. Ne jednorázovou motivací. Ale každodenní pravdou, rozhodnutím a&nbsp;akcí.</p>
+                <p class="kicker">Muž se nezmění jedním velkým rozhodnutím. Muž se kove každodenními aktivitami.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== 06 METODA ===================== -->
+    <section class="sec sec--tight">
+        <div class="wrap">
+            <div class="head rv">
+                <div class="tag"><em>06</em> · Metoda</div>
+                <h2>Jak probíhá kování muže</h2>
+                <p>Kovárna neopravuje odděleně Tvoje manželství, podnikání a&nbsp;smysl života. Kuje muže uprostřed.</p>
+            </div>
+
+            <div class="steps">
+                <div class="step rv">
+                    <div class="step-n">01</div>
+                    <div>
+                        <h3>Pojmenuješ pravdu toho, co žiješ</h3>
+                        <p>Přestaneš předstírat, že je všechno v&nbsp;pohodě. Uvidíš:</p>
+                        <ul class="list">
+                            <li>kam utíkáš,</li>
+                            <li>co toleruješ,</li>
+                            <li>jaké vzorce opakuješ,</li>
+                            <li>co doma ztrácíš,</li>
+                            <li>a&nbsp;jakou cenu za to platíš.</li>
+                        </ul>
+                        <p style="margin-top: 1.6rem;"><strong>Bez pravdy jednoduše není změna.</strong></p>
+                    </div>
+                </div>
+
+                <div class="step rv">
+                    <div class="step-n">02</div>
+                    <div>
+                        <h3>Ukoveš nové myšlení</h3>
+                        <p>Pomocí mentálních downloadů zachytíš, co se v&nbsp;Tobě skutečně děje. Nejde o&nbsp;obyčejný deník ani o&nbsp;nekonečné rozebírání pocitů. Je to jednoduchý proces:</p>
+                        <!-- GRAFIKA: proces mentálního downloadu -->
+                        <div class="flow">
+                            <div class="flow-cell"><b>Zachytíš lež</b><i>01</i></div>
+                            <div class="flow-cell"><b>Pojmenuješ pravdu</b><i>02</i></div>
+                            <div class="flow-cell"><b>Zvolíš nový standard</b><i>03</i></div>
+                            <div class="flow-cell"><b>Uděláš konkrétní krok</b><i>04</i></div>
+                        </div>
+                        <p>Přestaneš reagovat automaticky. Začneš jednat vědomě.</p>
+                    </div>
+                </div>
+
+                <div class="step rv">
+                    <div class="step-n">03</div>
+                    <div>
+                        <h3>Dostaneš vedení a&nbsp;zrcadlo</h3>
+                        <p>Každý týden budeme pracovat s&nbsp;reálnými situacemi z&nbsp;manželství, otcovství, podnikání a&nbsp;Tvého života. Ne s&nbsp;teorií. S&nbsp;tím, co právě řešíš. Dostaneš nový pohled, přímou zpětnou vazbu a&nbsp;jasný další krok.</p>
+                    </div>
+                </div>
+
+                <div class="step rv">
+                    <div class="step-n">04</div>
+                    <div>
+                        <h3>Udržíš nový standard</h3>
+                        <p>Nové chování musíš udržet i&nbsp;ve chvíli, kdy:</p>
+                        <ul class="list">
+                            <li>přijde konflikt,</li>
+                            <li>firma se dostane pod tlak,</li>
+                            <li>jsi unavený,</li>
+                            <li>něco se nepovede,</li>
+                            <li>žena reaguje jinak, než očekáváš,</li>
+                            <li>staré návyky Tě začnou táhnout zpět.</li>
+                        </ul>
+                        <p style="margin-top: 1.6rem;"><strong>Proto Kovárna trvá 12&nbsp;měsíců.</strong> Neučíš se jen něco nového vědět. Učíš se jinak žít.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== 07 CO DOSTANEŠ ===================== -->
+    <section class="sec">
+        <div class="wrap">
+            <div class="head rv">
+                <div class="tag"><em>07</em> · Obsah programu</div>
+                <h2>Co přesně v&nbsp;Kovárně dostaneš</h2>
+            </div>
+
+            <div class="gets">
+                <div class="get rv">
+                    <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5 21 6.75v10.5l-5.25-3.75M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9A2.25 2.25 0 0 0 13.5 5.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z"/></svg>
+                    <h3>Každý týden živé vedení</h3>
+                    <p>Budeme rozebírat konkrétní situace, kterými právě procházíš. Dostaneš odpovědi, zpětnou vazbu a&nbsp;směr, abys nezůstal týdny zaseknutý ve vlastní hlavě.</p>
+                </div>
+                <div class="get rv">
+                    <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.09 9.09 0 0 0 3.74-.48 3 3 0 0 0-4.68-2.72m.94 3.2v.03c0 .23-.01.45-.04.67A11.94 11.94 0 0 1 12 21c-2.17 0-4.21-.58-5.96-1.58A6.06 6.06 0 0 1 6 18.72m12 0a5.97 5.97 0 0 0-.94-3.2m0 0A6 6 0 0 0 12 12.75a6 6 0 0 0-5.06 2.77m0 0a3 3 0 0 0-4.68 2.72 9 9 0 0 0 3.74.48m.94-3.2a5.97 5.97 0 0 0-.94 3.2M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"/></svg>
+                    <h3>Uzavřenou skupinu ženatých podnikatelů s&nbsp;dětmi</h3>
+                    <p>Muže, kterým nemusíš vysvětlovat, jaké to je nést odpovědnost za firmu, zaměstnance, peníze a&nbsp;rodinu. Budou rozumět Tvému tlaku. Zároveň Tě nenechají schovávat se za výmluvy.</p>
+                </div>
+                <div class="get rv">
+                    <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/></svg>
+                    <h3>Kvartální mastermind setkání</h3>
+                    <p>Jednou za kvartál vystoupíš z&nbsp;každodenního provozu a&nbsp;potkáš se osobně se mnou a&nbsp;dalšími členy Kovárny. Některé věci přes obrazovku jednoduše nevzniknou.</p>
+                </div>
+                <div class="get rv">
+                    <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17 17.25 21A2.65 2.65 0 0 0 21 17.25l-5.88-5.88m-3.7 3.8a4.5 4.5 0 0 1-6.36-6.36l3.18 3.18 3.18-3.18-3.18-3.18a4.5 4.5 0 0 1 5.66 5.66"/></svg>
+                    <h3>Nástroje pro každodenní kování</h3>
+                    <p>Strukturu mentálních downloadů, denní reflexe a&nbsp;rozhodování, která Ti pomůže vracet se ke svému standardu i&nbsp;ve dnech, kdy přijde tlak. Změnu nevytváří to, co uděláš jednou. Vytváří ji to, k&nbsp;čemu se dokážeš každý den vracet.</p>
+                </div>
+                <div class="get get--wide rv">
+                    <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12 11.2 3.05a1.12 1.12 0 0 1 1.6 0L21.75 12M4.5 9.75v10.13c0 .62.5 1.12 1.13 1.12H9.75v-4.88c0-.62.5-1.12 1.13-1.12h2.25c.62 0 1.12.5 1.12 1.13V21h4.13c.62 0 1.12-.5 1.12-1.13V9.75"/></svg>
+                    <h3>Obsah zaměřený na výsledky doma</h3>
+                    <p>Dostaneš konkrétní principy a&nbsp;postupy pro:</p>
+                    <ul class="list cols-2">
+                        <li>komunikaci se ženou,</li>
+                        <li>zvládání konfliktů,</li>
+                        <li>obnovu důvěry,</li>
+                        <li>přítomnost doma,</li>
+                        <li>blízkost a&nbsp;intimitu,</li>
+                        <li>vedení dětí,</li>
+                        <li>hranice,</li>
+                        <li>práci s&nbsp;emocemi,</li>
+                        <li>osobní disciplínu,</li>
+                        <li>rozhodování pod tlakem.</li>
+                    </ul>
+                    <p style="margin-top: 1.6rem;"><strong>Ne proto, abys věděl víc. Ale abys doma začal fungovat jinak.</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== 08 VÝSLEDEK ===================== -->
+    <section class="sec sec--tight">
+        <div class="wrap">
+            <div class="head rv">
+                <div class="tag"><em>08</em> · Výsledek</div>
+                <h2>Jakým mužem se staneš</h2>
+            </div>
+            <div class="becomes">
+                <div class="become rv">
+                    <h3>Mužem, který vede svoji ženu s&nbsp;láskou a&nbsp;respektem</h3>
+                    <ul class="list list--icon">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Tvoje žena přestává být protivníkem.</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Znovu se stává nejbližším spojencem.</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Dokážete otevřít nepříjemná témata, aniž by každý rozhovor skončil hádkou nebo tichem.</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Domů se znovu začínáš těšit.</li>
+                    </ul>
+                </div>
+                <div class="become rv">
+                    <h3>Mužem, který vede firmu, aniž by ztratil rodinu</h3>
+                    <ul class="list list--icon">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Přestaneš dávat firmě to nejlepší a&nbsp;rodině jen zbytky.</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Dokážeš být plně v&nbsp;práci a&nbsp;plně doma.</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Tvoje děti Tě nebudou znát jen podle toho, že jsi pořád pracoval.</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Budou Tě znát podle společných zážitků a&nbsp;času, který jsi jim skutečně dal.</li>
+                    </ul>
+                </div>
+                <div class="become rv">
+                    <h3>Mužem, vedle kterého se žena cítí milovaná a&nbsp;v&nbsp;bezpečí</h3>
+                    <ul class="list list--icon">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Přestanete být jen rodiče a&nbsp;manažeři domácnosti.</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Do vztahu se může začít vracet lehkost, blízkost, doteky a&nbsp;přitažlivost.</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Žena vedle Tebe nemusí být neustále ve střehu.</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Může se znovu uvolnit.</li>
+                    </ul>
+                </div>
+                <div class="become rv">
+                    <h3>Mužem, na kterého je hrdá jeho žena i&nbsp;děti</h3>
+                    <ul class="list list--icon">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Nebudou Tě respektovat jen za to, co vyděláš. Ale za to, jak žiješ.</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Přestaneš vést dvojí život — úspěšný podnikatel venku a&nbsp;zklamaný muž doma.</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Večer budeš vědět, že jsi nedal to nejlepší jen firmě.</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Dal jsi ho také lidem, kvůli kterým podnikáš.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== 09 REFERENCE ===================== -->
+    <section class="sec sec--tight">
+        <div class="wrap">
+            <div class="head head--c rv">
+                <div class="tag"><em>09</em> · Reference</div>
+                <h2>Proměna nevypadá jako dokonalý život. Vypadá jako jasně viditelný směr.</h2>
+            </div>
+            <!-- TODO OBSAH: video / textové reference chlapů (v podkladu „zde video/text reference chlapů“). -->
+            <div class="ref-slot rv">
+                <b>Místo pro reference chlapů</b>
+                Sem přijdou video nebo textové reference mužů z&nbsp;Kovárny.
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== 10 KVALIFIKACE ===================== -->
+    <section class="sec" id="pro-koho">
+        <div class="wrap">
+            <div class="head rv">
+                <div class="tag"><em>10</em> · Kvalifikace</div>
+                <h2>Kovárna není pro každého. A&nbsp;to je záměr.</h2>
+            </div>
+
+            <div class="fit">
+                <div class="fit-col rv">
+                    <h3>Kovárna je pro Tebe, pokud…</h3>
+                    <ul class="list list--icon">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>jsi ženatý podnikatel a&nbsp;máš děti,</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>navenek se Ti daří, ale doma ztrácíš půdu pod nohama,</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>se ženou si přestáváte rozumět,</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>vytratila se blízkost, důvěra nebo intimita,</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>doma jsi tělem, ale hlavou stále ve firmě,</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>opakují se Ti stejné vzorce,</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>nechceš být doma jen bankomat,</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>víš, že nejsi takovým manželem a&nbsp;tátou, jakým chceš být,</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>jsi připravený přestat si lhát,</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>přijmeš vedení a&nbsp;zpětnou vazbu,</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>budeš pravidelně dělat skutečnou práci,</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>chceš kolem sebe muže, kteří hrají podobnou hru.</li>
+                    </ul>
+                </div>
+                <div class="fit-col fit-col--no rv">
+                    <h3>Kovárna není pro Tebe, pokud…</h3>
+                    <ul class="list list--icon list--muted">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg>chceš opravit svou ženu,</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg>hledáš potvrzení, že za všechno mohou ostatní,</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg>chceš další obsah, který si uložíš na později,</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg>odmítáš se podívat na svůj vlastní podíl,</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg>očekáváš změnu bez práce,</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg>chceš pokračovat stejně a&nbsp;jen se u&nbsp;toho cítit lépe.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p class="kicker col-c rv" style="text-align: center; margin-top: 3.25rem;">Kovárna Tě nebude zachraňovat. Bude Tě učit, jak převzít odpovědnost a&nbsp;znovu vědomě vést svůj život.</p>
+        </div>
+    </section>
+
+    <!-- ===================== 11 SLÁVA ===================== -->
+    <section class="sec sec--tight">
+        <div class="wrap">
+            <div class="head rv">
+                <div class="tag"><em>11</em> · Kdo Tě povede</div>
+                <h2>Sláva Černý</h2>
+            </div>
+            <div class="who">
+                <div class="who-photo rv">
+                    <img src="img/slava-studio.webp" alt="Sláva Černý" loading="lazy">
+                </div>
+                <div class="copy rv">
+                    <p>Sám znám stav, kdy muž navenek dosahuje výsledků, ale doma není člověkem, kterým chce být. Poslední roky pracuji se ženatými podnikateli, kteří řeší stejné napětí: jak vést firmu, rodinu i&nbsp;sám sebe, aniž by se pod tlakem rozpadli nebo utekli.</p>
+                    <p>Nikdo Tě uvnitř nebude soudit, ani tvrdit, že jsi rozbitý. Nikdo Tě ale taky nebude podporovat ve lžích, které Ti pomáhají zůstávat stejný.</p>
+                    <p class="who-quote">Ukážu Ti zrcadlo. Dám Ti nástroje. A&nbsp;vytvořím prostředí, ve kterém můžeš nový standard každý den skutečně kovat.</p>
+                    <div class="stats">
+                        <div><div class="stat-num">7+ let</div><div class="stat-lab">praxe s&nbsp;chlapy</div></div>
+                        <div><div class="stat-num">60 000+</div><div class="stat-lab">mužů v&nbsp;trénincích</div></div>
+                        <div><div class="stat-num">18 000+</div><div class="stat-lab">prodaných knih</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== 12 INVESTICE ===================== -->
+    <section class="sec invert" id="investice">
+        <div class="wrap">
+            <div class="head rv">
+                <div class="tag"><em>12</em> · Investice</div>
+                <h2>Investice do Tvého nového já</h2>
+            </div>
+
+            <div style="margin-top: 3.75rem;">
+                <div class="price-head rv">
+                    <div class="price-num">50&nbsp;000&nbsp;Kč</div>
+                    <div class="price-sub">12&nbsp;měsíců<br>jeden ročník</div>
+                </div>
+
+                <div class="price-grid">
+                    <div class="rv">
+                        <h3>V&nbsp;ceně získáš</h3>
+                        <ul class="list list--icon">
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>přibližně 52&nbsp;živých týdenních vysílání,</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>12&nbsp;měsíců v&nbsp;uzavřené skupině,</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>4&nbsp;osobní kvartální setkání,</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>obsah pro výsledky v&nbsp;manželství a&nbsp;rodině,</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>nástroje pro mentální downloady,</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>systém každodenního kování,</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>vedení a&nbsp;zpětnou vazbu po celý rok,</li>
+                            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>parťáky, kteří jsou na stejné vlně.</li>
+                        </ul>
+                    </div>
+                    <div class="rv">
+                        <h3>Do Kovárny se nevstupuje jedním kliknutím</h3>
+                        <p>Nejdřív si spolu dáme krátký 15minutový vstupní rozhovor. Zjistíme:</p>
+                        <ul class="list">
+                            <li>co se dnes ve Tvém životě skutečně děje,</li>
+                            <li>co už dál nechceš tolerovat,</li>
+                            <li>jestli je Kovárna správným prostředím pro Tebe,</li>
+                            <li>jestli jsi připravený pracovat na sobě,</li>
+                            <li>a&nbsp;jestli jsi vhodným kandidátem pro Kovárnu.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- TODO NAPOJENÍ: rezervační systém na 15minutový vstupní rozhovor.
+                     Až bude jasné, přes co se rezervuje (FAPI formulář / kalendář / jiný odkaz),
+                     nahradí se obsah tohoto boxu embedem, nebo se jen změní href tlačítka. -->
+                <div class="booking rv" id="rezervace">
+                    <h3>Rezervuj si 15minutový vstupní rozhovor</h3>
+                    <p>Není to koučink zdarma ani nezávazné povídání. Je to rozhovor o&nbsp;tom, co se dnes ve Tvém životě opravdu děje.</p>
+                    <div class="cta cta--c">
+                        <a href="#rezervace" class="btn" data-booking-cta>Chci zjistit, jestli patřím do&nbsp;Kovárny</a>
+                        <div class="marks">
+                            <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>15&nbsp;minut</span>
+                            <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Nezávazná rezervace</span>
+                        </div>
+                    </div>
+                    <p class="fineprint">Rezervace Tě nezavazuje ke vstupu, ale předpokládá vážný zájem, znalost investice 50&nbsp;000&nbsp;Kč a&nbsp;připravenost udělat jasné rozhodnutí.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== 13 FAQ ===================== -->
+    <section class="sec sec--tight" id="faq">
+        <div class="wrap">
+            <div class="head rv">
+                <div class="tag"><em>13</em> · Časté otázky</div>
+                <h2>Co se ptají chlapi před vstupem</h2>
+            </div>
+            <div class="faq col">
+                <div class="faq-item">
+                    <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-1">Je Kovárna manželská poradna?
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+                    </button>
+                    <div class="faq-a" id="faq-1">
+                        <p>Ne. Nebudeme analyzovat Tvoji ženu ani hledat způsob, jak ji změnit.</p>
+                        <p>Budeme pracovat s&nbsp;tím, co můžeš skutečně ovlivnit: s&nbsp;Tvým myšlením, rozhodováním, komunikací, hranicemi, přítomností a&nbsp;vedením.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-2">Musí se zapojit i&nbsp;moje žena?
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+                    </button>
+                    <div class="faq-a" id="faq-2">
+                        <p>Ne. Kovárna je program pro Tebe.</p>
+                        <p>Tvým úkolem nebude přimět ženu, aby se změnila. Tvým úkolem bude začít změnu skutečně žít.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-3">Co když nemám čas?
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+                    </button>
+                    <div class="faq-a" id="faq-3">
+                        <p>Kovárna Ti nemá přidat další chaos. Má Ti pomoci přestat chaos vytvářet a&nbsp;tolerovat.</p>
+                        <p>Bude ale vyžadovat pravidelnou pozornost. Stejně jako ji vyžaduje firma, tělo a&nbsp;manželství.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-4">Co když je naše manželství ve velké krizi?
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+                    </button>
+                    <div class="faq-a" id="faq-4">
+                        <p>Kovárna nenahrazuje párovou terapii, právní pomoc ani odbornou zdravotní péči.</p>
+                        <p>Může Ti ale pomoci přestat utíkat, pojmenovat pravdu, převzít svůj díl odpovědnosti a&nbsp;začít jednat jinak. Na vstupním rozhovoru posoudíme, jestli je Kovárna pro Tvoji současnou situaci vhodná.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-5">Co když u&nbsp;nás doma není velká krize?
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+                    </button>
+                    <div class="faq-a" id="faq-5">
+                        <p>Nemusíš čekat na rozvodové papíry. Mnoho vztahů se nerozpadá velkou explozí. Rozpadá se pomalu — tichem, rutinou, nepřítomností a&nbsp;odcizením.</p>
+                        <p>Kovárna není jen pro muže na dně. Je pro muže, kteří na něj odmítají čekat.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== NÁDECH ===================== -->
+    <section class="statement">
+        <div class="wrap rv">
+            <p>Peníze Ti mohou koupit lepší dům. <em>Nedokážou z&nbsp;něj ale udělat domov.</em></p>
+        </div>
+    </section>
+
+    <section class="sec sec--tight">
+        <div class="wrap col-c copy rv" style="text-align: center;">
+            <p>Za co všechno jsi v&nbsp;životě už utratil peníze? Protože Ti peníze mohou zaplatit drahou dovolenou. Nemohou ale nahradit minuty, kdy jsi doma nebyl.</p>
+            <p>Mohou dětem koupit všechno, co chtějí. Nemohou jim nahradit tátu. Mohou vytvořit pohodlí. Nemohou vytvořit respekt, blízkost ani smysl.</p>
+            <p class="kicker">Peníze nejsou problém. Problém je, když se jimi snažíš nahradit to, co vyžaduje Tvoji přítomnost.</p>
+        </div>
+    </section>
+
+    <!-- ===================== ZÁVĚR ===================== -->
+    <section class="sec">
+        <div class="wrap col-c rv" style="text-align: center;">
+            <div class="close-triad">
+                <span>Tvoje manželství Tě buď transformuje, <em>nebo škrtí.</em></span>
+                <span>Tvoje peníze Ti buď slouží, <em>nebo Tě vlastní.</em></span>
+                <span>Tvůj život buď má smysl, <em>nebo se ho snažíš nahradit výkonem.</em></span>
+            </div>
+
+            <div class="copy">
+                <p>Nemusíš si vybírat mezi úspěšnou firmou a&nbsp;pohodou v&nbsp;rodině. Musíš se ale stát mužem, který dokáže obojí unést a&nbsp;vést. Takový muž nevznikne náhodou. Musí se ukovat. Každý den. Jednou pravdou. Jedním rozhodnutím. Jedním nepříjemným rozhovorem. Jedním dodrženým slovem. Jedním návratem ke svému standardu.</p>
+                <p class="kicker">Nejsi rozbitý. Jen Tě to nikdo nenaučil.</p>
+                <p style="margin-top: 1.6rem;">Od této chvíle se můžeš rozhodnout, že se to naučíš. Ne sám. Ne jen z&nbsp;videí. Ale v&nbsp;prostředí mužů, kteří jsou připraveni přestat utíkat, převzít odpovědnost a&nbsp;začít svůj život skutečně vést.</p>
+            </div>
+
+            <div class="cta cta--c" style="margin-top: 3.5rem;">
+                <a href="#rezervace" class="btn">Vstup do Kovárny začíná jedním rozhodnutím</a>
+                <div class="marks">
+                    <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>Pro ženaté podnikatele s&nbsp;dětmi</span>
+                    <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>12&nbsp;měsíců · 50&nbsp;000&nbsp;Kč</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== PATIČKA — DOČASNÁ =====================
+         TODO PATIČKA: finální podoba přijde později (fakturační údaje,
+         právní odkazy, kontakt). Záměrně tu zatím nejsou žádné firemní
+         ani identifikační údaje.
+         ============================================================= -->
+    <footer class="site-foot">
+        <div class="wrap">
+            <div class="foot-brand">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M1.6 8.2c1.9-1.5 4-2.2 6.4-2.2h10l3 1v2l-3 1.1h-2.1l-1 3.8 3 1.4.6 2.7H5.5l.6-2.7 3-1.4-1-3.8H6C4.3 10.1 2.8 9.5 1.6 8.2Z"/></svg>
+                <span>Kovárna</span>
+            </div>
+            <p>Roční program pro ženaté podnikatele s&nbsp;dětmi. Vede Sláva Černý.</p>
+            <div class="foot-bottom">&copy; 2026 Kovárna</div>
+        </div>
+    </footer>
+
+    <button class="totop" id="toTop" aria-label="Zpět nahoru">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="20" x2="12" y2="4"/><polyline points="7 9 12 4 17 9"/></svg>
+    </button>
+
+    <div class="sticky" id="sticky">
+        <a href="#rezervace" class="btn">Chci vstupní rozhovor</a>
+    </div>
+
+    <script>
+        (function () {
+            var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            // FAQ akordeon
+            document.querySelectorAll('.faq-q').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    var open = btn.parentElement.classList.toggle('open');
+                    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+                });
+            });
+
+            // Ukazatel posunu — mix-blend-mode: difference, takže je vidět na tmavé i světlé sekci
+            var bar = document.getElementById('progress');
+            function progress() {
+                var h = document.documentElement.scrollHeight - window.innerHeight;
+                bar.style.width = (h > 0 ? (window.pageYOffset / h) * 100 : 0) + '%';
+            }
+
+            // Sticky CTA + zpět nahoru
+            var sticky = document.getElementById('sticky');
+            var toTop = document.getElementById('toTop');
+            var hero = document.getElementById('top');
+            var booking = document.getElementById('investice');
+            function chrome() {
+                var y = window.pageYOffset || 0;
+                if (hero && booking) {
+                    var past = (y + 60) >= (hero.offsetTop + hero.offsetHeight);
+                    var show = past && booking.getBoundingClientRect().top > window.innerHeight;
+                    sticky.classList.toggle('active', show);
+                }
+                toTop.classList.toggle('visible', y > 600);
+                toTop.classList.toggle('above-sticky', sticky.classList.contains('active'));
+            }
+            toTop.addEventListener('click', function () {
+                window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+            });
+
+            function onScroll() { progress(); chrome(); }
+            ['scroll', 'resize', 'orientationchange'].forEach(function (e) {
+                window.addEventListener(e, onScroll, { passive: true });
+            });
+            window.addEventListener('load', onScroll);
+            onScroll();
+
+            // Postupné odkrývání
+            var items = document.querySelectorAll('.rv');
+            if (reduce || !('IntersectionObserver' in window)) {
+                items.forEach(function (el) { el.classList.add('in'); });
+            } else {
+                var io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (en) {
+                        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+                    });
+                }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+                items.forEach(function (el) { io.observe(el); });
+            }
+
+            // Kotvy — odsazení o výšku sticky hlavičky
+            var head = document.querySelector('.site-head');
+            document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+                link.addEventListener('click', function (e) {
+                    var id = link.getAttribute('href').slice(1);
+                    var target = id ? document.getElementById(id) : null;
+                    if (!target) return;
+                    e.preventDefault();
+                    var top = target.getBoundingClientRect().top + window.pageYOffset - (head ? head.offsetHeight + 14 : 0);
+                    window.scrollTo({ top: Math.max(0, top), behavior: reduce ? 'auto' : 'smooth' });
+                });
+            });
+        })();
+    </script>
+
+    <!-- COOKIE CONSENT -->
+    <script>window.dataLayer = window.dataLayer || [];</script>
+    <script>
+        window.addEventListener('load', function () {
+            var cookieconsent = initCookieConsent();
+            cookieconsent.run({
+                autorun: true,
+                revision: 2,
+                current_lang: document.documentElement.getAttribute('lang') || 'cs',
+                autoclear_cookies: true,
+                page_scripts: true,
+                onAccept: function (cookie) {
+                    dataLayer.push({ 'event': 'cc_update', 'cookie': JSON.stringify(cookie) });
+                    cookieconsent.hide();
+                },
+                onChange: function (cookie, changed_preferences) {
+                    dataLayer.push({ 'event': 'cc_update', 'cookie': JSON.stringify(cookie) });
+                },
+                languages: {
+                    cs: {
+                        consent_modal: {
+                            title: 'Vaše soukromí je pro nás důležité',
+                            description: 'Soubory cookies jsou velmi malé textové soubory, které se ukládají do vašeho zařízení při navštěvování webových stránek. Soubory Cookies používáme pro různé účely a pro vylepšení vašeho online zážitku na webové stránce (například pro zapamatování přihlašovacích údajů k vašemu účtu).<br><br>Při procházení našich webových stránek můžete změnit své předvolby a odmítnout určité typy cookies, které se mají ukládat do vašeho počítače.<br><br>Svůj souhlas můžete kdykoliv odvolat, příp. nastavit souhlas jen s některými z nich, či <a id="nastavitnutne" type="button" class="cc-link">přijmout jen nezbytné</a>.',
+                            primary_btn: { text: 'Přijmout všechny', role: 'accept_all' },
+                            secondary_btn: { text: 'Upravit nastavení', role: 'settings' }
+                        },
+                        settings_modal: {
+                            title: 'Nastavení cookies',
+                            save_settings_btn: 'Uložit nastavení',
+                            accept_all_btn: 'Přijmout vše',
+                            blocks: [
+                                { title: 'Použité cookie', description: 'Na webu používám cookies. Můžete si vybrat, které cookies povolíte.' },
+                                {
+                                    title: 'Nutné cookies',
+                                    description: 'Tyto soubory cookies jsou nezbytné k tomu, abychom vám mohli poskytovat služby dostupné prostřednictvím našeho webu a abychom vám umožnili používat určité funkce našeho webu.<br><br>Bez těchto cookies vám nemůžeme na naší webové stránce poskytovat určité služby.',
+                                    toggle: { value: 'necessary', enabled: true, readonly: true }
+                                },
+                                {
+                                    title: 'Analytické cookies',
+                                    description: 'Tyto soubory cookies se používají ke shromažďování informací pro analýzu provozu na našich webových stránkách a sledování používání našich webových stránek uživateli.<br><br>Informace shromážděné prostřednictvím těchto sledovacích a výkonnostních cookies neidentifikují žádné osoby.',
+                                    toggle: { value: 'analytics', enabled: false, readonly: false }
+                                },
+                                {
+                                    title: 'Marketingové cookies',
+                                    description: 'Tyto soubory cookie se používají k zobrazování reklamy, která vás pravděpodobně bude zajímat na základě vašich zvyků při procházení.',
+                                    toggle: { value: 'ads', enabled: false, readonly: false }
+                                },
+                                { title: 'Více informací', description: 'V případě jakýchkoliv dotazů ohledně našich zásad týkajících se souborů cookie a vašich možností nás prosím kontaktujte.' }
+                            ]
+                        }
+                    }
+                }
+            });
+            var nastavitNutne = document.getElementById('nastavitnutne');
+            if (nastavitNutne) {
+                nastavitNutne.addEventListener('click', function () {
+                    cookieconsent.hide();
+                    cookieconsent.accept([]);
+                });
+            }
+        });
+    </script>
+    <style>:root { --cc-btn-primary-bg: #3f9626; }</style>
+    <style>
+        .c_darkmode,:root{--cc-btn-secondary-text:var(--cc-text);--cc-toggle-bg-on:var(--cc-btn-primary-bg);--cc-webkit-scrollbar-bg-hover:#9199a0}
+        #cm,#s-cnt{width:100%;position:fixed;visibility:hidden}
+        #s-bl .c-bl,#s-bl .c-bl.b-ex:first-child,#s-bl .c-bl:last-child{margin-bottom:.5em}
+        #cm,#cs,#s-cnt{position:fixed}
+        #c-vln,#s-bl .b-bn,#s-inr,.cc_div.ie .bar #s-bl thead tr{position:relative}
+        #cm,#s-cnt,#s-inr{visibility:hidden}
+        #cs,#s-bns{bottom:0;left:0;right:0}
+        #s-cnt,#s-hdr{display:table;top:0}
+        #s-bns,#s-hdr{height:4.75em}
+        #c-vln,#s-c-bnc,#s-ttl{display:table-cell;vertical-align:middle}
+        #c-s-in,#cs,#s-bl,#s-cnt,#s-inr{height:100%}
+        #c-vln,#s-c-bnc,#s-hdr,#s-ttl,.cc_div .b-tg{vertical-align:middle}
+        #cm,#s-bl th,#s-cnt .b-bn .b-tl{font-family:inherit}
+        #cs-ov,#s-hdr{z-index:2}
+        :root{--cc-bg:#fff;--cc-text:#2d4156;--cc-btn-primary-bg:#3f9626;--cc-btn-primary-text:#fff;--cc-btn-primary-hover-bg:#4db82e;--cc-btn-secondary-bg:#eaeff2;--cc-btn-secondary-hover-bg:#f9fff9;--cc-toggle-bg-off:#919ea6;--cc-toggle-bg-readonly:#d5dee2;--cc-toggle-knob-bg:#fff;--cc-toggle-knob-icon-color:#ecf2fa;--cc-block-text:var(--cc-text);--cc-cookie-category-block-bg:#f0f4f7;--cc-cookie-category-block-bg-hover:#e9eff4;--cc-section-border:#f1f3f5;--cc-cookie-table-border:#e9edf2;--cc-overlay-bg:rgba(4,6,8,.85);--cc-webkit-scrollbar-bg:#cfd5db}
+        .cc_div *,.cc_div :after,.cc_div :before{-webkit-box-sizing:border-box;box-sizing:border-box;float:none;font-style:inherit;font-variant:normal;font-weight:inherit;font-family:inherit;line-height:1.2;font-size:1em;transition:none;animation:none;margin:0;padding:0;text-transform:none;letter-spacing:unset;color:inherit;background:0 0;border:none;box-shadow:none;text-decoration:none;text-align:left;visibility:unset}
+        .cc_div{font-size:16px;font-weight:400;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;color:#2d4156;color:var(--cc-text)}
+        #c-ttl,#s-bl td:before,#s-ttl,.cc_div .b-tl,.cc_div .c-bn{font-weight:600}
+        #cm,#s-bl .act .b-acc,#s-inr,.cc_div .b-tl,.cc_div .c-bl{border-radius:.35em}
+        .cc_div a,.cc_div button,.cc_div input{-webkit-appearance:none;-moz-appearance:none;appearance:none}
+        .cc_div a{border-bottom:1px solid}
+        .cc_div a:hover{text-decoration:none;border-color:transparent}
+        #cm-ov,#cs-ov,.c--anim #cm,.c--anim #s-cnt,.c--anim #s-inr{transition:visibility .25s linear,opacity .25s,transform .25s !important}
+        #s-bl .c-bl,#s-bl tbody tr,#s-cnt .b-bn .b-tl{transition:background-color .25s}
+        .c--anim .c-bn{transition:background-color .25s !important}
+        .show--consent .c--anim #cm,.show--consent .c--anim #cm.bar,.show--settings .c--anim #s-inr{opacity:1;transform:scale(1);visibility:visible !important}
+        .show--settings .c--anim #s-cnt{visibility:visible !important}
+        .force--consent.show--consent .c--anim #cm-ov,.show--settings .c--anim #cs-ov{visibility:visible !important;opacity:1 !important}
+        #cm{padding:2.1em 2.8em 2.4em;z-index:1;background:#fff;background:var(--cc-bg);max-width:36.2em;bottom:1.25em;right:1.25em;box-shadow:5px 5px 100vh 100vw rgb(0 0 0/72%);opacity:0;transform:scale(.95);line-height:initial}
+        #c-ttl{margin-bottom:.7em;font-size:1.05em}
+        #c-txt,#s-cnt .p{font-size:.9em;line-height:1.5em}
+        #c-txt{margin-bottom:1.4em}
+        .cc_div .c-bn{color:#40505a;color:var(--cc-btn-secondary-text);padding:1em 1.7em;display:inline-block;cursor:pointer;font-size:.82em;user-select:none;text-align:center;border-radius:4px}
+        .c-bn.c_link{border:1px dotted #e7e7e7a6}
+        #cm .c-bn{width:48.5%}
+        #c-bns{display:flex;justify-content:space-between}
+        #c-bns button+button,#s-c-bn,#s-cnt button+button{float:right}
+        #s-cnt #s-rall-bn{float:none;margin-left:1em}
+        #cm .c_link{border:1px solid #d9e5d9}
+        #cm .c_link:active,#cm .c_link:hover,#s-c-bn:active,#s-c-bn:hover,#s-cnt button+button:active,#s-cnt button+button:hover{background:#d8e0e6;background:var(--cc-btn-secondary-hover-bg)}
+        #s-cnt{left:0;z-index:101}
+        #s-bl,#s-cnt .b-bn .b-tl{display:block;width:100%}
+        #s-bl{outline:0;overflow-y:auto;overflow-x:hidden;padding:1.3em 2.1em}
+        #s-bl .title{margin-top:1.4em}
+        #s-bl .b-bn,#s-bl .c-bl.b-ex+.c-bl.b-ex,#s-bl .title:first-child{margin-top:0}
+        #s-bl .b-acc .p{margin-top:0;padding:1em}
+        #s-cnt .b-bn .b-tl{font-size:.95em;cursor:pointer;position:relative;padding:1.3em 6.4em 1.3em 2.7em;background:0 0}
+        #s-bl tbody tr:hover,#s-cnt .b-bn .b-tl:active,#s-cnt .b-bn .b-tl:hover{background:#e9eff4;background:var(--cc-cookie-category-block-bg-hover)}
+        #s-bl .c-bl{padding:1em;border:1px solid #f1f3f5;border-color:var(--cc-section-border)}
+        #s-bl .c-bl:hover{background:#f0f4f7;background:var(--cc-cookie-category-block-bg)}
+        #s-bl .c-bl:first-child{transition:none;padding:0;margin-top:0;border:none;margin-bottom:2em}
+        #s-bl .c-bl.b-ex{padding:0;border:none;background:#f0f4f7;background:var(--cc-cookie-category-block-bg);transition:none}
+        #s-bl .b-acc{max-height:0;margin-bottom:0;display:none}
+        #s-bl .act .b-acc{max-height:100%;display:block}
+        #s-cnt .p{margin-top:.85em;color:#2d4156;color:var(--cc-block-text)}
+        #cs{padding:0 1.7em;width:100%;top:0}
+        #s-inr{max-width:45em;margin:0 auto;transform:scale(.96);opacity:0;padding-top:4.75em;padding-bottom:4.75em;box-shadow:rgba(3,6,9,.26) 0 13px 27px -5px}
+        #s-bns,#s-hdr,.cc_div .b-tg,.cc_div .b-tg .c-tg,.cc_div span.t-lb{position:absolute}
+        #s-bns,#s-hdr,#s-inr{background:#fff;background:var(--cc-bg)}
+        #s-bns{padding:1em 2.1em;border-top:1px solid #f1f3f5;border-color:var(--cc-section-border)}
+        .cc_div .cc-link{color:#253b48 !important;border-bottom:1px solid #253b48;display:inline;text-decoration:none;cursor:pointer;font-weight:600}
+        .cc_div .cc-link:active,.cc_div .cc-link:hover{border-color:transparent}
+        #c-bns button:first-child,#s-bns button:first-child{color:#fff;color:var(--cc-btn-primary-text);background:var(--cc-btn-primary-bg);transition-duration:.3s !important;order:1}
+        #c-bns button:last-child{order:0}
+        .cc_div .b-tg .c-tgl:checked~.c-tg{background:var(--cc-toggle-bg-on)}
+        #c-bns button:first-child:active,#c-bns button:first-child:hover,#s-bns button:first-child:active,#s-bns button:first-child:hover{background:var(--cc-btn-primary-hover-bg)}
+        #s-hdr{width:100%;padding:0 2.1em;border-bottom:1px solid #f1f3f5;border-color:var(--cc-section-border)}
+        #s-ttl{font-size:1em}
+        #s-c-bn{padding:0;width:1.7em;height:1.7em;font-size:1.45em;margin:0;font-weight:initial}
+        .cc_div span.t-lb{top:0;z-index:-1;opacity:0;pointer-events:none}
+        #c-s-in{transform:translateY(-50%);top:50%;height:calc(100% - 2.5em);max-height:37.5em}
+        .cc_div .b-tg{top:0;bottom:0;display:inline-block;margin:auto;right:1.2em;cursor:pointer;user-select:none}
+        #cm-ov,#cs-ov,.force--consent .cc_div{position:fixed;top:0;visibility:hidden;left:0;bottom:0}
+        .cc_div .b-tg .c-tgl{position:absolute;cursor:pointer;display:block;top:0;left:0;margin:0;border:0}
+        .cc_div .b-tg .c-tg{background:#919ea6;background:var(--cc-toggle-bg-off);transition:background-color .25s,box-shadow .25s;pointer-events:none}
+        .cc_div .b-tg,.cc_div .b-tg .c-tg,.cc_div .b-tg .c-tgl,.cc_div span.t-lb{width:3.4em;height:1.5em;border-radius:4em}
+        .cc_div .b-tg .c-tgl~.c-tg.c-ro{background:#d5dee2;background:var(--cc-toggle-bg-readonly)}
+        .cc_div .b-tg .c-tg:after{content:"";position:relative;display:block;left:.125em;top:.125em;width:1.25em;height:1.25em;border:none;background:#fff;background:var(--cc-toggle-knob-bg);box-shadow:0 1px 2px rgb(24 32 35/36%);transition:transform .25s;border-radius:100%}
+        .cc_div .b-tg .c-tgl:checked~.c-tg:after{transform:translateX(1.9em)}
+        #cm-ov,#cs-ov{right:0;opacity:0;background:rgba(4,6,8,.85);background:var(--cc-overlay-bg);display:none;transition:none}
+        .c--anim #cs-ov,.show--settings #cs-ov{display:block}
+        .force--consent.show--consent .c--anim #cm-ov,.force--consent.show--consent #cm-ov{display:block}
+        .cc_div .act .b-bn .b-tl::before,.cc_div .b-bn .b-tl::before{border:solid #2d4156;border-color:var(--cc-btn-secondary-text);border-width:0 2px 2px 0;padding:.2em;display:inline-block;content:'';margin-right:15px;position:absolute;transform:translateY(-50%) rotate(45deg);left:1.2em;top:50%}
+        .cc_div .act .b-bn .b-tl::before{transform:translateY(-20%) rotate(225deg)}
+        #s-c-bn::after,#s-c-bn::before{content:'';position:absolute;left:.82em;top:.58em;height:.6em;width:1.5px;background:#444d53;background:var(--cc-btn-secondary-text);transform:rotate(45deg);border-radius:1em;margin:0 auto}
+        #s-c-bn::after{transform:rotate(-45deg)}
+        .cc_div .off-i,.cc_div .on-i{height:100%;width:50%;position:absolute;right:0;display:block;text-align:center;transition:opacity .15s}
+        .cc_div .on-i{left:0;opacity:0}
+        .cc_div .b-tg .c-tgl:checked~.c-tg .on-i{opacity:1}
+        .cc_div .b-tg .c-tgl:checked~.c-tg .off-i{opacity:0}
+        #cm.bar{width:100%;max-width:100%;bottom:0;border-radius:0;position:fixed;padding:2em}
+        #cm.top{bottom:auto;top:1.25em}
+        #cm.left{right:auto;left:1.25em}
+        #cm.right{left:auto;right:1.25em}
+        @media screen and (min-width:688px){#s-bl::-webkit-scrollbar{width:.9em;height:100%;background:0 0;border-radius:0 .25em .25em 0}#s-bl::-webkit-scrollbar-thumb{border:.25em solid var(--cc-bg);background:#cfd5db;background:var(--cc-webkit-scrollbar-bg);border-radius:100em}#s-bl::-webkit-scrollbar-thumb:hover{background:#9199a0;background:var(--cc-webkit-scrollbar-bg-hover)}}
+        @media screen and (max-width:688px){#cm,#cs,#s-inr{border-radius:0}#cm,#cm.cloud,#cm.left,#cm.right{width:100%;max-width:100%;margin:0;padding:1.4em !important;right:1em;left:1em;bottom:1em;display:block}#c-bns,#s-bl table,#s-bl tbody,#s-bl td,#s-bl th,#s-bl thead,#s-bl tr,#s-cnt{display:block}#cm.top{top:1em;bottom:auto}#cm.bottom{top:auto;bottom:0}#cm .c-bn,.cc_div .c-bn{width:100%;margin-right:0}#s-cnt #s-rall-bn{margin-left:0}#c-bns button+button,#s-cnt button+button{margin-top:.625em;float:unset}#s-bns,.cc_div .bar #s-bns{padding:1em 1.3em}#cs{padding:0}#c-s-in{max-height:100%;height:100%;top:0;transform:none}.cc_div .b-tg{transform:scale(1.1);right:1.1em}#s-inr{padding-bottom:7.9em}#s-bns{height:7.9em}#s-bl,.cc_div .bar #s-bl{padding:1.3em}#s-hdr,.cc_div .bar #s-hdr{padding:0 1.3em}#s-bl table{width:100%}}
+        @media screen and (max-height:400px){#c-inr-i{overflow-y:scroll;max-height:200px}#c-bns{padding-top:22px}}
+    </style>
+    <script>!function(){"use strict";var e="initCookieConsent";"undefined"!=typeof window&&"function"!=typeof window[e]&&(window[e]=function(c){function r(t){for(var e="accept-",n=r("c-settings"),o=r(e+"all"),i=r(e+"necessary"),a=r(e+"custom"),c=0;c<n.length;c++)n[c].setAttribute("aria-haspopup","dialog"),be(n[c],"click",function(e){e.preventDefault(),$.showSettings(0)});for(c=0;c<o.length;c++)be(o[c],"click",function(e){s(e,"all")});for(c=0;c<a.length;c++)be(a[c],"click",function(e){s(e)});for(c=0;c<i.length;c++)be(i[c],"click",function(e){s(e,[])});function r(e){return(t||document).querySelectorAll('a[data-cc="'+e+'"], button[data-cc="'+e+'"]')}function s(e,t){e.preventDefault(),$.accept(t),$.hideSettings(),$.hide()}}function n(e,t){return Object.prototype.hasOwnProperty.call(t,e)?e:0<ye(t).length?Object.prototype.hasOwnProperty.call(t,S.current_lang)?S.current_lang:ye(t)[0]:void 0}function l(e){var t;!0===U.force_consent&&ke(J,"force--consent"),y||(y=le("div"),t=le("div"),n=le("div"),y.id="cm",t.id="c-inr-i",n.id="cm-ov",y.setAttribute("role","dialog"),y.setAttribute("aria-modal","true"),y.setAttribute("aria-hidden","false"),y.setAttribute("aria-labelledby","c-ttl"),y.setAttribute("aria-describedby","c-txt"),F.appendChild(y),F.appendChild(n),y.style.visibility=n.style.visibility="hidden",n.style.opacity=0),(i=U.languages[e].consent_modal.title)&&(a||((a=le("div")).id="c-ttl",a.setAttribute("role","heading"),a.setAttribute("aria-level","2"),t.appendChild(a)),a.innerHTML=i);var n=U.languages[e].consent_modal.description;E&&(n=j?n.replace("{{revision_message}}",""):n.replace("{{revision_message}}",U.languages[e].consent_modal.revision_message||"")),s||((s=le("div")).id="c-txt",t.appendChild(s)),s.innerHTML=n;var o,i=U.languages[e].consent_modal.primary_btn,n=U.languages[e].consent_modal.secondary_btn;i&&(k||((k=le("button")).id="c-p-bn",k.className="c-bn","accept_all"===i.role&&(o="all"),be(k,"click",function(){$.hide(),se("CookieConsent [ACCEPT]: cookie_consent was accepted!"),$.accept(o)})),k.innerHTML=U.languages[e].consent_modal.primary_btn.text),n&&(C||((C=le("button")).id="c-s-bn",C.className="c-bn c_link","accept_necessary"===n.role?be(C,"click",function(){$.hide(),$.accept([])}):be(C,"click",function(){$.showSettings(0)})),C.innerHTML=U.languages[e].consent_modal.secondary_btn.text),e=U.gui_options,w||((w=le("div")).id="c-inr",w.appendChild(t)),A||((A=le("div")).id="c-bns",e&&e.consent_modal&&!0===e.consent_modal.swap_buttons?(n&&A.appendChild(C),i&&A.appendChild(k),A.className="swap"):(i&&A.appendChild(k),n&&A.appendChild(C)),(i||n)&&w.appendChild(A),y.appendChild(w)),T=!0,r(w)}function d(e){var t,n,o,i,a,c;R?(Q=le("div")).id="s-bl":(R=le("div"),t=le("div"),n=le("div"),o=le("div"),z=le("div"),K=le("div"),i=le("div"),B=le("button"),a=le("div"),V=le("div"),c=le("div"),R.id="s-cnt",t.id="c-vln",o.id="c-s-in",n.id="cs",K.id="s-ttl",z.id="s-inr",i.id="s-hdr",V.id="s-bl",B.id="s-c-bn",c.id="cs-ov",B.className="c-bn",R.setAttribute("role","dialog"),R.setAttribute("aria-modal","true"),R.setAttribute("aria-hidden","true"),R.setAttribute("aria-labelledby","s-ttl"),K.setAttribute("role","heading"),R.style.visibility=c.style.visibility="hidden",c.style.opacity=0,a.appendChild(B),be(t,"keydown",function(e){27===(e=e||window.event).keyCode&&$.hideSettings(0)},!0),be(B,"click",function(){$.hideSettings(0)})),B.setAttribute("aria-label",U.languages[e].settings_modal.close_btn_label||"Close"),q=U.languages[e].settings_modal.blocks,P=U.languages[e].settings_modal.cookie_table_headers;var r=q.length;K.innerHTML=U.languages[e].settings_modal.title;for(var s=0;s<r;++s){var l,d=q[s].title,u=q[s].description,p=q[s].toggle,f=q[s].cookie_table,g=!0===U.remove_cookie_tables,h=(u||!g&&f)&&"truthy",_=le("div"),m=le("div");u&&((l=le("div")).className="p",l.insertAdjacentHTML("beforeend",u));var v,b,y,k,C,A,w,S,N,T=le("div");if(T.className="title",_.className="c-bl",m.className="desc",void 0!==p?(v="c-ac-"+s,b=le(h?"button":"div"),y=le("label"),k=le("input"),C=le("span"),A=le("span"),w=le("span"),S=le("span"),b.className=h?"b-tl exp":"b-tl",y.className="b-tg",k.className="c-tgl",w.className="on-i",S.className="off-i",C.className="c-tg",A.className="t-lb",h&&(b.setAttribute("aria-expanded","false"),b.setAttribute("aria-controls",v)),k.type="checkbox",C.setAttribute("aria-hidden","true"),N=p.value,k.value=N,A.textContent=d,b.insertAdjacentHTML("beforeend",d),T.appendChild(b),C.appendChild(w),C.appendChild(S),te?p.enabled?(k.checked=!0,Q||oe.push(!0),p.enabled&&(Q||ne.push(N))):Q||oe.push(!1):-1<re(ee.categories,N)?(k.checked=!0,Q||oe.push(!0)):Q||oe.push(!1),Q||ie.push(N),p.readonly?(k.disabled=!0,ke(C,"c-ro"),Q||ae.push(!0)):Q||ae.push(!1),ke(m,"b-acc"),ke(T,"b-bn"),ke(_,"b-ex"),m.id=v,m.setAttribute("aria-hidden","true"),y.appendChild(k),y.appendChild(C),y.appendChild(A),T.appendChild(y),h&&function(e,t,n){be(b,"click",function(){Ae(t,"act")?(Ce(t,"act"),n.setAttribute("aria-expanded","false"),e.setAttribute("aria-hidden","true")):(ke(t,"act"),n.setAttribute("aria-expanded","true"),e.setAttribute("aria-hidden","false"))},!1)}(m,_,b)):d&&((h=le("div")).className="b-tl",h.setAttribute("role","heading"),h.setAttribute("aria-level","3"),h.insertAdjacentHTML("beforeend",d),T.appendChild(h)),d&&_.appendChild(T),u&&m.appendChild(l),!g&&void 0!==f){for(var x=document.createDocumentFragment(),O=0;O<P.length;++O){var L,E=le("th"),j=P[O];E.setAttribute("scope","col"),j&&(L=j&&ye(j)[0],E.textContent=P[O][L],x.appendChild(E))}T=le("tr");T.appendChild(x);g=le("thead");g.appendChild(T);T=le("table");T.appendChild(g);for(var M=document.createDocumentFragment(),D=0;D<f.length;D++){for(var H,I=le("tr"),G=0;G<P.length;++G)(j=P[G])&&(L=ye(j)[0],(H=le("td")).insertAdjacentHTML("beforeend",f[D][L]),H.setAttribute("data-column",j[L]),I.appendChild(H));M.appendChild(I)}g=le("tbody");g.appendChild(M),T.appendChild(g),m.appendChild(T)}(p&&d||!p&&(d||u))&&(_.appendChild(m),(Q||V).appendChild(_))}W||((W=le("div")).id="s-bns"),Y||((Y=le("button")).id="s-all-bn",Y.className="c-bn",W.appendChild(Y),be(Y,"click",function(){$.hideSettings(),$.hide(),$.accept("all")})),Y.innerHTML=U.languages[e].settings_modal.accept_all_btn;var J=U.languages[e].settings_modal.reject_all_btn;if(J&&(Z||((Z=le("button")).id="s-rall-bn",Z.className="c-bn",be(Z,"click",function(){$.hideSettings(),$.hide(),$.accept([])}),z.className="bns-t",W.appendChild(Z)),Z.innerHTML=J),X||((X=le("button")).id="s-sv-bn",X.className="c-bn",W.appendChild(X),be(X,"click",function(){$.hideSettings(),$.hide(),$.accept()})),X.innerHTML=U.languages[e].settings_modal.save_settings_btn,Q)return z.replaceChild(Q,V),V=Q,0;i.appendChild(K),i.appendChild(a),z.appendChild(i),z.appendChild(V),z.appendChild(W),o.appendChild(z),n.appendChild(o),t.appendChild(n),R.appendChild(t),F.appendChild(R),F.appendChild(c)}var U,u,p,f,g,P,q,h,_,m,v,t,e,o,i,b,F,y,a,s,k,C,A,w,R,z,K,B,V,Q,W,X,Y,Z,S={mode:"opt-in",current_lang:document.documentElement.getAttribute("lang")||"cz",auto_language:null,autorun:!0,page_scripts:!0,hide_from_bots:!0,cookie_name:"cc_cookie",cookie_expiration:182,cookie_domain:window.location.hostname,cookie_path:"/",cookie_same_site:"Lax",use_rfc_cookie:!1,autoclear_cookies:!0,revision:0,script_selector:"data-cookiecategory"},$={},ee={},N=null,te=!0,T=!1,x=!1,O=!1,L=!1,E=!1,j=!0,M=[],D=!1,ne=[],H=!1,I=[],G=[],oe=[],ie=[],ae=[],J=document.documentElement;$.updateLanguage=function(e,t){if("string"==typeof e){e=n(e,U.languages);return(e!==S.current_lang||!0===t)&&(S.current_lang=e,T&&l(e),d(e),se("CookieConsent [LANGUAGE]: curr_lang: '"+e+"'"),!0)}};function ce(e){var t=q.length,n=-1;D=!1;var o,i=me("","all"),a=[S.cookie_domain,"."+S.cookie_domain];"www."===S.cookie_domain.slice(0,4)&&(o=S.cookie_domain.substr(4),a.push(o),a.push("."+o));for(var c=0;c<t;c++){var r=q[c];if(Object.prototype.hasOwnProperty.call(r,"toggle")){var s=-1<re(M,r.toggle.value);if(!oe[++n]&&Object.prototype.hasOwnProperty.call(r,"cookie_table")&&(e||s)){var l=r.cookie_table,d=ye(P[0])[0],u=l.length;"on_disable"===r.toggle.reload&&s&&(D=!0);for(var p=0;p<u;p++){var f=a,g=l[p],h=[],_=g[d],m=g.is_regex||!1,v=g.domain||null,g=g.path||!1;if(v&&(f=[v,"."+v]),m)for(var b=0;b<i.length;b++)i[b].match(_)&&h.push(i[b]);else{m=re(i,_);-1<m&&h.push(i[m])}se("CookieConsent [AUTOCLEAR]: search cookie: '"+_+"', found:",h),0<h.length&&(ve(h,g,f),"on_clear"===r.toggle.reload&&(D=!0))}}}}}var re=function(e,t){return e.indexOf(t)},se=function(e,t,n){n?console.error(e,t||""):console.log(e,void 0!==t?t:" ")},le=function(e){var t=document.createElement(e);return"button"===e&&t.setAttribute("type",e),t},de=function(){return([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g,function(e){try{return(e^(window.crypto||window.msCrypto).getRandomValues(new Uint8Array(1))[0]&15>>e/4).toString(16)}catch(e){return""}})},ue=function(e,t){return"browser"===S.auto_language?n(pe(),e):"document"===S.auto_language?n(document.documentElement.lang,e):"string"==typeof t?S.current_lang=n(t,e):(se("CookieConsent [LANG]: setting current_lang = '"+S.current_lang+"'"),S.current_lang)},pe=function(){var e=navigator.language||navigator.browserLanguage;return 2<e.length&&(e=e[0]+e[1]),se("CookieConsent [LANG]: detected_browser_lang = '"+e+"'"),e.toLowerCase()};$.allowedCategory=function(e){var t;return t=te&&"opt-in"!==S.mode?ne:JSON.parse(me(S.cookie_name,"one",!0)||"{}").categories||[],-1<re(t,e)},$.run=function(e){var t,n,o,s;function i(e,t,n,o,i,a,c){if(a=a&&a.split(" ")||[],-1<re(t,i)&&(ke(e,i),("bar"!==i||"middle"!==a[0])&&-1<re(n,a[0])))for(var r=0;r<a.length;r++)ke(e,a[r]);-1<re(o,c)&&ke(e,c)}function a(t,e){var n=!1,o=!1;try{for(var i,a=t.querySelectorAll(s.join(':not([tabindex="-1"]), ')),c=a.length,r=0;r<c;)i=a[r].getAttribute("data-focus"),o||"1"!==i?"0"===i&&(n=a[r],o||"0"===a[r+1].getAttribute("data-focus")||(o=a[r+1])):o=a[r],r++}catch(e){return t.querySelectorAll(s.join(", "))}e[0]=a[0],e[1]=a[a.length-1],e[2]=n,e[3]=o}document.getElementById("cc_div")?se("CookieConsent [NOTICE]: cookie consent already attached to body!"):(se("CookieConsent [CONFIG]: received_config_settings ",U=e),"number"==typeof U.cookie_expiration&&(S.cookie_expiration=U.cookie_expiration),"number"==typeof U.cookie_necessary_only_expiration&&(S.cookie_necessary_only_expiration=U.cookie_necessary_only_expiration),"boolean"==typeof U.autorun&&(S.autorun=U.autorun),"string"==typeof U.cookie_domain&&(S.cookie_domain=U.cookie_domain),"string"==typeof U.cookie_same_site&&(S.cookie_same_site=U.cookie_same_site),"string"==typeof U.cookie_path&&(S.cookie_path=U.cookie_path),"string"==typeof U.cookie_name&&(S.cookie_name=U.cookie_name),"function"==typeof U.onAccept&&(h=U.onAccept),"function"==typeof U.onFirstAction&&(m=U.onFirstAction),"function"==typeof U.onChange&&(_=U.onChange),"opt-out"===U.mode&&(S.mode="opt-out"),"number"==typeof U.revision&&(-1<U.revision&&(S.revision=U.revision),E=!0),"boolean"==typeof U.autoclear_cookies&&(S.autoclear_cookies=U.autoclear_cookies),!0===U.use_rfc_cookie&&(S.use_rfc_cookie=!0),"boolean"==typeof U.hide_from_bots&&(S.hide_from_bots=U.hide_from_bots),S.hide_from_bots&&(H=navigator&&(navigator.userAgent&&/bot|crawl|spider|slurp|teoma/i.test(navigator.userAgent)||navigator.webdriver)),S.page_scripts=!0===U.page_scripts,"browser"===U.auto_language||!0===U.auto_language?S.auto_language="browser":"document"===U.auto_language&&(S.auto_language="document"),se("CookieConsent [LANG]: auto_language strategy is '"+S.auto_language+"'"),S.current_lang=ue(U.languages,U.current_lang),H||(ee=JSON.parse(me(S.cookie_name,"one",!0)||"{}"),o=void 0!==(f=ee.consent_uuid),u=(u=ee.consent_date)&&new Date(u),p=(p=ee.last_consent_update)&&new Date(p),N=void 0!==ee.data?ee.data:null,E&&ee.revision!==S.revision&&(j=!1),T=te=!(o&&j&&u&&p&&f),function(){(b=le("div")).id="cc--main",b.style.position="fixed",b.style.zIndex="2147483647",b.innerHTML='<div id="cc_div" class="cc_div"></div>',F=b.children[0];var e=S.current_lang;T&&l(e),d(e),(e=c||document.body).insertBefore(b,e.firstChild)}(),s=["[href]","button","input","details",'[tabindex="0"]'],a(z,G),T&&a(y,I),"object"==typeof(t=e.gui_options)&&(o=t.consent_modal,t=t.settings_modal,T&&o&&i(y,["box","bar","cloud"],["top","middle","bottom"],["zoom","slide"],o.layout,o.position,o.transition),!n&&t&&i(R,["bar"],["left","right"],["zoom","slide"],t.layout,t.position,t.transition)),r(),S.autorun&&T&&$.show(e.delay||0),setTimeout(function(){ke(b,"c--anim")},30),setTimeout(function(){var t,n;n=t=!1,be(document,"keydown",function(e){"Tab"===(e=e||window.event).key&&(g&&(e.shiftKey?document.activeElement===g[0]&&(g[1].focus(),e.preventDefault()):document.activeElement===g[1]&&(g[0].focus(),e.preventDefault()),n||L||(n=!0,t||e.preventDefault(),(e.shiftKey?g[3]?g[2]||g[0]:g[1]:g[3]||g[0]).focus())),n||(t=!0))}),document.contains&&be(b,"click",function(e){e=e||window.event,O?L=!!z.contains(e.target)||($.hideSettings(0),!1):x&&y.contains(e.target)&&(L=!0)},!0)},100),te?("opt-out"===S.mode&&(se("CookieConsent [CONFIG] mode='"+S.mode+"', default enabled categories:",ne),fe(ne)),se("CookieConsent [NOTICE]: ask for consent!")):((!(e="boolean"==typeof ee.rfc_cookie)||e&&ee.rfc_cookie!==S.use_rfc_cookie)&&(ee.rfc_cookie=S.use_rfc_cookie,_e(S.cookie_name,JSON.stringify(ee))),v=he(ge()),fe(),"function"==typeof h&&h(ee),se("CookieConsent [NOTICE]: consent already given!",ee))))},$.showSettings=function(e){setTimeout(function(){ke(J,"show--settings"),R.setAttribute("aria-hidden","false"),O=!0,setTimeout(function(){x?i=document.activeElement:o=document.activeElement,0!==G.length&&((G[3]||G[0]).focus(),g=G)},200),se("CookieConsent [SETTINGS]: show settings_modal")},0<e?e:0)};var fe=function(e){var t,a,c;S.page_scripts&&(t=document.querySelectorAll("script["+S.script_selector+"]"),a=e||ee.categories||[],(c=function(e,t){if(t<e.length){var n=e[t],o=n.getAttribute(S.script_selector);if(-1<re(a,o)){n.type="text/javascript",n.removeAttribute(S.script_selector);o=n.getAttribute("data-src");o&&n.removeAttribute("data-src");var i=le("script");if(i.textContent=n.innerHTML,function(e,t){for(var n=t.attributes,o=n.length,i=0;i<o;i++){var a=n[i].nodeName;e.setAttribute(a,t[a]||t.getAttribute(a))}}(i,n),o?i.src=o:o=n.src,o&&(i.readyState?i.onreadystatechange=function(){"loaded"!==i.readyState&&"complete"!==i.readyState||(i.onreadystatechange=null,c(e,++t))}:i.onload=function(){i.onload=null,c(e,++t)}),n.parentNode.replaceChild(i,n),o)return}c(e,++t)}})(t,0))};$.set=function(e,t){return"data"===e&&function(e,t){var n=!1;if("update"===t){t=typeof(N=$.get("data"))==typeof e;if(t&&"object"==typeof N)for(var o in N=N||{},e)N[o]!==e[o]&&(N[o]=e[o],n=!0);else!t&&N||N===e||(N=e,n=!0)}else N=e,n=!0;return n&&(ee.data=N,_e(S.cookie_name,JSON.stringify(ee))),n}(t.value,t.mode)},$.get=function(e,t){return JSON.parse(me(t||S.cookie_name,"one",!0)||"{}")[e]},$.getConfig=function(e){return S[e]||U[e]};var ge=function(){return t=ee.categories||[],e=ie.filter(function(e){return-1===re(t,e)}),{accepted:t,rejected:e}},he=function(e){var t="custom",n=ae.filter(function(e){return!0===e}).length;return e.accepted.length===ie.length?t="all":e.accepted.length===n&&(t="necessary"),t};$.getUserPreferences=function(){var e=ge();return{accept_type:he(e),accepted_categories:e.accepted,rejected_categories:e.rejected}},$.loadScript=function(e,t,n){var o="function"==typeof t;if(document.querySelector('script[src="'+e+'"]'))o&&t();else{var i=le("script");if(n&&0<n.length)for(var a=0;a<n.length;++a)n[a]&&i.setAttribute(n[a].name,n[a].value);o&&(i.onload=t),i.src=e,document.head.appendChild(i)}},$.updateScripts=function(){fe()},$.show=function(e,t){!0===t&&l(S.current_lang),T&&setTimeout(function(){ke(J,"show--consent"),y.setAttribute("aria-hidden","false"),x=!0,setTimeout(function(){o=document.activeElement,g=I},200),se("CookieConsent [MODAL]: show consent_modal")},0<e?e:t?30:0)},$.hide=function(){T&&(Ce(J,"show--consent"),y.setAttribute("aria-hidden","true"),x=!1,setTimeout(function(){o.focus(),g=null},200),se("CookieConsent [MODAL]: hide"))},$.hideSettings=function(){Ce(J,"show--settings"),O=!1,R.setAttribute("aria-hidden","true"),setTimeout(function(){g=x?(i&&i.focus(),I):(o&&o.focus(),null),L=!1},200),se("CookieConsent [SETTINGS]: hide settings_modal")},$.accept=function(e,t){var n=e||void 0,o=t||[],i=[];if(n)if("object"==typeof n&&"number"==typeof n.length)for(var a=0;a<n.length;a++)-1!==re(ie,n[a])&&i.push(n[a]);else"string"==typeof n&&("all"===n?i=ie.slice():-1!==re(ie,n)&&i.push(n));else i=function(){for(var e=document.querySelectorAll(".c-tgl")||[],t=[],n=0;n<e.length;n++)e[n].checked&&t.push(e[n].value);return t}();if(1<=o.length)for(a=0;a<o.length;a++)i=i.filter(function(e){return e!==o[a]});for(a=0;a<ie.length;a++)!0===ae[a]&&-1===re(i,ie[a])&&i.push(ie[a]);!function(e){M=[];var t=document.querySelectorAll(".c-tgl")||[];if(0<t.length)for(var n=0;n<t.length;n++)-1!==re(e,ie[n])?(t[n].checked=!0,oe[n]||(M.push(ie[n]),oe[n]=!0)):(t[n].checked=!1,oe[n]&&(M.push(ie[n]),oe[n]=!1));!te&&S.autoclear_cookies&&0<M.length&&ce(),u=u||new Date,f=f||de(),ee={categories:e,level:e,revision:S.revision,data:N,rfc_cookie:S.use_rfc_cookie,consent_date:u.toISOString(),consent_uuid:f},(te||0<M.length)&&(j=!0,p=p?new Date:u,ee.last_consent_update=p.toISOString(),v=he(ge()),_e(S.cookie_name,JSON.stringify(ee)),fe()),te&&(S.autoclear_cookies&&ce(!0),"function"==typeof m&&m($.getUserPreferences(),ee),"function"==typeof h&&h(ee),te=!1,"opt-in"===S.mode)||("function"==typeof _&&0<M.length&&_(ee,M),D&&window.location.reload())}(i)},$.eraseCookies=function(e,t,n){var o=[],n=n?[n,"."+n]:[S.cookie_domain,"."+S.cookie_domain];if("object"==typeof e&&0<e.length)for(var i=0;i<e.length;i++)this.validCookie(e[i])&&o.push(e[i]);else this.validCookie(e)&&o.push(e);ve(o,t,n)};var _e=function(e,t){var n=S.cookie_expiration;"number"==typeof S.cookie_necessary_only_expiration&&"necessary"===v&&(n=S.cookie_necessary_only_expiration),t=S.use_rfc_cookie?encodeURIComponent(t):t;var o=new Date;o.setTime(o.getTime()+24*n*60*60*1e3);o=e+"="+(t||"")+("; expires="+o.toUTCString())+"; Path="+S.cookie_path+";";o+=" SameSite="+S.cookie_same_site+";",-1<window.location.hostname.indexOf(".")&&(o+=" Domain="+S.cookie_domain+";"),"https:"===window.location.protocol&&(o+=" Secure;"),document.cookie=o,se("CookieConsent [SET_COOKIE]: '"+e+"' expires after "+n+" day(s)")},me=function(e,t,n){if("one"===t){if((i=(i=document.cookie.match("(^|;)\\s*"+e+"\\s*=\\s*([^;]+)"))?n?i.pop():e:"")&&e===S.cookie_name){try{i=JSON.parse(i)}catch(e){try{i=JSON.parse(decodeURIComponent(i))}catch(e){i={}}}i=JSON.stringify(i)}}else if("all"===t)for(var o=document.cookie.split(/;\s*/),i=[],a=0;a<o.length;a++)i.push(o[a].split("=")[0]);return i},ve=function(e,t,n){for(var o=t||"/",i=0;i<e.length;i++){for(var a=0;a<n.length;a++)document.cookie=e[i]+"=; path="+o+(0==n[a].indexOf(".")?"; domain="+n[a]:"")+"; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";se("CookieConsent [AUTOCLEAR]: deleting cookie: '"+e[i]+"' path: '"+o+"' domain:",n)}};$.validCookie=function(e){return""!==me(e,"one",!0)};var be=function(e,t,n,o){e.addEventListener(t,n,!0===o&&{passive:!0})},ye=function(e){if("object"==typeof e)return Object.keys(e)},ke=function(e,t){e.classList.add(t)},Ce=function(e,t){e.classList.remove(t)},Ae=function(e,t){return e.classList.contains(t)};return $})}();</script>
+
+</body>
+
+</html>

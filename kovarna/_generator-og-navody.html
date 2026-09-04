@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<title>Generátor náhledovky návodů</title>
+<style>
+/* POZOR: latin-ext soubory obsahují JEN znaky s diakritikou mimo základní latinku.
+   Bez „latin" varianty se běžná písmena vykreslí náhradním fontem. Nutné oboje. */
+@font-face { font-family:'Oswald'; src:url('fonts/oswald-700-latin.woff2') format('woff2'); font-weight:700; }
+@font-face { font-family:'Oswald'; src:url('fonts/oswald-700-latin-ext.woff2') format('woff2'); font-weight:700; unicode-range:U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family:'Oswald'; src:url('fonts/oswald-500-latin.woff2') format('woff2'); font-weight:500; }
+@font-face { font-family:'Oswald'; src:url('fonts/oswald-500-latin-ext.woff2') format('woff2'); font-weight:500; unicode-range:U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family:'SourceSerif'; src:url('fonts/sourceserif-400-latin.woff2') format('woff2'); font-weight:400; }
+@font-face { font-family:'SourceSerif'; src:url('fonts/sourceserif-400-latin-ext.woff2') format('woff2'); font-weight:400; unicode-range:U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+body { background:#222; margin:0; padding:20px; font-family:sans-serif; color:#fff; }
+canvas { max-width:100%; box-shadow:0 10px 40px rgba(0,0,0,.6); }
+#stav { margin-top:12px; font-size:14px; }
+</style>
+</head>
+<body>
+<canvas id="c" width="1200" height="630"></canvas>
+<div id="stav">generuji…</div>
+<script>
+const IRON = '#12151a', BILA = '#ffffff', POPEL = '#e4e0d9', KOUR = '#8d8d8d';
+
+function nactiObrazek(src) {
+    return new Promise((res, rej) => {
+        const i = new Image();
+        i.onload = () => res(i);
+        i.onerror = () => rej(new Error('nenačteno: ' + src));
+        i.src = src;
+    });
+}
+
+(async () => {
+    const stav = document.getElementById('stav');
+    try {
+        // načíst i s diakritikou, ať se vytáhne latin i latin-ext soubor
+        await document.fonts.load('700 96px Oswald', 'JAK SE PŘIPOJÍŠ KOVÁRNA');
+        await document.fonts.load('500 22px Oswald', '3DENNÍ TRÉNINK');
+        await document.fonts.load('400 34px SourceSerif', 'Před prvním večerem.');
+        await document.fonts.ready;
+        if (!document.fonts.check('700 92px Oswald', 'JAK')) throw new Error('Oswald se nenačetl');
+
+        const c = document.getElementById('c');
+        const x = c.getContext('2d');
+
+        // pozadí
+        x.fillStyle = IRON;
+        x.fillRect(0, 0, 1200, 630);
+
+        // fotka vpravo, odbarvená, zleva vyblednutá do pozadí
+        const foto = await nactiObrazek('deploy/img/slava-studio-hero.webp');
+        const pom = document.createElement('canvas');
+        pom.width = 1200; pom.height = 630;
+        const px = pom.getContext('2d');
+        // Sláva je zhruba na 73 % šířky snímku — posadit ho na x≈900 canvasu
+        const cilV = 630 * 1.16;
+        const cilS = cilV * (foto.naturalWidth / foto.naturalHeight);
+        const dx = 900 - cilS * 0.73;
+        px.filter = 'grayscale(1) contrast(1.08) brightness(.92)';
+        px.drawImage(foto, dx, -(cilV - 630) * 0.32, cilS, cilV);
+        // maska: vlevo průhledné, vpravo plné
+        px.globalCompositeOperation = 'destination-in';
+        const maska = px.createLinearGradient(300, 0, 820, 0);
+        maska.addColorStop(0, 'rgba(0,0,0,0)');
+        maska.addColorStop(1, 'rgba(0,0,0,1)');
+        px.fillStyle = maska;
+        px.fillRect(0, 0, 1200, 630);
+        x.globalAlpha = 0.92;
+        x.drawImage(pom, 0, 0);
+        x.globalAlpha = 1;
+
+        // ztmavení zdola, ať drží loga
+        const spod = x.createLinearGradient(0, 380, 0, 630);
+        spod.addColorStop(0, 'rgba(18,21,26,0)');
+        spod.addColorStop(1, 'rgba(18,21,26,.85)');
+        x.fillStyle = spod;
+        x.fillRect(0, 380, 1200, 250);
+
+        // ——— levý okraj textu ———
+        // Text je posunutý co nejblíž ke Slávovi, aby ho na sítích neukousl ořez
+        // (ten bere z krajů). Hranici počítáme, ne odhadujeme: nejširší prvek
+        // (nadpis nebo patka s logy) musí skončit nejpozději na PRAVY_LIMIT.
+        const PRAVY_LIMIT = 600;   // za tím už začíná Slávova paže
+        const logo = await nactiObrazek('deploy/img/logo-restart-muze.png');
+        const logoV = 40;
+        const logoS = logoV * (logo.naturalWidth / logo.naturalHeight);
+
+        x.font = '700 92px Oswald'; x.letterSpacing = '0.5px';
+        const sirkaNadpisu = x.measureText('PŘIPOJÍŠ').width;
+        x.font = '700 25px Oswald'; x.letterSpacing = '5px';
+        const sirkaPatky = 48 + x.measureText('KOVÁRNA').width + 34 + 34 + logoS;
+        x.letterSpacing = '0px';
+
+        const L = Math.max(90, Math.round(PRAVY_LIMIT - Math.max(sirkaNadpisu, sirkaPatky)));
+        document.getElementById('stav').textContent =
+            'levý okraj ' + L + ' px (nadpis ' + Math.round(sirkaNadpisu) +
+            ', patka ' + Math.round(sirkaPatky) + ') — ukládám…';
+
+        // nadnadpis
+        x.fillStyle = KOUR;
+        x.font = '500 21px Oswald';
+        x.letterSpacing = '5px';
+        x.fillText('3DENNÍ TRÉNINK', L, 152);
+        x.letterSpacing = '0px';
+
+        // serifová linka
+        x.fillStyle = POPEL;
+        x.font = '400 37px SourceSerif';
+        x.fillText('Před prvním večerem.', L, 232);
+
+        // hlavní nadpis
+        x.fillStyle = BILA;
+        x.font = '700 92px Oswald';
+        x.letterSpacing = '0.5px';
+        // proklad 106 px (ne 88) — háčky nad Ř/Í/Š jinak zasahují do řádku nad nimi
+        x.fillText('JAK SE', L, 318);
+        x.fillText('PŘIPOJÍŠ', L, 424);
+        x.letterSpacing = '0px';
+
+        // ——— patka: kovadlina + KOVÁRNA | logo Restartu ———
+        const Y = 545;
+        // kovadlina (stejná cesta jako v hlavičce webu)
+        x.save();
+        x.translate(L, Y - 22);
+        x.scale(1.35, 1.35);
+        x.fillStyle = BILA;
+        const kovadlina = new Path2D('M1.6 8.2c1.9-1.5 4-2.2 6.4-2.2h10l3 1v2l-3 1.1h-2.1l-1 3.8 3 1.4.6 2.7H5.5l.6-2.7 3-1.4-1-3.8H6C4.3 10.1 2.8 9.5 1.6 8.2Z');
+        x.fill(kovadlina);
+        x.restore();
+
+        x.fillStyle = BILA;
+        x.font = '700 25px Oswald';
+        x.letterSpacing = '5px';
+        x.fillText('KOVÁRNA', L + 48, Y + 3);
+        x.letterSpacing = '0px';
+
+        // dělicí linka
+        const konecKovarna = L + 48 + x.measureText('KOVÁRNA').width + 34;
+        x.strokeStyle = 'rgba(255,255,255,.32)';
+        x.lineWidth = 1.5;
+        x.beginPath();
+        x.moveTo(konecKovarna, Y - 20);
+        x.lineTo(konecKovarna, Y + 8);
+        x.stroke();
+
+        // logo Restart muže (načtené a změřené výš, kvůli výpočtu levého okraje)
+        x.drawImage(logo, konecKovarna + 34, Y - 27, logoS, logoV);
+
+        // uložení
+        const data = c.toDataURL('image/jpeg', 0.9);
+        const r = await fetch('/ulozit', { method: 'POST', body: data });
+        stav.textContent = 'HOTOVO — ' + (await r.text());
+    } catch (e) {
+        stav.textContent = 'CHYBA: ' + e.message;
+    }
+})();
+</script>
+</body>
+</html>

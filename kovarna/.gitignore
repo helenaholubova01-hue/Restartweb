@@ -1,0 +1,7 @@
+# Cloudflare Workers lokální stav/cache — negenerovat, neverzovat.
+.wrangler/
+
+# Secrets pro lokální `wrangler dev` (CLIQSALES_API_KEY apod.) — nikdy do gitu,
+# repozitář je veřejný.
+.dev.vars
+.dev.vars.*
