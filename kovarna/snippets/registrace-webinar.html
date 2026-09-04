@@ -10,8 +10,8 @@
        (byznys-rodina); tlačítko, potvrzení a GDPR věta ze stránky Skoncuj s hodným klukem.
      • Termíny: hodnota radio buttonu = tag v CliqSales (webinar-DD-MM-RR). Stejný seznam
        musí být v TAGS_TERMINY ve wrangler.jsonc, jinak Worker termín odmítne.
-     • Děkovačka: vyplň value u skrytého pole `_redirect` (např. /webinar/dekujeme/).
-       Když zůstane prázdné, zobrazí se potvrzení přímo na místě formuláře.
+     • Děkovačka: po úspěchu přesměruje na /webinar/dekuji/ (skryté pole `_redirect`).
+       Když value vyprázdníš, zobrazí se potvrzení přímo na místě formuláře.
      • Po úspěchu se pošle dataLayer event `webinar_registrace` s polem `termin` (GTM konverze).
      • Skryté pole `web` je past na roboty – člověk ho nevidí a nevyplní.
      • Náhled vzhledu: snippets/registrace-webinar-nahled.html
@@ -154,8 +154,8 @@
           <label for="reg-web">Web</label>
           <input type="text" id="reg-web" name="web" tabindex="-1" autocomplete="off">
         </div>
-        <!-- Děkovačka: doplň cestu, např. value="/webinar/dekujeme/". Prázdné = potvrzení na místě. -->
-        <input type="hidden" name="_redirect" value="">
+        <!-- Děkovačka: po úspěchu přesměruje sem. Prázdné value = potvrzení na místě formuláře. -->
+        <input type="hidden" name="_redirect" value="/webinar/dekuji/">
         <button type="submit" class="btn" id="reg-submit">Chci se registrovat zdarma</button>
         <div class="reg-msg" id="reg-msg" role="alert" aria-live="polite"></div>
       </form>
