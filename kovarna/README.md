@@ -199,8 +199,9 @@ Blok `snippets/registrace-webinar.html` (styl + HTML + JS) se vloží do stránk
 webináře tam, kde má být formulář. Počítá s proměnnými Kovárny, bez nich má
 fallbacky. Náhled vzhledu se stavy odeslání: `snippets/registrace-webinar-nahled.html`.
 Termíny jsou ve formuláři natvrdo jako tři radio buttony, hodnota = tag; při
-změně termínů se mění formulář i `TAGS_TERMINY` ve `wrangler.jsonc`. Děkovačka se nastaví ve skrytém poli `_redirect`; prázdné = potvrzení
-se zobrazí na místě formuláře. Po úspěchu odejde `dataLayer` event
+změně termínů se mění formulář i `TAGS_TERMINY` ve `wrangler.jsonc`. Po úspěchu formulář
+přesměruje na děkovačku `/webinar/dekuji/` (skryté pole `_redirect`); prázdné value =
+potvrzení se zobrazí na místě formuláře. Po úspěchu odejde `dataLayer` event
 `webinar_registrace` pro konverzi v GTM. Texty (tlačítko, potvrzení, GDPR věta)
 jsou převzaté ze stávající webinářové stránky Restart muže; odkaz na GDPR míří
 na `/gdpr/`, kde má ostrý web Kovárny zásady zpracování osobních údajů.
